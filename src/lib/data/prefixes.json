@@ -1,0 +1,90 @@
+[
+	{
+		"label": "rdf",
+		"iri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	},
+	{
+		"label": "rdfs",
+		"iri": "http://www.w3.org/2000/01/rdf-schema#"
+	},
+	{
+		"label": "rdfa",
+		"iri": "http://www.w3.org/ns/rdfa#"
+	},
+	{
+		"label": "owl",
+		"iri": "http://www.w3.org/2002/07/owl#"
+	},
+	{
+		"label": "foaf",
+		"iri": "http://xmlns.com/foaf/0.1/"
+	},
+	{
+		"label": "dc",
+		"iri": "http://purl.org/dc/elements/1.1/"
+	},
+	{
+		"label": "dcterms",
+		"iri": "http://purl.org/dc/terms/"
+	},
+	{
+		"label": "vcard",
+		"iri": "http://www.w3.org/2001/vcard-rdf/3.0#"
+	},
+	{
+		"label": "dbr",
+		"iri": "http://dbpedia.org/resource/"
+	},
+	{
+		"label": "dbo",
+		"iri": "http://dbpedia.org/ontology/"
+	},
+	{
+		"label": "dbp",
+		"iri": "http://dbpedia.org/property/"
+	},
+	{
+		"label": "skos",
+		"iri": "http://www.w3.org/2004/02/skos/core#"
+	},
+	{
+		"label": "xsd",
+		"iri": "http://www.w3.org/2001/XMLSchema#"
+	},
+	{
+		"label": "schema",
+		"iri": "http://schema.org/"
+	},
+	{
+		"label": "prov",
+		"iri": "http://www.w3.org/ns/prov#"
+	},
+	{
+		"label": "ies",
+		"iri": "http://ies.data.gov.uk/ontology/ies4#"
+	},
+	{
+		"label": "sh",
+		"iri": "http://www.w3.org/ns/shacl#"
+	},
+	{
+		"label": "gold",
+		"iri": "http://purl.org/linguistics/gold/"
+	},
+	{
+		"label": "wd",
+		"iri": "http://www.wikidata.org/entity/"
+	},
+	{
+		"label": "viaf",
+		"iri": "http://viaf.org/viaf/"
+	},
+	{
+		"label": "ex",
+		"iri": "http://www.example.com"
+	},
+	{
+		"label": "dcat",
+		"iri": "http://www.w3.org/ns/dcat#"
+	}
+]

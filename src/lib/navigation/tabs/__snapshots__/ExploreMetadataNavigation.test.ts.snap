@@ -1,0 +1,29 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ExploreMetadataNavigation > creates the correct config 1`] = `
+{
+  "heading": "Metadata",
+  "navigationLabel": "Metadata",
+  "subheading": "Metadata is "data about the data". This can include things like labels, domains and ranges.",
+  "tabs": [
+    {
+      "description": "English-language RDFS Labels within the active datasets.",
+      "href": "/explore/metadata/labels",
+      "tabIndex": 0,
+      "title": "Labels",
+    },
+    {
+      "description": "Domain assertions within the active datasets. Domains are used to infer the class of a subject based on its associated properties.",
+      "href": "/explore/metadata/domains",
+      "tabIndex": 1,
+      "title": "Domains",
+    },
+    {
+      "description": "Range assertions within the active datasets. Ranges are used to infer the class of an object based on its associated properties.",
+      "href": "/explore/metadata/ranges",
+      "tabIndex": 2,
+      "title": "Ranges",
+    },
+  ],
+}
+`;

@@ -1,0 +1,10 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`cytoscape > layout > returns the layout config 1`] = `
+{
+  "animate": false,
+  "componentSpacing": 10,
+  "name": "cose",
+  "padding": 200,
+}
+`;

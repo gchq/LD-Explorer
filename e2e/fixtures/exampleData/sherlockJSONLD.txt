@@ -1,0 +1,21 @@
+{
+    "@context": {
+        "@base": "http://example.org/",
+        "foaf": "http://xmlns.com/foaf/0.1/",
+        "enemyOf": "http://www.perceive.net/schemas/relationship/enemyOf"
+    },
+    "@graph": [
+        {
+            "@id": "#james_moriarty",
+            "enemyOf": [{ "@id": "#sherlock_holmes" }],
+            "@type": ["foaf:Person"],
+            "foaf:name": "James Moriarty"
+        },
+        {
+            "@id": "#sherlock_holmes",
+            "enemyOf": [{ "@id": "#james_moriarty" }],
+            "@type": ["foaf:Person"],
+            "foaf:name": "James Moriarty"
+        }
+    ]
+}

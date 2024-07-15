@@ -1,0 +1,50 @@
+{
+	"external": [
+		{
+			"name": "DBPedia",
+			"description": "DBPedia triple-pattern-fragments endpoint",
+			"url": "https://fragments.dbpedia.org/2016-04/en"
+		},
+		{
+			"name": "Schema.org",
+			"description": "Latest version of the schema.org ontology",
+			"url": "https://schema.org/version/latest/schemaorg-current-https.ttl"
+		},
+		{
+			"name": "RDFa",
+			"description": "The w3c-hosted RDFa vocab",
+			"url": "https://www.w3.org/ns/rdfa.ttl"
+		},
+		{
+			"name": "RDFs",
+			"description": "The w3c-hosted RDFS vocab",
+			"url": "https://www.w3.org/2000/01/rdf-schema"
+		},
+		{
+			"name": "PROV",
+			"description": "W3C recommended model for exchanging data provenance",
+			"url": "https://www.w3.org/ns/prov.ttl"
+		},
+		{
+			"name": "SHACL",
+			"description": "W3c-histed ontology for SHACL (Shapes Constraint Language)",
+			"url": "https://www.w3.org/ns/shacl.ttl"
+		},
+		{
+			"name": "LinkedGeoData",
+			"description": "OpenStreetMap as Linked Data",
+			"url": "http://data.linkeddatafragments.org/linkedgeodata"
+		},
+		{
+			"name": "Virtual International Authority File (VIAF)",
+			"description": "A repository of authority files, can be used to match resources over multiple linked data sources.",
+			"url": "http://data.linkeddatafragments.org/viaf"
+		},
+		{
+			"name": "Data Catalog Vocabulary (DCAT)",
+			"description": "A vocabulary for publishing data catalogs",
+			"url": "https://www.w3.org/ns/dcat2.ttl"
+		}
+	],
+	"internal": []
+}

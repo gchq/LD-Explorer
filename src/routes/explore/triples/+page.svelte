@@ -1,0 +1,14 @@
+<!-- (c) Crown Copyright GCHQ -->
+
+<script lang="ts">
+	import { PageView, QueryResultsView } from '$lib/components/views';
+	import { getTriples } from '$lib/querying/queries';
+	import { settings } from '$lib/stores/settings.store';
+
+	const { createQuery, codeComment } = getTriples;
+	const query = createQuery($settings.general__defaultLimit);
+</script>
+
+<PageView heading="Triples" subheading="Raw triples across all active sources.">
+	<QueryResultsView {query} {codeComment} />
+</PageView>

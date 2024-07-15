@@ -1,0 +1,13 @@
+{
+	"compilerOptions": {
+		"baseUrl": ".",
+		"paths": {
+			"$e2e/test": ["fixtures/index"],
+			"$e2e/data/*": ["data/*"],
+			"$e2e/fixtures/*": ["fixtures/*"],
+			"$e2e/helpers/*": ["helpers/*"],
+			"$e2e/pages/*": ["pages/*"],
+			"$navigation": ["../src/lib/navigation/index"]
+		}
+	}
+}

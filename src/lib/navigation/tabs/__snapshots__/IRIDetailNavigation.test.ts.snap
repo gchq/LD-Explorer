@@ -1,0 +1,41 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`IRIDetailNavigation > creates the correct config 1`] = `
+{
+  "heading": "http://www.example.com/",
+  "navigationLabel": "IRI",
+  "subheading": "Detail for a specific IRI",
+  "tabs": [
+    {
+      "description": "Results of running a DESCRIBE query for this IRI. Note that only unique values are shown in the interface, even if that value appears across multiple data sources.",
+      "href": "/explore/iris/detail?iri=http%3A%2F%2Fwww.example.com%2F",
+      "tabIndex": 0,
+      "title": "DESCRIBE query",
+    },
+    {
+      "description": "Any appearances of this IRI within any triple (as either the subject, the predicate or the object).",
+      "href": "/explore/iris/detail/appearances?iri=http%3A%2F%2Fwww.example.com%2F",
+      "tabIndex": 1,
+      "title": "Appearances",
+    },
+    {
+      "description": "Any resources identified to be instances of this resource.",
+      "href": "/explore/iris/detail/instances?iri=http%3A%2F%2Fwww.example.com%2F",
+      "tabIndex": 2,
+      "title": "Instances",
+    },
+    {
+      "description": "Any resources identified to be subclasses of this resource.",
+      "href": "/explore/iris/detail/subclasses?iri=http%3A%2F%2Fwww.example.com%2F",
+      "tabIndex": 3,
+      "title": "Subclasses",
+    },
+    {
+      "description": "Any resources identified to be superclasses of this resource (ancestors).",
+      "href": "/explore/iris/detail/superclasses?iri=http%3A%2F%2Fwww.example.com%2F",
+      "tabIndex": 4,
+      "title": "Superclasses",
+    },
+  ],
+}
+`;

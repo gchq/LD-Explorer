@@ -1,0 +1,23 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ExploreClassesNavigation > creates the correct config 1`] = `
+{
+  "heading": "Classes",
+  "navigationLabel": "Classes",
+  "subheading": "Resources either defined as classes or inferred to be classes for all active sources.",
+  "tabs": [
+    {
+      "description": "All classes across all active datasources.",
+      "href": "/explore/classes",
+      "tabIndex": 0,
+      "title": "All Classes",
+    },
+    {
+      "description": "Base classes across all active datasources (those not asserted to be subclasses).",
+      "href": "/explore/classes/base",
+      "tabIndex": 1,
+      "title": "Base Classes",
+    },
+  ],
+}
+`;
