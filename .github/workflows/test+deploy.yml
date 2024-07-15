@@ -1,0 +1,67 @@
+# Install, test and Deploy LD Explorer
+
+name: Test and Deploy
+
+on:
+  push:
+    branches: ['main']
+  pull_request:
+    branches: ['main']
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v3
+        with:
+          # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+          node-version: 20.15.1
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Audit
+        run: npm audit --audit-level=critical
+
+      - name: Svelte-Check
+        run: npm run check
+
+      - name: Copyright check
+        run: npm run copyright:check
+
+      - name: Linter
+        run: npm run lint
+
+      - name: Build app
+        env:
+          BASE_PATH: '/${{ github.event.repository.name }}'
+        run: npm run build
+
+      - name: Component and Unit tests
+        run: npm run test:unit+component
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: build
+          path: build
+          if-no-files-found: error
+#  deploy:
+#    needs: build
+#    runs-on: ubuntu-latest
+#    permissions:
+#      pages: write
+#      id-token: write
+#
+#    environment:
+#      name: github-pages
+#      url: ${{ steps.deployment.outputs.page_url }}
+#
+#    steps:
+#      - name: Deploy
+#        id: deployment
+#        uses: actions/deploy-pages@v4
