@@ -36,4 +36,3 @@ This software is inner-source and contributions are welcome. See [Contributing.m
 ## License
 
 Unless stated otherwise, the codebase is released under the [Apache2 License](https://www.apache.org/licenses/LICENSE-2.0). This covers both the codebase and any sample code in the documentation. The documentation/wiki is and available under the terms of the [Open Government License v3.0](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/).
-
