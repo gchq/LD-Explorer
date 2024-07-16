@@ -23,6 +23,23 @@
 			>
 		</Heading>
 	</div>
+	<div slot="interaction">
+		<ButtonLink
+			label="Get Started"
+			variant="primary"
+			external
+			href="https://github.com/gchq/LD-Explorer/wiki/Getting-Started"
+		/>
+	</div>
+
+	<div slot="interaction">
+		<ButtonLink
+			label="FAQ"
+			variant="secondary"
+			external
+			href="https://github.com/gchq/LD-Explorer/wiki/FAQ"
+		/>
+	</div>
 </ic-hero>
 
 <div class="bg-gray-100 text-center md:text-left px-4">

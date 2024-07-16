@@ -46,5 +46,11 @@
 			"url": "https://www.w3.org/ns/dcat2.ttl"
 		}
 	],
-	"internal": []
+	"internal": [
+		{
+			"name": "Sherlock Holmes Dataset",
+			"description": "A small dataset relating to Sherlock Holmes",
+			"url": "https://gchq.github.io/LD-Explorer/exampleData/Sherlock.ttl"
+		}
+	]
 }

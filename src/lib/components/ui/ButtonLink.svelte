@@ -5,6 +5,7 @@
 	import { base } from '$app/paths';
 	export let label: string;
 	export let href: string;
+	export let external = false;
 	export let variant: IcButtonVariants = 'primary';
 	export let size: IcSizes = 'default';
 	export let ariaLabel: string | undefined = undefined;
@@ -16,7 +17,9 @@
 	{size}
 	{variant}
 	class="break-words"
-	href={`${base}/${relativeHref}`}
+	href={external ? href : `${base}/${relativeHref}`}
+	target={external ? '_blank' : undefined}
+	rel={external ? 'noreferrer' : undefined}
 	aria-label={ariaLabel}
 >
 	{label}
