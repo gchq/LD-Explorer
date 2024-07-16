@@ -15,8 +15,8 @@ const config = {
 			fallback: '404.html'
 		}),
 		paths: {
-			// required for github pages hosting
-			base: process.env.NODE_ENV === 'production' ? '/LD-Explorer' : ''
+			// Base path required if this is a github pages deployment.
+			base: process.env.BASE_PATH || ''
 		},
 		alias: {
 			$stores: 'src/lib/stores',
