@@ -14,6 +14,10 @@ const config = {
 		adapter: adapter({
 			fallback: '404.html'
 		}),
+		paths: {
+			// required for github pages hosting
+			base: process.env.NODE_ENV === 'production' ? '/LD-Explorer' : '',
+		},
 		alias: {
 			$stores: 'src/lib/stores',
 			'$test-helpers': 'test/helpers'
