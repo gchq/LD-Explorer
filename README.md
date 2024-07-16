@@ -4,6 +4,8 @@ Copyright 2024 [Crown Copyright](https://www.nationalarchives.gov.uk/information
 
 LD-Explorer is a prototype user interface built upon the [Comunica graph querying framework](https://comunica.dev/) that can be used for exploring linked data resources directly in the browser. We have found that this tool helps to better demonstrate the value and purpose of linked data to newcomers, and increases the speed at which experiments/ideas can be created and tested. We are open sourcing this software to fill what we believe is a software gap in the linked data linked data space and to hopefully encourage its growth into a valuable community tool.
 
+LD Explorer is hosted at https://gchq.github.io/LD-Explorer/
+
 ## Development
 
 To run this project you will need a development environment which includes _NPM/NodeJS_ - at least version 18.15 but ideally the [latest Node LTS](https://nodejs.org/en).
