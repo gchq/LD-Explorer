@@ -9,6 +9,9 @@ on:
     branches: ['main']
 
 jobs:
+  # **********************
+  # Build
+  # **********************
   build:
     runs-on: ubuntu-latest
     steps:
@@ -33,16 +36,13 @@ jobs:
       - name: Copyright check
         run: npm run copyright:check
 
-      - name: Linter
+      - name: Linting and Code Quality
         run: npm run lint
 
-      - name: Build app
+      - name: Build
         env:
           BASE_PATH: '/${{ github.event.repository.name }}'
         run: npm run build
-
-      - name: Component and Unit tests
-        run: npm run test:unit+component
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v2
@@ -50,18 +50,76 @@ jobs:
           name: build
           path: build
           if-no-files-found: error
-#  deploy:
-#    needs: build
-#    runs-on: ubuntu-latest
-#    permissions:
-#      pages: write
-#      id-token: write
-#
-#    environment:
-#      name: github-pages
-#      url: ${{ steps.deployment.outputs.page_url }}
-#
-#    steps:
-#      - name: Deploy
-#        id: deployment
-#        uses: actions/deploy-pages@v4
+
+  # **********************
+  # Unit + component tests
+  # **********************
+  unit_and_component_tests:
+    name: 'Unit and component tests'
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v3
+        with:
+          # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+          node-version: 20.15.1
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Component and Unit tests
+        run: npm run test:unit+component
+
+  # **********************
+  # End to end tests
+  # **********************
+  e2e_tests:
+    runs-on: ubuntu-latest
+    needs: build
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+          node-version: 20.15.1
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      - name: Run Playwright tests
+        run: npm run test:e2e -- --reporter=html
+
+  # **********************
+  # Deploy
+  # **********************
+
+  deploy:
+    needs: [build, e2e_tests, unit_and_component_tests]
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - uses: actions/download-artifact@v2
+        with:
+          name: build
+          path: build
+
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
