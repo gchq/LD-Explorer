@@ -16,7 +16,7 @@ const config = {
 		}),
 		paths: {
 			// required for github pages hosting
-			base: process.env.NODE_ENV === 'production' ? '/LD-Explorer' : '',
+			base: process.env.NODE_ENV === 'production' ? '/LD-Explorer' : ''
 		},
 		alias: {
 			$stores: 'src/lib/stores',
