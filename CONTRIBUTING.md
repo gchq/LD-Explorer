@@ -8,7 +8,7 @@ Before making a new one, please search the existing issues to check if your chan
 
 ## Contributing code
 
-We follow a branching strategy for handling contributions:
+Prior to us accepting any work, you must sign the [GCHQ CLA Agreement](https://cla-assistant.io/gchq/ld-explorer). We follow a branching strategy for handling contributions:
 
 1. Fork the Project
 2. Create your Feature Branch (`git checkout -b feature/new_thing`)
