@@ -96,25 +96,30 @@ jobs:
 
       - name: Run Playwright tests
         run: npm run test:e2e -- --reporter=html
-#
-#  deploy:
-#    needs: [build, e2e_tests, unit_and_component_tests]
-#    if: github.ref == 'refs/heads/main'
-#    runs-on: ubuntu-latest
-#
-#    permissions:
-#      pages: write
-#      id-token: write
-#
-#    environment:
-#      name: github-pages
-#      url: ${{ steps.deployment.outputs.page_url }}
-#
-#    steps:
-#  - uses: actions/download-artifact@v2
-#  with:
-#    name: build
-#    path: build
-#      - name: Deploy
-#        id: deployment
-#        uses: actions/deploy-pages@v4
+
+  # **********************
+  # Deploy
+  # **********************
+
+  deploy:
+    needs: [build, e2e_tests, unit_and_component_tests]
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - uses: actions/download-artifact@v2
+        with:
+          name: build
+          path: build
+
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
