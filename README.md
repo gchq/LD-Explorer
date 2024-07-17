@@ -6,6 +6,21 @@ LD-Explorer is a prototype user interface built upon the [Comunica graph queryin
 
 LD Explorer is hosted at https://gchq.github.io/LD-Explorer/
 
+## Documentation
+
+The documentation for LD-Explorer exists entierly within the [project wiki](https://github.com/gchq/LD-Explorer/wiki). This includes a [getting started](https://github.com/gchq/LD-Explorer/wiki/Getting-Started) guide as well as a host of resources written to help users get to grips with various topics within topic of linked data. If you find this documentation lacking or confusing, then we consider this to be a bug: please raise an issue.
+
+## Main Features
+
+LD Explorer is a UI that allows users to explore and experiment with linked data directly within the web browser. Features include...
+
+* Add data sources in many RDF formats, including JSON-LD, RDFa and Turtle.
+* Add local data sources by pasting data directly into the browser.
+* Use pre-build SPARQL queries to explore common data features such as object classes and instances.
+* Add remote data sources, including from SPARQL and Linked Data Fragments endpoints.
+* Run federated SPARQL queries across all active data sources.
+* Persist SPARQL `CONTRUCT` queries back into local data sources.
+
 ## Development
 
 To run this project you will need a development environment which includes _NPM/NodeJS_ - at least version 18.15 but ideally the [latest Node LTS](https://nodejs.org/en).
