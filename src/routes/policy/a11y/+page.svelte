@@ -165,7 +165,7 @@
 		variant="h4"
 		text="(c) Content that's not within the scope of the accessibility regulations."
 	/>
-	<P>Not applicable.</P>
+	<P>We do not believe that the application contains non-accessible content.</P>
 
 	<Heading variant="h3" text="9. How we tested this app" id="9" />
 	<P
