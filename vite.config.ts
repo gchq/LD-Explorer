@@ -1,8 +1,17 @@
 import { configDefaults, defineConfig } from 'vitest/config';
+import { fileURLToPath } from 'url';
+import { readFileSync } from 'fs';
 import { sveltekit } from '@sveltejs/kit/vite';
+
+const file = fileURLToPath(new URL('package.json', import.meta.url));
+const json = readFileSync(file, 'utf8');
+const pkg = JSON.parse(json);
 
 export default defineConfig({
 	plugins: [sveltekit()],
+	define: {
+		PUBLIC_VERSION: JSON.stringify(pkg.version)
+	},
 	test: {
 		environment: 'jsdom', // we're making a web app, so we want a web-like environment
 		globals: true, // avoid having to import things like "describe" and "expect"
