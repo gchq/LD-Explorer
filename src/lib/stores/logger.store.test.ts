@@ -1,7 +1,7 @@
 /* (c) Crown Copyright GCHQ */
 
 import { type LogEntry, comunicaLogger, logger, recentLogs } from './logger.store';
-import type { SpyInstance } from 'vitest';
+import type { MockInstance } from 'vitest';
 import { get } from 'svelte/store';
 
 const exampleTitle = 'A title';
@@ -64,7 +64,7 @@ describe('logger', () => {
 	});
 
 	describe(logger.addInfo, () => {
-		let add: SpyInstance;
+		let add: MockInstance;
 
 		beforeEach(() => {
 			add = vi.spyOn(logger, 'add');
@@ -78,8 +78,8 @@ describe('logger', () => {
 	});
 
 	describe(logger.addWarning, () => {
-		let warn: SpyInstance;
-		let add: SpyInstance;
+		let warn: MockInstance;
+		let add: MockInstance;
 
 		beforeEach(() => {
 			warn = vi.spyOn(console, 'warn').mockImplementation(() => undefined);
@@ -99,8 +99,8 @@ describe('logger', () => {
 	});
 
 	describe(logger.addError, () => {
-		let error: SpyInstance;
-		let add: SpyInstance;
+		let error: MockInstance;
+		let add: MockInstance;
 
 		beforeEach(() => {
 			error = vi.spyOn(console, 'error').mockImplementation(() => undefined);
@@ -121,7 +121,7 @@ describe('logger', () => {
 	});
 
 	describe(logger.addErrorMessage, () => {
-		let addError: SpyInstance;
+		let addError: MockInstance;
 
 		beforeEach(() => {
 			addError = vi.spyOn(logger, 'addError').mockImplementation(() => undefined);
@@ -136,7 +136,7 @@ describe('logger', () => {
 });
 
 describe('comunicaLogger', () => {
-	let add: SpyInstance;
+	let add: MockInstance;
 
 	beforeEach(() => {
 		add = vi.spyOn(logger, 'add').mockImplementation(() => undefined);
