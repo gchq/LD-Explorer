@@ -51,4 +51,19 @@
 		are not essential for the use of the application.
 	</P>
 	<P>LD Explorer does not include any non-essential cookies.</P>
+
+	<Heading variant="h3" text="Cookies from other applications" />
+	<P
+		>LD Explorer is hosted on github pages under the GCHQ organization, as is the case with other
+		GCHQ applications. These will all be hosted under the same domain, as github pages only varies
+		the subfolder between repositories.</P
+	>
+	<P
+		>As cookies and cookie-like features are tied to domains, if you've used other GCHQ applications
+		hosted on github pages then you may see local data items in your browser that were not added and
+		are not used by LD Explorer itself. You can identify any LD Explorer related items by looking
+		for keys that start with
+		<pre class="inline bg-gray-100">ld-explorer/</pre>
+		.</P
+	>
 </PageView>

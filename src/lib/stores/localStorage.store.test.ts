@@ -2,6 +2,7 @@
 
 import { createLocalStorageStore } from './localStorage.store';
 import { get } from 'svelte/store';
+import { namespace } from '$lib/constants';
 
 const exampleKey = 'test';
 const exampleDefault = {
@@ -23,17 +24,23 @@ describe('localStorage store', () => {
 			expect(get(store)).toStrictEqual(exampleDefault);
 		});
 
-		it('Adds the store to localStorage', () => {
-			expect(JSON.parse(localStorage.getItem(exampleKey) || '""')).toStrictEqual(exampleDefault);
+		it('has not just written the key away with no namespace', () => {
+			expect(JSON.parse(localStorage.getItem(exampleKey) || '""')).toBeFalsy();
+		});
+
+		it('Adds the store to localStorage with a namespace', () => {
+			expect(JSON.parse(localStorage.getItem(`${namespace}${exampleKey}`) || '""')).toStrictEqual(
+				exampleDefault
+			);
 		});
 	});
 
 	describe('On store update', () => {
-		it('Updates localStorage accordingly', () => {
+		it('Updates localStorage accordingly, with a namespace', () => {
 			const newSetting = { setting__biz: null };
 			store.update((current) => ({ ...current, ...newSetting }));
 
-			expect(JSON.parse(localStorage.getItem(exampleKey) || '""')).toStrictEqual({
+			expect(JSON.parse(localStorage.getItem(`${namespace}${exampleKey}`) || '""')).toStrictEqual({
 				...exampleDefault,
 				...newSetting
 			});
@@ -45,12 +52,14 @@ describe('localStorage store', () => {
 			const newSetting = { setting__biz: null };
 			store.update((current) => ({ ...current, ...newSetting }));
 
-			expect(JSON.parse(localStorage.getItem(exampleKey) || '""')).not.toStrictEqual(
-				exampleDefault
-			);
+			expect(
+				JSON.parse(localStorage.getItem(`${namespace}${exampleKey}`) || '""')
+			).not.toStrictEqual(exampleDefault);
 
 			store.restore();
-			expect(JSON.parse(localStorage.getItem(exampleKey) || '""')).toStrictEqual(exampleDefault);
+			expect(JSON.parse(localStorage.getItem(`${namespace}${exampleKey}`) || '""')).toStrictEqual(
+				exampleDefault
+			);
 		});
 	});
 });
