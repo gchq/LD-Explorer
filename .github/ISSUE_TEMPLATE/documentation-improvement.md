@@ -4,7 +4,6 @@ about: Suggest an improvement to the project wiki/documentation
 title: ''
 labels: documentation
 assignees: ''
-
 ---
 
 **Is this a suggestion for new documentation or an improvement to existing documentation?**
