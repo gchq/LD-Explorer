@@ -33,6 +33,9 @@
 	import { shouldHighlightSideNav } from '$lib/util/nav.utils';
 	import { sources } from '$stores/sources/sources.store';
 
+	// this will be set to the version number from package.json
+	declare const PUBLIC_VERSION: string;
+
 	type SideNavItemDetail = {
 		[key in SideNavId]: {
 			icon: ComponentType;
@@ -91,7 +94,7 @@
 
 <ic-side-navigation
 	app-title="LD-Explorer"
-	version="v0.0.0"
+	version={`v${PUBLIC_VERSION}`}
 	data-testid="main-nav"
 	status="Prototype"
 	collapsed-icon-labels
