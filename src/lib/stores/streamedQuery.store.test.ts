@@ -3,9 +3,9 @@
 import { type StreamedQuery, createQueryStore } from './streamedQuery.store';
 import { sourceList, sources } from '$lib/stores/sources/local-sources.store';
 import type { Bindings } from '@comunica/types';
+import type { MockInstance } from 'vitest';
 import type { Quad } from 'n3';
 import { QueryStatus } from '$lib/types';
-import type { SpyInstance } from 'vitest';
 import { get } from 'svelte/store';
 import { importRdfDocument } from '$lib/util/source.util';
 import { logger } from '$stores/logger.store';
@@ -246,7 +246,7 @@ describe(createQueryStore, () => {
 
 	describe('when running an unsupported query type', () => {
 		const query = 'INSERT DATA { <http://www.example.com/A> <http://www.example.com/B> "C" }';
-		let loggerAdd: SpyInstance;
+		let loggerAdd: MockInstance;
 
 		beforeEach(() => {
 			loggerAdd = vi.spyOn(logger, 'addErrorMessage').mockImplementation(() => undefined);
