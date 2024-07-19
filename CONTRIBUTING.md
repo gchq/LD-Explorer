@@ -39,5 +39,5 @@ Despite this being prototype software, we have still tried to keep the code to a
 Before opening a pull request, please ensure that the tests pass. See [Readme.md](./README.md) for details.
 
 ## Code of conduct
-See [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md).
 
+See [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md).
