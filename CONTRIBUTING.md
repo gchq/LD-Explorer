@@ -39,35 +39,5 @@ Despite this being prototype software, we have still tried to keep the code to a
 Before opening a pull request, please ensure that the tests pass. See [Readme.md](./README.md) for details.
 
 ## Code of conduct
+See [CODE_OF_CONDUCT.md](./CODE_OFCONDUCT.md).
 
-### Our pledge
-
-In the interest of fostering an open and welcoming environment, we as contributors and maintainers pledge to making participation in our project, and our community a harassment-free experience for everyone.
-
-### Our standards
-
-Examples of behaviour that contributes to creating a positive environment include:
-
-- Using welcoming and inclusive language
-- Being respectful of differing viewpoints and experiences
-- Gracefully accepting constructive criticism
-- Focusing on what is best for the community
-- Showing empathy towards other community members
-
-Examples of unacceptable behaviour by participants include:
-
-- The use of sexualized language or imagery and unwelcome sexual attention or advances
-- Trolling, insulting/derogatory comments, and personal or political attacks
-- Public or private harassment
-- Publishing others' private information, such as a physical or electronic address, without explicit permission
-- Other conduct which could reasonably be considered inappropriate in a professional setting
-
-### Our responsibilities
-
-Project maintainers are responsible for clarifying the standards of acceptable behaviour and are expected to take appropriate and fair corrective action in response to any instances of unacceptable behaviour.
-
-Project maintainers have the right and responsibility to remove, edit, or reject comments, commits, code, wiki edits, issues, and other contributions that are not aligned to this Code of Conduct, or to ban temporarily or permanently any contributor for other behaviors that they deem inappropriate, threatening, offensive, or harmful.
-
-### Attribution
-
-This Code of Conduct is adapted from version 1.4 of the [Contributor Covenant](http://contributor-covenant.org/version/1/4/).
