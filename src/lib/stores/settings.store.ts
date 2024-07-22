@@ -1,6 +1,6 @@
 /* (c) Crown Copyright GCHQ */
 
-import { createLocalStorageStore } from './localStorage.store';
+import { createLocalStorageJSONStore } from './localStorageJson.store';
 
 interface GeneralSettings {
 	general__defaultLimit: number;
@@ -23,4 +23,4 @@ const defaultSettings: Settings = {
 	term__showLanguageTag: true
 };
 
-export const settings = createLocalStorageStore('settings', defaultSettings);
+export const settings = createLocalStorageJSONStore('settings', defaultSettings);
