@@ -1,4 +1,4 @@
-# How to contributing
+# How To Contribute
 
 ## Raising issues
 

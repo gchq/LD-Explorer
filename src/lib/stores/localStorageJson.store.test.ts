@@ -1,6 +1,6 @@
 /* (c) Crown Copyright GCHQ */
 
-import { createLocalStorageStore } from './localStorage.store';
+import { createLocalStorageJSONStore } from './localStorageJson.store';
 import { get } from 'svelte/store';
 import { namespace } from '$lib/constants';
 
@@ -11,15 +11,15 @@ const exampleDefault = {
 	setting__baz: true
 };
 
-describe('localStorage store', () => {
-	let store: ReturnType<typeof createLocalStorageStore<typeof exampleDefault>>;
+describe('localStorageJson store', () => {
+	let store: ReturnType<typeof createLocalStorageJSONStore<typeof exampleDefault>>;
 
 	beforeEach(() => {
 		localStorage.clear();
-		store = createLocalStorageStore(exampleKey, exampleDefault);
+		store = createLocalStorageJSONStore(exampleKey, exampleDefault);
 	});
 
-	describe(createLocalStorageStore, () => {
+	describe(createLocalStorageJSONStore, () => {
 		it('Creates a store with a default value', () => {
 			expect(get(store)).toStrictEqual(exampleDefault);
 		});

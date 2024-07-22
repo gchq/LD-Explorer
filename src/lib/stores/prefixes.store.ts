@@ -1,6 +1,6 @@
 /* (c) Crown Copyright GCHQ */
 
-import { createLocalStorageStore } from './localStorage.store';
+import { createLocalStorageJSONStore } from './localStorageJson.store';
 import defaultPrefixes from '$lib/data/prefixes.json';
 
-export const prefixes = createLocalStorageStore('prefixes', defaultPrefixes);
+export const prefixes = createLocalStorageJSONStore('prefixes', defaultPrefixes);

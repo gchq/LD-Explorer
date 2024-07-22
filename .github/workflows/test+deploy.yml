@@ -1,6 +1,6 @@
 # Install, test and Deploy LD Explorer
 
-name: Test and Deploy
+name: LD-Explorer
 
 on:
   push:
