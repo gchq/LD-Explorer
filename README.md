@@ -16,10 +16,12 @@ LD Explorer is a UI that allows users to explore and experiment with linked data
 
 - Add data sources in many RDF formats, including JSON-LD, RDFa and Turtle.
 - Add local data sources by pasting data directly into the browser.
-- Use pre-build SPARQL queries to explore common data features such as object classes and instances.
+- Use pre-build SPARQL queries to explore common data features such as classes and instances.
 - Add remote data sources, including from SPARQL and Linked Data Fragments endpoints.
 - Run federated SPARQL queries across all active data sources.
 - Persist SPARQL `CONTRUCT` queries back into local data sources.
+
+Note that there is no server component to LD Explorer - all interactions are read-only and happen in the browser, with any data source information persisting in memory only. Closing the browser or refreshing the page will reset LD Explorer back to an empty state.
 
 ## Local Development
 

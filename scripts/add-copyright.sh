@@ -1,9 +1,10 @@
 #!/bin/sh
 
 copyright_notice="(c) Crown Copyright GCHQ"
+folders="./src ./e2e ./test"
 
 # Typescript files 
-for i in $(find ./src ./e2e ./test -name '*.ts'); 
+for i in $(find $folders -name '*.ts'); 
 do
   if ! grep -q "$copyright_notice" $i
   then
@@ -13,7 +14,7 @@ do
 done
 
 # Svelte files (note the different comment structure)
-for i in $(find ./src ./e2e ./test -name '*.svelte'); 
+for i in $(find $folders -name '*.svelte'); 
 do
   if ! grep -q "$copyright_notice" $i
   then
