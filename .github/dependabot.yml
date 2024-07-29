@@ -5,22 +5,28 @@ version: 2
 updates:
   #
   # Check for minor/patch versions only on a weekly basis - we are likely to be able to
-  # merge these routinely.
+  # merge these routinely. Major versions we'll check for and update manually.
   #
   - package-ecosystem: 'npm'
     directory: '/'
+    versioning-strategy: increase
     schedule:
       interval: 'weekly'
-    ignore:
-      - dependency-name: '*'
-        update-types: ['version-update:semver-major']
-
-  #
-  # Check for all dependencies monthly including major (which are likely / prone to breaking changes.
-  #
-  - package-ecosystem: 'npm'
-    directory: '/'
-    schedule:
-      interval: 'monthly'
-    allow:
-      update-types: ['version-update:semver-major']
+      time: '03:00'
+      timezone: Europe/London
+    commit-message:
+      prefix: 'chore(deps): '
+    labels:
+      - 'npm'
+      - 'dependencies'
+    groups:
+      #
+      # Grouping so we don't get a seperate PR for every minor and patch version.
+      #
+      minor-and-patch-updates:
+        applies-to: version-updates
+        patterns:
+          - '*'
+        update-types:
+          - 'minor'
+          - 'patch'
