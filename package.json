@@ -23,7 +23,7 @@
 	},
 	"devDependencies": {
 		"@axe-core/playwright": "^4.9.1",
-		"@comunica/query-sparql": "^2.10.2",
+		"@comunica/query-sparql": "^3.2.0",
 		"@comunica/types": "^2.10.0",
 		"@playwright/test": "^1.45.2",
 		"@sveltejs/adapter-static": "^3.0.2",
