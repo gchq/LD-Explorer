@@ -17,7 +17,6 @@ updates:
     commit-message:
       prefix: 'chore(deps): '
     labels:
-      - 'npm'
       - 'dependencies'
     ignore:
       - dependency-name: '*'
