@@ -38,12 +38,12 @@
 		{
 			"name": "LinkedGeoData",
 			"description": "OpenStreetMap as Linked Data",
-			"url": "http://data.linkeddatafragments.org/linkedgeodata"
+			"url": "https://data.linkeddatafragments.org/linkedgeodata"
 		},
 		{
 			"name": "Virtual International Authority File (VIAF)",
 			"description": "A repository of authority files, can be used to match resources over multiple linked data sources.",
-			"url": "http://data.linkeddatafragments.org/viaf"
+			"url": "https://data.linkeddatafragments.org/viaf"
 		},
 		{
 			"name": "Data Catalog Vocabulary (DCAT)",
