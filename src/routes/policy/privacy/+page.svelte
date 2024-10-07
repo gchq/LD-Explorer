@@ -47,5 +47,5 @@
 
 	<hr class="mt-20" />
 
-	<P>Last Udpated: 12 July 2024</P>
+	<P>Last Updated: 12 July 2024</P>
 </PageView>
