@@ -55,16 +55,9 @@ jobs:
   unit_and_component_tests:
     name: 'Unit and component tests'
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: node:20.15.1
     steps:
       - uses: actions/checkout@v4
-
-      - name: Set up Node
-        uses: actions/setup-node@v4
-        with:
-          # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-          node-version: 20.15.1
-          cache: 'npm'
 
       - name: Install dependencies
         run: npm ci
@@ -76,15 +69,11 @@ jobs:
   # End to end tests
   # **********************
   e2e_tests:
-    runs-on: ubuntu-latest
+    runs-on: node:20.15.1
     needs: build
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-          node-version: 20.15.1
 
       - name: Install dependencies
         run: npm ci
