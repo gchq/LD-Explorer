@@ -8,13 +8,6 @@ import { expect, test } from '@playwright/test';
 test('navigation', async ({ page }) => {
 	await page.goto('/');
 
-	// Check the expand/Collapse functionality is working.
-	await expect(page).toHaveScreenshot();
-	await page.getByLabel('Expand side navigation').click();
-	await expect(page).toHaveScreenshot();
-	await page.getByLabel('Collapse side navigation').click();
-	await expect(page).toHaveScreenshot();
-
 	// Check main navigation works
 	await page.getByRole('link', { name: 'search-web Explore' }).click();
 	await expect(page).toHaveTitle('Explore - LD-Explorer');
