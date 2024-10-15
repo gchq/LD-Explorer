@@ -1,7 +1,5 @@
 /* (c) Crown Copyright GCHQ */
 
-/* eslint-disable @typescript-eslint/no-empty-function */
-
 import { applyPolyfills, defineCustomElements } from '@ukic/web-components/loader';
 import { beforeAll, vi } from 'vitest';
 import { configure } from '@testing-library/dom';

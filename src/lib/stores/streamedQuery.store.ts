@@ -59,7 +59,7 @@ export function createQueryStore(sparqlQuery: string, sources: QuerySources): St
 		() => {
 			return () => {
 				// Close down the binding stream when nobody subscribe end
-				queryStream && queryStream.close();
+				if (queryStream) queryStream.close();
 			};
 		}
 	);
@@ -153,7 +153,7 @@ export function createQueryStore(sparqlQuery: string, sources: QuerySources): St
 	return {
 		subscribe,
 		stop() {
-			queryStream && queryStream.close();
+			if (queryStream) queryStream.close();
 			update((current) => ({ ...current, status: QueryStatus.Halted }));
 		}
 	};
