@@ -1,4 +1,4 @@
-import type { PlaywrightTestConfig } from '@playwright/test';
+import { type PlaywrightTestConfig, devices } from '@playwright/test';
 
 const config: PlaywrightTestConfig = {
 	webServer: {
@@ -6,10 +6,18 @@ const config: PlaywrightTestConfig = {
 		port: 4173
 	},
 	testDir: 'e2e',
+
 	testMatch: /(.+\.)?(test|spec)\.[jt]s/,
 
 	// Opt out of parallel tests on CI (prioritize stability and reproducability).
-	workers: process.env.CI ? 1 : undefined
+	workers: process.env.CI ? 1 : undefined,
+
+	projects: [
+		{
+			name: 'chromium',
+			use: { ...devices['Desktop Chrome'] }
+		}
+	]
 };
 
 export default config;
