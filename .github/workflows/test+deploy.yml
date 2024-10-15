@@ -95,6 +95,13 @@ jobs:
       - name: Run Playwright tests
         run: npm run test:e2e -- --reporter=html
 
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30
+
   # **********************
   # Deploy
   # **********************
