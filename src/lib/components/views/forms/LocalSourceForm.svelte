@@ -16,7 +16,7 @@
 		type: 'LOCAL',
 		description: '',
 		enabled: false,
-		n3Store: ''
+		n3Store: undefined
 	};
 
 	// Validation

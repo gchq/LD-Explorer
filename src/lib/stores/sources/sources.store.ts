@@ -11,7 +11,10 @@ import {
 	sources as remoteSource,
 	sourceList as remoteSourceList
 } from './remote-sources.store';
-import type { IDataSource } from '@comunica/types';
+
+import type { QuerySourceUnidentified } from '@comunica/types';
+
+export type QuerySources = [QuerySourceUnidentified, ...QuerySourceUnidentified[]];
 
 export interface Source {
 	id: string;
@@ -27,8 +30,8 @@ export const sources: Readable<(LocalSource | RemoteSource)[]> = derived(
 );
 
 // TODO: This is confusing, should be called something like "enabledSources"
-export const sourceList: Readable<[IDataSource, ...IDataSource[]]> = derived(
+export const sourceList: Readable<QuerySources> = derived(
 	[localSourceList, remoteSourceList],
 	([$localSourceList, $remoteSourceList]) =>
-		[...$localSourceList, ...$remoteSourceList] as [IDataSource, ...IDataSource[]]
+		[...$localSourceList, ...$remoteSourceList] as QuerySources
 );
