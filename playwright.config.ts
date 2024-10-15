@@ -17,7 +17,14 @@ const config: PlaywrightTestConfig = {
 			name: 'chromium',
 			use: { ...devices['Desktop Chrome'] }
 		}
-	]
+	],
+
+	expect: {
+		toMatchSnapshot: {
+			// Accomodate slight font kerning differences
+			maxDiffPixelRatio: 0.015
+		}
+	}
 };
 
 export default config;
