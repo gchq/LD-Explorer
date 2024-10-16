@@ -2,12 +2,11 @@
 
 import { decorateSourceStore, generateId } from '$lib/util/source.util';
 import { derived, writable } from 'svelte/store';
-import type { IDataSource } from '@comunica/types';
-import type { Source } from './sources.store';
+import type { Source, QuerySources } from './sources.store';
 
 export interface RemoteSource extends Source {
 	type: 'REMOTE';
-	url: IDataSource | string;
+	url: string;
 	fromCatalog?: boolean;
 }
 
@@ -22,6 +21,5 @@ export const sources = {
 
 export const sourceList = derived(
 	sources,
-	($sources) =>
-		$sources.filter((s) => s.enabled).map((s) => s.url) as [IDataSource, ...IDataSource[]]
+	($sources) => $sources.filter((s) => s.enabled).map((s) => s.url) as QuerySources
 );

@@ -18,12 +18,13 @@
  * Broadly though - binding streams are like tables whereas quad streams are like graphs.
  */
 
-import type { Bindings, BindingsStream, IDataSource } from '@comunica/types';
+import type { Bindings, BindingsStream } from '@comunica/types';
 import { type Readable, writable } from 'svelte/store';
 import { comunicaLogger, logger } from '$stores/logger.store';
 import type { AsyncIterator } from 'asynciterator';
 import type { Quad } from 'n3';
 import { QueryStatus } from '$lib/types';
+import type { QuerySources } from './sources/sources.store';
 import type { ResultStream } from '@rdfjs/types';
 import { engine } from '$lib/querying/engine';
 
@@ -45,10 +46,7 @@ function isBindings(r: QueryResult): r is Bindings {
 	return (r as Bindings)?.type === 'bindings';
 }
 
-export function createQueryStore(
-	sparqlQuery: string,
-	sources: [IDataSource, ...IDataSource[]]
-): StreamedQueryStore {
+export function createQueryStore(sparqlQuery: string, sources: QuerySources): StreamedQueryStore {
 	let queryStream: QueryStream | undefined = undefined;
 
 	const { subscribe, update } = writable<StreamedQuery>(
@@ -61,7 +59,7 @@ export function createQueryStore(
 		() => {
 			return () => {
 				// Close down the binding stream when nobody subscribe end
-				queryStream && queryStream.close();
+				if (queryStream) queryStream.close();
 			};
 		}
 	);
@@ -155,7 +153,7 @@ export function createQueryStore(
 	return {
 		subscribe,
 		stop() {
-			queryStream && queryStream.close();
+			if (queryStream) queryStream.close();
 			update((current) => ({ ...current, status: QueryStatus.Halted }));
 		}
 	};

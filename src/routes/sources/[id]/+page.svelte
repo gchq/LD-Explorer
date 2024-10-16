@@ -11,7 +11,7 @@
 		TabNavigation,
 		TabPanel
 	} from '$lib/components';
-	import type { IDataSource } from '@comunica/types';
+	import type { QuerySourceUnidentified } from '@comunica/types';
 	import { Import } from '$lib/components/ui/icons';
 	import type { Store as N3Store } from 'n3';
 	import type { PageData } from './$types';
@@ -29,7 +29,8 @@
 
 	// Local sources will have an n3 store, remote sources have a URL. This logic will become
 	// more complicated if there are ever any other types of source in play but this'll do for now.
-	let dataSource: IDataSource = source.type == 'LOCAL' ? (source.n3Store as N3Store) : source.url;
+	let dataSource: QuerySourceUnidentified =
+		source.type == 'LOCAL' ? (source.n3Store as N3Store) : source.url;
 
 	const { createQuery, codeComment } = getTriples;
 	const queryStore = createQueryStore(createQuery($settings.general__defaultLimit), [dataSource]);
