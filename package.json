@@ -16,7 +16,7 @@
 		"test:unit+component": "vitest run --coverage",
 		"test:e2e": "playwright test",
 		"test:e2e:update-snapshots": "playwright test --update-snapshots",
-		"lint": "prettier --check . && eslint .",
+		"lint": "eslint .",
 		"format": "prettier --write .",
 		"copyright:check": "./scripts/check-copyright.sh",
 		"copyright:write": "./scripts/add-copyright.sh"

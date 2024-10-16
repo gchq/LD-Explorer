@@ -6,9 +6,9 @@ import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
 
 export default tseslint.config(
 	eslint.configs.recommended,
+	eslintPluginPrettierRecommended,
 	...tseslint.configs.recommended,
 	...svelte.configs['flat/recommended'],
-	eslintPluginPrettierRecommended,
 	{
 		languageOptions: {
 			globals: {
