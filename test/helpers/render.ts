@@ -26,7 +26,11 @@ import { expect } from 'vitest';
  * @param fn a function with the same signature as `render` from the testing library.
  * @returns {async fn} an asynchronous version of the passed in function that waits for hydration.
  */
-const waitForHydration = <T extends Parameters<typeof originalRender>, U>(
+
+const waitForHydration = <
+	T extends Parameters<typeof originalRender>,
+	U extends ReturnType<typeof originalRender>
+>(
 	fn: (...args: T) => U
 ) => {
 	return async (...args: T): Promise<U> => {
@@ -36,7 +40,7 @@ const waitForHydration = <T extends Parameters<typeof originalRender>, U>(
 			appReadyCount = true;
 		});
 
-		const view = fn(...args);
+		const view = fn(...(args as T));
 		await waitFor(() => expect(document.body.innerHTML.length).toBeGreaterThan(0));
 		await waitFor(() => expect(appReadyCount).toBeTruthy(), {
 			timeout: 100000,
@@ -53,4 +57,8 @@ export const render = originalRender;
 // Use this version if there are ICDS components in the test you're rendering. Note that if you
 // try to use this on tests where there is no ICDS component being used, your test will time out (because
 // the `appload` event will never be emitted)
-export const hydratedRender = waitForHydration((...args) => originalRender(...args));
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const hydratedRender = waitForHydration((component, options?: any, renderOptions?) =>
+	originalRender(component, options, renderOptions)
+);
