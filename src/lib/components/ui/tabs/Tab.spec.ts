@@ -11,7 +11,7 @@ describe('Tab component', () => {
 		let tab: HTMLElement;
 
 		beforeEach(async () => {
-			component = (await render(Tab, { title: 'Foo' })).component;
+			component = (await render(Tab, { title: 'Foo' })).component as Tab;
 			tab = await screen.findByRole('tab', { name: 'Foo' });
 		});
 

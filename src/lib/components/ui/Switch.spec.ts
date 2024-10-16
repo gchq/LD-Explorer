@@ -24,7 +24,7 @@ describe('Switch component', () => {
 	});
 
 	it('dispatches a change event when clicked', async () => {
-		const { component } = await render(Switch, exampleProps);
+		const component = (await render(Switch, exampleProps)).component as Switch;
 		const changed = vi.fn();
 		component.$on('change', changed);
 

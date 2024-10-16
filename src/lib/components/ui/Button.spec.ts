@@ -11,7 +11,7 @@ describe('Button component', () => {
 		let component: Button;
 
 		beforeEach(async () => {
-			component = (await render(Button, { label: 'Test' })).component;
+			component = (await render(Button, { label: 'Test' })).component as Button;
 		});
 
 		it('renders the button with the appropriate label and role', async () => {
