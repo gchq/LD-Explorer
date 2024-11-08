@@ -14,6 +14,7 @@
 	import { abbreviateTermPrefix } from '$lib/util/term.utils';
 	import clsx from 'clsx';
 	import { prefixes } from '$lib/stores/prefixes.store';
+	import { labelFor } from '$stores/label.store';
 
 	// Props
 	export let applyVerticalMargins = false;
@@ -49,7 +50,9 @@
 				<QuotedTriple {term} />
 			{:else if term.termType == 'NamedNode'}
 				<Link href={`/explore/iris/detail?iri=${encodeURIComponent(term.value)}`}>
-					<TermValue {termValue} {highlightText} />
+					{#await labelFor(term.value) then label}
+						<TermValue termValue={label} {highlightText} />
+					{/await}
 				</Link>
 			{:else}
 				{#if settings.term__showLanguageTag && term.termType == 'Literal' && term.language && term.language.length}
