@@ -27,7 +27,7 @@ Note that there is no server component to LD Explorer - all interactions are rea
 
 If you want to run this project locally on your own machine, you will need a development environment which includes _NPM/NodeJS_ - at least version 18.15 but ideally the [latest Node LTS](https://nodejs.org/en).
 
-```
+```sh
 # Start the dev server
 npm i
 npm run dev
