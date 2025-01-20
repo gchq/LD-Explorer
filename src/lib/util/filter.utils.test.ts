@@ -3,10 +3,8 @@
 import { type Bindings, BindingsFactory } from '@comunica/bindings-factory';
 import { DataFactory as N3DF, type Quad } from 'n3';
 import { filterBindings, filterQuads } from './filter.utils';
-import { DataFactory } from 'rdf-data-factory';
 
-const DF = new DataFactory();
-const BF = new BindingsFactory(DF);
+const BF = new BindingsFactory();
 const { namedNode, literal, quad, variable } = N3DF;
 const personResource = namedNode('http://xmlns.com/foaf/0.1/Person');
 const nameResource = namedNode('http://xmlns.com/foaf/0.1/name');
