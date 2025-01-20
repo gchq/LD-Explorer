@@ -52,7 +52,6 @@
 		"postcss": "^8.5.1",
 		"prettier": "^3.4.2",
 		"prettier-plugin-svelte": "^3.3.3",
-		"rdf-data-factory": "^2.0.2",
 		"rdfa-streaming-parser": "^3.0.1",
 		"shadow-dom-testing-library": "^1.11.3",
 		"svelte": "^4.2.19",
