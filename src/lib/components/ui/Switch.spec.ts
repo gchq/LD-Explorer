@@ -2,9 +2,9 @@
 
 import '@testing-library/jest-dom';
 import Switch from './Switch.svelte';
-import { fireEvent } from '@testing-library/svelte';
 import { hydratedRender as render } from '$test-helpers/render';
 import { screen } from 'shadow-dom-testing-library';
+import userEvent from '@testing-library/user-event';
 
 describe('Switch component', () => {
 	const exampleProps = {
@@ -24,12 +24,14 @@ describe('Switch component', () => {
 	});
 
 	it('dispatches a change event when clicked', async () => {
+		const user = userEvent.setup();
+
 		const component = (await render(Switch, exampleProps)).component as Switch;
 		const changed = vi.fn();
 		component.$on('change', changed);
 
 		const theSwitch = await screen.findByShadowLabelText(exampleProps.label);
-		await fireEvent.click(theSwitch);
+		await user.click(theSwitch);
 
 		expect(changed).toHaveBeenCalledOnce();
 	});

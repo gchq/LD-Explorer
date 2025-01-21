@@ -1,9 +1,10 @@
 /* (c) Crown Copyright GCHQ */
 
 import '@testing-library/jest-dom';
-import { fireEvent, screen } from '@testing-library/svelte';
+import { screen } from '@testing-library/svelte';
 import Tab from './Tab.svelte';
 import { hydratedRender as render } from '$test-helpers/render';
+import userEvent from '@testing-library/user-event';
 
 describe('Tab component', () => {
 	describe('default behavior', () => {
@@ -20,9 +21,11 @@ describe('Tab component', () => {
 		});
 
 		it('dispatches a click event when clicked', async () => {
+			const user = userEvent.setup();
+
 			const clicked = vi.fn();
 			component.$on('click', clicked);
-			await fireEvent.click(tab);
+			await user.click(tab);
 
 			expect(clicked).toHaveBeenCalledOnce();
 		});
