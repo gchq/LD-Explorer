@@ -2,9 +2,9 @@
 
 import '@testing-library/jest-dom';
 import Button from './Button.svelte';
-import { fireEvent } from '@testing-library/svelte';
 import { hydratedRender as render } from '$test-helpers/render';
 import { screen } from 'shadow-dom-testing-library';
+import userEvent from '@testing-library/user-event';
 
 describe('Button component', () => {
 	describe('default behavior', () => {
@@ -23,11 +23,12 @@ describe('Button component', () => {
 		});
 
 		it('dispatches a click event when clicked', async () => {
+			const user = userEvent.setup();
 			const clicked = vi.fn();
 			component.$on('click', clicked);
 
 			const theButton = await screen.findByShadowRole('button');
-			await fireEvent.click(theButton);
+			await user.click(theButton);
 
 			expect(clicked).toHaveBeenCalledOnce();
 		});
