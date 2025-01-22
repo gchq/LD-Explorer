@@ -14,6 +14,7 @@ import ExploreTriplesPage from '$e2e/pages/explore/ExploreTriplesPage';
 import GeneralSettingsPage from '$e2e/pages/settings/GeneralSettingsPage';
 import ImportToLocalDataSourcePage from '$e2e/pages/data-sources/ImportToLocalDataSourcePage';
 import ListSourcesPage from '$e2e/pages/data-sources/ListSourcesPage';
+import ShowDataSource from '$e2e/pages/data-sources/ShowDataSourcePage';
 import { test as base } from '@playwright/test';
 
 // To add a new page fixture, import the class above and add it to this object. The "key" in
@@ -22,6 +23,7 @@ const pages = {
 	addLocalDataSourcePage: AddLocalDataSourcePage,
 	importToLocalDataSourcePage: ImportToLocalDataSourcePage,
 	addRemoteDataSourcePage: AddRemoteDataSourcePage,
+	showDataSource: ShowDataSource,
 	listSourcesPage: ListSourcesPage,
 	exploreClassesPage: ExploreClassesPage,
 	exploreIndividualsPage: ExploreIndividualsPage,
