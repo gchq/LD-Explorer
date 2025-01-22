@@ -81,7 +81,11 @@
 	},
 	{
 		"label": "ex",
-		"iri": "http://www.example.com"
+		"iri": "http://example.com/"
+	},
+	{
+		"label": "ex1",
+		"iri": "http://example.org/"
 	},
 	{
 		"label": "dcat",
