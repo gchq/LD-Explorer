@@ -22,7 +22,7 @@ You can run a single tests, or tests from a certain folder, as follows:
 
 ```
 # CLI
-npm run test:e2e -- tests/pages/data-sources --ui
+npm run test:e2e -- tests/pages/data-sources
 
 # With UI
 npm run test:e2e -- tests/pages/data-sources --ui

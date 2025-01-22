@@ -52,6 +52,10 @@ export default class ListDataSourcesPage extends LDExplorerPage {
 		await navigateTo(this.page, /Sources/);
 	}
 
+	async clickShowDataSource(sourceName: string) {
+		await this.showSourceButton(sourceName).click();
+	}
+
 	async clickAddLocalDataSource() {
 		await this.addLocalDataSourceButton.click();
 	}
