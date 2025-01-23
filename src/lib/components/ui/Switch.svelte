@@ -23,5 +23,5 @@
 	{label}
 	helper-text={helperText}
 	{checked}
-	on:icChange={handleInput}
-/>
+	onicChange={handleInput}
+></ic-switch>

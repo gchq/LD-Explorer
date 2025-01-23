@@ -28,8 +28,13 @@ describe('Switch component', () => {
 		const changed = vi.fn();
 		await render(Switch, { ...exampleProps, onchange: changed });
 		const theSwitch = await screen.findByShadowLabelText(exampleProps.label);
-		await user.click(theSwitch);
 
-		expect(changed).toHaveBeenCalledOnce();
+		// Toggle the switch a few times, make sure it's turning off and on
+		await user.click(theSwitch);
+		expect(changed).toHaveBeenCalledWith({ checked: true });
+		await user.click(theSwitch);
+		expect(changed).toHaveBeenCalledWith({ checked: false });
+		await user.click(theSwitch);
+		expect(changed).toHaveBeenCalledWith({ checked: true });
 	});
 });

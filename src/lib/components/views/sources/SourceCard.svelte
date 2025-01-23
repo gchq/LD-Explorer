@@ -21,7 +21,7 @@
 		small
 		label={enabled ? 'Enabled' : 'Disabled'}
 		status={enabled ? 'success' : 'warning'}
-	/>
+	></ic-status-tag>
 	<slot name="message" slot="message" />
 	<slot name="interaction-controls" slot="interaction-controls" />
 	<slot />

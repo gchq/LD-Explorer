@@ -71,7 +71,7 @@
 					label="Select pre-build query"
 					full-width
 					options={exampleQueries.map((ex) => ({ label: ex.queryName, value: ex.query }))}
-				/>
+				></ic-select>
 
 				<form on:submit|preventDefault={handleSubmit}>
 					{#if sparqlParseError}

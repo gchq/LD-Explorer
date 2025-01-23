@@ -69,5 +69,5 @@
 	<Button label="Zoom to fit" size="small" variant="tertiary" onclick={resetZoom}>
 		<i slot="icon"><MagnifyFit /></i>
 	</Button>
-	<div class="h-screen block" bind:this={container} />
+	<div class="h-screen block" bind:this={container}></div>
 </div>

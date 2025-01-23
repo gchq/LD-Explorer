@@ -45,7 +45,7 @@
 				placeholder="Select a local data source"
 				value={selectedSourceId}
 				on:icChange={handleSourceChange}
-			/>
+			></ic-select>
 
 			<div class="align-bottom inline">
 				<Button label="Persist" {disabled} onclick={handlePersist} />

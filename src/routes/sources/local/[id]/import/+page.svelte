@@ -93,7 +93,7 @@
 		on:icChange={handleImportTypeChanged}
 		label="Import format"
 		options={Object.entries(imports).map(([value, { label }]) => ({ label, value }))}
-	/>
+	></ic-select>
 
 	<TabNavigation bind:selectedTabIndex>
 		<Tab title="Document" />
