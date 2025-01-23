@@ -3,9 +3,10 @@
 <script lang="ts">
 	import { type IcButtonTypes, type IcButtonVariants, type IcSizes } from '@ukic/web-components';
 	import clsx from 'clsx';
+	import type { Snippet } from 'svelte';
 	import type { EventHandler } from 'svelte/elements';
 
-	interface ButtonProps {
+	interface Props {
 		className?: string;
 		label: string;
 		variant?: IcButtonVariants;
@@ -15,11 +16,13 @@
 		ariaLabel?: string | undefined;
 		onclick?: EventHandler;
 		onkeydown?: EventHandler;
+		icon?: Snippet;
 	}
 
 	let {
 		onclick,
 		onkeydown,
+		icon,
 		className,
 		label,
 		variant = 'primary',
@@ -27,7 +30,7 @@
 		type = 'submit',
 		disabled,
 		ariaLabel
-	}: ButtonProps = $props();
+	}: Props = $props();
 </script>
 
 <!-- These seem to be suprious linting errors due to Svelte not recognizing custom elements -->
@@ -43,5 +46,8 @@
 	aria-label={ariaLabel}
 >
 	{label}
-	<slot name="icon" />
+
+	{#if icon}
+		<i slot="icon">{@render icon()}</i>
+	{/if}
 </ic-button>

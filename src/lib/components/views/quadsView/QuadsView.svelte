@@ -43,7 +43,7 @@
 			variant="secondary"
 			onclick={() => (viewType = 'table')}
 		>
-			<i slot="icon"><Table /></i>
+			{#snippet icon()}<Table />{/snippet}
 		</Button>
 
 		<Button
@@ -52,7 +52,7 @@
 			disabled={viewType == 'graph' || inFlight}
 			onclick={() => (viewType = 'graph')}
 		>
-			<i slot="icon"><Graph /></i>
+			{#snippet icon()}<Graph />{/snippet}
 		</Button>
 
 		<Button
@@ -61,7 +61,7 @@
 			disabled={viewType == 'ttl'}
 			onclick={() => (viewType = 'ttl')}
 		>
-			<i slot="icon"><Turtle /></i>
+			{#snippet icon()}<Turtle />{/snippet}
 		</Button>
 	</div>
 
