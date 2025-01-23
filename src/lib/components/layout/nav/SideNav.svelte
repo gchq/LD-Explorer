@@ -6,7 +6,7 @@
 	 * the behavior of the secondary nav items on small screen sizes (see references
 	 * to 'isSmall'). This is included due to an issue in the ICDS component library
 	 * which is renders the app unusable at high zoom levels. Given that we are required
-	 * to meet WCAG AA (must support zoom at 400%). Workaround included until
+	 * to meet WCAG AA (must support zoom at 400%), this workaround included until
 	 * a more permenant solution appears in the ICDS library.
 	 *
 	 * ICDS already aware of issue, details here: https://github.com/mi6/ic-ui-kit/issues/1922
@@ -25,18 +25,18 @@
 	import { type SideNavId, primarySideNavItems, secondarySideNavItems } from '$lib/navigation';
 	import { errorLogs, warningLogs } from '$stores/logger.store';
 	import { Badge } from '$lib/components';
-	import type { ComponentType } from 'svelte';
+	import type { Component } from 'svelte';
 	import type { IcBadgeVariants } from '@ukic/web-components';
 	import { ViewportHelper } from '$lib/components/helpers';
 	import { base } from '$app/paths';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import { shouldHighlightSideNav } from '$lib/util/nav.utils';
 	import { sources } from '$stores/sources/sources.store';
 	import { version } from '$lib/constants';
 
 	type SideNavItemDetail = {
 		[key in SideNavId]: {
-			icon: ComponentType;
+			icon: Component;
 			badgeDetails?: {
 				label: string;
 				variant: IcBadgeVariants;
@@ -107,7 +107,7 @@
 			label={title}
 			href={`${base}${href}`}
 			slot="primary-navigation"
-			selected={shouldHighlightSideNav(base, href, $page.url.pathname)}
+			selected={shouldHighlightSideNav(base, href, page.url.pathname)}
 		>
 			{#if !!navItemDetail[id].badgeDetails}
 				<div slot="badge">
@@ -133,7 +133,7 @@
 				label={title}
 				href={`${base}${href}`}
 				slot="secondary-navigation"
-				selected={shouldHighlightSideNav(base, href, $page.url.pathname)}
+				selected={shouldHighlightSideNav(base, href, page.url.pathname)}
 			>
 				<div slot="icon">
 					<Icon><svelte:component this={navItemDetail[id].icon} /></Icon>
@@ -144,7 +144,7 @@
 				label={title}
 				href={`${base}${href}`}
 				slot="primary-navigation"
-				selected={shouldHighlightSideNav(base, href, $page.url.pathname)}
+				selected={shouldHighlightSideNav(base, href, page.url.pathname)}
 			>
 				<div slot="icon">
 					<Icon><svelte:component this={navItemDetail[id].icon} /></Icon>

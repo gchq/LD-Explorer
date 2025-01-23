@@ -54,4 +54,4 @@
 	helper-text={helperText}
 	validation-status={validationError ? 'error' : ''}
 	validation-text={validationErrorMessage}
-/>
+></ic-text-field>

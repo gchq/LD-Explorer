@@ -12,6 +12,7 @@ import ExploreClassesPage from '$e2e/pages/explore/ExploreClassesPage';
 import ExploreIndividualsPage from '$e2e/pages/explore/ExploreIndividualsPage';
 import ExploreTriplesPage from '$e2e/pages/explore/ExploreTriplesPage';
 import GeneralSettingsPage from '$e2e/pages/settings/GeneralSettingsPage';
+import LogsPage from '$e2e/pages/LogsPage';
 import ImportToLocalDataSourcePage from '$e2e/pages/data-sources/ImportToLocalDataSourcePage';
 import ListSourcesPage from '$e2e/pages/data-sources/ListSourcesPage';
 import ShowDataSource from '$e2e/pages/data-sources/ShowDataSourcePage';
@@ -25,6 +26,7 @@ const pages = {
 	addRemoteDataSourcePage: AddRemoteDataSourcePage,
 	showDataSource: ShowDataSource,
 	listSourcesPage: ListSourcesPage,
+	logsPage: LogsPage,
 	exploreClassesPage: ExploreClassesPage,
 	exploreIndividualsPage: ExploreIndividualsPage,
 	exploreTriplesPage: ExploreTriplesPage,

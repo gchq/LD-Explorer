@@ -12,23 +12,23 @@
 	<dt class="inline-block font-bold mr-2 after:content-[':']">Query Status</dt>
 	<dd class="inline-block">
 		{#if status == QueryStatus.Fetching}
-			<ic-status-tag label="Fetching" small="true" status="warning" />
+			<ic-status-tag label="Fetching" small="true" status="warning"></ic-status-tag>
 			<LoadingSpinner />
 		{:else if status == QueryStatus.Done}
-			<ic-status-tag label="Complete" small="true" status="success" />
+			<ic-status-tag label="Complete" small="true" status="success"></ic-status-tag>
 		{:else if status == QueryStatus.Error}
-			<ic-status-tag label="Error" small="true" status="danger" />
+			<ic-status-tag label="Error" small="true" status="danger"></ic-status-tag>
 		{:else}
-			<ic-status-tag label={status} small="true" status="neutral" />
+			<ic-status-tag label={status} small="true" status="neutral"></ic-status-tag>
 		{/if}
 		<Button
 			label="Halt Query"
-			on:click={onStop}
+			onclick={onStop}
 			variant="tertiary"
 			size="small"
 			disabled={status != QueryStatus.Fetching}
 		>
-			<i slot="icon"><Stop /></i>
+			{#snippet icon()}<Stop />{/snippet}
 		</Button>
 	</dd>
 </dl>

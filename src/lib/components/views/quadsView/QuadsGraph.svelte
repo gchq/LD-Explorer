@@ -58,16 +58,16 @@
 </script>
 
 <div class="border p-2 my-4">
-	<Button label="Zoom In" size="small" variant="tertiary" on:click={() => handleZoom(0.1)}>
-		<i slot="icon"><MagnifyPlus /></i>
+	<Button label="Zoom In" size="small" variant="tertiary" onclick={() => handleZoom(0.1)}>
+		{#snippet icon()}<MagnifyPlus />{/snippet}
 	</Button>
 
-	<Button label="Zoom Out" size="small" variant="tertiary" on:click={() => handleZoom(-0.1)}>
-		<i slot="icon"><MagnifyMinus /></i>
+	<Button label="Zoom Out" size="small" variant="tertiary" onclick={() => handleZoom(-0.1)}>
+		{#snippet icon()}<MagnifyMinus />{/snippet}
 	</Button>
 
-	<Button label="Zoom to fit" size="small" variant="tertiary" on:click={resetZoom}>
-		<i slot="icon"><MagnifyFit /></i>
+	<Button label="Zoom to fit" size="small" variant="tertiary" onclick={resetZoom}>
+		{#snippet icon()}<MagnifyFit />{/snippet}
 	</Button>
-	<div class="h-screen block" bind:this={container} />
+	<div class="h-screen block" bind:this={container}></div>
 </div>

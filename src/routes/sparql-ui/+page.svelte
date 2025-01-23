@@ -10,11 +10,11 @@
 	import { validateSparql } from '$lib/querying/sparqlUtils';
 
 	// We need to change tabs programatically, therefore they need to be given explicit IDs.
-	enum SparqlUiTab {
-		QueryBuilder = 0,
-		Results = 1,
-		PrefixBrowser = 2
-	}
+	const SparqlUiTab = {
+		QueryBuilder: 0,
+		Results: 1,
+		PrefixBrowser: 2
+	};
 
 	// State
 	let sparqlQuery = '';
@@ -71,7 +71,7 @@
 					label="Select pre-build query"
 					full-width
 					options={exampleQueries.map((ex) => ({ label: ex.queryName, value: ex.query }))}
-				/>
+				></ic-select>
 
 				<form on:submit|preventDefault={handleSubmit}>
 					{#if sparqlParseError}
@@ -90,7 +90,7 @@
 					/>
 
 					<Button label="Submit" type="submit" disabled={sparqlQuery.length == 0} />
-					<Button label="Reset" type="reset" on:click={handleFormReset} variant="destructive" />
+					<Button label="Reset" type="reset" onclick={handleFormReset} variant="destructive" />
 				</form>
 			</TabPanel>
 			<TabPanel>

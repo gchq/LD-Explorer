@@ -30,21 +30,20 @@
 			label="Enable all sources"
 			variant="secondary"
 			disabled={!sourcesExist}
-			on:click={() => toggleAll(true)}
+			onclick={() => toggleAll(true)}
 		/>
 
 		<Button
 			label="Disable all sources"
 			disabled={!sourcesExist}
-			on:click={() => toggleAll(false)}
+			onclick={() => toggleAll(false)}
 			variant="secondary"
 		/>
 
 		<Button
 			label="Remove all sources"
 			disabled={!sourcesExist}
-			on:keyup
-			on:click={removeAll}
+			onclick={removeAll}
 			variant="destructive"
 		/>
 	</div>

@@ -3,21 +3,41 @@
 <script lang="ts">
 	import { type IcButtonTypes, type IcButtonVariants, type IcSizes } from '@ukic/web-components';
 	import clsx from 'clsx';
+	import type { Snippet } from 'svelte';
+	import type { EventHandler } from 'svelte/elements';
 
-	export let className: string = '';
-	export let label: string;
-	export let variant: IcButtonVariants = 'primary';
-	export let size: IcSizes = 'default';
-	export let type: IcButtonTypes = 'submit';
-	export let disabled = false;
-	export let ariaLabel: string | undefined = undefined;
+	interface Props {
+		className?: string;
+		label: string;
+		variant?: IcButtonVariants;
+		size?: IcSizes;
+		type?: IcButtonTypes;
+		disabled?: boolean;
+		ariaLabel?: string | undefined;
+		onclick?: EventHandler;
+		onkeydown?: EventHandler;
+		icon?: Snippet;
+	}
+
+	let {
+		onclick,
+		onkeydown,
+		icon,
+		className,
+		label,
+		variant = 'primary',
+		size = 'default',
+		type = 'submit',
+		disabled,
+		ariaLabel
+	}: Props = $props();
 </script>
 
 <!-- These seem to be suprious linting errors due to Svelte not recognizing custom elements -->
-<!-- svelte-ignore a11y-no-static-element-interactions -->
+<!-- svelte-ignore a11y_no_static_element_interactions -->
 <ic-button
-	on:click
-	on:keydown
+	{onclick}
+	{onkeydown}
 	{disabled}
 	{type}
 	{size}
@@ -26,5 +46,8 @@
 	aria-label={ariaLabel}
 >
 	{label}
-	<slot name="icon" />
+
+	{#if icon}
+		<i slot="icon">{@render icon()}</i>
+	{/if}
 </ic-button>

@@ -25,14 +25,16 @@ describe('Switch component', () => {
 
 	it('dispatches a change event when clicked', async () => {
 		const user = userEvent.setup();
-
-		const component = (await render(Switch, exampleProps)).component as Switch;
 		const changed = vi.fn();
-		component.$on('change', changed);
-
+		await render(Switch, { ...exampleProps, onchange: changed });
 		const theSwitch = await screen.findByShadowLabelText(exampleProps.label);
-		await user.click(theSwitch);
 
-		expect(changed).toHaveBeenCalledOnce();
+		// Toggle the switch a few times, make sure it's turning off and on
+		await user.click(theSwitch);
+		expect(changed).toHaveBeenCalledWith({ checked: true });
+		await user.click(theSwitch);
+		expect(changed).toHaveBeenCalledWith({ checked: false });
+		await user.click(theSwitch);
+		expect(changed).toHaveBeenCalledWith({ checked: true });
 	});
 });

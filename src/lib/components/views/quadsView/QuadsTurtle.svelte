@@ -23,4 +23,4 @@
 	label="RDF Document"
 	rows={30}
 	helper-text="RDF document in Turtle (ttl) format."
-/>
+></ic-text-field>

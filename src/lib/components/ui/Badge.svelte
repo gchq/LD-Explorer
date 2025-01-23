@@ -25,4 +25,5 @@
 	{size}
 	text-label={textLabel}
 	accessible-label={ariaLabel}
-/>
+>
+</ic-badge>

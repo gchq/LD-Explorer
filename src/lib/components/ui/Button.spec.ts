@@ -8,10 +8,11 @@ import userEvent from '@testing-library/user-event';
 
 describe('Button component', () => {
 	describe('default behavior', () => {
-		let component: Button;
+		let clicked: typeof vi.fn;
 
 		beforeEach(async () => {
-			component = (await render(Button, { label: 'Test' })).component as Button;
+			clicked = vi.fn();
+			await render(Button, { label: 'Test', onclick: clicked });
 		});
 
 		it('renders the button with the appropriate label and role', async () => {
@@ -24,9 +25,6 @@ describe('Button component', () => {
 
 		it('dispatches a click event when clicked', async () => {
 			const user = userEvent.setup();
-			const clicked = vi.fn();
-			component.$on('click', clicked);
-
 			const theButton = await screen.findByShadowRole('button');
 			await user.click(theButton);
 
