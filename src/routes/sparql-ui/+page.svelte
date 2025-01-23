@@ -10,11 +10,11 @@
 	import { validateSparql } from '$lib/querying/sparqlUtils';
 
 	// We need to change tabs programatically, therefore they need to be given explicit IDs.
-	enum SparqlUiTab {
-		QueryBuilder = 0,
-		Results = 1,
-		PrefixBrowser = 2
-	}
+	const SparqlUiTab = {
+		QueryBuilder: 0,
+		Results: 1,
+		PrefixBrowser: 2
+	};
 
 	// State
 	let sparqlQuery = '';

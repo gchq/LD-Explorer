@@ -28,10 +28,10 @@
 		};
 	};
 
-	enum LocalDataSourceImportTab {
-		Document = 0,
-		PrefixBrowser = 1
-	}
+	const LocalDataSourceImportTab = {
+		Document: 0,
+		PrefixBrowser: 1
+	};
 
 	// State
 	let document = '';
