@@ -90,7 +90,7 @@
 					/>
 
 					<Button label="Submit" type="submit" disabled={sparqlQuery.length == 0} />
-					<Button label="Reset" type="reset" on:click={handleFormReset} variant="destructive" />
+					<Button label="Reset" type="reset" onclick={handleFormReset} variant="destructive" />
 				</form>
 			</TabPanel>
 			<TabPanel>

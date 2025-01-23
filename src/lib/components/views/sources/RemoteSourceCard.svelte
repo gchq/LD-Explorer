@@ -44,7 +44,7 @@
 			label={enabled ? 'Disable' : 'Enable'}
 			ariaLabel={`${enabled ? 'Disable' : 'Enable'} source ${source.name}`}
 			variant="secondary"
-			on:click={() => remoteSources.toggleEnabled(id)}
+			onclick={() => remoteSources.toggleEnabled(id)}
 		/>
 	</div>
 </SourceCard>

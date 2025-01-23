@@ -23,7 +23,7 @@
 		{/if}
 		<Button
 			label="Halt Query"
-			on:click={onStop}
+			onclick={onStop}
 			variant="tertiary"
 			size="small"
 			disabled={status != QueryStatus.Fetching}

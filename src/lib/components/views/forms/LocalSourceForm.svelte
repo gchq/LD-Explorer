@@ -72,13 +72,7 @@
 		<Button label="Submit" type="submit" />
 
 		{#if source.id.length}
-			<Button
-				label="Remove Source"
-				variant="destructive"
-				type="reset"
-				on:keyup
-				on:click={handleRemove}
-			/>
+			<Button label="Remove Source" variant="destructive" type="reset" onclick={handleRemove} />
 		{/if}
 		<Link htmlClass="block mt-2" href="/sources">Back to Sources</Link>
 	</div>

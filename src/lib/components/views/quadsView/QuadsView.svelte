@@ -41,7 +41,7 @@
 			label="Table View"
 			disabled={viewType == 'table'}
 			variant="secondary"
-			on:click={() => (viewType = 'table')}
+			onclick={() => (viewType = 'table')}
 		>
 			<i slot="icon"><Table /></i>
 		</Button>
@@ -50,7 +50,7 @@
 			label="Graph View"
 			variant="secondary"
 			disabled={viewType == 'graph' || inFlight}
-			on:click={() => (viewType = 'graph')}
+			onclick={() => (viewType = 'graph')}
 		>
 			<i slot="icon"><Graph /></i>
 		</Button>
@@ -59,7 +59,7 @@
 			label="TTL View"
 			variant="secondary"
 			disabled={viewType == 'ttl'}
-			on:click={() => (viewType = 'ttl')}
+			onclick={() => (viewType = 'ttl')}
 		>
 			<i slot="icon"><Turtle /></i>
 		</Button>

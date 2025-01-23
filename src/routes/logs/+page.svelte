@@ -10,7 +10,7 @@
 <PageView heading="Logs" subheading="Most recent system logs">
 	<Button
 		label="Clear Logs"
-		on:click={logger.clear}
+		onclick={logger.clear}
 		disabled={!$recentLogs.length}
 		variant="destructive"
 	/>

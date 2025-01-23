@@ -88,7 +88,7 @@
 		{...restoreDefaultButtonLabel}
 		className="my-4"
 		variant="destructive"
-		on:click={prefixes.restore}
+		onclick={prefixes.restore}
 	/>
 
 	<Table>
@@ -109,7 +109,7 @@
 								label="Remove"
 								ariaLabel={`Remove ${prefix.label}`}
 								variant="destructive"
-								on:click={() => removePrefix(prefix)}
+								onclick={() => removePrefix(prefix)}
 								size="small"
 							/>
 						</div>
@@ -123,6 +123,6 @@
 		{...restoreDefaultButtonLabel}
 		className="my-4"
 		variant="destructive"
-		on:click={prefixes.restore}
+		onclick={prefixes.restore}
 	/>
 </PageView>

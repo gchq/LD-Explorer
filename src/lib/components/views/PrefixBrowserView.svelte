@@ -54,7 +54,7 @@
 							ariaLabel={`Add ${prefix.label}`}
 							variant="tertiary"
 							disabled={document.toLowerCase().includes(formatPrefix(prefix).toLowerCase())}
-							on:click={() => handleAddPrefix(prefix)}
+							onclick={() => handleAddPrefix(prefix)}
 						/>
 					</div>
 				</TableData>
