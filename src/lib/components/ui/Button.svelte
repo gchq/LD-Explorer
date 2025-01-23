@@ -5,7 +5,7 @@
 	import clsx from 'clsx';
 	import type { EventHandler } from 'svelte/elements';
 
-	interface Props {
+	interface ButtonProps {
 		className?: string;
 		label: string;
 		variant?: IcButtonVariants;
@@ -27,7 +27,7 @@
 		type = 'submit',
 		disabled,
 		ariaLabel
-	}: Props = $props();
+	}: ButtonProps = $props();
 </script>
 
 <!-- These seem to be suprious linting errors due to Svelte not recognizing custom elements -->

@@ -25,11 +25,8 @@ describe('Switch component', () => {
 
 	it('dispatches a change event when clicked', async () => {
 		const user = userEvent.setup();
-
-		const component = (await render(Switch, exampleProps)).component as Switch;
 		const changed = vi.fn();
-		component.$on('change', changed);
-
+		await render(Switch, { ...exampleProps, onchange: changed });
 		const theSwitch = await screen.findByShadowLabelText(exampleProps.label);
 		await user.click(theSwitch);
 

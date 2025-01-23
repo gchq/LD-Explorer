@@ -48,7 +48,7 @@
 			/>
 
 			<div class="align-bottom inline">
-				<Button label="Persist" {disabled} on:click={handlePersist} />
+				<Button label="Persist" {disabled} onclick={handlePersist} />
 			</div>
 
 			{#if persisted}

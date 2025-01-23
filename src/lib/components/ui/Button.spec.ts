@@ -25,9 +25,6 @@ describe('Button component', () => {
 
 		it('dispatches a click event when clicked', async () => {
 			const user = userEvent.setup();
-
-			//component.$on('click', clicked);
-
 			const theButton = await screen.findByShadowRole('button');
 			await user.click(theButton);
 

@@ -8,11 +8,12 @@ import userEvent from '@testing-library/user-event';
 
 describe('Tab component', () => {
 	describe('default behavior', () => {
-		let component: Tab;
 		let tab: HTMLElement;
+		let clicked: typeof vi.fn;
 
 		beforeEach(async () => {
-			component = (await render(Tab, { title: 'Foo' })).component as Tab;
+			clicked = vi.fn();
+			await render(Tab, { title: 'Foo', onclick: clicked });
 			tab = await screen.findByRole('tab', { name: 'Foo' });
 		});
 
@@ -22,11 +23,7 @@ describe('Tab component', () => {
 
 		it('dispatches a click event when clicked', async () => {
 			const user = userEvent.setup();
-
-			const clicked = vi.fn();
-			component.$on('click', clicked);
 			await user.click(tab);
-
 			expect(clicked).toHaveBeenCalledOnce();
 		});
 	});

@@ -2,18 +2,19 @@
 
 <script lang="ts">
 	import type { IcSwitchChangeEventDetail } from '@ukic/web-components';
-	import { createEventDispatcher } from 'svelte';
 
-	export let label: string;
-	export let helperText: string;
-	export let checked: boolean;
+	interface Props {
+		onchange: ({ checked }: { checked: boolean }) => void;
+		label: string;
+		helperText: string;
+		checked: boolean;
+	}
 
-	// Events
-	const dispatch = createEventDispatcher();
+	let { label, helperText, checked = $bindable(), onchange }: Props = $props();
 
 	function handleInput(e: CustomEvent<IcSwitchChangeEventDetail>) {
 		checked = e.detail.checked;
-		dispatch('change', { checked });
+		onchange({ checked });
 	}
 </script>
 

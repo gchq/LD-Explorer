@@ -1,7 +1,7 @@
 /* (c) Crown Copyright GCHQ */
 
 import { render as originalRender, waitFor } from '@testing-library/svelte';
-import type { SvelteComponent } from 'svelte';
+import type { Component } from 'svelte';
 import { expect } from 'vitest';
 
 /**
@@ -29,7 +29,8 @@ import { expect } from 'vitest';
  */
 
 const waitForHydration = (fn: typeof originalRender) => {
-	return async (...args: Parameters<typeof originalRender<SvelteComponent>>) => {
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	return async (...args: Parameters<typeof originalRender<Component<any, any, string>>>) => {
 		let appReadyCount = false;
 
 		window.addEventListener('appload', () => {

@@ -36,7 +36,7 @@
 			label="Show Quads"
 			helperText="Display full quads rather than triples when browsing data."
 			bind:checked={dirtySettings.general__showQuads}
-			on:change={() => (dirty = true)}
+			onchange={() => (dirty = true)}
 		/>
 
 		<div class="mt-4">
