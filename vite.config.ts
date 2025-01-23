@@ -2,13 +2,14 @@ import { configDefaults, defineConfig } from 'vitest/config';
 import { fileURLToPath } from 'url';
 import { readFileSync } from 'fs';
 import { sveltekit } from '@sveltejs/kit/vite';
+import { svelteTesting } from '@testing-library/svelte/vite';
 
 const file = fileURLToPath(new URL('package.json', import.meta.url));
 const json = readFileSync(file, 'utf8');
 const pkg = JSON.parse(json);
 
 export default defineConfig({
-	plugins: [sveltekit()],
+	plugins: [sveltekit(), svelteTesting()],
 	define: {
 		PUBLIC_VERSION: JSON.stringify(pkg.version)
 	},
