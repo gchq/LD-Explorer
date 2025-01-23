@@ -28,7 +28,7 @@
 			size="small"
 			disabled={status != QueryStatus.Fetching}
 		>
-			<i slot="icon"><Stop /></i>
+			{#snippet icon()}<Stop />{/snippet}
 		</Button>
 	</dd>
 </dl>
