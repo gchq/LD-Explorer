@@ -28,15 +28,15 @@
 		"@comunica/types": "^4.0.2",
 		"@playwright/test": "^1.49.1",
 		"@sveltejs/adapter-static": "^3.0.8",
-		"@sveltejs/kit": "^2.16.0",
+		"@sveltejs/kit": "^2.16.1",
 		"@sveltejs/vite-plugin-svelte": "^3.1.2",
 		"@testing-library/jest-dom": "^6.6.3",
 		"@testing-library/svelte": "^5.2.6",
 		"@types/cytoscape": "^3.21.8",
 		"@types/eslint": "^9.6.1",
 		"@ukic/fonts": "^2.6.5",
-		"@ukic/web-components": "^2.33.0",
-		"@vitest/coverage-v8": "^3.0.2",
+		"@ukic/web-components": "^2.34.0",
+		"@vitest/coverage-v8": "^3.0.3",
 		"asynciterator": "^3.9.0",
 		"autoprefixer": "^10.4.20",
 		"clsx": "^2.1.1",
@@ -59,13 +59,13 @@
 		"tailwindcss": "^3.4.17",
 		"tslib": "^2.8.1",
 		"typescript": "^5.7.3",
-		"typescript-eslint": "^8.20.0",
+		"typescript-eslint": "^8.21.0",
 		"uuid": "^11.0.5",
 		"vite": "^5.4.11",
-		"vitest": "^3.0.2"
+		"vitest": "^3.0.3"
 	},
 	"type": "module",
 	"dependencies": {
-		"@testing-library/user-event": "^14.6.0"
+		"@testing-library/user-event": "^14.6.1"
 	}
 }
