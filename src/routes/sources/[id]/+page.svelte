@@ -47,23 +47,23 @@
 		<svelte:fragment slot="panels">
 			<TabPanel>
 				<ic-data-entity heading="Source Detail">
-					<ic-data-row label="ID" value={source.id} />
-					<ic-data-row label="Name" value={source.name} />
+					<ic-data-row label="ID" value={source.id}></ic-data-row>
+					<ic-data-row label="Name" value={source.name}></ic-data-row>
 					<ic-data-row
 						label="Description"
 						value={source.description.length ? source.description : 'N/A'}
-					/>
+					></ic-data-row>
 					<ic-data-row label="Enabled">
 						<ic-status-tag
 							slot="value"
 							small
 							label={source.enabled ? 'Enabled' : 'Disabled'}
 							status={source.enabled ? 'success' : 'warning'}
-						/>
+						></ic-status-tag>
 					</ic-data-row>
 
 					{#if source.type == 'REMOTE'}
-						<ic-data-row label="URL" value={source.url} />
+						<ic-data-row label="URL" value={source.url}></ic-data-row>
 					{/if}
 				</ic-data-entity>
 

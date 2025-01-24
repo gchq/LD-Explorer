@@ -45,7 +45,7 @@
 	subheading="Adjust various settings around the appearance of terms within the app"
 >
 	<Heading text="Preview" tag="h3" variant="h4" />
-	<section aria-live="polite" class="border px-4 pb-2">
+	<section aria-live="polite" class="border border-gray-200 px-4 pb-2 mb-8">
 		<Table>
 			<TableHead>
 				<TableHeading value="Term Type" />
@@ -76,21 +76,21 @@
 			label="Show Node Type"
 			helperText="Whether to display the node-type (e.g. NamedNode, Literal) alongside terms."
 			bind:checked={dirtySettings.term__showNodeType}
-			on:change={() => (dirty = true)}
+			onchange={() => (dirty = true)}
 		/>
 
 		<Switch
 			label="Abbreviate Common Prefixes"
 			helperText="Whether to abbreviate commonly used prefixes such as OWL, RDF and FOAF."
 			bind:checked={dirtySettings.term__abbreviateCommonPrefixes}
-			on:change={() => (dirty = true)}
+			onchange={() => (dirty = true)}
 		/>
 
 		<Switch
 			label="Show Language Tag"
 			helperText="Whether to show the language tag on literals."
 			bind:checked={dirtySettings.term__showLanguageTag}
-			on:change={() => (dirty = true)}
+			onchange={() => (dirty = true)}
 		/>
 		<div class="mt-4">
 			<Button label="Apply" type="submit" disabled={!dirty} />

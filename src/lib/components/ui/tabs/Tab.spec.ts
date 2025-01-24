@@ -1,17 +1,19 @@
 /* (c) Crown Copyright GCHQ */
 
 import '@testing-library/jest-dom';
-import { fireEvent, screen } from '@testing-library/svelte';
+import { screen } from '@testing-library/svelte';
 import Tab from './Tab.svelte';
 import { hydratedRender as render } from '$test-helpers/render';
+import userEvent from '@testing-library/user-event';
 
 describe('Tab component', () => {
 	describe('default behavior', () => {
-		let component: Tab;
 		let tab: HTMLElement;
+		let clicked: typeof vi.fn;
 
 		beforeEach(async () => {
-			component = (await render(Tab, { title: 'Foo' })).component as Tab;
+			clicked = vi.fn();
+			await render(Tab, { title: 'Foo', onclick: clicked });
 			tab = await screen.findByRole('tab', { name: 'Foo' });
 		});
 
@@ -20,10 +22,8 @@ describe('Tab component', () => {
 		});
 
 		it('dispatches a click event when clicked', async () => {
-			const clicked = vi.fn();
-			component.$on('click', clicked);
-			await fireEvent.click(tab);
-
+			const user = userEvent.setup();
+			await user.click(tab);
 			expect(clicked).toHaveBeenCalledOnce();
 		});
 	});

@@ -10,7 +10,7 @@
 <PageView heading="Logs" subheading="Most recent system logs">
 	<Button
 		label="Clear Logs"
-		on:click={logger.clear}
+		onclick={logger.clear}
 		disabled={!$recentLogs.length}
 		variant="destructive"
 	/>
@@ -30,7 +30,7 @@
 						</p>
 						{#if log.metadata}
 							<SummaryDetail summaryText="Details">
-								<code class="block border mt-2 bg-white p-2 w-full"
+								<code data-testid="log-details" class="block border mt-2 bg-white p-2 w-full"
 									>{JSON.stringify(log.metadata).trim()}</code
 								>
 							</SummaryDetail>

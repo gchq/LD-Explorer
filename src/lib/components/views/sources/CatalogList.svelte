@@ -66,7 +66,7 @@
 							variant="primary"
 							disabled={sourceUrls.includes(url)}
 							ariaLabel={`Add ${name} to active data sources`}
-							on:click={() => handleClick({ url, name, description })}
+							onclick={() => handleClick({ url, name, description })}
 						/>
 					</div>
 				</TableData>

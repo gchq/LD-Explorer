@@ -2,16 +2,17 @@
 
 import '@testing-library/jest-dom';
 import Button from './Button.svelte';
-import { fireEvent } from '@testing-library/svelte';
 import { hydratedRender as render } from '$test-helpers/render';
 import { screen } from 'shadow-dom-testing-library';
+import userEvent from '@testing-library/user-event';
 
 describe('Button component', () => {
 	describe('default behavior', () => {
-		let component: Button;
+		let clicked: typeof vi.fn;
 
 		beforeEach(async () => {
-			component = (await render(Button, { label: 'Test' })).component as Button;
+			clicked = vi.fn();
+			await render(Button, { label: 'Test', onclick: clicked });
 		});
 
 		it('renders the button with the appropriate label and role', async () => {
@@ -23,11 +24,9 @@ describe('Button component', () => {
 		});
 
 		it('dispatches a click event when clicked', async () => {
-			const clicked = vi.fn();
-			component.$on('click', clicked);
-
+			const user = userEvent.setup();
 			const theButton = await screen.findByShadowRole('button');
-			await fireEvent.click(theButton);
+			await user.click(theButton);
 
 			expect(clicked).toHaveBeenCalledOnce();
 		});

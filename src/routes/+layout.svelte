@@ -13,14 +13,14 @@
 {#await defineCustomElements() then}
 	<div class="tracking-wide leading-relaxed">
 		<SkipToContent landmarkHref="#content" />
-		<ic-theme color="#0c857b" />
+		<ic-theme color="#0c857b"></ic-theme>
 		<main class="sm:flex h-full">
 			<SideNav />
 			<div id="content" tabIndex="-1" class="flex-row flex-grow">
 				<div class="min-h-screen">
 					<slot />
 				</div>
-				<ic-back-to-top target="main" variant={isSmall ? 'icon' : 'default'} />
+				<ic-back-to-top target="main" variant={isSmall ? 'icon' : 'default'}></ic-back-to-top>
 				<Footer />
 			</div>
 		</main>

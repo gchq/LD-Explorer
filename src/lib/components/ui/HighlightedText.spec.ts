@@ -13,7 +13,9 @@ describe('HighlightedText component', () => {
 
 		beforeEach(async () => {
 			render(HighlightedText, { text: exampleText, highlight: 'quick' });
-			highlightedText = screen.getByText('The', { exact: false });
+			highlightedText = screen.getByText('The', {
+				exact: false
+			});
 		});
 
 		it('Creates a text element', () => {
@@ -21,7 +23,9 @@ describe('HighlightedText component', () => {
 		});
 
 		it('Applies mark tags to case insensitive highlight text', () => {
-			expect(highlightedText.innerHTML).toContain(
+			// See https://svelte.dev/docs/svelte/v5-migration-guide#Other-breaking-changes-Hydration-works-differently
+			// Svelte 5 uses comments to make hydration work. Removing these in the interest of making the test more readable.
+			expect(highlightedText.innerHTML.replaceAll('<!---->', '')).toContain(
 				'The <mark>Quick</mark> Brown Fox Jumps <mark>Quick</mark>ly Over The Lazy Dog'
 			);
 		});

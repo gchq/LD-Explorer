@@ -1,6 +1,7 @@
 /* (c) Crown Copyright GCHQ */
 
 import { render as originalRender, waitFor } from '@testing-library/svelte';
+import type { Component } from 'svelte';
 import { expect } from 'vitest';
 
 /**
@@ -27,20 +28,16 @@ import { expect } from 'vitest';
  * @returns {async fn} an asynchronous version of the passed in function that waits for hydration.
  */
 
-const waitForHydration = <
-	T extends Parameters<typeof originalRender>,
-	U extends ReturnType<typeof originalRender>
->(
-	fn: (...args: T) => U
-) => {
-	return async (...args: T): Promise<U> => {
+const waitForHydration = (fn: typeof originalRender) => {
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	return async (...args: Parameters<typeof originalRender<Component<any, any, string>>>) => {
 		let appReadyCount = false;
 
 		window.addEventListener('appload', () => {
 			appReadyCount = true;
 		});
 
-		const view = fn(...(args as T));
+		const view = fn(...args);
 		await waitFor(() => expect(document.body.innerHTML.length).toBeGreaterThan(0));
 		await waitFor(() => expect(appReadyCount).toBeTruthy(), {
 			timeout: 100000,
@@ -58,7 +55,4 @@ export const render = originalRender;
 // try to use this on tests where there is no ICDS component being used, your test will time out (because
 // the `appload` event will never be emitted)
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const hydratedRender = waitForHydration((component, options?: any, renderOptions?) =>
-	originalRender(component, options, renderOptions)
-);
+export const hydratedRender = waitForHydration(originalRender);

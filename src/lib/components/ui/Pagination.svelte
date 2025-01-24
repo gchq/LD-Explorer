@@ -48,5 +48,5 @@
 		disabled={totalPages < 1}
 		current-page={pageNumber + 1}
 		on:icPageChange={handlePageChange}
-	/>
+	></ic-pagination>
 </div>

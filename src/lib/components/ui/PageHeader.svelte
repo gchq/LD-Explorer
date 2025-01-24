@@ -30,6 +30,6 @@
 			label={tab.title}
 			href={`${base}${tab.href}`}
 			selected={window.location.toString().endsWith(tab.href)}
-		/>
+		></ic-navigation-item>
 	{/each}
 </ic-page-header>
