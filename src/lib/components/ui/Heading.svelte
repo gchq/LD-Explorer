@@ -11,12 +11,7 @@
 	export let applyVerticalMargins = true;
 </script>
 
-<ic-typography
-	{id}
-	{variant}
-	class="leading-tight mb-4 mt-6"
-	apply-vertical-margins={applyVerticalMargins}
->
+<ic-typography {id} {variant} class="leading-tight" apply-vertical-margins={applyVerticalMargins}>
 	<svelte:element this={tag}>
 		<slot name="before-text" />
 		{text}
