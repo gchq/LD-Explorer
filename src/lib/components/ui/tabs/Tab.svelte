@@ -22,6 +22,7 @@
 	{onkeyup}
 	{disabled}
 	{selected}
+	style="visibility: visible"
 	class={clsx(
 		'p-4 border-b-4 border-b-transparent aria-selected:border-b-icds-action visible',
 		disabled && 'pointer-events-none text-gray-300'

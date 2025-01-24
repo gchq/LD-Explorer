@@ -43,7 +43,7 @@
 </ic-hero>
 
 <div class="bg-gray-100 text-center md:text-left px-4">
-	<ic-section-container align="full-width" class="md:grid md:grid-cols-2 m-auto max-w-6xl">
+	<ic-section-container align="full-width" class="md:grid md:grid-cols-2 m-auto max-w-6xl p-4">
 		<div class="mr-4 py-4">
 			<Heading text="The Problem" tag="h2" variant="h3" />
 			<P>
