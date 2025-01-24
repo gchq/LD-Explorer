@@ -45,7 +45,7 @@
 	subheading="Adjust various settings around the appearance of terms within the app"
 >
 	<Heading text="Preview" tag="h3" variant="h4" />
-	<section aria-live="polite" class="border px-4 pb-2">
+	<section aria-live="polite" class="border border-gray-200 px-4 pb-2 mb-8">
 		<Table>
 			<TableHead>
 				<TableHeading value="Term Type" />

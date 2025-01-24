@@ -10,8 +10,10 @@
 	caption="All content is available under the Open Government Licence v3.0, except source code and code examples which are available under the Apache 2 Licence."
 >
 	{#each footerNavItems as { href, title }}
-		<ic-footer-link slot="link" href={href.toString().startsWith('http') ? href : `${base}${href}`}
-			>{title}</ic-footer-link
+		<ic-footer-link
+			class="pr-10"
+			slot="link"
+			href={href.toString().startsWith('http') ? href : `${base}${href}`}>{title}</ic-footer-link
 		>
 	{/each}
 </ic-footer>
