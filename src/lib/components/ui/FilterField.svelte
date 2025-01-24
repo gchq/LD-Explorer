@@ -26,7 +26,7 @@
 <div
 	class={clsx(
 		'border border-gray-400 rounded-sm w-full h-10 sm:flex',
-		hasFocus && 'ring-4 ring-offset-2 ring-icds-focus-glow'
+		hasFocus && 'ring-4 ring-offset-2'
 	)}
 >
 	<i
@@ -37,7 +37,7 @@
 		aria-label={label}
 		type="search"
 		placeholder="Filter results"
-		class="px-2 outline-hidden flex-grow sm:w-72"
+		class="px-2 outline-none flex-grow sm:w-72"
 		bind:value
 		on:input
 		on:focus={() => (hasFocus = true)}

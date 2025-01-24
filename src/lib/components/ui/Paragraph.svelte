@@ -8,7 +8,7 @@
 </script>
 
 <ic-typography apply-vertical-margins={applyVerticalMargins} {variant}>
-	<p class="m-auto py-2">
+	<p>
 		<slot />
 	</p>
 </ic-typography>

@@ -15,7 +15,7 @@
 </script>
 
 <ic-tab-context selected-tab-index={selectedTabIndex} on:icTabSelect={handleTabChange}>
-	<ic-tab-group label="Tab group" class="mb-4">
+	<ic-tab-group label="Example tab group">
 		<slot></slot>
 	</ic-tab-group>
 	<slot name="panels"></slot>
