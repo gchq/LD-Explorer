@@ -6,6 +6,6 @@
 	export let applyBottomPadding = false;
 </script>
 
-<ic-section-container {aligned} class={clsx(applyBottomPadding && 'pb-20')}
+<ic-section-container {aligned} class={clsx('m-auto p-4 xl:px-6', applyBottomPadding && 'pb-20')}
 	><slot /></ic-section-container
 >
