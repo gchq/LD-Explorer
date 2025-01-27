@@ -90,5 +90,9 @@
 	{
 		"label": "dcat",
 		"iri": "http://www.w3.org/ns/dcat#"
+	},
+	{
+		"label": "rel",
+		"iri": "http://www.perceive.net/schemas/relationship/"
 	}
 ]
