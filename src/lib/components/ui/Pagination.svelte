@@ -6,12 +6,23 @@
 	import { browser } from '$app/environment';
 	import clsx from 'clsx';
 
-	export let pageNumber: number;
-	export let totalPages: number;
-	export let bottom = false;
-	export let itemCount: number;
-	export let filterText = '';
-	export let includeFilter = false;
+	interface Props {
+		pageNumber: number;
+		totalPages: number;
+		bottom?: boolean;
+		itemCount: number;
+		filterText?: string;
+		includeFilter?: boolean;
+	}
+
+	let {
+		pageNumber,
+		totalPages,
+		itemCount,
+		bottom = false,
+		filterText = '',
+		includeFilter = false
+	}: Props = $props();
 
 	function handleFilterChange() {
 		pageNumber = 0;
@@ -31,7 +42,7 @@
 			<FilterField
 				label="Filter results by text"
 				bind:value={filterText}
-				on:input={handleFilterChange}
+				onInput={handleFilterChange}
 			/>
 		</div>
 
@@ -47,6 +58,6 @@
 		pages={totalPages}
 		disabled={totalPages < 1}
 		current-page={pageNumber + 1}
-		on:icPageChange={handlePageChange}
+		onicPageChange={handlePageChange}
 	></ic-pagination>
 </div>

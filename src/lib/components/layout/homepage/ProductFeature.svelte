@@ -3,12 +3,18 @@
 <script lang="ts">
 	import { base } from '$app/paths';
 	import { clsx } from 'clsx';
+	import type { Snippet } from 'svelte';
+
+	interface Props {
+		children: Snippet;
+		title: string;
+		screenshot: string;
+		screenshotAlt: string;
+		align?: 'left' | 'right';
+	}
 
 	// Props
-	export let title: string;
-	export let screenshot: string;
-	export let screenshotAlt: string;
-	export let align: 'left' | 'right' = 'left';
+	let { children, title, screenshot, screenshotAlt, align = 'left' }: Props = $props();
 </script>
 
 <ic-section-container
@@ -17,7 +23,7 @@
 >
 	<div class="lg:p-4 lg:w-1/2">
 		<ic-typography variant="h4" class="mb-4"><h3>{title}</h3></ic-typography>
-		<slot />
+		{@render children()}
 	</div>
 	<div class="lg:p-4 lg:w-1/2">
 		<img

@@ -39,9 +39,9 @@
 			href={`/sources/local/${id}/import`}
 			ariaLabel={`Import data into source ${source.name}`}
 		>
-			<i slot="icon">
+			{#snippet icon()}
 				<Import />
-			</i>
+			{/snippet}
 		</ButtonLink>
 		<Button
 			label={enabled ? 'Disable' : 'Enable'}

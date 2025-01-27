@@ -2,8 +2,13 @@
 
 <script lang="ts">
 	import clsx from 'clsx';
-	export let summaryText: string;
-	export let pad = true;
+	import type { Snippet } from 'svelte';
+	interface Props {
+		children?: Snippet;
+		summaryText: string;
+		pad?: boolean;
+	}
+	let { children, summaryText, pad = true }: Props = $props();
 </script>
 
 <details class={clsx('my-2')}>
@@ -13,6 +18,6 @@
 		)}>{summaryText}</summary
 	>
 	<div class={clsx(pad && 'py-2 px-4 break-words overflow-hidden')}>
-		<slot />
+		{@render children?.()}
 	</div>
 </details>

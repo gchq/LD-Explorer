@@ -44,7 +44,7 @@
 	<TabNavigation>
 		<Tab title="Detail" />
 		<Tab title="Sample Data" />
-		<svelte:fragment slot="panels">
+		{#snippet panels()}
 			<TabPanel>
 				<ic-data-entity heading="Source Detail">
 					<ic-data-row label="ID" value={source.id}></ic-data-row>
@@ -71,7 +71,9 @@
 					<ButtonLink label="Edit" href={editUrl} />
 					{#if source.type == 'LOCAL'}
 						<ButtonLink label="Import data" href={`/sources/local/${source.id}/import`}>
-							<i slot="icon"><Import /></i>
+							{#snippet icon()}
+								<Import />
+							{/snippet}
 						</ButtonLink>
 					{/if}
 				</div>
@@ -86,6 +88,6 @@
 				<SparqlQueryDetail {queryStore} allowPersist={false} {codeComment} />
 				<QuadsView results={queryStore} />
 			</TabPanel>
-		</svelte:fragment>
+		{/snippet}
 	</TabNavigation>
 </PageView>

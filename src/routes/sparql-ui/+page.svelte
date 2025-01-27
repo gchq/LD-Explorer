@@ -64,7 +64,7 @@
 		/>
 		<Tab title="Prefix Browser" selected={selectedTabIndex == SparqlUiTab.PrefixBrowser} />
 
-		<svelte:fragment slot="panels">
+		{#snippet panels()}
 			<TabPanel>
 				<ic-select
 					on:icChange={handleSparqlQueryChanged}
@@ -82,7 +82,7 @@
 						label="Sparql Query"
 						helperText="SPARQL 1.1 supported query types are SELECT, DESCRIBE, ASK and CONSTRUCT"
 						bind:value={sparqlQuery}
-						on:input={resetParseError}
+						oninput={resetParseError}
 						rows={10}
 						{validationEnabled}
 						isValid={validationStatus != 'error'}
@@ -105,6 +105,6 @@
 					description="Add common prefixes to your SPARQL query."
 				/></TabPanel
 			>
-		</svelte:fragment>
+		{/snippet}
 	</TabNavigation>
 </PageView>

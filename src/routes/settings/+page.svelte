@@ -29,7 +29,7 @@
 			type="number"
 			helperText="Default limit to set on any sparql queries in the explore section"
 			bind:value={dirtySettings.general__defaultLimit}
-			on:input={() => (dirty = true)}
+			oninput={() => (dirty = true)}
 		/>
 
 		<Switch

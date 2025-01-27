@@ -1,20 +1,23 @@
 <!-- (c) Crown Copyright GCHQ -->
 
 <script lang="ts">
-	import type { NamedNode, Quad } from 'n3';
+	import Self from '$lib/components/views/ClassHeirachyView.svelte';
+	import type { Quad, Quad_Subject } from 'n3';
 	import { Term, Tree, TreeItem } from '$lib/components';
 
-	// Props
-	export let root: NamedNode;
-	export let quads: Quad[];
-	export let drawBranch = false;
+	interface Props {
+		root: Quad_Subject;
+		quads: Quad[];
+		drawBranch?: boolean;
+	}
 
-	$: directDescendents = quads.filter((q) => q.object.equals(root));
+	let { root, quads, drawBranch = false }: Props = $props();
+	let directDescendents = $derived(quads.filter((q) => q.object.equals(root)));
 </script>
 
 <Tree {drawBranch}>
 	<TreeItem><Term term={root} /></TreeItem>
 	{#each directDescendents as quad (quad)}
-		<svelte:self root={quad.subject} {quads} drawBranch={true} />
+		<Self root={quad.subject} {quads} drawBranch={true} />
 	{/each}
 </Tree>

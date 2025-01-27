@@ -14,16 +14,20 @@
 	// it means to be small)
 	//
 
+	interface Props {
+		isSmall?: boolean | undefined;
+		isExtraSmall?: boolean | undefined;
+	}
+
 	// viewport sizes based on breakpoints (see handleResize below)
-	export let isSmall: boolean | undefined = undefined;
-	export let isExtraSmall: boolean | undefined = undefined;
+	let { isSmall = $bindable(), isExtraSmall = $bindable() }: Props = $props();
 
 	// Breakpoints
 	const mdBreakpoint = 768;
 	const smBreakpoint = 576;
 
 	// State
-	let innerWidth: number;
+	let innerWidth: number = $state(0);
 
 	// Handlers
 	const handleResize = () => {

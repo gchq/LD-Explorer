@@ -14,13 +14,13 @@
 	<TabNavigation>
 		<Tab title="Open Source" disabled={sourcesCatalog.external.length == 0} />
 		<Tab title="Internal/Demo" disabled={sourcesCatalog.internal.length == 0} />
-		<svelte:fragment slot="panels">
+		{#snippet panels()}
 			<TabPanel>
 				<CatalogList catalogEntries={sourcesCatalog.external} />
 			</TabPanel>
 			<TabPanel>
 				<CatalogList catalogEntries={sourcesCatalog.internal} />
 			</TabPanel>
-		</svelte:fragment>
+		{/snippet}
 	</TabNavigation>
 </PageView>

@@ -16,11 +16,11 @@
 >
 	<div slot="heading" class="mb-4">
 		<Heading tag="h2" variant="h1" text="LD-Explorer" applyVerticalMargins={false}>
-			<span
-				slot="before-text"
-				class="inline-block w-[34px] h-[34px] relative top-px stroke-none fill-current"
-				><Logo /></span
-			>
+			{#snippet beforeText()}
+				<span class="inline-block w-[34px] h-[34px] relative top-px stroke-none fill-current">
+					<Logo />
+				</span>
+			{/snippet}
 		</Heading>
 	</div>
 	<div slot="interaction">

@@ -3,10 +3,14 @@
 <script lang="ts">
 	import type { IcStatusVariants } from '@ukic/web-components';
 
-	export let heading: string;
-	export let message: string;
-	export let variant: IcStatusVariants = 'neutral';
-	export let dismissible = false;
+	interface Props {
+		heading: string;
+		message: string;
+		variant?: IcStatusVariants;
+		dismissible?: boolean;
+	}
+
+	let { heading, message, variant = 'neutral', dismissible = false }: Props = $props();
 </script>
 
 <div>

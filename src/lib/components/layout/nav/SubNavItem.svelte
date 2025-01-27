@@ -5,9 +5,13 @@
 	import clsx from 'clsx';
 
 	// Props
-	export let title: string;
-	export let href: string;
-	export let selected = false;
+	interface Props {
+		title: string;
+		href: string;
+		selected?: boolean;
+	}
+
+	let { title, href, selected = false }: Props = $props();
 </script>
 
 <li class="hover:bg-gray-100">

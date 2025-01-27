@@ -2,10 +2,15 @@
 
 <script lang="ts">
 	import { clsx } from 'clsx';
+	import type { Snippet } from 'svelte';
 
-	export let includeBottomBorder = true;
+	interface Props {
+		includeBottomBorder?: boolean;
+		children: Snippet;
+	}
+	let { includeBottomBorder = true, children }: Props = $props();
 </script>
 
 <tr class={clsx('hover:bg-gray-50', includeBottomBorder && 'border-b border-gray-300')}>
-	<slot />
+	{@render children()}
 </tr>

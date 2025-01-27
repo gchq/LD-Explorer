@@ -103,7 +103,7 @@
 			disabled={currentImportType == 'json-ld'}
 		/>
 
-		<svelte:fragment slot="panels">
+		{#snippet panels()}
 			<TabPanel>
 				<form on:submit|preventDefault={handleSubmit}>
 					{#if parseError.length > 0}
@@ -132,6 +132,6 @@
 					description="Add common prefixes to your imported document."
 				/>
 			</TabPanel>
-		</svelte:fragment>
+		{/snippet}
 	</TabNavigation>
 </PageView>

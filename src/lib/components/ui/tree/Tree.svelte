@@ -2,9 +2,15 @@
 
 <script lang="ts">
 	import clsx from 'clsx';
-	export let drawBranch = false;
+	import type { Snippet } from 'svelte';
+
+	interface Props {
+		drawBranch: boolean;
+		children: Snippet;
+	}
+	let { drawBranch, children }: Props = $props();
 </script>
 
 <ul class={clsx(drawBranch && 'ml-4 pl-4 border-l')}>
-	<slot />
+	{@render children()}
 </ul>
