@@ -11,7 +11,7 @@
 		source: LocalSource;
 	}
 	let { source }: Props = $props();
-	let { enabled, description, id } = source;
+	let { enabled, description, id } = $derived(source);
 	let store: N3Store = source.n3Store as N3Store;
 </script>
 
