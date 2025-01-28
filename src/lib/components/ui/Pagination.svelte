@@ -16,11 +16,11 @@
 	}
 
 	let {
-		pageNumber,
+		pageNumber = $bindable(),
 		totalPages,
 		itemCount,
 		bottom = false,
-		filterText = '',
+		filterText = $bindable(''),
 		includeFilter = false
 	}: Props = $props();
 

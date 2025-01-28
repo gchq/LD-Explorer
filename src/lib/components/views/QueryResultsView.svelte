@@ -9,10 +9,12 @@
 	import { sourceList } from '$stores/sources/sources.store';
 
 	// Props
-	export let query: string;
-	export let codeComment: string | undefined = undefined;
-
-	$: queryStore = createQueryStore(query, $sourceList);
+	interface Props {
+		query: string;
+		codeComment?: string;
+	}
+	let { query, codeComment }: Props = $props();
+	let queryStore = $derived(createQueryStore(query, $sourceList));
 </script>
 
 <SparqlQueryDetail {queryStore} {codeComment} />

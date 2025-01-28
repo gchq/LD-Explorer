@@ -3,12 +3,25 @@
 <script lang="ts">
 	import { HtmlHead, PageHeader, Section } from '$lib/components';
 	import type { RoutedTab } from '$lib/navigation/tabs/types';
+	import type { Snippet } from 'svelte';
 
-	export let heading: string;
-	export let subheading: string;
-	export let pageTitle: string = heading;
-	export let includeSection = true;
-	export let tabs: RoutedTab<number>[] | undefined = undefined;
+	interface Props {
+		children: Snippet;
+		heading: string;
+		subheading: string;
+		pageTitle?: string;
+		includeSection?: boolean;
+		tabs?: RoutedTab<number>[];
+	}
+
+	let {
+		children,
+		heading,
+		subheading,
+		tabs,
+		pageTitle = heading,
+		includeSection = true
+	}: Props = $props();
 </script>
 
 <HtmlHead title={pageTitle} />
@@ -16,8 +29,8 @@
 
 {#if includeSection}
 	<Section>
-		<slot />
+		{@render children()}
 	</Section>
 {:else}
-	<slot />
+	{@render children()}
 {/if}

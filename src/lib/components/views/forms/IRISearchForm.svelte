@@ -4,20 +4,22 @@
 	import { Button, TextField } from '$lib/components';
 
 	// Props
-	export let onSubmit: (iri: string) => void;
-
-	// State
-	let validationEnabled = false;
-	let iri = '';
+	interface Props {
+		onSubmit: (iri: string) => void;
+	}
+	let { onSubmit }: Props = $props();
+	let validationEnabled = $state(false);
+	let iri = $state('');
 
 	// Events
-	function handleSubmit() {
+	function handleSubmit(e: Event) {
+		e.preventDefault();
 		validationEnabled = true;
 		onSubmit(iri);
 	}
 </script>
 
-<form on:submit|preventDefault={handleSubmit} action="/sources">
+<form onsubmit={handleSubmit} action="/sources">
 	<TextField
 		required
 		type="url"

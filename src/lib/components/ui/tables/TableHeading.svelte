@@ -5,7 +5,7 @@
 
 	interface Props {
 		value: string;
-		alignment: 'left' | 'right' | 'center';
+		alignment?: 'left' | 'right' | 'center';
 		className?: string;
 	}
 	let { value, className, alignment = 'left' }: Props = $props();

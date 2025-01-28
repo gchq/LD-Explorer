@@ -8,9 +8,11 @@
 	import { base } from '$app/paths';
 	import { goto } from '$app/navigation';
 
-	// Props
-	export let data: PageData;
-	let source = { ...data.source };
+	interface Props {
+		data: PageData;
+	}
+	let { data }: Props = $props();
+	let source = $state({ ...data.source });
 
 	// Events
 	function handleSubmit(source: LocalSource) {
@@ -20,5 +22,5 @@
 </script>
 
 <PageView heading="Edit local source" subheading="Add a new local data source.">
-	<LocalSourceForm {handleSubmit} bind:source />
+	<LocalSourceForm onSubmit={handleSubmit} bind:source />
 </PageView>

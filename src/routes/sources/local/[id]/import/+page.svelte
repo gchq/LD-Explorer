@@ -15,8 +15,10 @@
 	import { base } from '$app/paths';
 	import { goto } from '$app/navigation';
 
-	// Props
-	export let data: PageData;
+	interface Props {
+		data: PageData;
+	}
+	let { data }: Props = $props();
 	let source = { ...data.source };
 
 	type ImportType = 'rdf' | 'rdfa' | 'json-ld';
@@ -34,17 +36,14 @@
 	};
 
 	// State
-	let document = '';
-	let parseError = '';
-	let selectedTabIndex = LocalDataSourceImportTab.Document;
-	let currentImportType: ImportType = 'rdf';
+	let document = $state('');
+	let parseError = $state('');
+	let selectedTabIndex = $state(LocalDataSourceImportTab.Document);
+	let currentImportType: ImportType = $state('rdf');
 
 	// Validation
-	export let valid = false;
-	export let validationEnabled = false;
-	$: {
-		valid = document.trim().length > 0;
-	}
+	let validationEnabled = $state(false);
+	let valid = $derived(document.trim().length > 0);
 
 	const imports: ImportTypes = {
 		rdf: {
@@ -65,7 +64,8 @@
 	} as const;
 
 	// Events
-	async function handleSubmit() {
+	async function handleSubmit(e: Event) {
+		e.preventDefault();
 		validationEnabled = true;
 
 		if (valid)
@@ -90,7 +90,7 @@
 	<ic-select
 		class="mt-4 mb-10 block"
 		value={currentImportType}
-		on:icChange={handleImportTypeChanged}
+		onicChange={handleImportTypeChanged}
 		label="Import format"
 		options={Object.entries(imports).map(([value, { label }]) => ({ label, value }))}
 	></ic-select>
@@ -105,7 +105,7 @@
 
 		{#snippet panels()}
 			<TabPanel>
-				<form on:submit|preventDefault={handleSubmit}>
+				<form onsubmit={handleSubmit}>
 					{#if parseError.length > 0}
 						<Alert variant="error" heading="Document Parse Error" message={parseError} />
 					{/if}

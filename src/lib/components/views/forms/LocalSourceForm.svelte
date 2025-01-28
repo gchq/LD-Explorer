@@ -7,36 +7,41 @@
 	import { goto } from '$app/navigation';
 
 	// Props
-	export let handleSubmit: (s: LocalSource, document?: string) => void;
-
-	// Form Data (including default values for new sources)
-	export let source: LocalSource = {
-		id: '',
-		name: '',
-		type: 'LOCAL',
-		description: '',
-		enabled: false,
-		n3Store: undefined
-	};
-
-	// Validation
-	export let valid = false;
-	export let validationEnabled = false;
-	$: {
-		valid = source.name.length > 0;
+	interface Props {
+		onSubmit: (s: LocalSource, document?: string) => void;
+		valid?: boolean;
+		validationEnabled?: boolean;
+		source?: LocalSource;
 	}
 
+	let {
+		onSubmit,
+		validationEnabled = false,
+		source = $bindable({
+			id: '',
+			name: '',
+			type: 'LOCAL',
+			description: '',
+			enabled: false,
+			n3Store: undefined
+		})
+	}: Props = $props();
+
+	let valid = $derived(source.name.length > 0);
+
 	// Events
-	function onSubmit() {
+	function handleSubmit(e: Event) {
+		e.preventDefault();
+
 		if (valid) {
-			handleSubmit({ ...source });
+			onSubmit({ ...source });
 		} else {
 			validationEnabled = true;
 		}
 	}
 
 	function handleRemove() {
-		// Probably should have some kind of "are you sure" functionality here haha
+		// TODO: Probably should have some kind of "are you sure" functionality here
 		sources.removeSource(source.id);
 		goto(`${base}/sources`);
 	}
@@ -50,7 +55,7 @@
 	/>
 {/if}
 
-<form on:submit|preventDefault={onSubmit} class="my-4" action="/sources">
+<form onsubmit={handleSubmit} class="my-4" action="/sources">
 	<TextField
 		required
 		label="Source Name"

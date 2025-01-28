@@ -10,15 +10,16 @@
 	import { describeResource } from '$lib/querying/queries';
 	import { sourceList } from '$stores/sources/sources.store';
 
-	// Props
-	export let data: PageData;
+	interface Props {
+		data: PageData;
+	}
 
-	// State
-	$: iri = data.iri;
+	let { data }: Props = $props();
+	let iri = data.iri;
 
 	// Query
 	const { createQuery } = describeResource;
-	$: description = createQueryStore(createQuery(iri), $sourceList);
+	let description = createQueryStore(createQuery(iri), $sourceList);
 </script>
 
 <TabbedPageView {...createTabDetail(iri)} selectedTabIndex={TabIndices.DESCRIBE}>

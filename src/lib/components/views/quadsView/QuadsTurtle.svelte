@@ -3,12 +3,13 @@
 <script lang="ts">
 	import { type Quad, Writer } from 'n3';
 
-	// Props
-	export let quads: Quad[];
+	interface Props {
+		quads: Quad[];
+	}
+	let { quads }: Props = $props();
 
-	// State
 	const writer = new Writer({ format: 'application/ttl' });
-	let ttl: string;
+	let ttl: string = $state('');
 
 	writer.addQuads(quads);
 	writer.end((err, doc) => {

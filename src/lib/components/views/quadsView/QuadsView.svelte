@@ -18,21 +18,23 @@
 	const MAX_DISPLAY_GRAPH = 200;
 	const MAX_DISPLAY_TTL = 2000;
 
-	// Props
-	export let results: Readable<StreamedQuery>;
+	interface Props {
+		results: Readable<StreamedQuery>;
+	}
+	let { results }: Props = $props();
 
-	// State
-	let viewType: 'graph' | 'table' | 'ttl' = 'table';
+	let viewType: 'graph' | 'table' | 'ttl' = $state('table');
 
-	$: quads = $results.results as Quad[];
-	$: overMaximumGraph = $results.results.length > MAX_DISPLAY_GRAPH;
-	$: overMaximumTTL = $results.results.length > MAX_DISPLAY_TTL;
+	let quads = $derived($results.results as Quad[]);
+	let overMaximumGraph = $derived($results.results.length > MAX_DISPLAY_GRAPH);
+	let overMaximumTTL = $derived($results.results.length > MAX_DISPLAY_TTL);
 
 	// We don't want the user entering graph view while the query is in flight and streaming as this
 	// would be very expensive and janky. There are better ways of doing this, but for now I'm just
 	// disabling the button until the query is settled.
-	$: inFlight =
-		$results.status == QueryStatus.Initialized || $results.status == QueryStatus.Fetching;
+	let inFlight = $derived(
+		$results.status == QueryStatus.Initialized || $results.status == QueryStatus.Fetching
+	);
 </script>
 
 {#if quads.length}

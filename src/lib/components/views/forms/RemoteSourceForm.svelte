@@ -6,31 +6,35 @@
 	import { base } from '$app/paths';
 	import { goto } from '$app/navigation';
 
-	// Props
-	export let handleSubmit: (s: RemoteSource) => void;
-
-	// Form Data (including default values for new sources)
-	export let source: RemoteSource = {
-		id: '',
-		type: 'REMOTE',
-		name: '',
-		description: '',
-		url: '',
-		enabled: false
-	};
-	let url: string = source.url as string;
-
-	// Validation
-	export let valid = false;
-	export let validationEnabled = false;
-	$: {
-		valid = source.name.length > 0 && url.length > 0;
+	interface Props {
+		onSubmit: (s: RemoteSource) => void;
+		source?: RemoteSource;
 	}
 
+	let {
+		onSubmit,
+		source = $bindable({
+			id: '',
+			type: 'REMOTE',
+			name: '',
+			description: '',
+			url: '',
+			enabled: false
+		})
+	}: Props = $props();
+
+	let url: string = $state(source.url);
+	let validationEnabled = $state(false);
+
+	// TODO: Could also validate that the string entered is a valid URL.
+	// TODO: In fact all of the validation logic in this form is in need of a refactor.
+	let valid = $derived(source.name.length > 0 && url.length > 0);
+
 	// Events
-	function onSubmit() {
+	function handleSubmit(e: Event) {
+		e.preventDefault();
 		if (valid) {
-			handleSubmit({ ...source, url });
+			onSubmit({ ...source, url });
 		} else {
 			validationEnabled = true;
 		}
@@ -58,7 +62,7 @@
 	>. Supported sources include SPARQL endpoints and RDF files in most major formats (including
 	RDFa-decorated web pages).
 </P>
-<form on:submit|preventDefault={onSubmit} class="mt-8 mb-4" action="/sources">
+<form onsubmit={handleSubmit} class="mt-8 mb-4" action="/sources">
 	<TextField
 		required
 		label="Source Name"
@@ -79,6 +83,7 @@
 	<TextField
 		required
 		label="URL"
+		type="url"
 		helperText="Location of the remote resource (e.g. an RDF file, a SPARQL endpoint or a fragments interface) "
 		isValid={url.length > 0}
 		{validationEnabled}
@@ -92,6 +97,7 @@
 		{#if source.id.length}
 			<Button label="Remove Source" variant="destructive" type="reset" onclick={handleRemove} />
 		{/if}
+
 		<Link htmlClass="block mt-2" href="/sources">Back to Sources</Link>
 	</div>
 </form>

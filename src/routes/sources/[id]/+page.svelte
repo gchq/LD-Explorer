@@ -22,10 +22,11 @@
 	import { settings } from '$lib/stores/settings.store';
 
 	// Props
-	export let data: PageData;
+	interface Props {
+		data: PageData;
+	}
+	let { data }: Props = $props();
 	let source = { ...data.source };
-
-	// State
 
 	// Local sources will have an n3 store, remote sources have a URL. This logic will become
 	// more complicated if there are ever any other types of source in play but this'll do for now.
@@ -34,7 +35,7 @@
 
 	const { createQuery, codeComment } = getTriples;
 	const queryStore = createQueryStore(createQuery($settings.general__defaultLimit), [dataSource]);
-	$: editUrl = `/sources/${source.type == 'LOCAL' ? 'local' : 'remote'}/${source.id}/edit`;
+	let editUrl = `/sources/${source.type == 'LOCAL' ? 'local' : 'remote'}/${source.id}/edit`;
 </script>
 
 <PageView

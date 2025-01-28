@@ -6,10 +6,15 @@
 	import SparqlQueryCodeBlock from './SparqlQueryCodeBlock.svelte';
 	import SparqlQueryStatus from './SparqlQueryStatus.svelte';
 	import type { StreamedQueryStore } from '$stores/streamedQuery.store';
-	export let allowPersist = true;
-	export let codeComment: string | undefined = undefined;
-	export let queryStore: StreamedQueryStore;
-	$: pluralize = $queryStore.results.length > 1 || $queryStore.results.length == 0;
+
+	interface Props {
+		queryStore: StreamedQueryStore;
+		allowPersist?: boolean;
+		codeComment?: string;
+	}
+
+	let { allowPersist = true, codeComment, queryStore }: Props = $props();
+	let pluralize = $derived($queryStore.results.length > 1 || $queryStore.results.length == 0);
 </script>
 
 <SparqlQueryStatus status={$queryStore.status} onStop={queryStore.stop} />

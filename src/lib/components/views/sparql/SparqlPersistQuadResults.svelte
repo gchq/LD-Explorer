@@ -10,16 +10,22 @@
 	import { sources } from '$stores/sources/local-sources.store';
 
 	// Props
-	export let queryStore: StreamedQuery;
+
+	interface Props {
+		queryStore: StreamedQuery;
+	}
+	let { queryStore }: Props = $props();
 
 	// State
-	let selectedSourceId = '';
-	$: selectedSource = $sources.find((s) => s.id == selectedSourceId);
-	$: quads = queryStore.results as Quad[];
-	$: disabled =
-		persisted || (queryStore.status != QueryStatus.Done && queryStore.status != QueryStatus.Halted);
-	let options = $sources.map((source) => ({ label: source.name, value: source.id }));
-	let persisted = false;
+	let selectedSourceId = $state('');
+	let persisted = $state(false);
+
+	let selectedSource = $derived($sources.find((s) => s.id == selectedSourceId));
+	let quads = $derived(queryStore.results as Quad[]);
+	let disabled = $derived(
+		persisted || (queryStore.status != QueryStatus.Done && queryStore.status != QueryStatus.Halted)
+	);
+	let options = $derived($sources.map((source) => ({ label: source.name, value: source.id })));
 
 	// Events
 	function handleSourceChange(e: CustomEvent<IcValueEventDetail>) {
@@ -44,7 +50,7 @@
 				{options}
 				placeholder="Select a local data source"
 				value={selectedSourceId}
-				on:icChange={handleSourceChange}
+				onicChange={handleSourceChange}
 			></ic-select>
 
 			<div class="align-bottom inline">

@@ -14,5 +14,5 @@
 </script>
 
 <PageView heading="Add remote source" subheading="Add a new remote data source.">
-	<RemoteSourceForm {handleSubmit} />
+	<RemoteSourceForm onSubmit={handleSubmit} />
 </PageView>
