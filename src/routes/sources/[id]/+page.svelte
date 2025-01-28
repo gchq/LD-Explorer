@@ -22,10 +22,11 @@
 	import { settings } from '$lib/stores/settings.store';
 
 	// Props
-	export let data: PageData;
+	interface Props {
+		data: PageData;
+	}
+	let { data }: Props = $props();
 	let source = { ...data.source };
-
-	// State
 
 	// Local sources will have an n3 store, remote sources have a URL. This logic will become
 	// more complicated if there are ever any other types of source in play but this'll do for now.
@@ -34,7 +35,7 @@
 
 	const { createQuery, codeComment } = getTriples;
 	const queryStore = createQueryStore(createQuery($settings.general__defaultLimit), [dataSource]);
-	$: editUrl = `/sources/${source.type == 'LOCAL' ? 'local' : 'remote'}/${source.id}/edit`;
+	let editUrl = `/sources/${source.type == 'LOCAL' ? 'local' : 'remote'}/${source.id}/edit`;
 </script>
 
 <PageView
@@ -44,7 +45,7 @@
 	<TabNavigation>
 		<Tab title="Detail" />
 		<Tab title="Sample Data" />
-		<svelte:fragment slot="panels">
+		{#snippet panels()}
 			<TabPanel>
 				<ic-data-entity heading="Source Detail">
 					<ic-data-row label="ID" value={source.id}></ic-data-row>
@@ -71,7 +72,9 @@
 					<ButtonLink label="Edit" href={editUrl} />
 					{#if source.type == 'LOCAL'}
 						<ButtonLink label="Import data" href={`/sources/local/${source.id}/import`}>
-							<i slot="icon"><Import /></i>
+							{#snippet icon()}
+								<Import />
+							{/snippet}
 						</ButtonLink>
 					{/if}
 				</div>
@@ -86,6 +89,6 @@
 				<SparqlQueryDetail {queryStore} allowPersist={false} {codeComment} />
 				<QuadsView results={queryStore} />
 			</TabPanel>
-		</svelte:fragment>
+		{/snippet}
 	</TabNavigation>
 </PageView>

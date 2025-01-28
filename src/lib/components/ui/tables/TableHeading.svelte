@@ -2,9 +2,13 @@
 
 <script lang="ts">
 	import { clsx } from 'clsx';
-	export let value: string;
-	export let alignment: 'left' | 'right' | 'center' = 'left';
-	export let className = '';
+
+	interface Props {
+		value: string;
+		alignment?: 'left' | 'right' | 'center';
+		className?: string;
+	}
+	let { value, className, alignment = 'left' }: Props = $props();
 </script>
 
 <th

@@ -1,7 +1,10 @@
 <!-- (c) Crown Copyright GCHQ -->
 
 <script lang="ts">
-	export let landmarkHref: string;
+	interface Props {
+		landmarkHref: string;
+	}
+	let { landmarkHref }: Props = $props();
 </script>
 
 <a

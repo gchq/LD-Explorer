@@ -7,12 +7,15 @@
 
 	import clsx from 'clsx';
 
-	export let heading: string;
-	export let subheading: string;
-	export let tabs: RoutedTab<number>[] = [];
-	export let breakWords = false;
+	interface Props {
+		heading: string;
+		subheading: string;
+		tabs?: RoutedTab<number>[];
+		breakWords?: boolean;
+	}
 
-	let isSmall: boolean;
+	let { heading, subheading, tabs = [], breakWords = false }: Props = $props();
+	let isSmall: boolean = $state(false);
 </script>
 
 <ViewportHelper bind:isSmall />

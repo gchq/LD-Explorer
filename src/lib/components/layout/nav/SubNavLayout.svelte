@@ -4,12 +4,18 @@
 	import { SubNav, SubNavItem } from '.';
 	import { page } from '$app/stores';
 	import { shouldHighlightSubNav } from '$lib/util/nav.utils';
+	import type { Snippet } from 'svelte';
 
-	export let navItems: {
-		title: string;
-		href: string;
-		match?: RegExp;
-	}[];
+	interface Props {
+		children?: Snippet;
+		navItems: {
+			title: string;
+			href: string;
+			match?: RegExp;
+		}[];
+	}
+
+	let { children, navItems }: Props = $props();
 </script>
 
 <div class="grid grid-cols-12">
@@ -25,6 +31,6 @@
 		</SubNav>
 	</div>
 	<div class="col-span-12 md:col-span-9 lg:col-span-10 pb-16">
-		<slot />
+		{@render children?.()}
 	</div>
 </div>

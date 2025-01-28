@@ -89,7 +89,6 @@
 
 <!-- Include this as ic-side-navigation does not include an H1 (oversight?) -->
 <ViewportHelper bind:isSmall />
-
 <ic-side-navigation
 	app-title="LD-Explorer"
 	version={`v${version}`}

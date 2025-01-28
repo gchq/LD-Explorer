@@ -12,12 +12,13 @@
 	} from '$lib/components';
 	import type { Bindings as IBindings } from '@comunica/types';
 
-	// Props
-	export let bindingsCollection: IBindings[];
-	export let highlightText: string;
+	interface Props {
+		bindingsCollection: IBindings[];
+		highlightText: string;
+		variables: string[];
+	}
 
-	// State
-	export let variables: string[];
+	let { bindingsCollection, highlightText, variables }: Props = $props();
 </script>
 
 <Table>

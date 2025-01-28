@@ -23,12 +23,15 @@
 	const MAX_DISPLAY = 500;
 
 	// Props
-	export let results: Readable<StreamedQuery>;
+	interface Props {
+		results: Readable<StreamedQuery>;
+	}
+	let { results }: Props = $props();
 
 	// State
-	$: quads = $results.results.slice(0, MAX_DISPLAY) as Quad[];
-	$: overMaximum = $results.results.length > MAX_DISPLAY;
-	$: uniquePredicateIRIs = new Set<string>(quads.map((q) => q.predicate.value));
+	let quads = $derived($results.results.slice(0, MAX_DISPLAY) as Quad[]);
+	let overMaximum = $derived($results.results.length > MAX_DISPLAY);
+	let uniquePredicateIRIs = $derived(new Set<string>(quads.map((q) => q.predicate.value)));
 
 	// TODO: This is probably a useful function for elsewhere too - should not live here. Also, possibly
 	// may one day want to make this an "optional" thing - when federating data, you might find

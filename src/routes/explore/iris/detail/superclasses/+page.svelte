@@ -11,17 +11,16 @@
 	import { settings } from '$lib/stores/settings.store';
 	import { sourceList } from '$stores/sources/sources.store';
 
-	// Props
-	export let data: PageData;
-
-	// State
-	$: iri = data.iri;
+	interface Props {
+		data: PageData;
+	}
+	let { data }: Props = $props();
+	let iri = data.iri;
 
 	// Query
 	const { createQuery, codeComment } = getSuperclasses;
-	$: superClasses = createQueryStore(
-		createQuery(iri, $settings.general__defaultLimit),
-		$sourceList
+	let superClasses = $derived(
+		createQueryStore(createQuery(iri, $settings.general__defaultLimit), $sourceList)
 	);
 </script>
 

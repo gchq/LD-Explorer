@@ -3,8 +3,11 @@
 <script lang="ts">
 	import { HighlightedText } from '$lib/components';
 
-	export let termValue: string;
-	export let highlightText: string | undefined = undefined;
+	interface Props {
+		termValue: string;
+		highlightText?: string;
+	}
+	let { termValue, highlightText }: Props = $props();
 </script>
 
 {#if highlightText}

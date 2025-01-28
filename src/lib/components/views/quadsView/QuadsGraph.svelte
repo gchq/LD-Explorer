@@ -11,10 +11,11 @@
 	import { prefixes } from '$lib/stores/prefixes.store';
 	import { settings } from '$lib/stores/settings.store';
 
-	// Props
-	export let quads: Quad[];
+	interface Props {
+		quads: Quad[];
+	}
+	let { quads }: Props = $props();
 
-	// State
 	let container: HTMLDivElement;
 	let cy: CytoscapeCore;
 	let zoomLevel = 1;
@@ -29,7 +30,7 @@
 		zoomLevel = cy.zoom();
 	});
 
-	$: {
+	$effect(() => {
 		const elements = getCytoscapeElementsForQuads(
 			quads,
 			$settings.term__abbreviateCommonPrefixes,
@@ -41,9 +42,7 @@
 			cy.fit();
 			zoomLevel = cy.zoom();
 		}
-	}
-
-	// Events
+	});
 
 	function handleZoom(zoomChange: 0.1 | -0.1) {
 		zoomLevel = zoomLevel + zoomChange;

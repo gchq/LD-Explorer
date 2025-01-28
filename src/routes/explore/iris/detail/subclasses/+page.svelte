@@ -13,16 +13,19 @@
 	import { sourceList } from '$stores/sources/sources.store';
 
 	// Props
-	export let data: PageData;
-
-	// State
-	$: iri = data.iri;
+	interface Props {
+		data: PageData;
+	}
+	let { data }: Props = $props();
+	let iri = data.iri;
+	let iriTerm = new NamedNode(iri);
 
 	// Query
 	const { createQuery, codeComment } = getSubclasses;
-	$: subclasses = createQueryStore(createQuery(iri, $settings.general__defaultLimit), $sourceList);
-	$: quads = $subclasses.results as Quad[];
-	$: iriTerm = new NamedNode(iri);
+	let subclasses = $derived(
+		createQueryStore(createQuery(iri, $settings.general__defaultLimit), $sourceList)
+	);
+	let quads = $derived($subclasses.results as Quad[]);
 </script>
 
 <TabbedPageView {...createTabDetail(iri)} selectedTabIndex={TabIndices.Subclasses}>
