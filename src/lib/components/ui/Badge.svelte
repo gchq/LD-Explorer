@@ -11,7 +11,7 @@
 	interface Props {
 		type: IcBadgeTypes;
 		visible?: boolean;
-		position: IcBadgePositions;
+		position?: IcBadgePositions;
 		variant: IcBadgeVariants;
 		size: IcSizes;
 		textLabel?: string;

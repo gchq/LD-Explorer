@@ -6,7 +6,7 @@
 	import type { Snippet } from 'svelte';
 
 	interface Props {
-		children: Snippet;
+		children?: Snippet;
 		title: string;
 		screenshot: string;
 		screenshotAlt: string;
@@ -23,7 +23,7 @@
 >
 	<div class="lg:p-4 lg:w-1/2">
 		<ic-typography variant="h4" class="mb-4"><h3>{title}</h3></ic-typography>
-		{@render children()}
+		{@render children?.()}
 	</div>
 	<div class="lg:p-4 lg:w-1/2">
 		<img

@@ -20,7 +20,7 @@
 	interface Props {
 		label: string;
 		value: string | number;
-		onInput: EventHandler;
+		onInput?: EventHandler;
 	}
 
 	let { onInput, label, value = $bindable() }: Props = $props();

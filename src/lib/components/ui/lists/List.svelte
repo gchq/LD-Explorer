@@ -5,7 +5,7 @@
 	import type { Snippet } from 'svelte';
 
 	interface Props {
-		children: Snippet;
+		children?: Snippet;
 		listType: 'ul' | 'ol' | 'no-symbol';
 		applyVerticalMargins?: boolean;
 	}
@@ -23,5 +23,5 @@
 		applyVerticalMargins && 'my-8'
 	)}
 >
-	{@render children()}
+	{@render children?.()}
 </svelte:element>
