@@ -40,4 +40,4 @@
 	onMount(handleResize);
 </script>
 
-<svelte:window bind:innerWidth on:resize={handleResize} />
+<svelte:window bind:innerWidth onresize={handleResize} />

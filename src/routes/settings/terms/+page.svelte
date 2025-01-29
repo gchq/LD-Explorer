@@ -26,7 +26,9 @@
 	let dirty = false;
 
 	// Events
-	function handleApplySettings() {
+	function handleApplySettings(e: Event) {
+		e.preventDefault();
+
 		settings.update((current) => ({
 			...current,
 			...dirtySettings
@@ -71,7 +73,7 @@
 	</section>
 
 	<Heading text="Settings" tag="h3" variant="h4" />
-	<form on:submit|preventDefault={handleApplySettings}>
+	<form onsubmit={handleApplySettings}>
 		<Switch
 			label="Show Node Type"
 			helperText="Whether to display the node-type (e.g. NamedNode, Literal) alongside terms."
