@@ -19,15 +19,16 @@
 	import { prefixes } from '$lib/stores/prefixes.store';
 
 	// Form data
-	let newLabel = '';
-	let newIri = '';
-	let submitted = false;
-	$: labelValid = !!newLabel.length;
-	$: iriValid = !!newIri.length;
-	$: valid = iriValid && labelValid;
+	let newLabel = $state('');
+	let newIri = $state('');
+	let submitted = $state(false);
+	let labelValid = $derived(!!newLabel.length);
+	let iriValid = $derived(!!newIri.length);
+	let valid = $derived(iriValid && labelValid);
 
 	// Events
-	function addPrefix() {
+	function addPrefix(e: Event) {
+		e.preventDefault();
 		submitted = true;
 
 		if (valid) {
@@ -54,7 +55,7 @@
 		on <Link href="https://prefix.cc/" external>prefix.cc</Link>.</P
 	>
 
-	<form on:submit|preventDefault={addPrefix}>
+	<form onsubmit={addPrefix}>
 		<TextField
 			bind:value={newLabel}
 			label="Label"
