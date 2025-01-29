@@ -13,7 +13,8 @@
 
 	let dirty = false;
 
-	function handleApplySettings() {
+	function handleApplySettings(e: Event) {
+		e.preventDefault();
 		settings.update((current) => ({
 			...current,
 			...dirtySettings
@@ -23,7 +24,7 @@
 </script>
 
 <PageView heading="General Settings" subheading="Adjust system settings for this session">
-	<form on:submit|preventDefault={handleApplySettings}>
+	<form onsubmit={handleApplySettings}>
 		<TextField
 			label="Default Limit"
 			type="number"

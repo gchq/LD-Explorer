@@ -4,11 +4,16 @@
 	import { Alert, Button, ButtonLink, Link } from '$lib/components';
 	import { LocalSourceCard, RemoteSourceCard } from '$lib/components';
 	import { PageView } from '$lib/components/views';
-	import { sources as localSources } from '$stores/sources/local-sources.store';
-	import { sources as remoteSources } from '$stores/sources/remote-sources.store';
+	import { sources as localSources, type LocalSource } from '$stores/sources/local-sources.store';
+	import {
+		sources as remoteSources,
+		type RemoteSource
+	} from '$stores/sources/remote-sources.store';
 
-	$: allSources = [...$remoteSources, ...$localSources].sort((a, b) => (a.name < b.name ? -1 : 1));
-	$: sourcesExist = allSources.length > 0;
+	let allSources = $derived(
+		[...$remoteSources, ...$localSources].sort((a, b) => (a.name < b.name ? -1 : 1))
+	);
+	let sourcesExist = $derived(allSources.length > 0);
 
 	function toggleAll(enabled: boolean) {
 		localSources.toggleAll(enabled);
@@ -49,11 +54,11 @@
 	</div>
 
 	{#if sourcesExist}
-		{#each allSources as source}
+		{#each allSources as source, index}
 			{#if source.type === 'REMOTE'}
-				<RemoteSourceCard {source} />
+				<RemoteSourceCard source={allSources[index] as RemoteSource} />
 			{:else}
-				<LocalSourceCard {source} />
+				<LocalSourceCard source={allSources[index] as LocalSource} />
 			{/if}
 		{/each}
 	{:else}
