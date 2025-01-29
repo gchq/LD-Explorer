@@ -45,11 +45,11 @@
 		};
 	};
 
-	$: logAlertLevel = (
-		$errorLogs.length ? 'error' : $warningLogs.length ? 'warning' : undefined
-	) as IcBadgeVariants;
+	let logAlertLevel: IcBadgeVariants = $state(
+		$errorLogs.length ? 'error' : $warningLogs.length ? 'warning' : 'info'
+	);
 
-	$: navItemDetail = {
+	let navItemDetail: SideNavItemDetail = $state({
 		home: {
 			icon: Home
 		},
@@ -72,7 +72,7 @@
 			badgeDetails: {
 				label: `${logAlertLevel ? logAlertLevel + ' entries' : 'No entries'} are available in the logs`,
 				variant: logAlertLevel,
-				visible: !!logAlertLevel
+				visible: !!($errorLogs.length || $warningLogs.length)
 			}
 		},
 		settings: {
@@ -82,9 +82,9 @@
 			href: '/about',
 			icon: About
 		}
-	} as SideNavItemDetail;
+	});
 
-	let isSmall: boolean;
+	let isSmall: boolean = $state(false);
 </script>
 
 <!-- Include this as ic-side-navigation does not include an H1 (oversight?) -->
@@ -102,31 +102,33 @@
 	</div>
 
 	{#each primarySideNavItems as { id, title, href }}
+		{@const NavItemIcon = navItemDetail[id].icon}
 		<ic-navigation-item
 			label={title}
 			href={`${base}${href}`}
 			slot="primary-navigation"
 			selected={shouldHighlightSideNav(base, href, page.url.pathname)}
 		>
-			{#if !!navItemDetail[id].badgeDetails}
+			{#if navItemDetail[id].badgeDetails?.visible}
 				<div slot="badge">
 					<Badge
 						size="large"
 						type="dot"
-						ariaLabel={navItemDetail[id]?.badgeDetails?.label}
-						variant={navItemDetail[id]?.badgeDetails?.variant}
-						visible={navItemDetail[id]?.badgeDetails?.visible}
+						ariaLabel={navItemDetail[id].badgeDetails.label}
+						variant={navItemDetail[id].badgeDetails.variant}
+						visible={navItemDetail[id].badgeDetails.visible}
 					></Badge>
 				</div>
 			{/if}
 
 			<div slot="icon">
-				<Icon><svelte:component this={navItemDetail[id].icon} /></Icon>
+				<Icon><NavItemIcon /></Icon>
 			</div>
 		</ic-navigation-item>
 	{/each}
 
 	{#each secondarySideNavItems as { id, title, href }}
+		{@const NavItemIcon = navItemDetail[id].icon}
 		{#if !isSmall}
 			<ic-navigation-item
 				label={title}
@@ -135,7 +137,7 @@
 				selected={shouldHighlightSideNav(base, href, page.url.pathname)}
 			>
 				<div slot="icon">
-					<Icon><svelte:component this={navItemDetail[id].icon} /></Icon>
+					<Icon><NavItemIcon /></Icon>
 				</div>
 			</ic-navigation-item>
 		{:else}
@@ -146,7 +148,7 @@
 				selected={shouldHighlightSideNav(base, href, page.url.pathname)}
 			>
 				<div slot="icon">
-					<Icon><svelte:component this={navItemDetail[id].icon} /></Icon>
+					<Icon><NavItemIcon /></Icon>
 				</div>
 			</ic-navigation-item>
 		{/if}

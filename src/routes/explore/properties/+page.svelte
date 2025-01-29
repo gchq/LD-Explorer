@@ -6,7 +6,7 @@
 	import { settings } from '$lib/stores/settings.store';
 
 	const { createQuery, codeComment } = getProperties;
-	$: query = createQuery($settings.general__defaultLimit);
+	const query = createQuery($settings.general__defaultLimit);
 </script>
 
 <PageView heading="Properties" subheading="Property resources for all active sources.">

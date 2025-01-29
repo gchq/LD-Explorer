@@ -6,7 +6,7 @@
 	import { settings } from '$lib/stores/settings.store';
 
 	const { createQuery, codeComment } = getNamedGraphs;
-	$: query = createQuery($settings.general__defaultLimit);
+	const query = createQuery($settings.general__defaultLimit);
 </script>
 
 <PageView heading="Named Graphs" subheading="IRIs for any named graphs within the data sources.">

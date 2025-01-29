@@ -8,7 +8,7 @@
 
 	// Props
 	const { createQuery, codeComment } = getLabels;
-	$: query = createQuery($settings.general__defaultLimit);
+	const query = createQuery($settings.general__defaultLimit);
 </script>
 
 <TabbedPageView {...createTabDetail()} selectedTabIndex={TabIndices.Labels}>

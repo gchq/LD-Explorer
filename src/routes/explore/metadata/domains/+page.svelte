@@ -8,7 +8,7 @@
 
 	// Props
 	const { createQuery, codeComment } = getDomains;
-	$: query = createQuery($settings.general__defaultLimit);
+	const query = createQuery($settings.general__defaultLimit);
 </script>
 
 <TabbedPageView {...createTabDetail()} selectedTabIndex={TabIndices.Domains}>
