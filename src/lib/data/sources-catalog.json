@@ -3,7 +3,7 @@
 		{
 			"name": "IES4",
 			"description": "IES was developed by the UK Government with contributions from Dstl, Ministry of Defence, Metropolitan Police Service, Foreign & Commonwealth Office, Home Office, Department for Business and Trade (was BEIS), and HMRC, with technical support from Aurora Consulting (to Home Office) and Telicent (to Dstl).",
-			"url": "https://raw.githubusercontent.com/dstl/IES4/master/IES%20Specification%20Docs/Information%20Exchange%20Standard%20r4.2.0.n3"
+			"url": "https://raw.githubusercontent.com/dstl/IES4/refs/heads/master/IES%20Specification%20Docs/ies4.ttl"
 		},
 		{
 			"name": "DBPedia",
