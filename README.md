@@ -45,6 +45,20 @@ npm run preview
 
 See `package.json` for more information.
 
+### Using Docker
+
+You can also start the app locally using docker.
+
+```
+# Build image
+docker build -t ld-explorer-img .
+
+# Run container
+docker run --rm --name ld-explorer -p 8080:80 ld-explorer-img
+```
+
+This will expose the application on localhost port 8080.
+
 ## Contributing
 
 This software is open-source and contributions are welcome. See [Contributing.md](./CONTRIBUTING.md) for details. In terms of required experience/knowledge, the main technologies used within this project are as follows.

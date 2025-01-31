@@ -1,7 +1,13 @@
-FROM node:18.15
+# Stage 1: Build
+FROM node:22.13.1-alpine AS build
 WORKDIR /app
-COPY package.json .
-RUN npm i
+COPY package*.json ./
+RUN npm ci
 COPY . .
-EXPOSE 5173
-CMD ["npm", "run", "dev"]
+RUN npm run build
+RUN npm prune --omit=dev
+
+# Stage 2: Run as nginx container (LDExplorer is a static SPA)
+FROM nginx:stable
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=build /app/build /usr/share/nginx/html
