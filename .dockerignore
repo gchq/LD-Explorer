@@ -1,0 +1,11 @@
+.svelte-kit
+.vscode
+build
+node_modules
+.git
+.gitignore
+.npmrc
+.prettierrc
+.prettierignore
+junit.xml
+.dockerignore
