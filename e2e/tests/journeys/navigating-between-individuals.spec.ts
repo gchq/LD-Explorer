@@ -2,14 +2,12 @@
 
 import { expect, test } from '$e2e/test';
 
-// TODO: This probably should be a a feature test rather than a journey.
-test('Navigating records', async ({
+test('Navigating between individuals', async ({
 	page,
 	addLocalDataSourcePage,
 	importToLocalDataSourcePage,
 	sherlockExampleDataTTL,
-	exploreClassesPage,
-	exploreIndividualsPage
+	exploreClassesPage
 }) => {
 	const sourceName = 'ExampleData';
 

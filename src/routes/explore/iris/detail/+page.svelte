@@ -15,11 +15,12 @@
 	}
 
 	let { data }: Props = $props();
-	let iri = data.iri;
+
+	let iri = $derived(data.iri);
 
 	// Query
 	const { createQuery } = describeResource;
-	let description = createQueryStore(createQuery(iri), $sourceList);
+	let description = $derived(createQueryStore(createQuery(iri), $sourceList));
 </script>
 
 <TabbedPageView {...createTabDetail(iri)} selectedTabIndex={TabIndices.DESCRIBE}>
