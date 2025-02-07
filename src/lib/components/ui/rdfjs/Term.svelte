@@ -14,7 +14,7 @@
 	import { abbreviateTermPrefix } from '$lib/util/term.utils';
 	import clsx from 'clsx';
 	import { prefixes } from '$lib/stores/prefixes.store';
-	import { labelFor } from '$stores/label.store';
+	import { labelFor } from '$stores/labelLookup.svelte';
 
 	// Props
 	interface Props {
