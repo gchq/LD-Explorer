@@ -1,4 +1,4 @@
-@theme {
+@theme inline {
 	--font-display: var(--ic-font-body-family);
 
 	/* ICDS tokens */

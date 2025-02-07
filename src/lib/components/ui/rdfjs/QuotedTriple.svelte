@@ -5,8 +5,12 @@
 	import { Term } from '$lib/components';
 	import { settings } from '$lib/stores/settings.store';
 
-	export let term: ITerm;
-	export let showGraph = !!$settings.general__showQuads;
+	interface Props {
+		term: ITerm;
+		showGraph?: boolean;
+	}
+
+	let { term, showGraph = !!$settings.general__showQuads }: Props = $props();
 </script>
 
 <span>

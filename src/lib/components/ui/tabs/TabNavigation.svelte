@@ -2,21 +2,27 @@
 
 <script lang="ts">
 	import type { IcTabSelectEventDetail } from '@ukic/web-components';
-	import { createEventDispatcher } from 'svelte';
-	const dispatch = createEventDispatcher();
+	import { type Snippet } from 'svelte';
 
-	export let selectedTabIndex: number | undefined = undefined;
+	interface Props {
+		selectedTabIndex?: number;
+		onchange?: (e: CustomEvent<IcTabSelectEventDetail>) => void;
+		panels: Snippet;
+		children: Snippet;
+	}
+
+	let { selectedTabIndex = $bindable(), onchange, children, panels }: Props = $props();
 
 	// Events
 	function handleTabChange(e: CustomEvent<IcTabSelectEventDetail>) {
 		selectedTabIndex = e.detail.tabIndex;
-		dispatch('change', { e });
+		onchange?.(e);
 	}
 </script>
 
-<ic-tab-context selected-tab-index={selectedTabIndex} on:icTabSelect={handleTabChange}>
+<ic-tab-context selected-tab-index={selectedTabIndex} onicTabSelect={handleTabChange}>
 	<ic-tab-group label="Tab group" class="mb-4">
-		<slot></slot>
+		{@render children()}
 	</ic-tab-group>
-	<slot name="panels"></slot>
+	{@render panels()}
 </ic-tab-context>

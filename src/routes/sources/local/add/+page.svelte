@@ -14,5 +14,5 @@
 </script>
 
 <PageView heading="Add local source" subheading="Add a new local data source.">
-	<LocalSourceForm {handleSubmit} />
+	<LocalSourceForm onSubmit={handleSubmit} />
 </PageView>

@@ -6,12 +6,13 @@
 	import type { Readable } from 'svelte/store';
 	import type { StreamedQuery } from '$stores/streamedQuery.store';
 
-	// Props
-	export let results: Readable<StreamedQuery>;
+	interface Props {
+		results: Readable<StreamedQuery>;
+	}
 
-	// State
-	$: result = $results.results[0] as boolean;
-	$: resultText = result ? 'True' : 'False';
+	let { results }: Props = $props();
+	let result = $derived($results.results[0] as boolean);
+	let resultText = $derived(result ? 'True' : 'False');
 </script>
 
 <ic-card heading={resultText} full-width>

@@ -2,8 +2,15 @@
 
 <script lang="ts">
 	import clsx from 'clsx';
-	export let listType: 'ul' | 'ol' | 'no-symbol';
-	export let applyVerticalMargins = false;
+	import type { Snippet } from 'svelte';
+
+	interface Props {
+		children?: Snippet;
+		listType: 'ul' | 'ol' | 'no-symbol';
+		applyVerticalMargins?: boolean;
+	}
+
+	let { listType, children, applyVerticalMargins = false }: Props = $props();
 </script>
 
 <svelte:element
@@ -16,5 +23,5 @@
 		applyVerticalMargins && 'my-8'
 	)}
 >
-	<slot />
+	{@render children?.()}
 </svelte:element>

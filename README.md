@@ -2,7 +2,7 @@
 
 Copyright 2024 [Crown Copyright](https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/)
 
-LD-Explorer is a prototype user interface built upon the [Comunica graph querying framework](https://comunica.dev/) that can be used for exploring linked data resources directly in the browser. We have found that this tool helps to better demonstrate the value and purpose of linked data to newcomers, and increases the speed at which experiments/ideas can be created and tested. We are open sourcing this software to fill what we believe is a software gap in the linked data linked data space and to hopefully encourage its growth into a valuable community tool.
+LD-Explorer is a prototype user interface built upon the [Comunica graph querying framework](https://comunica.dev/) that can be used for exploring linked data resources directly in the browser. We have found that this tool helps to better demonstrate the value and purpose of linked data to newcomers, and increases the speed at which experiments/ideas can be created and tested. We are open sourcing this software to fill what we believe is a software gap in the linked data ecosystem and to hopefully encourage its growth into a valuable community tool.
 
 LD Explorer runs entirely in the browser and is hosted at https://gchq.github.io/LD-Explorer/
 
@@ -44,6 +44,20 @@ npm run preview
 ```
 
 See `package.json` for more information.
+
+### Using Docker
+
+You can also start the app locally using docker.
+
+```
+# Build image
+docker build -t ld-explorer-img .
+
+# Run container
+docker run --rm --name ld-explorer -p 8080:80 ld-explorer-img
+```
+
+This will expose the application on localhost port 8080.
 
 ## Contributing
 

@@ -16,17 +16,19 @@
 	import { filterQuads } from '$lib/util/filter.utils';
 	import { settings } from '$lib/stores/settings.store';
 
-	// Props
-	export let quads: Quad[];
+	interface Props {
+		quads: Quad[];
+	}
+	let { quads }: Props = $props();
 
 	// Pagination + Filtering
-	let pageNumber = 0;
-	$: filterText = '';
+	let pageNumber = $state(0);
+	let filterText = $state('');
 
 	const PER_PAGE = 100;
-	$: filteredQuads = filterQuads(quads, filterText);
-	$: totalPages = getTotalPages(PER_PAGE, filteredQuads);
-	$: quadsForPage = getItemsForPage(pageNumber, PER_PAGE, filteredQuads);
+	let filteredQuads = $derived(filterQuads(quads, filterText));
+	let totalPages = $derived(getTotalPages(PER_PAGE, filteredQuads));
+	let quadsForPage = $derived(getItemsForPage(pageNumber, PER_PAGE, filteredQuads));
 
 	// Other state
 	let showGraph = !!$settings.general__showQuads;

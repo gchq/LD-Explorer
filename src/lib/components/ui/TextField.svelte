@@ -4,44 +4,61 @@
 	import type { IcTextFieldTypes, IcValueEventDetail } from '@ukic/web-components';
 	import { ViewportHelper } from '$lib/components/helpers';
 	import { clsx } from 'clsx';
-	import { createEventDispatcher } from 'svelte';
 
-	// Required Props
-	export let label: string;
-	export let value: string | number;
+	// Props
 
-	// Events
-	const dispatch = createEventDispatcher();
+	interface Props {
+		// mandatory
+		label: string;
+		value: string | number;
 
-	// Optional Props
-	export let helperText = '';
-	export let inline = false;
-	export let placeholder: string | undefined = undefined;
-	export let readonly = false;
-	export let codeEditor = false;
-	export let type: IcTextFieldTypes = 'text';
-	export let required = false;
-	export let validationEnabled = false;
-	export let isValid = true;
-	export let validationErrorMessage = '';
-	export let rows: number | undefined = undefined;
+		// optional
+		oninput?: (e: CustomEvent<IcValueEventDetail>) => void;
+		helperText?: string;
+		inline?: boolean;
+		placeholder?: string;
+		readonly?: boolean;
+		codeEditor?: boolean;
+		type?: IcTextFieldTypes;
+		required?: boolean;
+		validationEnabled?: boolean;
+		isValid?: boolean;
+		validationErrorMessage?: string;
+		rows?: number;
+	}
+
+	let {
+		oninput,
+		label,
+		value = $bindable(),
+		helperText = '',
+		inline = false,
+		placeholder,
+		readonly = false,
+		codeEditor = false,
+		type = 'text',
+		required = false,
+		validationEnabled = false,
+		isValid = true,
+		validationErrorMessage = '',
+		rows
+	}: Props = $props();
 
 	// State
-	$: validationError = validationEnabled && !isValid;
+	let validationError = $derived(validationEnabled && !isValid);
+	let isSmall: boolean = $state(false);
 
 	// Events
 	function handleInput(e: CustomEvent<IcValueEventDetail>) {
 		value = e.detail.value;
-		dispatch('input', { e });
+		oninput?.(e);
 	}
-
-	let isSmall: boolean;
 </script>
 
 <ViewportHelper bind:isSmall />
 
 <ic-text-field
-	on:icInput={handleInput}
+	onicInput={handleInput}
 	{readonly}
 	{value}
 	{rows}

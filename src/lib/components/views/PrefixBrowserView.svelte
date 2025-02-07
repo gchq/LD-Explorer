@@ -14,10 +14,12 @@
 	import type { Prefix } from '$lib/types';
 	import { prefixes } from '$lib/stores/prefixes.store';
 
-	// Props
-	export let document: string;
-	export let onAddPrefix: (prefix: string) => void;
-	export let description: string;
+	interface Props {
+		document: string;
+		onAddPrefix: (prefix: string) => void;
+		description: string;
+	}
+	let { document, onAddPrefix, description }: Props = $props();
 
 	// Utility Functions
 	const formatPrefix = (prefix: Prefix) => `PREFIX ${prefix.label}: <${prefix.iri}>`;

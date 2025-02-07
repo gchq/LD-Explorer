@@ -58,9 +58,9 @@ describe('data import functionality', () => {
 			expect(store.size).toEqual(2);
 		});
 
-		it('errors via promise rejection when the document is not formatted correctly', () => {
+		it('errors via promise rejection when the document is not formatted correctly', async () => {
 			const document = `flobalob`;
-			expect(importRdfDocument(source, document)).rejects.toThrowError();
+			await expect(importRdfDocument(source, document)).rejects.toThrowError();
 		});
 	});
 

@@ -16,17 +16,18 @@
 		PrefixBrowser: 2
 	};
 
-	// State
-	let sparqlQuery = '';
-	let submittedSparql = '';
-	let sparqlParseError = '';
-	let selectedTabIndex = SparqlUiTab.QueryBuilder;
-	$: validationEnabled = sparqlQuery.length > 0;
-	$: validationStatus = validationEnabled && sparqlParseError.length > 0 ? 'error' : '';
-	$: submitted = submittedSparql.length > 0;
-	$: showResults = submitted && !sparqlParseError;
+	let sparqlQuery = $state('');
+	let submittedSparql = $state('');
+	let sparqlParseError = $state('');
+	let selectedTabIndex = $state(SparqlUiTab.QueryBuilder);
+	let validationEnabled = $derived(sparqlQuery.length > 0);
+	let validationStatus = $derived(validationEnabled && sparqlParseError.length > 0 ? 'error' : '');
+	let submitted = $derived(submittedSparql.length > 0);
+	let showResults = $derived(submitted && !sparqlParseError);
 
-	function handleSubmit() {
+	function handleSubmit(e: Event) {
+		e.preventDefault();
+
 		sparqlParseError = '';
 		try {
 			validateSparql(sparqlQuery);
@@ -64,16 +65,16 @@
 		/>
 		<Tab title="Prefix Browser" selected={selectedTabIndex == SparqlUiTab.PrefixBrowser} />
 
-		<svelte:fragment slot="panels">
+		{#snippet panels()}
 			<TabPanel>
 				<ic-select
-					on:icChange={handleSparqlQueryChanged}
+					onicChange={handleSparqlQueryChanged}
 					label="Select pre-build query"
 					full-width
 					options={exampleQueries.map((ex) => ({ label: ex.queryName, value: ex.query }))}
 				></ic-select>
 
-				<form on:submit|preventDefault={handleSubmit}>
+				<form onsubmit={handleSubmit}>
 					{#if sparqlParseError}
 						<Alert variant="error" heading="Sparql Parse Error" message={sparqlParseError} />
 					{/if}
@@ -82,7 +83,7 @@
 						label="Sparql Query"
 						helperText="SPARQL 1.1 supported query types are SELECT, DESCRIBE, ASK and CONSTRUCT"
 						bind:value={sparqlQuery}
-						on:input={resetParseError}
+						oninput={resetParseError}
 						rows={10}
 						{validationEnabled}
 						isValid={validationStatus != 'error'}
@@ -105,6 +106,6 @@
 					description="Add common prefixes to your SPARQL query."
 				/></TabPanel
 			>
-		</svelte:fragment>
+		{/snippet}
 	</TabNavigation>
 </PageView>

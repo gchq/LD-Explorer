@@ -4,8 +4,12 @@
 	import { Button, LoadingSpinner } from '$lib/components';
 	import { QueryStatus } from '$lib/types';
 	import { Stop } from '$lib/components/ui/icons';
-	export let status: QueryStatus;
-	export let onStop: () => void;
+
+	interface Props {
+		status: QueryStatus;
+		onStop: () => void;
+	}
+	let { status, onStop }: Props = $props();
 </script>
 
 <dl class="">

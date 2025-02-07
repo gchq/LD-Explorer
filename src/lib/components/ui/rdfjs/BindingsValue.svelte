@@ -5,9 +5,13 @@
 	import { Term } from '$lib/components';
 	import type { Variable } from 'n3';
 
-	export let variable: string | Variable;
-	export let bindings: Bindings;
-	export let highlightText: string | undefined;
+	interface Props {
+		variable: string | Variable;
+		bindings: Bindings;
+		highlightText: string | undefined;
+	}
+
+	let { variable, bindings, highlightText }: Props = $props();
 
 	/**
 	 * Expressing "no value exists" in RDF can be problematic.

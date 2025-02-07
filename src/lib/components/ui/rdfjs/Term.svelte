@@ -17,10 +17,19 @@
 	import { labelFor } from '$stores/label.store';
 
 	// Props
-	export let applyVerticalMargins = false;
-	export let term: Term;
-	export let settings: TermSettings = $savedSettings; // settings exposed as prop to allow for preview functionality
-	export let highlightText: string | undefined = undefined;
+	interface Props {
+		applyVerticalMargins?: boolean;
+		term: Term;
+		settings?: TermSettings; // settings exposed as prop to allow for preview functionality
+		highlightText?: string;
+	}
+
+	let {
+		applyVerticalMargins = false,
+		settings = $savedSettings, // settings exposed as prop to allow for preview functionality
+		term,
+		highlightText
+	}: Props = $props();
 
 	// State
 	const termTypeDetails = {
@@ -32,10 +41,11 @@
 		Quad: { colour: 'bg-lime-400', text: 'Quoted Triple' }
 	};
 
-	$: termValue =
+	let termValue = $derived(
 		term.value && settings.term__abbreviateCommonPrefixes
 			? abbreviateTermPrefix(term.value || '', $prefixes)
-			: term.value;
+			: term.value
+	);
 </script>
 
 {#if term}

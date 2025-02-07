@@ -20,11 +20,11 @@
 		url: string;
 	}
 
-	// Props
-	export let catalogEntries: CatalogEntry[];
-
-	// State
-	$: sourceUrls = $sources.map((s) => s.url);
+	interface Props {
+		catalogEntries: CatalogEntry[];
+	}
+	let { catalogEntries }: Props = $props();
+	let sourceUrls = $derived($sources.map((s) => s.url));
 
 	// Events
 	function handleClick({ name, description, url }: CatalogEntry) {

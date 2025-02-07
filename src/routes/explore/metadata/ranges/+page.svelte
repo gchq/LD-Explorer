@@ -6,9 +6,8 @@
 	import { getRanges } from '$lib/querying/queries';
 	import { settings } from '$lib/stores/settings.store';
 
-	// Props
 	const { createQuery, codeComment } = getRanges;
-	$: query = createQuery($settings.general__defaultLimit);
+	const query = createQuery($settings.general__defaultLimit);
 </script>
 
 <TabbedPageView {...createTabDetail()} selectedTabIndex={TabIndices.Ranges}>

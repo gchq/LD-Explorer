@@ -10,19 +10,23 @@
 	import { filterBindings } from '$lib/util/filter.utils';
 
 	// Props
-	export let results: Readable<StreamedQuery>;
+	interface Props {
+		results: Readable<StreamedQuery>;
+	}
+
+	let { results }: Props = $props();
 
 	// State
-	$: bindings = $results.results as Bindings[];
+	let bindings = $derived($results.results as Bindings[]);
 
 	// Pagination + Filtering
-	let pageNumber = 0;
-	$: filterText = '';
+	let pageNumber = $state(0);
+	let filterText = $state('');
 
 	const PER_PAGE = 100;
-	$: filteredBindings = filterBindings(bindings, filterText);
-	$: totalPages = getTotalPages(PER_PAGE, filteredBindings);
-	$: bindingsForPage = getItemsForPage(pageNumber, PER_PAGE, filteredBindings);
+	let filteredBindings = $derived(filterBindings(bindings, filterText));
+	let totalPages = $derived(getTotalPages(PER_PAGE, filteredBindings));
+	let bindingsForPage = $derived(getItemsForPage(pageNumber, PER_PAGE, filteredBindings));
 </script>
 
 {#if bindings.length}

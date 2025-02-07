@@ -4,14 +4,19 @@
 	import { Heading, Paragraph as P } from '$lib/components';
 	import { PageView } from '$lib/components/views';
 	import type { RoutedTab } from '$lib/navigation/tabs/types';
+	import type { Snippet } from 'svelte';
 
-	export let heading: string;
-	export let subheading: string;
-	export let selectedTabIndex: number;
-	export let navigationLabel: string;
-	export let tabs: RoutedTab<number>[];
+	interface Props {
+		children?: Snippet;
+		heading: string;
+		subheading: string;
+		selectedTabIndex: number;
+		navigationLabel: string;
+		tabs: RoutedTab<number>[];
+	}
 
-	// State
+	let { children, heading, subheading, selectedTabIndex, navigationLabel, tabs }: Props = $props();
+
 	const tab = tabs.find((t) => t.tabIndex === selectedTabIndex);
 	const tabTitle = tab?.title || 'Detail';
 	const tabDescription = tab?.description;
@@ -26,5 +31,5 @@
 		{/if}
 	</div>
 
-	<slot />
+	{@render children?.()}
 </PageView>

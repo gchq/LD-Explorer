@@ -2,8 +2,13 @@
 
 <script lang="ts">
 	import { CodeBlock, Paragraph as P, SummaryDetail } from '$lib/components';
-	export let query: string;
-	export let codeComment: string | undefined = undefined;
+
+	interface Props {
+		query: string;
+		codeComment?: string;
+	}
+
+	let { query, codeComment }: Props = $props();
 </script>
 
 <SummaryDetail summaryText="View SPARQL query">
