@@ -41,7 +41,7 @@
 		Quad: { colour: 'bg-lime-400', text: 'Quoted Triple' }
 	};
 
-	let termValue = $derived(
+	let termDisplayValue = $derived(
 		term.value && settings.term__abbreviateCommonPrefixes
 			? abbreviateTermPrefix(term.value || '', $prefixes)
 			: term.value
@@ -60,7 +60,7 @@
 				<QuotedTriple {term} />
 			{:else if term.termType == 'NamedNode'}
 				<Link href={`/explore/iris/detail?iri=${encodeURIComponent(term.value)}`}>
-					{#await labelFor(term.value) then label}
+					{#await labelFor(term.value, termDisplayValue) then label}
 						<TermValue termValue={label} {highlightText} />
 					{/await}
 				</Link>
@@ -68,7 +68,7 @@
 				{#if settings.term__showLanguageTag && term.termType == 'Literal' && term.language && term.language.length}
 					<span class="bg-gray-100 px-1">@{term.language}</span>
 				{/if}
-				<TermValue {termValue} {highlightText} />
+				<TermValue termValue={termDisplayValue} {highlightText} />
 			{/if}
 		</span>
 	</span>

@@ -96,6 +96,6 @@ async function fetchLabel(term: string): Promise<string | null> {
  * @param term the term to find a label for
  * @returns {Promise<string>} the label.
  */
-export async function labelFor(term: string) {
-	return get(labels)[term] || (await fetchLabel(term)) || term;
+export async function labelFor(term: string, defaultValue?: string) {
+	return get(labels)[term] || (await fetchLabel(term)) || defaultValue || term;
 }
