@@ -44,7 +44,7 @@ function createSparqlQuery(term: string, lang = 'en') {
     SELECT DISTINCT ?label
     WHERE {
           <${term}> rdfs:label ?label
-          FILTER (LANGMATCHES(LANG(?label), "${lang}}") || LANG(?label) = "")
+          FILTER (LANGMATCHES(LANG(?label), "${lang}") || LANG(?label) = "")
     } 
     LIMIT 1`;
 }
