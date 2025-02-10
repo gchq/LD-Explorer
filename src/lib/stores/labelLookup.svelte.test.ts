@@ -1,15 +1,5 @@
 /* (c) Crown Copyright GCHQ */
 
-/*
-import { type StreamedQuery, createQueryStore } from './streamedQuery.store';
-import { sourceList, sources } from '$lib/stores/sources/local-sources.store';
-import type { Bindings } from '@comunica/types';
-import type { MockInstance } from 'vitest';
-import type { Quad } from 'n3';
-import { QueryStatus } from '$lib/types';
-import { importRdfDocument } from '$lib/util/source.util';
-import { logger } from '$stores/logger.store';
-*/
 import { sources } from '$lib/stores/sources/local-sources.store';
 import { labelFor, flushLookup } from './labelLookup.svelte';
 import { importRdfDocument } from '$lib/util/source.util';
@@ -41,6 +31,10 @@ describe(labelFor, () => {
 
 	afterEach(() => {
 		flushLookup();
+	});
+
+	it('contains some default labels', async () => {
+		expect(await labelFor('http://www.w3.org/1999/02/22-rdf-syntax-ns#type')).toEqual('Type');
 	});
 
 	it('echoes back the same IRI if no label found', async () => {

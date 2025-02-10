@@ -1,16 +1,5 @@
 /* (c) Crown Copyright GCHQ */
 
-/**
- * WORK IN PROGRESS - DO NOT MERGE
- *
- * TODO
- * ====
- * - Make functionality optional via settings
- * - Write unit tests
- * - Write e2e tests
- *
- */
-
 import { get } from 'svelte/store';
 import { engine } from '$lib/querying/engine';
 import { sourceList } from '$stores/sources/sources.store';
