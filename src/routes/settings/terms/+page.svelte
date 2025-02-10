@@ -15,7 +15,7 @@
 	} from '$lib/components';
 	import { DataFactory } from 'n3';
 	import { PageView } from '$lib/components/views';
-	import { settings } from '$lib/stores/settings.store';
+	import { settings, type Settings } from '$lib/stores/settings.store';
 
 	// State (the "dirty" settings are the ones which are in-flight and have not yet been applied)
 	const dirtySettings = {
@@ -56,16 +56,18 @@
 			<TableBody>
 				<TableRow>
 					<TableData>Resource</TableData>
-					<TableData><Term term={namedNodeExample} settings={dirtySettings} /></TableData>
+					<TableData
+						><Term term={namedNodeExample} settings={dirtySettings as Settings} /></TableData
+					>
 				</TableRow>
 				<TableRow>
 					<TableData>Literal</TableData>
-					<TableData><Term term={literalExample} settings={dirtySettings} /></TableData>
+					<TableData><Term term={literalExample} settings={dirtySettings as Settings} /></TableData>
 				</TableRow>
 				<TableRow includeBottomBorder={false}>
 					<TableData>Blank Node</TableData>
 					<TableData>
-						<Term term={blankNodeExample} settings={dirtySettings} />
+						<Term term={blankNodeExample} settings={dirtySettings as Settings} />
 					</TableData>
 				</TableRow>
 			</TableBody>
@@ -94,7 +96,7 @@
 			bind:checked={dirtySettings.term__showLanguageTag}
 			onchange={() => (dirty = true)}
 		/>
-		<div class="mt-4">
+		<div class="mt-10">
 			<Button label="Apply" type="submit" disabled={!dirty} />
 		</div>
 	</form>

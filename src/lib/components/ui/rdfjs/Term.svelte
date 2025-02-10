@@ -9,17 +9,18 @@
 	 * for details; https://rdf.js.org/data-model-spec/#term-interface
 	 */
 	import { Link, QuotedTriple, TermValue } from '$lib/components';
-	import { type TermSettings, settings as savedSettings } from '$lib/stores/settings.store';
+	import { type Settings, settings as savedSettings } from '$lib/stores/settings.store';
 	import type { Term } from '@rdfjs/types';
 	import { abbreviateTermPrefix } from '$lib/util/term.utils';
 	import clsx from 'clsx';
 	import { prefixes } from '$lib/stores/prefixes.store';
+	import { labelFor } from '$stores/labelLookup.svelte';
 
 	// Props
 	interface Props {
 		applyVerticalMargins?: boolean;
 		term: Term;
-		settings?: TermSettings; // settings exposed as prop to allow for preview functionality
+		settings?: Settings; // settings exposed as prop to allow for preview functionality
 		highlightText?: string;
 	}
 
@@ -40,7 +41,7 @@
 		Quad: { colour: 'bg-lime-400', text: 'Quoted Triple' }
 	};
 
-	let termValue = $derived(
+	let termDisplayValue = $derived(
 		term.value && settings.term__abbreviateCommonPrefixes
 			? abbreviateTermPrefix(term.value || '', $prefixes)
 			: term.value
@@ -59,13 +60,19 @@
 				<QuotedTriple {term} />
 			{:else if term.termType == 'NamedNode'}
 				<Link href={`/explore/iris/detail?iri=${encodeURIComponent(term.value)}`}>
-					<TermValue {termValue} {highlightText} />
+					{#if settings.general__showRDFSLabels}
+						{#await labelFor(term.value, { defaultValue: termDisplayValue }) then label}
+							<TermValue termValue={label} {highlightText} />
+						{/await}
+					{:else}
+						<TermValue termValue={termDisplayValue} {highlightText} />
+					{/if}
 				</Link>
 			{:else}
 				{#if settings.term__showLanguageTag && term.termType == 'Literal' && term.language && term.language.length}
 					<span class="bg-gray-100 px-1">@{term.language}</span>
 				{/if}
-				<TermValue {termValue} {highlightText} />
+				<TermValue termValue={termDisplayValue} {highlightText} />
 			{/if}
 		</span>
 	</span>

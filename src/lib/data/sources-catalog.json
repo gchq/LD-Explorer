@@ -21,11 +21,6 @@
 			"url": "https://www.w3.org/ns/rdfa.ttl"
 		},
 		{
-			"name": "RDFs",
-			"description": "The w3c-hosted RDFS vocab",
-			"url": "https://www.w3.org/2000/01/rdf-schema"
-		},
-		{
 			"name": "PROV",
 			"description": "W3C recommended model for exchanging data provenance",
 			"url": "https://www.w3.org/ns/prov.ttl"

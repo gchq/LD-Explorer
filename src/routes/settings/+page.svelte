@@ -8,7 +8,8 @@
 	// State (the "dirty" settings are the ones which are in-flight and have not yet been applied)
 	const dirtySettings = {
 		general__defaultLimit: $settings.general__defaultLimit,
-		general__showQuads: $settings.general__showQuads
+		general__showQuads: $settings.general__showQuads,
+		general__showRDFSLabels: $settings.general__showRDFSLabels
 	};
 
 	let dirty = false;
@@ -40,7 +41,14 @@
 			onchange={() => (dirty = true)}
 		/>
 
-		<div class="mt-4">
+		<Switch
+			label="Display Labels"
+			helperText="Attempt to fetch and display RDFS labels from active data sources when viewing terms."
+			bind:checked={dirtySettings.general__showRDFSLabels}
+			onchange={() => (dirty = true)}
+		/>
+
+		<div class="mt-10">
 			<Button label="Apply" type="submit" disabled={!dirty} />
 		</div>
 	</form>
