@@ -122,7 +122,16 @@ async function processLabelsQueue() {
  * @returns {Promise<string>} the label (if found) or the default value (if given) - if neither is found,
  * it'll just echo back the passed-in term.
  */
-export async function labelFor(term: string, defaultValue?: string, lazy: boolean = true) {
+
+interface LabelForOptions {
+	defaultValue?: string;
+	lazy?: boolean;
+}
+
+export async function labelFor(
+	term: string,
+	{ defaultValue = undefined, lazy = true }: LabelForOptions = {}
+) {
 	if (!lazy) {
 		await enqueueLabel(term);
 		await processLabelsQueue();

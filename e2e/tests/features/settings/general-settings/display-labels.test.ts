@@ -6,9 +6,9 @@ const sourceData = `
 @prefix ex: <http://example.org/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
-ex:person1 a ex:FBIAgent .
-ex:person1 rdfs:label "Special Agent Dale Cooper" .
-ex:FBIAgent rdfs:label "FBI Agent" .`;
+ex:team1 a ex:SportsTeam .
+ex:team1 rdfs:label "E2E Testing Athletic FC" .
+ex:SportsTeam rdfs:label "Sports Team" .`;
 
 test.describe('Display Labels setting', () => {
 	test.beforeEach(async ({ addLocalDataSourcePage, importToLocalDataSourcePage }) => {
@@ -23,13 +23,13 @@ test.describe('Display Labels setting', () => {
 		await exploreIndividualsPage.navigateTo();
 		await expect(
 			page.getByRole('link', {
-				name: 'http://example.org/person1',
+				name: 'http://example.org/team1',
 				exact: true
 			})
 		).toBeVisible();
 		await expect(
 			page.getByRole('link', {
-				name: 'http://example.org/FBIAgent',
+				name: 'http://example.org/SportsTeam',
 				exact: true
 			})
 		).toBeVisible();
@@ -46,13 +46,13 @@ test.describe('Display Labels setting', () => {
 		await exploreIndividualsPage.navigateTo();
 		await expect(
 			page.getByRole('link', {
-				name: 'Special Agent Dale Cooper',
+				name: 'E2E Testing Athletic FC',
 				exact: true
 			})
 		).toBeVisible();
 		await expect(
 			page.getByRole('link', {
-				name: 'FBI Agent',
+				name: 'Sports Team',
 				exact: true
 			})
 		).toBeVisible();

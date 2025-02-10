@@ -48,14 +48,16 @@ describe(labelFor, () => {
 	});
 
 	it('provides default value if given', async () => {
-		expect(await labelFor('http://example.org/team2', 'Flobalob')).toEqual('Flobalob');
+		expect(await labelFor('http://example.org/team2', { defaultValue: 'Flobalob' })).toEqual(
+			'Flobalob'
+		);
 	});
 
 	it('lazily finds the label if it exists in the data source', async () => {
 		// As this function defaults to lazy, it won't find the label straight away.
 		expect(await labelFor('http://example.org/team1')).toEqual('http://example.org/team1');
 
-		// if we wait a little while, it will eventually return the right label. This lazy functionality is
+		// if we wait a little while though, it will eventually return the right label. This lazy functionality is
 		// the default by design: The lookup is inside a $state rune, so Svelte's reactivity
 		// will sort out updating the tempaltes once a label has been found.
 		await waitFor(async () =>
@@ -64,7 +66,7 @@ describe(labelFor, () => {
 	});
 
 	it('eagerly finds the label when requested', async () => {
-		expect(await labelFor('http://example.org/team1', undefined, false)).toEqual(
+		expect(await labelFor('http://example.org/team1', { lazy: false })).toEqual(
 			'Unit Testing United FC'
 		);
 	});

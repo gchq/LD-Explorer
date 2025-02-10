@@ -61,7 +61,7 @@
 			{:else if term.termType == 'NamedNode'}
 				<Link href={`/explore/iris/detail?iri=${encodeURIComponent(term.value)}`}>
 					{#if settings.general__showRDFSLabels}
-						{#await labelFor(term.value, termDisplayValue) then label}
+						{#await labelFor(term.value, { defaultValue: termDisplayValue }) then label}
 							<TermValue termValue={label} {highlightText} />
 						{/await}
 					{:else}
