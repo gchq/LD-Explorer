@@ -5,6 +5,7 @@ import { createLocalStorageJSONStore } from './localStorageJson.store';
 interface GeneralSettings {
 	general__defaultLimit: number;
 	general__showQuads: boolean;
+	general__showRDFSLabels: boolean;
 }
 
 export interface TermSettings {
@@ -13,11 +14,12 @@ export interface TermSettings {
 	term__showLanguageTag: boolean;
 }
 
-type Settings = GeneralSettings & TermSettings;
+export type Settings = GeneralSettings & TermSettings;
 
 const defaultSettings: Settings = {
 	general__defaultLimit: 1000,
 	general__showQuads: false,
+	general__showRDFSLabels: false,
 	term__showNodeType: true,
 	term__abbreviateCommonPrefixes: false,
 	term__showLanguageTag: true

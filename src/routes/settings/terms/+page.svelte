@@ -94,7 +94,7 @@
 			bind:checked={dirtySettings.term__showLanguageTag}
 			onchange={() => (dirty = true)}
 		/>
-		<div class="mt-4">
+		<div class="mt-10">
 			<Button label="Apply" type="submit" disabled={!dirty} />
 		</div>
 	</form>

@@ -9,7 +9,7 @@
 	 * for details; https://rdf.js.org/data-model-spec/#term-interface
 	 */
 	import { Link, QuotedTriple, TermValue } from '$lib/components';
-	import { type TermSettings, settings as savedSettings } from '$lib/stores/settings.store';
+	import { type Settings, settings as savedSettings } from '$lib/stores/settings.store';
 	import type { Term } from '@rdfjs/types';
 	import { abbreviateTermPrefix } from '$lib/util/term.utils';
 	import clsx from 'clsx';
@@ -20,7 +20,7 @@
 	interface Props {
 		applyVerticalMargins?: boolean;
 		term: Term;
-		settings?: TermSettings; // settings exposed as prop to allow for preview functionality
+		settings?: Settings; // settings exposed as prop to allow for preview functionality
 		highlightText?: string;
 	}
 
@@ -60,9 +60,13 @@
 				<QuotedTriple {term} />
 			{:else if term.termType == 'NamedNode'}
 				<Link href={`/explore/iris/detail?iri=${encodeURIComponent(term.value)}`}>
-					{#await labelFor(term.value, termDisplayValue) then label}
-						<TermValue termValue={label} {highlightText} />
-					{/await}
+					{#if settings.general__showRDFSLabels}
+						{#await labelFor(term.value, termDisplayValue) then label}
+							<TermValue termValue={label} {highlightText} />
+						{/await}
+					{:else}
+						<TermValue termValue={termDisplayValue} {highlightText} />
+					{/if}
 				</Link>
 			{:else}
 				{#if settings.term__showLanguageTag && term.termType == 'Literal' && term.language && term.language.length}
