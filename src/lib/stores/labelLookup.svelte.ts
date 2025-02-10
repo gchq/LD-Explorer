@@ -61,32 +61,32 @@ let timeoutId: ReturnType<typeof setTimeout>;
  * @param term A string representing the term to look up.
  * @returns {Promise<string | null>} A that term's label
  */
-function enqueueFetch(term: string): void {
+function enqueueLabel(term: string): void {
 	labelQueue.push(term);
 	clearTimeout(timeoutId);
 
 	// Fetch immediately if batch size reached or overflowed
 	if (labelQueue.length >= BATCH_SIZE) {
-		processLabels();
+		processLabelsQueue();
 		return;
 	}
 
 	// debounce processing.
-	timeoutId = setTimeout(processLabels, 10);
+	timeoutId = setTimeout(processLabelsQueue, 10);
 }
 
 /**
- * processLabels
+ * processLabelsFromQueue
  *
  * Empties the label queue of (BATCH_SIZE) labels and puts them into the labels lookup.
  * Templates will detect these changes and update automatically due to Svelte's reactivity.
  */
-async function processLabels() {
+async function processLabelsQueue() {
 	if (Object.keys(labelLookup).length > MAX_LABELS) {
 		// currently we're just flushing the whole label lookup if it goes over the maximum -
 		// whilst this does serve the purpose of preserving browser performance, we could do
 		// something smarter than this.
-		labelLookup = {};
+		flushLookup();
 	}
 
 	const labelsToFetch = labelQueue.splice(0, BATCH_SIZE);
@@ -122,6 +122,15 @@ async function processLabels() {
  * @returns {Promise<string>} the label (if found) or the default value (if given) - if neither is found,
  * it'll just echo back the passed-in term.
  */
-export async function labelFor(term: string, defaultValue?: string) {
-	return labelLookup[term] || enqueueFetch(term) || defaultValue || term;
+export async function labelFor(term: string, defaultValue?: string, lazy: boolean = true) {
+	if (!lazy) {
+		await enqueueLabel(term);
+		await processLabelsQueue();
+	}
+
+	return labelLookup[term] || enqueueLabel(term) || defaultValue || term;
+}
+
+export function flushLookup() {
+	labelLookup = {};
 }
