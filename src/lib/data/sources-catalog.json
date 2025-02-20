@@ -6,9 +6,14 @@
 			"url": "https://raw.githubusercontent.com/dstl/IES4/refs/heads/master/IES%20Specification%20Docs/ies4.ttl"
 		},
 		{
-			"name": "DBPedia",
+			"name": "DBPedia (TPF endpoint)",
 			"description": "DBPedia triple-pattern-fragments endpoint",
 			"url": "https://fragments.dbpedia.org/2016-04/en"
+		},
+		{
+			"name": "DBPedia (SPARQL endpoint)",
+			"description": "DBPedia public SPARQL endpoint",
+			"url": "https://dbpedia.org/sparql"
 		},
 		{
 			"name": "Schema.org",
