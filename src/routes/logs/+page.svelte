@@ -16,7 +16,7 @@
 	/>
 	{#if $recentLogs.length > 0}
 		<ul class="border mt-2 py-2 font-mono text-sm">
-			{#each $recentLogs as log}
+			{#each $recentLogs as log (log.timestamp)}
 				<li class={clsx(`py-2 px-4`, log.type == 'error' ? 'bg-icds-error-bg' : 'bg-gray-50')}>
 					<div>
 						<strong class="text-base">

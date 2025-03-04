@@ -101,7 +101,7 @@
 		<Icon><Logo /></Icon>
 	</div>
 
-	{#each primarySideNavItems as { id, title, href }}
+	{#each primarySideNavItems as { id, title, href } (id)}
 		{@const NavItemIcon = navItemDetail[id].icon}
 		<ic-navigation-item
 			label={title}
@@ -127,7 +127,7 @@
 		</ic-navigation-item>
 	{/each}
 
-	{#each secondarySideNavItems as { id, title, href }}
+	{#each secondarySideNavItems as { id, title, href } (id)}
 		{@const NavItemIcon = navItemDetail[id].icon}
 		{#if !isSmall}
 			<ic-navigation-item

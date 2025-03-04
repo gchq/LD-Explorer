@@ -54,7 +54,7 @@
 	</div>
 
 	{#if sourcesExist}
-		{#each allSources as source, index}
+		{#each allSources as source, index (index)}
 			{#if source.type === 'REMOTE'}
 				<RemoteSourceCard source={allSources[index] as RemoteSource} />
 			{:else}

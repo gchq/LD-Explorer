@@ -23,7 +23,7 @@
 
 <Table>
 	<TableHead>
-		{#each variables as variable}
+		{#each variables as variable (variable)}
 			<TableHeading value={`?${variable}`} />
 		{/each}
 	</TableHead>

@@ -66,7 +66,7 @@
 						<List listType="no-symbol">
 							{#each uniqueTerms(quads
 									.filter((q) => q.predicate.value == iri)
-									.map((q) => q.object)) as object}
+									.map((q) => q.object)) as object (object.id)}
 								<ListItem>
 									<Term term={object} />
 								</ListItem>
