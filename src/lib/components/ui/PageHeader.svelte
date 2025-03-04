@@ -27,7 +27,7 @@
 		</h2>
 	</ic-typography>
 
-	{#each tabs as tab}
+	{#each tabs as tab (tab.tabIndex)}
 		<ic-navigation-item
 			slot="tabs"
 			label={tab.title}

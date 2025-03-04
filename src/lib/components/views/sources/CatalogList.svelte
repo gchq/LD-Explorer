@@ -47,7 +47,7 @@
 		<TableHeading value="Actions" alignment="right" />
 	</TableHead>
 	<TableBody>
-		{#each catalogEntries as { url, name, description }}
+		{#each catalogEntries as { url, name, description } (url)}
 			<TableRow>
 				<TableData><span class="font-bold">{name}</span></TableData>
 				<TableData>

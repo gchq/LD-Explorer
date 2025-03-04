@@ -34,7 +34,7 @@
 		a good jumping-off point to start exploring your active datasets.</P
 	>
 	<List listType="ul">
-		{#each popularIris as iri}
+		{#each popularIris as iri (iri.id)}
 			<ListItem>
 				<Term term={iri} />
 			</ListItem>

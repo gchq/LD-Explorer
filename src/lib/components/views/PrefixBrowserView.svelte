@@ -43,7 +43,7 @@
 		<TableHeading value="IRI" className="w-10/12" />
 	</TableHead>
 	<TableBody>
-		{#each $prefixes.sort((a, b) => (a.label < b.label ? -1 : 1)) as prefix}
+		{#each $prefixes.sort((a, b) => (a.label < b.label ? -1 : 1)) as prefix (prefix.iri)}
 			<TableRow>
 				<TableData>
 					{prefix.label}

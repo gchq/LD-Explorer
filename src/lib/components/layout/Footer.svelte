@@ -9,7 +9,7 @@
 	description="LD-Explorer is a prototype project developed and maintained by GCHQ."
 	caption="All content is available under the Open Government Licence v3.0, except source code and code examples which are available under the Apache 2 Licence."
 >
-	{#each footerNavItems as { href, title }}
+	{#each footerNavItems as { href, title, id } (id)}
 		<ic-footer-link
 			class="pr-10"
 			slot="link"

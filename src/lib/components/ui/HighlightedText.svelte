@@ -11,7 +11,7 @@
 	let parts = $derived(text.split(new RegExp(`(${highlight || '?!'})`, 'i')).filter(Boolean));
 </script>
 
-{#each parts as part}
+{#each parts as part, idx (idx)}
 	{#if part.toLowerCase() === highlight.toLowerCase()}
 		<mark>{part}</mark>
 	{:else}
