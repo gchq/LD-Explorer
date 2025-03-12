@@ -5,7 +5,7 @@
 	import cytoscape, { type Core as CytoscapeCore } from 'cytoscape';
 	import { cytoscapeSettings, getCytoscapeElementsForQuads } from '$lib/util/cytoscape/cytoscape';
 	import { Button } from '$lib/components';
-	import type { Quad } from 'n3';
+	import type { Quad } from '@rdfjs/types';
 	import layout from '$lib/util/cytoscape/layout';
 	import { onMount } from 'svelte';
 	import { prefixes } from '$lib/stores/prefixes.store';

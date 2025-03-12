@@ -12,7 +12,7 @@
 		Term
 	} from '$lib/components';
 	import { getItemsForPage, getTotalPages } from '$lib/util/pagination.utils';
-	import type { Quad } from 'n3';
+	import type { Quad } from '@rdfjs/types';
 	import { filterQuads } from '$lib/util/filter.utils';
 	import { settings } from '$lib/stores/settings.store';
 

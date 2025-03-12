@@ -2,7 +2,7 @@
 
 <script lang="ts">
 	import Self from '$lib/components/views/ClassHeirachyView.svelte';
-	import type { Quad, Quad_Subject } from 'n3';
+	import type { Quad, Quad_Subject } from '@rdfjs/types';
 	import { Term, Tree, TreeItem } from '$lib/components';
 
 	interface Props {

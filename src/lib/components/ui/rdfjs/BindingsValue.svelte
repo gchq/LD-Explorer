@@ -3,7 +3,7 @@
 <script lang="ts">
 	import type { Bindings } from '@comunica/types';
 	import { Term } from '$lib/components';
-	import type { Variable } from 'n3';
+	import type { Variable } from '@rdfjs/types';
 
 	interface Props {
 		variable: string | Variable;

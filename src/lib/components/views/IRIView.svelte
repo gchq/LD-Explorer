@@ -11,9 +11,11 @@
 		TableHead,
 		TableHeading,
 		TableRow,
-		Term
+		Term as TermComponent
 	} from '$lib/components';
-	import { type Term as N3Term, NamedNode, type Quad } from 'n3';
+
+	import type { Term, Quad } from '@rdfjs/types';
+	import { NamedNode } from 'n3';
 	import type { Readable } from 'svelte/store';
 	import type { StreamedQuery } from '$stores/streamedQuery.store';
 
@@ -38,7 +40,7 @@
 	// duplicate data in duplicate graphs and the user may want to see this. It's confusing to see duplicates right now
 	// because we are hiding the "graph" part of the quad but if we ever bring that in, this function will
 	// hide the fact that the same value appeared in multiple graphs.
-	function uniqueTerms(terms: N3Term[]): N3Term[] {
+	function uniqueTerms(terms: Term[]): Term[] {
 		return [...new Map(terms.map((term) => [term.value, term])).values()];
 	}
 </script>
@@ -61,14 +63,14 @@
 		<TableBody>
 			{#each Array.from(uniquePredicateIRIs) as iri, idx (idx)}
 				<TableRow>
-					<TableData><Term term={new NamedNode(iri)} applyVerticalMargins /></TableData>
+					<TableData><TermComponent term={new NamedNode(iri)} applyVerticalMargins /></TableData>
 					<TableData>
 						<List listType="no-symbol">
 							{#each uniqueTerms(quads
 									.filter((q) => q.predicate.value == iri)
-									.map((q) => q.object)) as object (object.id)}
+									.map((q) => q.object)) as object (object.value)}
 								<ListItem>
-									<Term term={object} />
+									<TermComponent term={object} />
 								</ListItem>
 							{/each}
 						</List>

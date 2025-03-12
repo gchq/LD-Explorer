@@ -4,7 +4,7 @@ import { type StreamedQuery, createQueryStore } from './streamedQuery.store';
 import { sourceList, sources } from '$lib/stores/sources/local-sources.store';
 import type { Bindings } from '@comunica/types';
 import type { MockInstance } from 'vitest';
-import type { Quad } from 'n3';
+import type { Quad } from '@rdfjs/types';
 import { QueryStatus } from '$lib/types';
 import { get } from 'svelte/store';
 import { importRdfDocument } from '$lib/util/source.util';

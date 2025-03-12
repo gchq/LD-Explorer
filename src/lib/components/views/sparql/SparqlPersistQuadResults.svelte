@@ -3,7 +3,7 @@
 <script lang="ts">
 	import { Alert, Button, Section, SummaryDetail } from '$lib/components';
 	import type { IcValueEventDetail } from '@ukic/web-components';
-	import type { Quad } from 'n3';
+	import type { Quad } from '@rdfjs/types';
 	import { QueryStatus } from '$lib/types';
 	import type { StreamedQuery } from '$stores/streamedQuery.store';
 	import { importQuads } from '$lib/util/source.util';

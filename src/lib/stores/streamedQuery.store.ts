@@ -22,7 +22,7 @@ import type { Bindings, BindingsStream } from '@comunica/types';
 import { type Readable, writable } from 'svelte/store';
 import { comunicaLogger, logger } from '$stores/logger.store';
 import type { AsyncIterator } from 'asynciterator';
-import type { Quad } from 'n3';
+import type { Quad } from '@rdfjs/types';
 import { QueryStatus } from '$lib/types';
 import type { QuerySources } from './sources/sources.store';
 import type { ResultStream } from '@rdfjs/types';
