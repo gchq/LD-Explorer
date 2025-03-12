@@ -2,7 +2,8 @@
 
 <script lang="ts">
 	import { Alert, SparqlQueryDetail } from '$lib/components';
-	import { NamedNode, type Quad } from 'n3';
+	import type { Quad } from '@rdfjs/types';
+	import { NamedNode } from 'n3';
 	import createTabDetail, { TabIndices } from '$lib/navigation/tabs/IRIDetailNavigation';
 	import { ClassHeirachyView } from '$lib/components/views';
 	import type { PageData } from './$types';

@@ -1,7 +1,7 @@
 /* (c) Crown Copyright GCHQ */
 
 import type { Bindings } from '@comunica/types';
-import type { Quad } from 'n3';
+import type { Quad } from '@rdfjs/types';
 
 /**
  * Takes a collection of bindings and a search term, then filters through the collection to include

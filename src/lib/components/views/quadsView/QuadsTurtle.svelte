@@ -1,7 +1,8 @@
 <!-- (c) Crown Copyright GCHQ -->
 
 <script lang="ts">
-	import { type Quad, Writer } from 'n3';
+	import type { Quad } from '@rdfjs/types';
+	import { Writer } from 'n3';
 
 	interface Props {
 		quads: Quad[];

@@ -1,6 +1,7 @@
 /* (c) Crown Copyright GCHQ */
 
-import { Parser as N3Parser, type Store as N3Store, type Quad } from 'n3';
+import type { Quad } from '@rdfjs/types';
+import { Parser as N3Parser, type Store as N3Store } from 'n3';
 import { JsonLdParser } from 'jsonld-streaming-parser';
 import type { LocalSource } from '$lib/stores/sources/local-sources.store';
 import { RdfaParser } from 'rdfa-streaming-parser';

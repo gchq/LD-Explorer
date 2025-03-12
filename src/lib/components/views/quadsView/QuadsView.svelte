@@ -3,7 +3,7 @@
 <script lang="ts">
 	import { Alert, Button } from '$lib/components';
 	import { Graph, Table, Turtle } from '$lib/components/ui/icons';
-	import type { Quad } from 'n3';
+	import type { Quad } from '@rdfjs/types';
 	import QuadsGraph from './QuadsGraph.svelte';
 	import QuadsTable from './QuadsTable.svelte';
 	import QuadsTurtle from './QuadsTurtle.svelte';

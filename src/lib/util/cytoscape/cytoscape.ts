@@ -2,7 +2,7 @@
 
 import type { ElementDefinition } from 'cytoscape';
 import type { Prefix } from '$lib/types';
-import type { Quad } from 'n3';
+import type { Quad } from '@rdfjs/types';
 import { abbreviateTermPrefix } from '$lib/util/term.utils';
 import layout from './layout';
 import style from './style';
