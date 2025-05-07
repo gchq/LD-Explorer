@@ -47,7 +47,7 @@
 		<Tab title="Sample Data" />
 		{#snippet panels()}
 			<TabPanel>
-				<ic-data-entity heading="Source Detail">
+				<ic-data-list heading="Source Detail">
 					<ic-data-row label="ID" value={source.id}></ic-data-row>
 					<ic-data-row label="Name" value={source.name}></ic-data-row>
 					<ic-data-row
@@ -57,7 +57,7 @@
 					<ic-data-row label="Enabled">
 						<ic-status-tag
 							slot="value"
-							small
+							size="small"
 							label={source.enabled ? 'Enabled' : 'Disabled'}
 							status={source.enabled ? 'success' : 'warning'}
 						></ic-status-tag>
@@ -66,7 +66,7 @@
 					{#if source.type == 'REMOTE'}
 						<ic-data-row label="URL" value={source.url}></ic-data-row>
 					{/if}
-				</ic-data-entity>
+				</ic-data-list>
 
 				<div class="mt-4">
 					<ButtonLink label="Edit" href={editUrl} />

@@ -10,6 +10,6 @@
 	let { groupTitle, children }: Props = $props();
 </script>
 
-<ic-accordion-group size="large" class="block mb-10" single-expansion group-title={groupTitle}>
+<ic-accordion-group size="large" class="block mb-10" single-expansion label={groupTitle}>
 	{@render children?.()}
 </ic-accordion-group>

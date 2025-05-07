@@ -35,7 +35,7 @@
 	{variant}
 	{visible}
 	{size}
-	text-label={textLabel}
+	label={textLabel}
 	accessible-label={ariaLabel}
 >
 </ic-badge>
