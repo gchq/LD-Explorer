@@ -13,7 +13,7 @@
 {#await defineCustomElements() then}
 	<div class="tracking-wide leading-relaxed">
 		<SkipToContent landmarkHref="#content" />
-		<ic-theme color="#0c857b"></ic-theme>
+		<ic-theme brand-color="#0c857b"></ic-theme>
 		<main class="sm:flex h-full">
 			<SideNav />
 			<div id="content" tabIndex="-1" class="flex-row flex-grow">

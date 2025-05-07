@@ -26,7 +26,7 @@
 		className,
 		label,
 		variant = 'primary',
-		size = 'default',
+		size = 'medium',
 		type = 'submit',
 		disabled,
 		ariaLabel
@@ -48,6 +48,6 @@
 	{label}
 
 	{#if icon}
-		<i slot="icon">{@render icon()}</i>
+		<i slot="left-icon">{@render icon()}</i>
 	{/if}
 </ic-button>

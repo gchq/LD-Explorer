@@ -14,14 +14,20 @@
 	let { id, name, enabled } = $derived(source);
 </script>
 
-<ic-card class="mb-4" full-width heading={name} clickable="false" data-testid="data-source-card">
+<ic-card-vertical
+	class="mb-4"
+	full-width
+	heading={name}
+	clickable="false"
+	data-testid="data-source-card"
+>
 	<ic-typography variant="subtitle-small" slot="subheading">
 		{id}<br />
 	</ic-typography>
 
 	<ic-status-tag
 		slot="adornment"
-		small
+		size="small"
 		label={enabled ? 'Enabled' : 'Disabled'}
 		status={enabled ? 'success' : 'warning'}
 	></ic-status-tag>
@@ -33,4 +39,4 @@
 	<div slot="interaction-controls">
 		{@render interactionControls()}
 	</div>
-</ic-card>
+</ic-card-vertical>

@@ -1,14 +1,12 @@
 /* (c) Crown Copyright GCHQ */
 
-import { applyPolyfills, defineCustomElements } from '@ukic/web-components/loader';
+import { defineCustomElements } from '@ukic/web-components/loader';
 import { beforeAll, vi } from 'vitest';
 import { configure } from '@testing-library/dom';
 
 // Register ICDS components with DOM
 beforeAll(() => {
-	applyPolyfills().then(() => {
-		defineCustomElements(window);
-	});
+	defineCustomElements(window);
 }, 100000);
 
 // Configure testing library

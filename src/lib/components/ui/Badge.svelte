@@ -23,7 +23,7 @@
 		visible = true,
 		position = 'far',
 		variant = 'neutral',
-		size = 'default',
+		size = 'medium',
 		textLabel,
 		ariaLabel
 	}: Props = $props();
@@ -35,7 +35,7 @@
 	{variant}
 	{visible}
 	{size}
-	text-label={textLabel}
+	label={textLabel}
 	accessible-label={ariaLabel}
 >
 </ic-badge>

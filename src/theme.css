@@ -3,8 +3,8 @@
 
 	/* ICDS tokens */
 	--color-icds-personality: var(--ic-theme-primary);
-	--color-icds-hyperlink: var(--ic-hyperlink);
-	--color-icds-hyperlink-hover: var(--ic-hyperlink-hover);
+	--color-icds-hyperlink: var(--ic-color-link-default);
+	--color-icds-hyperlink-hover: var(--ic-color-link-hover);
 	--color-icds-warning: var(--ic-status-warning);
 	--color-icds-warning-bg: var(--ic-status-error-background);
 	--color-icds-error: var(--ic-status-error);

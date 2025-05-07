@@ -15,7 +15,7 @@
 	let resultText = $derived(result ? 'True' : 'False');
 </script>
 
-<ic-card heading={resultText} full-width>
+<ic-card-vertical heading={resultText} full-width>
 	<i slot="icon"
 		><Icon>
 			{#if result == true}<DBTrue />{:else}<DBFalse />{/if}
@@ -24,4 +24,4 @@
 	<ic-typography slot="message"
 		><P>The ASK query returned a <strong>{result}</strong> result.</P></ic-typography
 	>
-</ic-card>
+</ic-card-vertical>
