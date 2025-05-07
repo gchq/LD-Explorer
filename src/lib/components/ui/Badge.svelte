@@ -23,7 +23,7 @@
 		visible = true,
 		position = 'far',
 		variant = 'neutral',
-		size = 'default',
+		size = 'medium',
 		textLabel,
 		ariaLabel
 	}: Props = $props();
