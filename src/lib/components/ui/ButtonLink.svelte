@@ -21,7 +21,7 @@
 		href,
 		external = false,
 		variant = 'primary',
-		size = 'default',
+		size = 'medium',
 		ariaLabel
 	}: Props = $props();
 
