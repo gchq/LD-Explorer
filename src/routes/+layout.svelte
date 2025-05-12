@@ -11,18 +11,19 @@
 <ViewportHelper bind:isSmall />
 
 {#await defineCustomElements() then}
-	<div class="tracking-wide leading-relaxed">
+	<div class="tracking-wide leading-relaxed scheme-only-light text-icds-primary-text">
 		<SkipToContent landmarkHref="#content" />
-		<ic-theme brand-color="#0c857b"></ic-theme>
-		<main class="sm:flex h-full">
-			<SideNav />
-			<div id="content" tabIndex="-1" class="flex-row flex-grow">
-				<div class="min-h-screen">
-					<slot />
+		<ic-theme brand-color="#0c857b">
+			<main class="sm:flex h-full">
+				<SideNav />
+				<div id="content" tabIndex="-1" class="flex-row flex-grow">
+					<div class="min-h-screen">
+						<slot />
+					</div>
+					<ic-back-to-top target="main" variant={isSmall ? 'icon' : 'default'}></ic-back-to-top>
+					<Footer />
 				</div>
-				<ic-back-to-top target="main" variant={isSmall ? 'icon' : 'default'}></ic-back-to-top>
-				<Footer />
-			</div>
-		</main>
+			</main>
+		</ic-theme>
 	</div>
 {/await}
