@@ -3,3 +3,11 @@
 
 @import './theme.css';
 @import 'tailwindcss';
+
+/*
+Hopefully temporary fix to make the application usable
+while ICDS are working out the issues with dark mode.
+*/
+:root {
+	color-scheme: only light;
+}
