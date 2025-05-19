@@ -4,7 +4,7 @@ import '@testing-library/jest-dom';
 import FilterField from './FilterField.svelte';
 import { render } from '$test-helpers/render';
 import { screen } from 'shadow-dom-testing-library';
-import { waitFor } from '@testing-library/svelte';
+import { waitFor, fireEvent } from '@testing-library/svelte';
 
 describe('FilterField component', () => {
 	let filterField: HTMLElement;
@@ -23,7 +23,7 @@ describe('FilterField component', () => {
 		});
 
 		it('has a ring when focussed', async () => {
-			filterField.focus();
+			await fireEvent.focus(filterField);
 
 			await waitFor(() => {
 				// Bad practice to test for class existence but this is the only thing that
