@@ -2,6 +2,7 @@
 
 <script lang="ts">
 	import { base } from '$app/paths';
+	import { Link } from '$lib/components';
 	import clsx from 'clsx';
 
 	// Props
@@ -14,12 +15,13 @@
 	let { title, href, selected = false }: Props = $props();
 </script>
 
-<li class="hover:bg-gray-100">
-	<a
-		class={clsx(
-			'px-4 inline-block w-full p-2 hover:bg-gray-100 border-l-8',
-			selected ? 'font-bold border-icds-action' : 'border-gray-50'
-		)}
-		href={`${base}${href}`}>{title}</a
+<li
+	class={clsx(
+		'relative hover:bg-icds-tree-view-hover',
+		selected && 'before:content-[""] before:absolute before:w-2 before:h-full before:bg-icds-action'
+	)}
+>
+	<a class={clsx('px-4 inline-block w-full p-2')} href={`${base}${href}`}
+		><ic-typography>{title}</ic-typography></a
 	>
 </li>

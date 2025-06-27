@@ -3,6 +3,10 @@
 	--font-display: var(--ic-font-body-family);
 
 	/* ICDS tokens */
+	--color-icds-background-primary: var(--ic-color-background-primary);
+	--color-icds-page-header-border: var(--ic-page-header-border);
+	--color-icds-page-header-background: var(--ic-page-header-background);
+	--color-icds-tree-view-hover: var(--ic-tree-view-hover);
 	--color-icds-personality: var(--ic-theme-primary);
 	--color-icds-hyperlink: var(--ic-color-link-default);
 	--color-icds-hyperlink-hover: var(--ic-color-link-hover);
