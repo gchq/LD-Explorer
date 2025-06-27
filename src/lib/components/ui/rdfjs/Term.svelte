@@ -34,9 +34,12 @@
 	// State
 	const termTypeDetails = {
 		NamedNode: { colour: 'bg-amber-400', text: 'Resource' },
-		BlankNode: { colour: 'text-black border border-black', text: 'Blank Node' },
-		Literal: { colour: 'bg-black text-white', text: 'Literal' },
-		Variable: { colour: 'bg-gray-200', text: 'Variable' },
+		BlankNode: {
+			colour: 'text-black border border-black dark:border-white dark:text-white',
+			text: 'Blank Node'
+		},
+		Literal: { colour: 'bg-black text-white dark:bg-gray-200 dark:text-black', text: 'Literal' },
+		Variable: { colour: 'bg-gray-200 dark:bg-gray-800 dark:text-white', text: 'Variable' },
 		DefaultGraph: { colour: 'bg-pink-600 text-white', text: 'Default Graph' },
 		Quad: { colour: 'bg-lime-400', text: 'Quoted Triple' }
 	};
@@ -70,7 +73,7 @@
 				</Link>
 			{:else}
 				{#if settings.term__showLanguageTag && term.termType == 'Literal' && term.language && term.language.length}
-					<span class="bg-gray-100 px-1">@{term.language}</span>
+					<span class="bg-gray-100 dark:bg-gray-700 px-1">@{term.language}</span>
 				{/if}
 				<TermValue termValue={termDisplayValue} {highlightText} />
 			{/if}
