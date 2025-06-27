@@ -2,7 +2,6 @@
 
 <script lang="ts">
 	import { base } from '$app/paths';
-	import { Link } from '$lib/components';
 	import clsx from 'clsx';
 
 	// Props
