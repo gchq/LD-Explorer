@@ -14,5 +14,5 @@
 </script>
 
 <div>
-	<ic-alert class="my-4 text-inherit" {variant} {heading} {dismissible} {message}></ic-alert>
+	<ic-alert class="my-4" {variant} {heading} {dismissible} {message}></ic-alert>
 </div>
