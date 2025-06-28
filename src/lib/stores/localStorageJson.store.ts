@@ -13,10 +13,14 @@ import { writable } from 'svelte/store';
 export function createLocalStorageJSONStore<T>(key: string, defaultValue: T) {
 	const namespacedKey = `${namespace}${key}`;
 
-	const { set, subscribe, update } = writable<T>({
-		...defaultValue,
-		...retrieveJSONObject(namespacedKey)
-	});
+	const { set, subscribe, update } = writable<T>(
+		defaultValue !== null && typeof defaultValue === 'object' && !Array.isArray(defaultValue)
+			? {
+					...defaultValue,
+					...retrieveJSONObject(namespacedKey)
+				}
+			: (retrieveJSONObject(namespacedKey) ?? defaultValue)
+	);
 
 	subscribe((store) => {
 		storeJSONObject<T>(namespacedKey, store);
