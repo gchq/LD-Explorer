@@ -15,9 +15,10 @@
 <ViewportHelper bind:isSmall />
 
 {#await defineCustomElements() then}
-	<div class="tracking-wide leading-relaxed">
-		<SkipToContent landmarkHref="#content" />
-		<ic-theme brand-color="#0c857b" theme={darkMode ? 'dark' : 'light'}>
+	<ic-theme brand-color="#0c857b" theme={darkMode ? 'dark' : 'light'}>
+		<div class="tracking-wide leading-relaxed text-icds-typography">
+			<SkipToContent landmarkHref="#content" />
+
 			<main class="sm:flex h-full">
 				<SideNav />
 				<div id="content" tabIndex="-1" class="flex-row flex-grow">
@@ -28,6 +29,6 @@
 					<Footer />
 				</div>
 			</main>
-		</ic-theme>
-	</div>
+		</div>
+	</ic-theme>
 {/await}

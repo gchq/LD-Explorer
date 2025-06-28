@@ -17,10 +17,9 @@
 <li
 	class={clsx(
 		'relative hover:bg-icds-tree-view-hover',
-		selected && 'before:content-[""] before:absolute before:w-2 before:h-full before:bg-icds-action'
+		selected &&
+			'font-bold before:content-[""] before:absolute before:w-2 before:h-full before:bg-icds-action'
 	)}
 >
-	<a class={clsx('px-4 inline-block w-full p-2')} href={`${base}${href}`}
-		><ic-typography>{title}</ic-typography></a
-	>
+	<a class={clsx('pl-6 pr-4 py-2 inline-block w-full')} href={`${base}${href}`}>{title}</a>
 </li>

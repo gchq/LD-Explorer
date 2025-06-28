@@ -23,7 +23,7 @@
 						log.type == 'error' ? 'bg-icds-error-bg' : 'bg-gray-50 dark:bg-gray-800'
 					)}
 				>
-					<div class="text-black dark:text-white">
+					<div>
 						<strong class="text-base">
 							<time datetime={new Date(log.timestamp).toLocaleString()}
 								>{new Date(log.timestamp).toLocaleString()}</time
