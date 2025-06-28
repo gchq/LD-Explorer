@@ -33,4 +33,6 @@
 		/>
 	</div>
 </ic-section-container>
-<hr class="py-4 my-14 md:my-4 w-2/3 block m-auto border-t border-t-gray-200" />
+<hr
+	class="py-4 my-14 md:my-4 w-2/3 block m-auto border-t border-t-gray-200 dark:border-t-gray-600"
+/>

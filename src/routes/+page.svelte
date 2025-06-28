@@ -42,7 +42,7 @@
 	</div>
 </ic-hero>
 
-<div class="bg-gray-100 text-center md:text-left px-4">
+<div class="bg-gray-100 dark:bg-gray-800 text-center md:text-left px-4">
 	<ic-section-container align="full-width" class="md:grid md:grid-cols-2 m-auto max-w-6xl p-4">
 		<div class="mr-4 py-4">
 			<Heading text="The Problem" tag="h2" variant="h3" />
@@ -66,7 +66,9 @@
 	</ic-section-container>
 </div>
 
-<div class="bg-gray-50 py-8 px-4 md:px-16 border-b border-b-gray-100 mb-4">
+<div
+	class="bg-gray-50 dark:bg-gray-900 py-8 px-4 md:px-16 border-b border-b-gray-100 dark:border-b-gray-600 mb-4"
+>
 	<ic-section-container align="center" class="font-medium m-auto max-w-6xl">
 		<p>
 			LD-Explorer is a browser-based user interface running on top of the open-source <Link

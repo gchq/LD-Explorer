@@ -20,10 +20,10 @@
 		<div>
 			<ic-typography>{description}</ic-typography>
 			<div class="mt-2">
-				<ic-typography class="bg-gray-100 inline px-2 py-1" variant="caption">
+				<ic-typography class="bg-gray-100 dark:bg-gray-700 inline px-2 py-1" variant="caption">
 					Local
 				</ic-typography>
-				<ic-typography class="bg-gray-100 inline px-2 py-1" variant="caption">
+				<ic-typography class="bg-gray-100 dark:bg-gray-700 inline px-2 py-1" variant="caption">
 					Triples: {store.size}
 				</ic-typography>
 			</div>

@@ -7,6 +7,7 @@
 
 	// State (the "dirty" settings are the ones which are in-flight and have not yet been applied)
 	const dirtySettings = {
+		general__darkMode: $settings.general__darkMode,
 		general__defaultLimit: $settings.general__defaultLimit,
 		general__showQuads: $settings.general__showQuads,
 		general__showRDFSLabels: $settings.general__showRDFSLabels
@@ -45,6 +46,13 @@
 			label="Display Labels"
 			helperText="Attempt to fetch and display RDFS labels from active data sources when viewing terms."
 			bind:checked={dirtySettings.general__showRDFSLabels}
+			onchange={() => (dirty = true)}
+		/>
+
+		<Switch
+			label="Dark Mode"
+			helperText="Toggle the dark colour theme."
+			bind:checked={dirtySettings.general__darkMode}
 			onchange={() => (dirty = true)}
 		/>
 
