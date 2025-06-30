@@ -7,4 +7,6 @@
 	let { code }: Props = $props();
 </script>
 
-<pre role="code" class="whitespace-pre bg-gray-100 p-4 my-2 overflow-x-scroll">{code}</pre>
+<pre
+	role="code"
+	class="whitespace-pre bg-gray-100 dark:bg-gray-700 p-4 my-2 overflow-x-scroll">{code}</pre>

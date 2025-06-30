@@ -3,6 +3,7 @@
 import { createLocalStorageJSONStore } from './localStorageJson.store';
 
 interface GeneralSettings {
+	general__darkMode: boolean;
 	general__defaultLimit: number;
 	general__showQuads: boolean;
 	general__showRDFSLabels: boolean;
@@ -17,6 +18,9 @@ export interface TermSettings {
 export type Settings = GeneralSettings & TermSettings;
 
 const defaultSettings: Settings = {
+	general__darkMode: !!(
+		window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+	),
 	general__defaultLimit: 1000,
 	general__showQuads: false,
 	general__showRDFSLabels: false,

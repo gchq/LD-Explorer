@@ -5,15 +5,22 @@
 	import { Footer, SideNav, SkipToContent } from '$lib/components';
 	import { ViewportHelper } from '$lib/components/helpers';
 	import { defineCustomElements } from '@ukic/web-components/loader';
+	import { settings } from '$lib/stores/settings.store';
+
 	let isSmall: boolean;
 </script>
 
 <ViewportHelper bind:isSmall />
 
 {#await defineCustomElements() then}
-	<div class="tracking-wide leading-relaxed scheme-only-light text-icds-primary-text">
-		<SkipToContent landmarkHref="#content" />
-		<ic-theme brand-color="#0c857b">
+	<ic-theme
+		id="themeWrapper"
+		brand-color="#0c857b"
+		theme={$settings.general__darkMode ? 'dark' : 'light'}
+	>
+		<div class="tracking-wide leading-relaxed text-icds-typography">
+			<SkipToContent landmarkHref="#content" />
+
 			<main class="sm:flex h-full">
 				<SideNav />
 				<div id="content" tabIndex="-1" class="flex-row flex-grow">
@@ -24,6 +31,6 @@
 					<Footer />
 				</div>
 			</main>
-		</ic-theme>
-	</div>
+		</div>
+	</ic-theme>
 {/await}

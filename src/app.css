@@ -4,10 +4,17 @@
 @import './theme.css';
 @import 'tailwindcss';
 
-/*
-Hopefully temporary fix to make the application usable
-while ICDS are working out the issues with dark mode.
+/* 
+For toggling dark mode manually through the use of settings.
+https://tailwindcss.com/docs/dark-mode#toggling-dark-mode-manually
 */
-:root {
-	color-scheme: only light;
+@custom-variant dark (&:where(.ic-theme-dark, .ic-theme-dark *));
+
+/* Colour theme */
+html:has(#themeWrapper.ic-theme-dark) {
+	color-scheme: dark;
+}
+
+html:has(#themeWrapper.ic-theme-light) {
+	color-scheme: light;
 }
