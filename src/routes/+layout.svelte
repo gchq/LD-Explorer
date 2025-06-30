@@ -8,14 +8,16 @@
 	import { settings } from '$lib/stores/settings.store';
 
 	let isSmall: boolean;
-
-	$: darkMode = $settings.general__darkMode;
 </script>
 
 <ViewportHelper bind:isSmall />
 
 {#await defineCustomElements() then}
-	<ic-theme brand-color="#0c857b" theme={darkMode ? 'dark' : 'light'}>
+	<ic-theme
+		id="themeWrapper"
+		brand-color="#0c857b"
+		theme={$settings.general__darkMode ? 'dark' : 'light'}
+	>
 		<div class="tracking-wide leading-relaxed text-icds-typography">
 			<SkipToContent landmarkHref="#content" />
 

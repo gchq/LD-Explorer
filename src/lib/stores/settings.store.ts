@@ -30,9 +30,3 @@ const defaultSettings: Settings = {
 };
 
 export const settings = createLocalStorageJSONStore('settings', defaultSettings);
-
-// On dark mode toggle, update the document element to add the 'dark' class, allowing the
-// TailwindCSS custom variant to apply :dark styles.
-settings.subscribe(({ general__darkMode }) => {
-	document.documentElement.classList.toggle('dark', general__darkMode);
-});

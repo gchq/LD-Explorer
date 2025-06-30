@@ -33,7 +33,7 @@
 
 	// State
 	const termTypeDetails = {
-		NamedNode: { colour: 'bg-amber-400', text: 'Resource' },
+		NamedNode: { colour: 'bg-amber-400 text-black', text: 'Resource' },
 		BlankNode: {
 			colour: 'border border-black dark:border-white',
 			text: 'Blank Node'
@@ -41,7 +41,7 @@
 		Literal: { colour: 'bg-black text-white dark:bg-gray-200 dark:text-black', text: 'Literal' },
 		Variable: { colour: 'bg-gray-200 dark:bg-gray-800', text: 'Variable' },
 		DefaultGraph: { colour: 'bg-pink-600 text-white', text: 'Default Graph' },
-		Quad: { colour: 'bg-lime-400', text: 'Quoted Triple' }
+		Quad: { colour: 'bg-lime-400 text-black', text: 'Quoted Triple' }
 	};
 
 	let termDisplayValue = $derived(

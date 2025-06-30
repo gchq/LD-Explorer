@@ -8,13 +8,13 @@
 For toggling dark mode manually through the use of settings.
 https://tailwindcss.com/docs/dark-mode#toggling-dark-mode-manually
 */
-@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant dark (&:where(.ic-theme-dark, .ic-theme-dark *));
 
 /* Colour theme */
-html.dark {
+html:has(#themeWrapper.ic-theme-dark) {
 	color-scheme: dark;
 }
 
-html:not(.dark) {
+html:has(#themeWrapper.ic-theme-light) {
 	color-scheme: light;
 }
