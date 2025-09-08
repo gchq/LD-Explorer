@@ -5,12 +5,13 @@
 	import { IRISearchForm } from '$lib/components/views/forms';
 	import { NamedNode } from 'n3';
 	import { PageView } from '$lib/components/views';
-	import { base } from '$app/paths';
+	import { resolve } from '$app/paths';
 	import { goto } from '$app/navigation';
 
 	function handleSubmit(iri: string) {
 		if (iri && iri.length) {
-			goto(`${base}/explore/iris/detail?iri=${encodeURIComponent(iri)}`);
+			// eslint-disable-next-line svelte/no-navigation-without-resolve
+			goto(`${resolve('/explore/iris/detail')}?$iri=${encodeURIComponent(iri)}`);
 		}
 	}
 
