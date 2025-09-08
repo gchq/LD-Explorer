@@ -4,12 +4,12 @@
 	import { type LocalSource, sources } from '$stores/sources/local-sources.store';
 	import { LocalSourceForm } from '$lib/components/views/forms';
 	import { PageView } from '$lib/components/views';
-	import { base } from '$app/paths';
+	import { resolve } from '$app/paths';
 	import { goto } from '$app/navigation';
 
 	function handleSubmit(source: LocalSource) {
 		sources.addSource({ ...source, enabled: true });
-		goto(`${base}/sources`);
+		goto(resolve('/sources'));
 	}
 </script>
 

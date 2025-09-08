@@ -1,7 +1,7 @@
 <!-- (c) Crown Copyright GCHQ -->
 
 <script lang="ts">
-	import { base } from '$app/paths';
+	import { resolve } from '$app/paths';
 	import clsx from 'clsx';
 
 	// Props
@@ -12,6 +12,9 @@
 	}
 
 	let { title, href, selected = false }: Props = $props();
+
+	// @ts-expect-error see https://github.com/sveltejs/eslint-plugin-svelte/issues/1319
+	const resolvedHref = resolve(href);
 </script>
 
 <li
@@ -21,5 +24,5 @@
 			'font-bold before:content-[""] before:absolute before:w-2 before:h-full before:bg-icds-action'
 	)}
 >
-	<a class={clsx('pl-6 pr-4 py-2 inline-block w-full')} href={`${base}${href}`}>{title}</a>
+	<a class={clsx('pl-6 pr-4 py-2 inline-block w-full')} href={resolvedHref}>{title}</a>
 </li>
