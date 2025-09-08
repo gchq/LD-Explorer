@@ -3,7 +3,7 @@
 <script lang="ts">
 	import { Alert, Button, Link, Paragraph as P, TextField } from '$lib/components';
 	import { type RemoteSource, sources } from '$stores/sources/remote-sources.store';
-	import { base } from '$app/paths';
+	import { resolve } from '$app/paths';
 	import { goto } from '$app/navigation';
 
 	interface Props {
@@ -43,7 +43,7 @@
 	function handleRemove() {
 		// Probably should have some kind of "are you sure" functionality here haha
 		sources.removeSource(source.id);
-		goto(`${base}/sources`);
+		goto(resolve('/sources'));
 	}
 </script>
 

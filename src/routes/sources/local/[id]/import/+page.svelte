@@ -12,7 +12,7 @@
 	import type { PageData } from './$types';
 	import { PageView } from '$lib/components/views';
 	import { PrefixBrowserView } from '$lib/components/views';
-	import { base } from '$app/paths';
+	import { resolve } from '$app/paths';
 	import { goto } from '$app/navigation';
 
 	interface Props {
@@ -71,7 +71,7 @@
 		if (valid)
 			imports[currentImportType]
 				.importFunction(source, document)
-				.then(() => goto(`${base}/sources`))
+				.then(() => goto(resolve('/sources')))
 				.catch((err: Error) => (parseError = err.message));
 	}
 

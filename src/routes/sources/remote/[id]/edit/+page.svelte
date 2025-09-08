@@ -5,7 +5,7 @@
 	import type { PageData } from './$types';
 	import { PageView } from '$lib/components/views';
 	import { RemoteSourceForm } from '$lib/components/views/forms';
-	import { base } from '$app/paths';
+	import { resolve } from '$app/paths';
 	import { goto } from '$app/navigation';
 
 	interface Props {
@@ -17,7 +17,7 @@
 	// Events
 	function handleSubmit(source: RemoteSource) {
 		sources.updateSource({ ...source, enabled: true });
-		goto(`${base}/sources`);
+		goto(resolve('/sources'));
 	}
 </script>
 

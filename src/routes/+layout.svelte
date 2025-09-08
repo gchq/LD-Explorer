@@ -19,7 +19,7 @@
 		theme={$settings.general__darkMode ? 'dark' : 'light'}
 	>
 		<div class="tracking-wide leading-relaxed text-icds-typography">
-			<SkipToContent landmarkHref="#content" />
+			<SkipToContent fragmentId="content" />
 
 			<main class="sm:flex h-full">
 				<SideNav />

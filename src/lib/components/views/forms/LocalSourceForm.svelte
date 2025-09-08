@@ -3,7 +3,7 @@
 <script lang="ts">
 	import { Alert, Button, Link, TextField } from '$lib/components';
 	import { type LocalSource, sources } from '$stores/sources/local-sources.store';
-	import { base } from '$app/paths';
+	import { resolve } from '$app/paths';
 	import { goto } from '$app/navigation';
 
 	// Props
@@ -43,7 +43,7 @@
 	function handleRemove() {
 		// TODO: Probably should have some kind of "are you sure" functionality here
 		sources.removeSource(source.id);
-		goto(`${base}/sources`);
+		goto(resolve('/sources'));
 	}
 </script>
 
