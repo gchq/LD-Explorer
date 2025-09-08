@@ -1,7 +1,7 @@
 <!-- (c) Crown Copyright GCHQ -->
 
 <script lang="ts">
-	import { base } from '$app/paths';
+	import { asset } from '$app/paths';
 	import { clsx } from 'clsx';
 	import type { Snippet } from 'svelte';
 
@@ -26,11 +26,7 @@
 		{@render children?.()}
 	</div>
 	<div class="lg:p-4 lg:w-1/2">
-		<img
-			src={`${base}${screenshot}`}
-			class="border border-gray-200 shadow-xl"
-			alt={screenshotAlt}
-		/>
+		<img src={asset(screenshot)} class="border border-gray-200 shadow-xl" alt={screenshotAlt} />
 	</div>
 </ic-section-container>
 <hr
