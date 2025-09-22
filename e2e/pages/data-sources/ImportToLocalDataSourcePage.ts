@@ -14,7 +14,7 @@ export default class ImportToLocalDataSourcePage extends LDExplorerPage {
 
 	constructor(public readonly page: Page) {
 		super(page);
-		this.importFormatDropdown = page.getByRole('button', { name: 'Import Format' });
+		this.importFormatDropdown = page.getByRole('combobox', { name: 'Import Format' });
 		this.importFormatMenu = page.getByRole('listbox', { name: 'Import Format' });
 		this.importTextField = page.getByRole('textbox');
 		this.submitButton = page.getByRole('button', { name: 'Import', exact: true });
