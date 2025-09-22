@@ -1,7 +1,7 @@
 /* (c) Crown Copyright GCHQ */
 
 import { get } from 'svelte/store';
-import { engine } from '$lib/querying/engine';
+import { createEngine } from '$lib/querying/engine';
 import { sourceList } from '$stores/sources/sources.store';
 import defaultLabels from '$lib/data/labels.json';
 
@@ -21,7 +21,7 @@ let labelLookup = $state<LabelLookup>(defaultLabels);
 function createSparqlQueryForLabels(terms: string[], lang = 'en') {
 	return `
     PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-    
+
     SELECT DISTINCT ?entity ?label
     WHERE {
 	 		VALUES ?entity { ${terms.map((term) => `<${term}> `).join(' ')} }
@@ -82,6 +82,7 @@ async function processLabelsQueue() {
 
 	const sparql = createSparqlQueryForLabels(labelsToFetch);
 
+	const engine = await createEngine();
 	const results = await engine.queryBindings(sparql, {
 		sources: get(sourceList),
 		readonly: true,
