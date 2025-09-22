@@ -1,10 +1,10 @@
 /* (c) Crown Copyright GCHQ */
 
 import { QueryEngine } from '@comunica/query-sparql/lib/index-browser';
-import { engine } from './engine';
+import { createEngine } from './engine';
 
 describe('Comunica engine', () => {
-	it('exports a comunica query engine', () => {
-		expect(engine).toBeInstanceOf(QueryEngine);
+	it('exports a comunica query engine', async () => {
+		expect(await createEngine()).toBeInstanceOf(QueryEngine);
 	});
 });

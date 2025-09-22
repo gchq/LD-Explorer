@@ -26,7 +26,7 @@ import type { Quad } from '@rdfjs/types';
 import { QueryStatus } from '$lib/types';
 import type { QuerySources } from './sources/sources.store';
 import type { ResultStream } from '@rdfjs/types';
-import { engine } from '$lib/querying/engine';
+import { createEngine } from '$lib/querying/engine';
 
 type QuadsStream = AsyncIterator<Quad> & ResultStream<Quad>;
 type QueryStream = BindingsStream | QuadsStream;
@@ -71,6 +71,7 @@ export function createQueryStore(sparqlQuery: string, sources: QuerySources): St
 			return;
 		}
 
+		const engine = await createEngine();
 		const result = await engine.query(sparqlQuery, {
 			sources,
 			readonly: true,
