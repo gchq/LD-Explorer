@@ -29,8 +29,10 @@ test.describe('add remote data source page', () => {
 
 	test('validates presence of source name and URL', async ({ page, addRemoteDataSourcePage }) => {
 		await addRemoteDataSourcePage.clickSubmit();
-		await expect(page.getByText('Please provide a name for this source')).toBeVisible();
-		await expect(page.getByText('Please provide a remote location for this source')).toBeVisible();
+		await expect(page.getByText('Please provide a name for this source').first()).toBeVisible();
+		await expect(
+			page.getByText('Please provide a remote location for this source').first()
+		).toBeVisible();
 
 		// Did not navigate us away from the "add source" page
 		await expect(page).toHaveURL(addRemoteDataSourcePage.baseUrl);
