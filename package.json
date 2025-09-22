@@ -24,7 +24,7 @@
 	"devDependencies": {
 		"@axe-core/playwright": "^4.10.2",
 		"@comunica/bindings-factory": "^3.3.0",
-		"@comunica/query-sparql": "^4.4.0",
+		"@comunica/query-sparql": "^4.3.0",
 		"@comunica/types": "^4.2.0",
 		"@playwright/test": "^1.55.0",
 		"@sveltejs/adapter-static": "^3.0.9",
