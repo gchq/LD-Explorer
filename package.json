@@ -23,7 +23,7 @@
 	},
 	"devDependencies": {
 		"@axe-core/playwright": "^4.10.2",
-		"@comunica/bindings-factory": "^3.3.0",
+		"@comunica/utils-bindings-factory": "^4.4.0",
 		"@comunica/query-sparql": "^4.3.0",
 		"@comunica/types": "^4.2.0",
 		"@playwright/test": "^1.55.0",
@@ -54,6 +54,7 @@
 		"postcss": "^8.5.6",
 		"prettier": "^3.6.2",
 		"prettier-plugin-svelte": "^3.4.0",
+		"rdf-data-factory": "^2.0.2",
 		"rdfa-streaming-parser": "^3.0.2",
 		"shadow-dom-testing-library": "^1.13.1",
 		"svelte": "^5.39.4",

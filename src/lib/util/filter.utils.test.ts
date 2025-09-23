@@ -1,11 +1,13 @@
 /* (c) Crown Copyright GCHQ */
 
-import { type Bindings, BindingsFactory } from '@comunica/bindings-factory';
-import { DataFactory as N3DF, type Quad } from 'n3';
+import type { Quad } from '@rdfjs/types';
+import { type Bindings, BindingsFactory } from '@comunica/utils-bindings-factory';
+import { DataFactory } from 'rdf-data-factory';
 import { filterBindings, filterQuads } from './filter.utils';
 
-const BF = new BindingsFactory();
-const { namedNode, literal, quad, variable } = N3DF;
+const DF = new DataFactory();
+const BF = new BindingsFactory(DF);
+const { namedNode, literal, variable } = DF;
 const personResource = namedNode('http://xmlns.com/foaf/0.1/Person');
 const nameResource = namedNode('http://xmlns.com/foaf/0.1/name');
 const rdfTypeResource = namedNode('http://www.w3.org/1999/02/22-rdf-syntax-ns#type');
@@ -82,14 +84,14 @@ describe(filterQuads, () => {
 	beforeEach(() => {
 		quadCollection = [
 			// Bob
-			quad(namedNode(':person1'), nameResource, literal('Bob')),
-			quad(namedNode(':person1'), rdfTypeResource, personResource),
+			DF.quad(namedNode(':person1'), nameResource, literal('Bob')),
+			DF.quad(namedNode(':person1'), rdfTypeResource, personResource),
 			// Alice
-			quad(namedNode(':person2'), nameResource, literal('Alice')),
-			quad(namedNode(':person2'), rdfTypeResource, personResource),
+			DF.quad(namedNode(':person2'), nameResource, literal('Alice')),
+			DF.quad(namedNode(':person2'), rdfTypeResource, personResource),
 			// Joe
-			quad(namedNode(':person3'), nameResource, literal('Joe')),
-			quad(namedNode(':person3'), rdfTypeResource, personResource)
+			DF.quad(namedNode(':person3'), nameResource, literal('Joe')),
+			DF.quad(namedNode(':person3'), rdfTypeResource, personResource)
 		];
 	});
 
