@@ -13,7 +13,7 @@
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"test": "vitest",
-		"test:unit+component": "vitest run --coverage",
+		"test:unit+component": "vitest",
 		"test:e2e": "playwright test",
 		"test:e2e:update-snapshots": "playwright test --update-snapshots",
 		"lint": "eslint .",
