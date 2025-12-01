@@ -37,7 +37,7 @@
 		"@types/cytoscape": "^3.31.0",
 		"@types/eslint": "^9.6.1",
 		"@ukic/fonts": "^3.2.5",
-		"@ukic/web-components": "^3.14.0",
+		"@ukic/web-components": "^3.15.0",
 		"@vitest/coverage-v8": "^3.2.4",
 		"asynciterator": "^3.10.0",
 		"autoprefixer": "^10.4.22",
