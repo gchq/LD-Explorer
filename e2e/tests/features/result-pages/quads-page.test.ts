@@ -24,9 +24,9 @@ test.describe('Quads page tests', () => {
 
 	test('Contains everything a quads page should contain', async ({ exploreTriplesPage, page }) => {
 		// A table with appropriate headings
-		await expect(page.getByRole('cell', { name: 'Subject' })).toBeVisible();
-		await expect(page.getByRole('cell', { name: 'Predicate' })).toBeVisible();
-		await expect(page.getByRole('cell', { name: 'Object' })).toBeVisible();
+		await expect(page.getByRole('columnheader', { name: 'Subject' })).toBeVisible();
+		await expect(page.getByRole('columnheader', { name: 'Predicate' })).toBeVisible();
+		await expect(page.getByRole('columnheader', { name: 'Object' })).toBeVisible();
 
 		// A sparql detail control that works
 		await expect(await exploreTriplesPage.sparqlDetail).not.toBeVisible();
