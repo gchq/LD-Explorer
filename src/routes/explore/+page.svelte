@@ -30,8 +30,7 @@
 		</ListItem>
 		<ListItem>
 			LD Explorer queries within the explore section only query the default graph, however you can
-			still see any <Link href="/explore/named-graphs">Named Graphs</Link> within your selected data
-			sources.
+			still see any <Link href="/explore/named-graphs">Named Graphs</Link> within your selected data sources.
 		</ListItem>
 		<ListItem>
 			Search for a specific <Link href="/explore/iris">IRI</Link>.
