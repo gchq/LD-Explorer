@@ -22,6 +22,13 @@ export default defineConfig({
 		reporters: ['default', 'junit'],
 		outputFile: 'junit.xml',
 		css: false,
+		onUnhandledError(error): boolean | void {
+			// Ignore all errors with the name "MySpecialError".
+			console.log('ERROR ERROR ERROR ERROR ERROR');
+			console.log(error.name);
+			console.log(error.message);
+		},
+
 		coverage: {
 			include: ['src/**/*.{js,ts,svelte}'],
 			exclude: [
