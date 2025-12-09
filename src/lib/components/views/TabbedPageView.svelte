@@ -17,9 +17,9 @@
 
 	let { children, heading, subheading, selectedTabIndex, navigationLabel, tabs }: Props = $props();
 
-	const tab = tabs.find((t) => t.tabIndex === selectedTabIndex);
-	const tabTitle = tab?.title || 'Detail';
-	const tabDescription = tab?.description;
+	const tab = $derived(tabs.find((t) => t.tabIndex === selectedTabIndex));
+	const tabTitle = $derived(tab?.title || 'Detail');
+	const tabDescription = $derived(tab?.description);
 </script>
 
 <PageView pageTitle={`${tabTitle} - ${navigationLabel}`} {heading} {subheading} {tabs}>

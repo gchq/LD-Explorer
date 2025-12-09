@@ -19,7 +19,7 @@
 		data: PageData;
 	}
 	let { data }: Props = $props();
-	let source = { ...data.source };
+	let source = $derived({ ...data.source });
 
 	type ImportType = 'rdf' | 'rdfa' | 'json-ld';
 	type ImportTypes = {

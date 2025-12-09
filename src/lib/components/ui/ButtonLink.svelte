@@ -25,7 +25,7 @@
 		ariaLabel
 	}: Props = $props();
 
-	let relativeHref = href.startsWith('/') ? href.substring(1) : href;
+	let relativeHref = $derived(href.startsWith('/') ? href.substring(1) : href);
 </script>
 
 <ic-button

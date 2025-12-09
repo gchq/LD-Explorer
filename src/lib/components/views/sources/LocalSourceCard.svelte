@@ -12,7 +12,7 @@
 	}
 	let { source }: Props = $props();
 	let { enabled, description, id } = $derived(source);
-	let store: N3Store = source.n3Store as N3Store;
+	let store: N3Store = $derived(source.n3Store as N3Store);
 </script>
 
 <SourceCard {source}>

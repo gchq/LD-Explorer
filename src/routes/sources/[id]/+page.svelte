@@ -26,16 +26,21 @@
 		data: PageData;
 	}
 	let { data }: Props = $props();
-	let source = { ...data.source };
+	let source = $derived({ ...data.source });
 
 	// Local sources will have an n3 store, remote sources have a URL. This logic will become
 	// more complicated if there are ever any other types of source in play but this'll do for now.
-	let dataSource: QuerySourceUnidentified =
-		source.type == 'LOCAL' ? (source.n3Store as N3Store) : source.url;
+	let dataSource: QuerySourceUnidentified = $derived(
+		source.type == 'LOCAL' ? (source.n3Store as N3Store) : source.url
+	);
 
 	const { createQuery, codeComment } = getTriples;
-	const queryStore = createQueryStore(createQuery($settings.general__defaultLimit), [dataSource]);
-	let editUrl = `/sources/${source.type == 'LOCAL' ? 'local' : 'remote'}/${source.id}/edit`;
+	const queryStore = $derived(
+		createQueryStore(createQuery($settings.general__defaultLimit), [dataSource])
+	);
+	let editUrl = $derived(
+		`/sources/${source.type == 'LOCAL' ? 'local' : 'remote'}/${source.id}/edit`
+	);
 </script>
 
 <PageView

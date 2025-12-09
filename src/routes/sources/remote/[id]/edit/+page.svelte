@@ -12,7 +12,7 @@
 		data: PageData;
 	}
 	let { data }: Props = $props();
-	let source = $state({ ...data.source });
+	let source = $derived({ ...data.source });
 
 	// Events
 	function handleSubmit(source: RemoteSource) {

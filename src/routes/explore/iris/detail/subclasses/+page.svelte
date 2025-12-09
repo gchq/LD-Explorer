@@ -18,8 +18,9 @@
 		data: PageData;
 	}
 	let { data }: Props = $props();
-	let iri = data.iri;
-	let iriTerm = new NamedNode(iri);
+	let iri = $derived(data.iri);
+
+	let iriTerm = $derived(new NamedNode(iri));
 
 	// Query
 	const { createQuery, codeComment } = getSubclasses;

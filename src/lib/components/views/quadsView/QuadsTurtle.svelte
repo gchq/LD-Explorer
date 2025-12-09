@@ -12,9 +12,11 @@
 	const writer = new Writer({ format: 'application/ttl' });
 	let ttl: string = $state('');
 
-	writer.addQuads(quads);
-	writer.end((err, doc) => {
-		ttl = doc;
+	$effect(() => {
+		writer.addQuads(quads);
+		writer.end((err, doc) => {
+			ttl = doc;
+		});
 	});
 </script>
 
