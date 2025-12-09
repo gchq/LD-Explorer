@@ -22,8 +22,14 @@ export default defineConfig({
 		reporters: ['default', 'junit'],
 		outputFile: 'junit.xml',
 		css: false,
+		onUnhandledError(error): boolean | void {
+			// See https://github.com/gchq/LD-Explorer/issues/158
+			if (error.name == 'TypeError' && error.message == 'elm.dispatchEvent is not a function') {
+				return false;
+			}
+		},
+
 		coverage: {
-			all: true,
 			include: ['src/**/*.{js,ts,svelte}'],
 			exclude: [
 				...(configDefaults.coverage.exclude as string[]),

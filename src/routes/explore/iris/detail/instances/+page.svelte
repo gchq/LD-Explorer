@@ -15,11 +15,13 @@
 		data: PageData;
 	}
 	let { data }: Props = $props();
-	let iri = data.iri;
+	let iri = $derived(data.iri);
 
 	// Query
 	const { createQuery, codeComment } = getClassInstances;
-	let instances = createQueryStore(createQuery(iri, $settings.general__defaultLimit), $sourceList);
+	let instances = $derived(
+		createQueryStore(createQuery(iri, $settings.general__defaultLimit), $sourceList)
+	);
 </script>
 
 <TabbedPageView {...createTabDetail(iri)} selectedTabIndex={TabIndices.Instances}>

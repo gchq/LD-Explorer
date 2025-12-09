@@ -24,9 +24,9 @@
 
 	// BasePath will contain a forward slash, so remove it if the user
 	// has passed one in.
-	let relativeHref = href.startsWith('/') ? href.substring(1) : href;
+	let relativeHref = $derived(href.startsWith('/') ? href.substring(1) : href);
 
-	const classes = clsx(htmlClass, 'break-all');
+	const classes = $derived(clsx(htmlClass, 'break-all'));
 </script>
 
 {#if external}

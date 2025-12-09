@@ -22,7 +22,7 @@
 	 * For now, this component displays nothing at all if it cannot retrieve
 	 * a value for a particular variable in these bindings.
 	 */
-	const bindingsValue = bindings.get(variable);
+	const bindingsValue = $derived(bindings.get(variable));
 </script>
 
 {#if bindingsValue}
