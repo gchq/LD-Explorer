@@ -14,7 +14,7 @@
 	let { title, href, selected = false }: Props = $props();
 
 	// @ts-expect-error see https://github.com/sveltejs/eslint-plugin-svelte/issues/1319
-	const resolvedHref = $derived(resolve(href));
+	const resolvedHref = resolve((() => href)());
 </script>
 
 <li
