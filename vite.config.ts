@@ -23,10 +23,10 @@ export default defineConfig({
 		outputFile: 'junit.xml',
 		css: false,
 		onUnhandledError(error): boolean | void {
-			// Ignore all errors with the name "MySpecialError".
-			console.log('ERROR ERROR ERROR ERROR ERROR');
-			console.log(error.name);
-			console.log(error.message);
+			// See https://github.com/gchq/LD-Explorer/issues/158
+			if (error.name == 'TypeError' && error.message == 'elm.dispatchEvent is not a function') {
+				return false;
+			}
 		},
 
 		coverage: {
