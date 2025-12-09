@@ -23,7 +23,6 @@ export default defineConfig({
 		outputFile: 'junit.xml',
 		css: false,
 		coverage: {
-			all: true,
 			include: ['src/**/*.{js,ts,svelte}'],
 			exclude: [
 				...(configDefaults.coverage.exclude as string[]),
