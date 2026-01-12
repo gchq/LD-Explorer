@@ -15,7 +15,7 @@ export default defineConfig({
 		PUBLIC_VERSION: JSON.stringify(pkg.version)
 	},
 	test: {
-		environment: 'jsdom', // we're making a web app, so we want a web-like environment
+		environment: 'happy-dom', // we're making a web app, so we want a web-like environment
 		globals: true, // avoid having to import things like "describe" and "expect"
 		include: ['./src/**/*.{test,spec}.{js,ts}'],
 		setupFiles: ['./test/test-setup.ts'],

@@ -7,12 +7,12 @@ import { configure } from '@testing-library/dom';
 // Register ICDS components with DOM
 beforeAll(() => {
 	defineCustomElements(window);
-}, 100000);
+}, 1000);
 
 // Configure testing library
 configure({
 	// Increase timeout for waitFor and find queries (sometimes the DOM isn't hydrated in 1 second)
-	asyncUtilTimeout: 100000
+	asyncUtilTimeout: 1000
 });
 
 // matchMedia is not provided by the mock DOM - mock it here to allow tests to run.
