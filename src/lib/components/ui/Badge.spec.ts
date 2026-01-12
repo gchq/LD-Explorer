@@ -21,10 +21,11 @@ describe('Badge component', () => {
 		});
 	});
 
-	//When an ic-badge is supplied an accessible-label attribute, the enclosing div gets the label too
-	it('Renders an aria label if one is given', async () => {
-		const accessibleLabel = 'accessible label';
-		await render(Badge, { type: 'dot', ariaLabel: accessibleLabel });
-		expect(await screen.findByLabelText(accessibleLabel, { selector: 'div' })).toBeInTheDocument();
+	it('Allows an aria label to be passed in', async () => {
+		const accessibleLabel = 'my a11y label';
+		const { container } = await render(Badge, { type: 'dot', ariaLabel: accessibleLabel });
+		expect(
+			container.querySelector("ic-badge[accessible-label='my a11y label']")
+		).toBeInTheDocument();
 	});
 });

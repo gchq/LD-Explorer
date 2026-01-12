@@ -40,8 +40,8 @@ const waitForHydration = (fn: typeof originalRender) => {
 		const view = fn(...args);
 		await waitFor(() => expect(document.body.innerHTML.length).toBeGreaterThan(0));
 		await waitFor(() => expect(appReadyCount).toBeTruthy(), {
-			timeout: 100000,
-			interval: 1000
+			timeout: 1000,
+			interval: 100
 		});
 
 		return view;
