@@ -11,7 +11,7 @@ import { Parser as SparqlParser, type SparqlQuery } from 'sparqljs';
  * @returns SparqlQuery (sparqljs instance)
  */
 function parseSparql(sparqlQuery: string): SparqlQuery {
-	const parser = new SparqlParser();
+	const parser = new SparqlParser({ sparqlStar: true });
 	return parser.parse(sparqlQuery);
 }
 

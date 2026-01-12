@@ -129,7 +129,7 @@ describe(getCytoscapeElementsForQuads, () => {
 		});
 	});
 
-	describe('when a quoted triple is included in the document', () => {
+	describe('when a triple term is included in the document', () => {
 		const bobAPerson = quad(
 			namedNode('#Bob'),
 			namedNode('http://www.w3.org/1999/02/22-rdf-syntax-ns#type'),

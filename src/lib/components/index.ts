@@ -27,7 +27,7 @@ export { default as Pagination } from './ui/Pagination.svelte';
 export { default as PageHeader } from './ui/PageHeader.svelte';
 export { default as FilterField } from './ui/FilterField.svelte';
 export { default as HtmlHead } from './layout/HtmlHead.svelte';
-export { default as QuotedTriple } from './ui/rdfjs/QuotedTriple.svelte';
+export { default as TripleTerm } from './ui/rdfjs/TripleTerm.svelte';
 export { default as Term } from './ui/rdfjs/Term.svelte';
 export { default as TermValue } from './ui/rdfjs/TermValue.svelte';
 export { default as BindingsValue } from './ui/rdfjs/BindingsValue.svelte';

@@ -44,7 +44,7 @@ export function getCytoscapeElementsForQuads(
 	for (const [idx, { subject, predicate, object }] of quads.entries()) {
 		if ((subject.termType as TermType) == 'Quad') {
 			console.warn(
-				'Graph contains a quoted triple - these are not supported for graph visualization.'
+				'Graph contains a triple term - these are not supported for graph visualization.'
 			);
 			continue;
 		}
