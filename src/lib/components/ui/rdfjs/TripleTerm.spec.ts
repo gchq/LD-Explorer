@@ -2,7 +2,7 @@
 
 import '@testing-library/jest-dom';
 import { DataFactory } from 'n3';
-import QuotedTriple from './QuotedTriple.svelte';
+import TripleTerm from './TripleTerm.svelte';
 import { hydratedRender as render } from '$test-helpers/render';
 import { screen } from 'shadow-dom-testing-library';
 
@@ -15,10 +15,10 @@ const exampleTerm = quad(
 	namedNode('http://www.example.com/graph1')
 );
 
-describe(QuotedTriple, () => {
+describe(TripleTerm, () => {
 	describe('when rendering a quoted triple term', () => {
 		beforeEach(async () => {
-			await render(QuotedTriple, {
+			await render(TripleTerm, {
 				term: exampleTerm
 			});
 		});
@@ -39,7 +39,7 @@ describe(QuotedTriple, () => {
 
 	describe('when "show graph" option is set to true', () => {
 		it('also shows the graph portion of the triple', async () => {
-			await render(QuotedTriple, {
+			await render(TripleTerm, {
 				term: exampleTerm,
 				showGraph: true
 			});

@@ -55,7 +55,7 @@
 	}
 </script>
 
-<PageView heading="SPARQL UI" subheading="Execute SPARQL1.1 queries across all active sources.">
+<PageView heading="SPARQL UI" subheading="Execute SPARQL1.2 queries across all active sources.">
 	<TabNavigation bind:selectedTabIndex>
 		<Tab title="Query" selected={selectedTabIndex == SparqlUiTab.QueryBuilder} />
 		<Tab

@@ -60,7 +60,7 @@ describe('Term component', () => {
 		});
 	});
 
-	describe('when rendering a quoted triple term', () => {
+	describe('when rendering a triple term', () => {
 		beforeEach(() => {
 			render(Term, {
 				term: quad(
@@ -83,8 +83,8 @@ describe('Term component', () => {
 			expect(await screen.findByText('Robert')).toBeInTheDocument();
 		});
 
-		it('outputs the value "Quoted Triple" label', async () => {
-			expect(await screen.findByText('Quoted Triple')).toBeInTheDocument();
+		it('outputs the value "Triple Term" label', async () => {
+			expect(await screen.findByText('Triple Term')).toBeInTheDocument();
 		});
 	});
 

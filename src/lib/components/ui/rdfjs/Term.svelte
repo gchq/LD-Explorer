@@ -8,7 +8,7 @@
 	 * a Term, which includes named nodes, blank nodes and literals. See Term interface
 	 * for details; https://rdf.js.org/data-model-spec/#term-interface
 	 */
-	import { Link, QuotedTriple, TermValue } from '$lib/components';
+	import { Link, TripleTerm, TermValue } from '$lib/components';
 	import { type Settings, settings as savedSettings } from '$lib/stores/settings.store';
 	import type { Term } from '@rdfjs/types';
 	import { abbreviateTermPrefix } from '$lib/util/term.utils';
@@ -41,7 +41,7 @@
 		Literal: { colour: 'bg-black text-white dark:bg-gray-200 dark:text-black', text: 'Literal' },
 		Variable: { colour: 'bg-gray-200 dark:bg-gray-800', text: 'Variable' },
 		DefaultGraph: { colour: 'bg-pink-600 text-white', text: 'Default Graph' },
-		Quad: { colour: 'bg-lime-400 text-black', text: 'Quoted Triple' }
+		Quad: { colour: 'bg-lime-400 text-black', text: 'Triple Term' }
 	};
 
 	let termDisplayValue = $derived(
@@ -60,7 +60,7 @@
 		{/if}
 		<span class={clsx('block md:inline', term.termType == 'Literal' ? 'break-words' : 'break-all')}>
 			{#if term.termType == 'Quad'}
-				<QuotedTriple {term} />
+				<TripleTerm {term} />
 			{:else if term.termType == 'NamedNode'}
 				<Link href={`/explore/iris/detail?iri=${encodeURIComponent(term.value)}`}>
 					{#if settings.general__showRDFSLabels}
