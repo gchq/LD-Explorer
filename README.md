@@ -1,6 +1,8 @@
 # LD-Explorer
 
-Copyright 2024 [Crown Copyright](https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/)
+[![LD-Explorer](https://github.com/gchq/LD-Explorer/actions/workflows/test+deploy.yml/badge.svg)](https://github.com/gchq/LD-Explorer/actions/workflows/test+deploy.yml)
+
+Copyright 2026 [Crown Copyright](https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/)
 
 LD-Explorer is a prototype user interface built upon the [Comunica graph querying framework](https://comunica.dev/) that can be used for exploring linked data resources directly in the browser. We have found that this tool helps to better demonstrate the value and purpose of linked data to newcomers, and increases the speed at which experiments/ideas can be created and tested. We are open sourcing this software to fill what we believe is a software gap in the linked data ecosystem and to hopefully encourage its growth into a valuable community tool.
 
