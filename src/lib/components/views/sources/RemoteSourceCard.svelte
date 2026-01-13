@@ -1,6 +1,7 @@
 <!-- (c) Crown Copyright GCHQ -->
 
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import { Button, ButtonLink, Link } from '$lib/components';
 	import {
 		type RemoteSource,
@@ -40,10 +41,14 @@
 
 	{#snippet interactionControls()}
 		<div class="flex flex-wrap gap-1">
-			<ButtonLink label="Show" href={`/sources/${id}`} ariaLabel={`Show source ${source.name}`} />
+			<ButtonLink
+				label="Show"
+				href={resolve(`/sources/${id}`)}
+				ariaLabel={`Show source ${source.name}`}
+			/>
 			<ButtonLink
 				label="Edit"
-				href={`/sources/remote/${id}/edit`}
+				href={resolve(`/sources/remote/${id}/edit`)}
 				ariaLabel={`Edit source ${source.name}`}
 			/>
 

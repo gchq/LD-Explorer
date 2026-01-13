@@ -2,7 +2,6 @@
 
 <script lang="ts">
 	import type { IcButtonVariants, IcSizes } from '@ukic/web-components';
-	import { base } from '$app/paths';
 	import type { Snippet } from 'svelte';
 
 	interface Props {
@@ -24,15 +23,13 @@
 		size = 'medium',
 		ariaLabel
 	}: Props = $props();
-
-	let relativeHref = $derived(href.startsWith('/') ? href.substring(1) : href);
 </script>
 
 <ic-button
+	{href}
 	{size}
 	{variant}
-	class="break-words"
-	href={external ? href : `${base}/${relativeHref}`}
+	class="wrap-break-word"
 	target={external ? '_blank' : undefined}
 	rel={external ? 'noreferrer' : undefined}
 	aria-label={ariaLabel}

@@ -1,6 +1,7 @@
 <!-- (c) Crown Copyright GCHQ -->
 
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import { Button, ButtonLink } from '$lib/components';
 	import { type LocalSource, sources as localSources } from '$stores/sources/local-sources.store';
 	import { Import } from '$lib/components/ui/icons';
@@ -32,16 +33,20 @@
 
 	{#snippet interactionControls()}
 		<div class="flex flex-wrap gap-1">
-			<ButtonLink label="Show" href={`/sources/${id}`} ariaLabel={`Show source ${source.name}`} />
+			<ButtonLink
+				label="Show"
+				href={resolve(`/sources/${id}`)}
+				ariaLabel={`Show source ${source.name}`}
+			/>
 			<ButtonLink
 				label="Edit"
-				href={`/sources/local/${id}/edit`}
+				href={resolve(`/sources/local/${id}/edit`)}
 				ariaLabel={`Edit source ${source.name}`}
 			/>
 
 			<ButtonLink
 				label="Import data"
-				href={`/sources/local/${id}/import`}
+				href={resolve(`/sources/local/${id}/import`)}
 				ariaLabel={`Import data into source ${source.name}`}
 			>
 				{#snippet icon()}

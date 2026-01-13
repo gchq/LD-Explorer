@@ -1,6 +1,7 @@
 <!-- (c) Crown Copyright GCHQ -->
 
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import { Alert, Button, ButtonLink, Link } from '$lib/components';
 	import { LocalSourceCard, RemoteSourceCard } from '$lib/components';
 	import { PageView } from '$lib/components/views';
@@ -28,8 +29,8 @@
 
 <PageView heading="Data Sources" subheading="Linked data sources.">
 	<div class="mb-4 flex flex-wrap gap-1">
-		<ButtonLink label="Add Remote Source" href="/sources/remote/add" />
-		<ButtonLink label="Add Local Source" href="/sources/local/add" />
+		<ButtonLink label="Add Remote Source" href={resolve('/sources/remote/add')} />
+		<ButtonLink label="Add Local Source" href={resolve('/sources/local/add')} />
 
 		<Button
 			label="Enable all sources"

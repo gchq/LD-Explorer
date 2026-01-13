@@ -1,6 +1,7 @@
 <!-- (c) Crown Copyright GCHQ -->
 
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import {
 		ButtonLink,
 		Heading,
@@ -39,7 +40,7 @@
 		createQueryStore(createQuery($settings.general__defaultLimit), [dataSource])
 	);
 	let editUrl = $derived(
-		`/sources/${source.type == 'LOCAL' ? 'local' : 'remote'}/${source.id}/edit`
+		resolve(`/sources/${source.type == 'LOCAL' ? 'local' : 'remote'}/${source.id}/edit`)
 	);
 </script>
 
@@ -76,7 +77,7 @@
 				<div class="mt-4">
 					<ButtonLink label="Edit" href={editUrl} />
 					{#if source.type == 'LOCAL'}
-						<ButtonLink label="Import data" href={`/sources/local/${source.id}/import`}>
+						<ButtonLink label="Import data" href={resolve(`/sources/local/${source.id}/import`)}>
 							{#snippet icon()}
 								<Import />
 							{/snippet}
