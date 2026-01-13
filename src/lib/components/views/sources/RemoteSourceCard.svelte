@@ -22,7 +22,7 @@
 		<div>
 			<ic-typography>{description}</ic-typography>
 			{#if url}
-				<Link href={url.toString()} external>
+				<Link href={url} external>
 					{url}
 				</Link>
 			{/if}

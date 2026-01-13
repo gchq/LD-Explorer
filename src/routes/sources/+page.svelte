@@ -71,7 +71,7 @@
 
 		<ic-typography class="mt-4"
 			>Add sources manually using the controls on this page or use the <Link
-				href="/sources/catalog"
+				href={resolve('/sources/catalog')}
 			>
 				data sources catalog
 			</Link> to find existing remote sources.</ic-typography

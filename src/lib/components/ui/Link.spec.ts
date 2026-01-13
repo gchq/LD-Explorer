@@ -19,14 +19,6 @@ describe('Link component', async () => {
 		});
 	});
 
-	describe("when the user doesn't add a slash to their href", () => {
-		it('adds one on for them', async () => {
-			await render(Link, { href: 'example.htm' });
-			const link = await screen.findByShadowRole('link');
-			expect(link).toHaveAttribute('href', '/example.htm');
-		});
-	});
-
 	describe('when the link is external', () => {
 		it('Adds appropriate attributes to make the link open in a new tab', async () => {
 			await render(Link, { href: exampleHref, external: true });

@@ -84,7 +84,7 @@
 						</ButtonLink>
 					{/if}
 				</div>
-				<Link htmlClass="block mt-2" href="/sources">Back to Sources</Link>
+				<Link htmlClass="block mt-2" href={resolve('/sources')}>Back to Sources</Link>
 			</TabPanel>
 			<TabPanel>
 				<Heading text="Sample Data" tag="h3" />

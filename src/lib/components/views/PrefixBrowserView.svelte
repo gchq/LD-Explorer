@@ -1,6 +1,8 @@
 <!-- (c) Crown Copyright GCHQ -->
 
 <script lang="ts">
+	import { resolve } from '$app/paths';
+
 	import {
 		Button,
 		Link,
@@ -33,7 +35,7 @@
 <ic-typography class="block my-6"
 	>{description} If you can't see the prefix you are looking for in the list, you may be able to find
 	it on <Link href="https://prefix.cc/" external>prefix.cc</Link>. You can edit this list from the <Link
-		href="/settings/prefixes">prefix settings</Link
+		href={resolve('/settings/prefixes')}>prefix settings</Link
 	> page.
 </ic-typography>
 

@@ -1,6 +1,7 @@
 <!-- (c) Crown Copyright GCHQ -->
 
 <script lang="ts">
+	import { asset } from '$app/paths';
 	import {
 		Heading,
 		Link,
@@ -16,7 +17,7 @@
 	} from '$lib/components';
 	import { PageView } from '$lib/components/views';
 
-	const a11yReportURL = `/ld-explorer-acr.docx`;
+	const a11yReportURL = asset(`/ld-explorer-acr.docx`);
 	const statementPrepared = '31-Jun-24';
 	const statementUpdated = '12-Jul-24';
 	const appLastAudited = '31-Jun-24';
@@ -28,23 +29,23 @@
 	<Heading variant="h3" text="Table of Contents" />
 
 	<List listType="ol">
-		<ListItem><Link inPage href="#1">Overview</Link></ListItem>
-		<ListItem><Link inPage href="#2">How accessible this app is</Link></ListItem>
+		<ListItem><Link href="#1">Overview</Link></ListItem>
+		<ListItem><Link href="#2">How accessible this app is</Link></ListItem>
 		<ListItem>
-			<Link inPage href="#3">What to do if you can't access parts of this app</Link>
+			<Link href="#3">What to do if you can't access parts of this app</Link>
 		</ListItem>
 		<ListItem>
-			<Link inPage href="#4">Reporting accessibility problems with this app</Link>
+			<Link href="#4">Reporting accessibility problems with this app</Link>
 		</ListItem>
-		<ListItem><Link inPage href="#5">Enforcement Procedure</Link></ListItem>
-		<ListItem><Link inPage href="#6">Contacting us</Link></ListItem>
+		<ListItem><Link href="#5">Enforcement Procedure</Link></ListItem>
+		<ListItem><Link href="#6">Contacting us</Link></ListItem>
 		<ListItem>
-			<Link inPage href="#7">Technical information about this app's accessibility</Link>
+			<Link href="#7">Technical information about this app's accessibility</Link>
 		</ListItem>
-		<ListItem><Link inPage href="#8">Non-accessible content</Link></ListItem>
-		<ListItem><Link inPage href="#9">How we tested this app</Link></ListItem>
-		<ListItem><Link inPage href="#10">What we're doing to improve accessibility</Link></ListItem>
-		<ListItem><Link inPage href="#11">Preparation of this Accessibility Statement</Link></ListItem>
+		<ListItem><Link href="#8">Non-accessible content</Link></ListItem>
+		<ListItem><Link href="#9">How we tested this app</Link></ListItem>
+		<ListItem><Link href="#10">What we're doing to improve accessibility</Link></ListItem>
+		<ListItem><Link href="#11">Preparation of this Accessibility Statement</Link></ListItem>
 	</List>
 
 	<Heading variant="h3" text="1. Overview" id="1" />
