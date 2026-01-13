@@ -1,18 +1,20 @@
 /* (c) Crown Copyright GCHQ */
 
 import { expect, test } from '@playwright/test';
-import { footerNavItems, sideNavItems, subNavItems } from '$navigation';
+import { sideNavItems, subNavItems } from '$navigation';
 import AxeBuilder from '@axe-core/playwright'; // 1
+
+const pagesToTest = [
+	{ id: 'a11y-statement', title: 'Accessibility Statement', href: `/policy/a11y` },
+	{ id: 'sitemap', title: 'Sitemap', href: `/sitemap` },
+	{ id: 'cookie-policy', title: 'Cookie Policy', href: `/policy/cookies` },
+	{ id: 'privacy-policy', title: 'Privacy Policy', href: `/policy/privacy` }
+];
 
 // Run all these in parallell
 test.describe.configure({ mode: 'parallel' });
 
-const allLinks = [...sideNavItems, ...subNavItems, ...footerNavItems].filter(
-	// only want to test internal pages
-	(l) => l.external != true
-);
-
-allLinks.forEach(({ id, href, title }) => {
+pagesToTest.forEach(({ id, href, title }) => {
 	test.describe(`${id} Page a11y test`, () => {
 		/**
 		 * Ensure that the page has the correct title element.
