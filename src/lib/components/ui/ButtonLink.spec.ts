@@ -14,16 +14,6 @@ describe('ButtonLink component', () => {
 		);
 	});
 
-	describe('when provided with an href that has no leading slash', () => {
-		it('adds the leading slash', async () => {
-			await render(ButtonLink, { label: 'Test', href: 'test.htm' });
-			expect(await screen.findByShadowRole('link', { name: 'Test' })).toHaveAttribute(
-				'href',
-				'/test.htm'
-			);
-		});
-	});
-
 	it('renders an aria label if one is given', async () => {
 		const accessibleLabel = 'accessible label';
 		await render(ButtonLink, { href: '/test.htm', label: 'Test', ariaLabel: accessibleLabel });

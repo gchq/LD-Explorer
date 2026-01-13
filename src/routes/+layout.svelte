@@ -6,8 +6,10 @@
 	import { ViewportHelper } from '$lib/components/helpers';
 	import { defineCustomElements } from '@ukic/web-components/loader';
 	import { settings } from '$lib/stores/settings.store';
+	import type { LayoutProps } from './$types';
 
-	let isSmall: boolean;
+	let { children }: LayoutProps = $props();
+	let isSmall: boolean = $state(false);
 </script>
 
 <ViewportHelper bind:isSmall />
@@ -23,9 +25,9 @@
 
 			<main class="sm:flex h-full">
 				<SideNav />
-				<div id="content" tabIndex="-1" class="flex-row flex-grow">
+				<div id="content" tabIndex="-1" class="flex-row grow">
 					<div class="min-h-screen">
-						<slot />
+						{@render children?.()}
 					</div>
 					<ic-back-to-top target="main" variant={isSmall ? 'icon' : 'default'}></ic-back-to-top>
 					<Footer />

@@ -22,13 +22,13 @@
 		Search,
 		Settings
 	} from '$lib/components/ui/icons';
+	import { resolve } from '$app/paths';
 	import { type SideNavId, primarySideNavItems, secondarySideNavItems } from '$lib/navigation';
 	import { errorLogs, warningLogs } from '$stores/logger.store';
 	import { Badge } from '$lib/components';
 	import type { Component } from 'svelte';
 	import type { IcBadgeVariants } from '@ukic/web-components';
 	import { ViewportHelper } from '$lib/components/helpers';
-	import { base } from '$app/paths';
 	import { page } from '$app/state';
 	import { shouldHighlightSideNav } from '$lib/util/nav.utils';
 	import { sources } from '$stores/sources/sources.store';
@@ -79,7 +79,6 @@
 			icon: Settings
 		},
 		about: {
-			href: '/about',
 			icon: About
 		}
 	});
@@ -95,7 +94,7 @@
 	data-testid="main-nav"
 	status="Prototype"
 	collapsed-icon-labels
-	href={`${base}/`}
+	href={resolve(`/`)}
 >
 	<div slot="app-icon">
 		<Icon><Logo /></Icon>
@@ -105,9 +104,9 @@
 		{@const NavItemIcon = navItemDetail[id].icon}
 		<ic-navigation-item
 			label={title}
-			href={`${base}${href}`}
+			{href}
 			slot="primary-navigation"
-			selected={shouldHighlightSideNav(base, href, page.url.pathname)}
+			selected={shouldHighlightSideNav(href, page.url.pathname)}
 		>
 			{#if navItemDetail[id].badgeDetails?.visible}
 				<div slot="badge">
@@ -132,9 +131,9 @@
 		{#if !isSmall}
 			<ic-navigation-item
 				label={title}
-				href={`${base}${href}`}
+				{href}
 				slot="secondary-navigation"
-				selected={shouldHighlightSideNav(base, href, page.url.pathname)}
+				selected={shouldHighlightSideNav(href, page.url.pathname)}
 			>
 				<div slot="icon">
 					<Icon><NavItemIcon /></Icon>
@@ -143,9 +142,9 @@
 		{:else}
 			<ic-navigation-item
 				label={title}
-				href={`${base}${href}`}
+				{href}
 				slot="primary-navigation"
-				selected={shouldHighlightSideNav(base, href, page.url.pathname)}
+				selected={shouldHighlightSideNav(href, page.url.pathname)}
 			>
 				<div slot="icon">
 					<Icon><NavItemIcon /></Icon>

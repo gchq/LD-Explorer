@@ -1,6 +1,7 @@
 /* (c) Crown Copyright GCHQ */
 
 import type { RoutedTabView } from './types';
+import { resolve } from '$app/paths';
 
 export enum TabIndices {
 	AllClasses = 0,
@@ -17,14 +18,14 @@ const tabDetail = {
 			title: 'All Classes',
 			description: 'All classes across all active datasources.',
 			tabIndex: TabIndices.AllClasses,
-			href: `/explore/classes`
+			href: resolve(`/explore/classes`)
 		},
 		{
 			title: 'Base Classes',
 			description:
 				'Base classes across all active datasources (those not asserted to be subclasses).',
 			tabIndex: TabIndices.BaseClasses,
-			href: `/explore/classes/base`
+			href: resolve(`/explore/classes/base`)
 		}
 	]
 } as RoutedTabView<TabIndices>;

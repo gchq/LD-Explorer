@@ -1,6 +1,7 @@
 <!-- (c) Crown Copyright GCHQ -->
 
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import { Alert, Button, Link, Tab, TabNavigation, TabPanel, TextField } from '$lib/components';
 	import {
 		importJsonLDDocument,
@@ -12,7 +13,6 @@
 	import type { PageData } from './$types';
 	import { PageView } from '$lib/components/views';
 	import { PrefixBrowserView } from '$lib/components/views';
-	import { resolve } from '$app/paths';
 	import { goto } from '$app/navigation';
 
 	interface Props {
@@ -122,7 +122,7 @@
 					/>
 
 					<Button label="Import" type="submit" variant="primary" />
-					<Link htmlClass="block mt-2" href="/sources">Back to Sources</Link>
+					<Link htmlClass="block mt-2" href={resolve('/sources')}>Back to Sources</Link>
 				</form>
 			</TabPanel>
 			<TabPanel>

@@ -27,17 +27,15 @@ describe(shouldHighlightSubNav, () => {
 });
 
 describe(shouldHighlightSideNav, () => {
-	const base = 'http://www.example.com/my-app';
-
 	test.each([
-		[{ base, actualPath: '/', navItemPath: `${base}/`, expected: true }],
-		[{ base, actualPath: '/', navItemPath: base, expected: true }],
-		[{ base, actualPath: '/', navItemPath: `${base}/foobar`, expected: false }],
-		[{ base, actualPath: '/foobar', navItemPath: `${base}/foobar`, expected: true }]
+		[{ navItemPath: '/', currentPath: '/', expected: true }],
+		[{ navItemPath: '/foobar', currentPath: `/foobar`, expected: true }],
+		[{ navItemPath: '/foobar', currentPath: `/foobar/baz`, expected: true }],
+		[{ navItemPath: '/foobar/baz', currentPath: `/foobar/baz/bar`, expected: true }]
 	])(
-		'shouldHighlightSideNav($base, $href, $pathName) => $expected',
-		({ base, actualPath, navItemPath, expected }) => {
-			expect(shouldHighlightSideNav(base, actualPath, navItemPath)).toEqual(expected);
+		'shouldHighlightSideNav($navItemPath, $currentPath) => $expected',
+		({ navItemPath, currentPath, expected }) => {
+			expect(shouldHighlightSideNav(navItemPath, currentPath)).toEqual(expected);
 		}
 	);
 });

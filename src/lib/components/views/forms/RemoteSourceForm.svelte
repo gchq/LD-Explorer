@@ -1,9 +1,9 @@
 <!-- (c) Crown Copyright GCHQ -->
 
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import { Alert, Button, Link, Paragraph as P, TextField } from '$lib/components';
 	import { type RemoteSource, sources } from '$stores/sources/remote-sources.store';
-	import { resolve } from '$app/paths';
 	import { goto } from '$app/navigation';
 
 	interface Props {
@@ -98,6 +98,6 @@
 			<Button label="Remove Source" variant="destructive" type="reset" onclick={handleRemove} />
 		{/if}
 
-		<Link htmlClass="block mt-2" href="/sources">Back to Sources</Link>
+		<Link htmlClass="block mt-2" href={resolve('/sources')}>Back to Sources</Link>
 	</div>
 </form>

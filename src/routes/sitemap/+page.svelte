@@ -2,7 +2,7 @@
 
 <script lang="ts">
 	import { Link, Tree, TreeItem } from '$lib/components';
-	import { footerNavItems, sideNavItems, subNavItems } from '$lib/navigation';
+	import { sideNavItems, subNavItems, footerNavItems } from '$lib/navigation';
 	import { PageView } from '$lib/components/views';
 </script>
 
