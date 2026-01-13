@@ -11,6 +11,16 @@ describe('Footer component', () => {
 			await hydratedRender(Footer);
 		});
 
+		it('Links to source code', async () => {
+			expect(await screen.findByShadowRole('link', { name: 'Source Code' })).toBeInTheDocument();
+		});
+
+		it('Links to Accessibility Statement', async () => {
+			expect(
+				await screen.findByShadowRole('link', { name: 'Accessibility Statement' })
+			).toBeInTheDocument();
+		});
+
 		it('Includes crown copyright', async () => {
 			expect(await screen.findByShadowText('© Crown Copyright')).toBeInTheDocument();
 		});

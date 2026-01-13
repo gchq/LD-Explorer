@@ -1,11 +1,7 @@
 <!-- (c) Crown Copyright GCHQ -->
 
 <script lang="ts">
-	import { type NavItem } from '$lib/navigation/types';
-	interface Props {
-		footerNavItems: NavItem<string>[];
-	}
-	let { footerNavItems }: Props = $props();
+	import { footerNavItems } from '$lib/navigation';
 </script>
 
 <ic-footer

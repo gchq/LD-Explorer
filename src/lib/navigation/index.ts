@@ -16,3 +16,5 @@ export {
 	settingsSubNavItems,
 	subNavItems
 } from './sub-navigation';
+
+export { footerNavItems } from './footer-navigation';

@@ -8,7 +8,7 @@
 	import { settings } from '$lib/stores/settings.store';
 	import type { LayoutProps } from './$types';
 
-	let { data, children }: LayoutProps = $props();
+	let { children }: LayoutProps = $props();
 	let isSmall: boolean = $state(false);
 </script>
 
@@ -30,7 +30,7 @@
 						{@render children?.()}
 					</div>
 					<ic-back-to-top target="main" variant={isSmall ? 'icon' : 'default'}></ic-back-to-top>
-					<Footer footerNavItems={data.nav.footerNavigation} />
+					<Footer />
 				</div>
 			</main>
 		</div>

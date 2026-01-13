@@ -1,6 +1,7 @@
 /* (c) Crown Copyright GCHQ */
 
 import type { NavItem } from './types';
+import { resolve } from '$app/paths';
 
 export type PrimarySideNavId = 'home' | 'explore' | 'sparql-ui' | 'sources' | 'logs';
 export type SecondarySideNavId = 'settings' | 'about';
@@ -19,31 +20,31 @@ export const primarySideNavItems: SideNavItem<PrimarySideNavId>[] = [
 	{
 		id: 'home',
 		title: 'Home',
-		href: '/',
+		href: resolve('/'),
 		variant: 'primary'
 	},
 	{
 		id: 'explore',
 		title: 'Explore',
-		href: '/explore',
+		href: resolve('/explore'),
 		variant: 'primary'
 	},
 	{
 		id: 'sparql-ui',
 		title: 'SPARQL',
-		href: '/sparql-ui',
+		href: resolve('/sparql-ui'),
 		variant: 'primary'
 	},
 	{
 		id: 'sources',
 		title: 'Sources',
-		href: '/sources',
+		href: resolve('/sources'),
 		variant: 'primary'
 	},
 	{
 		id: 'logs',
 		title: 'Logs',
-		href: '/logs',
+		href: resolve('/logs'),
 		variant: 'primary'
 	}
 ];
@@ -52,13 +53,13 @@ export const secondarySideNavItems: SideNavItem<SecondarySideNavId>[] = [
 	{
 		id: 'settings',
 		title: 'Settings',
-		href: '/settings',
+		href: resolve('/settings'),
 		variant: 'secondary'
 	},
 	{
 		id: 'about',
 		title: 'About',
-		href: '/about',
+		href: resolve('/about'),
 		variant: 'secondary'
 	}
 ];

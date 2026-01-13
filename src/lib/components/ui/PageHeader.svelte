@@ -3,8 +3,6 @@
 <script lang="ts">
 	import type { RoutedTab } from '$lib/navigation/tabs/types';
 	import { ViewportHelper } from '$lib/components/helpers';
-	import { base } from '$app/paths';
-
 	import clsx from 'clsx';
 
 	interface Props {
@@ -22,7 +20,7 @@
 
 <ic-page-header {subheading} size={isSmall ? 'small' : 'default'} aligned="center">
 	<ic-typography slot="heading" variant={isSmall ? 'h4' : 'h2'}>
-		<h2 class={clsx(breakWords ? 'break-words' : 'break-all')}>
+		<h2 class={clsx(breakWords ? 'wrap-break-word' : 'break-all')}>
 			{heading}
 		</h2>
 	</ic-typography>
@@ -31,7 +29,7 @@
 		<ic-navigation-item
 			slot="tabs"
 			label={tab.title}
-			href={`${base}${tab.href}`}
+			href={tab.href}
 			selected={window.location.toString().endsWith(tab.href)}
 		></ic-navigation-item>
 	{/each}
