@@ -1,6 +1,7 @@
 /* (c) Crown Copyright GCHQ */
 
 import type { RoutedTabView } from './types';
+import { resolve } from '$app/paths';
 
 export enum TabIndices {
 	DESCRIBE = 0,
@@ -10,10 +11,7 @@ export enum TabIndices {
 	Superclasses = 4
 }
 
-const getUrl = (iri: string, path: string) =>
-	path.length
-		? `/explore/iris/detail/${path}?iri=${encodeURIComponent(iri)}`
-		: `/explore/iris/detail?iri=${encodeURIComponent(iri)}`;
+const getQuerystring = (iri: string) => `?iri=${encodeURIComponent(iri)}`;
 
 export default function createTabDetail(iri: string): RoutedTabView<TabIndices> {
 	return {
@@ -26,32 +24,32 @@ export default function createTabDetail(iri: string): RoutedTabView<TabIndices> 
 				description:
 					'Results of running a DESCRIBE query for this IRI. Note that only unique values are shown in the interface, even if that value appears across multiple data sources.',
 				tabIndex: TabIndices.DESCRIBE,
-				href: getUrl(iri, '')
+				href: resolve('/explore/iris/detail') + getQuerystring(iri)
 			},
 			{
 				title: 'Appearances',
 				description:
 					'Any appearances of this IRI within any triple (as either the subject, the predicate or the object).',
 				tabIndex: TabIndices.Appearances,
-				href: getUrl(iri, 'appearances')
+				href: resolve('/explore/iris/detail/appearances') + getQuerystring(iri)
 			},
 			{
 				title: 'Instances',
 				description: 'Any resources identified to be instances of this resource.',
 				tabIndex: TabIndices.Instances,
-				href: getUrl(iri, 'instances')
+				href: resolve('/explore/iris/detail/instances') + getQuerystring(iri)
 			},
 			{
 				title: 'Subclasses',
 				description: 'Any resources identified to be subclasses of this resource.',
 				tabIndex: TabIndices.Subclasses,
-				href: getUrl(iri, 'subclasses')
+				href: resolve('/explore/iris/detail/subclasses') + getQuerystring(iri)
 			},
 			{
 				title: 'Superclasses',
 				description: 'Any resources identified to be superclasses of this resource (ancestors).',
 				tabIndex: TabIndices.Superclasses,
-				href: getUrl(iri, 'superclasses')
+				href: resolve('/explore/iris/detail/superclasses') + getQuerystring(iri)
 			}
 		]
 	};

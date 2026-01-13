@@ -4,7 +4,7 @@
 	import { ButtonLink, Heading, HtmlHead, Link, Paragraph as P } from '$lib/components';
 	import { Logo } from '$lib/components/ui/icons';
 	import ProductFeature from '$lib/components/layout/homepage/ProductFeature.svelte';
-	import { base } from '$app/paths';
+	import { asset } from '$app/paths';
 </script>
 
 <HtmlHead title="Home" />
@@ -12,7 +12,7 @@
 <ic-hero
 	subheading="The missing tool for easily exploring and experimenting with linked data resources directly from the browser."
 	aligned="center"
-	background-image={`${base}/hero-bg.svg`}
+	background-image={asset('/hero-bg.svg')}
 >
 	<div slot="heading" class="mb-4">
 		<Heading tag="h2" variant="h1" text="LD-Explorer" applyVerticalMargins={false}>
