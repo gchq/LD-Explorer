@@ -6,6 +6,9 @@
 	"bugs": {
 		"url": "https://github.com/gchq/ld-explorer/issues"
 	},
+	"engines": {
+		"node": ">=24.13.0"
+	},
 	"scripts": {
 		"dev": "vite dev --host",
 		"build": "vite build",
