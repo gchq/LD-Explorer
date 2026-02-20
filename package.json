@@ -60,7 +60,7 @@
 		"rdf-data-factory": "^2.0.2",
 		"rdfa-streaming-parser": "^3.0.2",
 		"shadow-dom-testing-library": "^1.13.1",
-		"svelte": "^5.51.2",
+		"svelte": "^5.53.0",
 		"svelte-check": "^4.4.0",
 		"tailwindcss": "^4.1.18",
 		"tslib": "^2.8.1",
