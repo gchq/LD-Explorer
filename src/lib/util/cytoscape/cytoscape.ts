@@ -5,7 +5,7 @@ import type { Prefix } from '$lib/types';
 import type { Quad } from '@rdfjs/types';
 import { abbreviateTermPrefix } from '$lib/util/term.utils';
 import layout from './layout';
-import style from './style';
+import createCytoscapeStyles from './style';
 
 const MAX_LABEL_LENGTH = 40;
 
@@ -92,7 +92,13 @@ export function getCytoscapeElementsForQuads(
 	return elements;
 }
 
-export const cytoscapeSettings = {
-	style,
-	layout
+type CytoscapeSettingsOpts = {
+	darkMode: boolean;
+};
+
+export const cytoscapeSettings = ({ darkMode }: CytoscapeSettingsOpts) => {
+	return {
+		style: createCytoscapeStyles(darkMode),
+		layout
+	};
 };

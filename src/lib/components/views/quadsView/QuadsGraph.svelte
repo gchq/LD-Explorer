@@ -25,7 +25,7 @@
 		cy = cytoscape({
 			container,
 			userZoomingEnabled: false,
-			...cytoscapeSettings
+			...cytoscapeSettings({ darkMode: !!$settings.general__darkMode })
 		});
 		zoomLevel = cy.zoom();
 	});
