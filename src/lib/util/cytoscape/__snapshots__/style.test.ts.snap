@@ -1,6 +1,49 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`style > matches the snapshot 1`] = `
+exports[`style > matches the dark-mode snapshot 1`] = `
+[
+  {
+    "selector": "node",
+    "style": {
+      "height": 20,
+      "label": "data(label)",
+      "width": 20,
+    },
+  },
+  {
+    "selector": "node[termType = "NamedNode"]",
+    "style": {
+      "background-color": "#fbbf24",
+    },
+  },
+  {
+    "selector": "node[termType = "Literal"]",
+    "style": {
+      "background-color": "#aaa",
+    },
+  },
+  {
+    "selector": "label",
+    "style": {
+      "color": "#fff",
+      "font-size": "5px",
+    },
+  },
+  {
+    "selector": "edge",
+    "style": {
+      "curve-style": "bezier",
+      "label": "data(label)",
+      "line-color": "#555",
+      "target-arrow-color": "#555",
+      "target-arrow-shape": "triangle",
+      "width": 2,
+    },
+  },
+]
+`;
+
+exports[`style > matches the light-mode snapshot 1`] = `
 [
   {
     "selector": "node",
@@ -25,6 +68,7 @@ exports[`style > matches the snapshot 1`] = `
   {
     "selector": "label",
     "style": {
+      "color": "#000",
       "font-size": "5px",
     },
   },
