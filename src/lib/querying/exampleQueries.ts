@@ -1,7 +1,7 @@
 /* (c) Crown Copyright GCHQ */
 
 /*
-These are the "pre built" queries that users can choose from when using the SPARQL UI. 
+These are the "pre built" queries that users can choose from when using the SPARQL UI.
 The idea is to collect together some common/useful queries to help users explore their data.
 
 Ideally this file would not be "code" and would instead be specified as config.
@@ -63,6 +63,26 @@ WHERE {
 }`
 	},
 	{
+		queryName: 'Infer class from rdfs:subClassOf',
+		query: `PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+CONSTRUCT {?s rdf:type ?B}
+WHERE {
+	?s rdf:type ?A .
+	?A rdfs:subClassOf ?B }`
+	},
+	{
+		queryName: 'Infer class from rdfs:subPropertyOf',
+		query: `PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+CONSTRUCT {?s ?p2 ?o}
+WHERE {
+	?s ?p1 ?o .
+	?p1 rdfs:subPropertyOf ?p2 }`
+	},
+	{
 		queryName: 'Infer class from rdfs:range',
 		query: `PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -87,7 +107,7 @@ WHERE {
 		query: `PREFIX owl: <http://www.w3.org/2002/07/owl#>
 
 CONSTRUCT { ?x ?p ?o }
-WHERE { 
+WHERE {
 	?y ?p ?o .
 	?x owl:sameAs ?y .
 }`
@@ -97,9 +117,9 @@ WHERE {
 		query: `PREFIX owl: <http://www.w3.org/2002/07/owl#>
 
 CONSTRUCT { ?s ?x ?o }
-WHERE { 
+WHERE {
 	?s ?y ?o .
-	?x owl:sameAs ?y . 
+	?x owl:sameAs ?y .
 }`
 	},
 	{
@@ -107,9 +127,9 @@ WHERE {
 		query: `PREFIX owl: <http://www.w3.org/2002/07/owl#>
 
 CONSTRUCT { ?s ?p ?x }
-WHERE { 
+WHERE {
 	?s ?p ?y .
-	?x owl:sameAs ?y . 
+	?x owl:sameAs ?y .
 }`
 	},
 	{
@@ -117,7 +137,7 @@ WHERE {
 		query: `PREFIX owl: <http://www.w3.org/2002/07/owl#>
 
 CONSTRUCT { ?x ?p ?y }
-WHERE { 
+WHERE {
 	?y ?p ?x .
 	?p a owl:SymmetricProperty .
 }`

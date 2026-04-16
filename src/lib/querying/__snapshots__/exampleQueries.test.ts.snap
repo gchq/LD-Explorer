@@ -54,6 +54,26 @@ WHERE {
     "query": "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
+CONSTRUCT {?s rdf:type ?B}
+WHERE {
+	?s rdf:type ?A .
+	?A rdfs:subClassOf ?B }",
+    "queryName": "Infer class from rdfs:subClassOf",
+  },
+  {
+    "query": "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+CONSTRUCT {?s ?p2 ?o}
+WHERE {
+	?s ?p1 ?o .
+	?p1 rdfs:subPropertyOf ?p2 }",
+    "queryName": "Infer class from rdfs:subPropertyOf",
+  },
+  {
+    "query": "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
 CONSTRUCT {?o rdf:type ?A}
 WHERE {
 	?P rdfs:range ?A .
@@ -74,7 +94,7 @@ WHERE {
     "query": "PREFIX owl: <http://www.w3.org/2002/07/owl#>
 
 CONSTRUCT { ?x ?p ?o }
-WHERE { 
+WHERE {
 	?y ?p ?o .
 	?x owl:sameAs ?y .
 }",
@@ -84,9 +104,9 @@ WHERE {
     "query": "PREFIX owl: <http://www.w3.org/2002/07/owl#>
 
 CONSTRUCT { ?s ?x ?o }
-WHERE { 
+WHERE {
 	?s ?y ?o .
-	?x owl:sameAs ?y . 
+	?x owl:sameAs ?y .
 }",
     "queryName": "Infer from owl:sameAs (predicate)",
   },
@@ -94,9 +114,9 @@ WHERE {
     "query": "PREFIX owl: <http://www.w3.org/2002/07/owl#>
 
 CONSTRUCT { ?s ?p ?x }
-WHERE { 
+WHERE {
 	?s ?p ?y .
-	?x owl:sameAs ?y . 
+	?x owl:sameAs ?y .
 }",
     "queryName": "Infer from owl:sameAs (object)",
   },
@@ -104,7 +124,7 @@ WHERE {
     "query": "PREFIX owl: <http://www.w3.org/2002/07/owl#>
 
 CONSTRUCT { ?x ?p ?y }
-WHERE { 
+WHERE {
 	?y ?p ?x .
 	?p a owl:SymmetricProperty .
 }",
