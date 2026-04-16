@@ -94,5 +94,9 @@
 	{
 		"label": "rel",
 		"iri": "http://www.perceive.net/schemas/relationship/"
+	},
+	{
+		"label": "geo",
+		"iri": "http://www.opengis.net/ont/geosparql#"
 	}
 ]
