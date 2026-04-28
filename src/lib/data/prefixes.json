@@ -98,5 +98,13 @@
 	{
 		"label": "geo",
 		"iri": "http://www.opengis.net/ont/geosparql#"
+	},
+	{
+		"label": "ssn",
+		"iri": "http://www.w3.org/ns/ssn/"
+	},
+	{
+		"label": "sosa",
+		"iri": "http://www.w3.org/ns/sosa/"
 	}
 ]
