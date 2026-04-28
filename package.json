@@ -8,7 +8,8 @@
 	},
 	"devEngines": {
 		"packageManager": {
-			"name": "npm"
+			"name": "npm",
+			"version": "^10.0.0"
 		}
 	},
 	"engines": {
