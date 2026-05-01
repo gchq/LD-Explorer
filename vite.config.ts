@@ -11,6 +11,9 @@ const pkg = JSON.parse(json);
 
 export default defineConfig({
 	plugins: [sveltekit(), svelteTesting(), tailwindcss()],
+	resolve: {
+		conditions: ['browser', 'import']
+	},
 	define: {
 		PUBLIC_VERSION: JSON.stringify(pkg.version)
 	},
