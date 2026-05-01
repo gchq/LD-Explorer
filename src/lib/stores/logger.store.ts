@@ -63,7 +63,18 @@ export const comunicaLogger: Logger = {
 	},
 	fatal: function (message: string, data?: LogEntryMetadata): void {
 		logger.addErrorMessage('Comunica', message, data);
-	}
+	},
+	// The functionality below introduced in comunica 5.2.1 is required by any logger that is
+	// passed to comunica and is basically a way of reducing console spam.
+	// https://github.com/comunica/comunica/blob/master/packages/types/lib/Logger.ts#L56
+	// It's stubbed out for now - we've wrapped the logger to use it elsewhere and our verison
+	// does not support this functionality (yet).
+	// @ts-expect-error see above
+	activeLogGroups: undefined,
+	repetitionCounter: 0,
+	groupedLogLimit: 5,
+	logGrouped: () => {},
+	flush: () => {}
 };
 
 export const recentLogs = derived(logger, ($logger) =>
