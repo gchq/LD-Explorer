@@ -6,15 +6,10 @@
 	"bugs": {
 		"url": "https://github.com/gchq/ld-explorer/issues"
 	},
-	"devEngines": {
-		"packageManager": {
-			"name": "npm",
-			"version": ">=10.0.0"
-		}
-	},
 	"engines": {
-		"node": ">=24.13.0"
+		"node": ">=24.0.0"
 	},
+	"packageManager": "npm@10.5.2",
 	"scripts": {
 		"dev": "vite dev --host",
 		"build": "vite build",
