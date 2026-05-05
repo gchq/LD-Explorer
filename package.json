@@ -47,7 +47,7 @@
 		"autoprefixer": "^10.5.0",
 		"clsx": "^2.1.1",
 		"cytoscape": "^3.33.3",
-		"eslint": "^10.3.0",
+		"eslint": "^9.39.4",
 		"eslint-config-prettier": "^10.1.8",
 		"eslint-plugin-prettier": "^5.5.5",
 		"eslint-plugin-svelte": "^3.17.1",
