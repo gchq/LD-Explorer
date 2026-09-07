@@ -1,6 +1,5 @@
 /* (c) Crown Copyright GCHQ */
 
-import '@testing-library/jest-dom';
 import { screen } from '@testing-library/svelte';
 import Tab from './Tab.svelte';
 import { hydratedRender as render } from '$test-helpers/render';

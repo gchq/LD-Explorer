@@ -1,6 +1,5 @@
 /* (c) Crown Copyright GCHQ */
 
-import '@testing-library/jest-dom';
 import ProductFeature from './ProductFeature.svelte';
 import { hydratedRender as render } from '$test-helpers/render';
 import { screen } from '@testing-library/svelte';

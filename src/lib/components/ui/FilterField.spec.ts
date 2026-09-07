@@ -1,6 +1,5 @@
 /* (c) Crown Copyright GCHQ */
 
-import '@testing-library/jest-dom';
 import FilterField from './FilterField.svelte';
 import { render } from '$test-helpers/render';
 import { screen } from 'shadow-dom-testing-library';

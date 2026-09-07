@@ -1,5 +1,5 @@
 /* (c) Crown Copyright GCHQ */
-
+import '@testing-library/jest-dom/vitest';
 import { defineCustomElements } from '@ukic/web-components/loader';
 import { beforeAll, vi } from 'vitest';
 import { configure } from '@testing-library/dom';

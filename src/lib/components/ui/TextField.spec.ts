@@ -1,6 +1,5 @@
 /* (c) Crown Copyright GCHQ */
 
-import '@testing-library/jest-dom';
 import TextField from './TextField.svelte';
 import { hydratedRender as render } from '$test-helpers/render';
 import { screen } from 'shadow-dom-testing-library';

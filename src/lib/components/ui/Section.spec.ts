@@ -1,6 +1,5 @@
 /* (c) Crown Copyright GCHQ */
 
-import '@testing-library/jest-dom';
 import Section from './Section.svelte';
 import { hydratedRender as render } from '$test-helpers/render';
 

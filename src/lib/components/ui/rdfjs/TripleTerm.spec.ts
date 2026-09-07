@@ -1,6 +1,5 @@
 /* (c) Crown Copyright GCHQ */
 
-import '@testing-library/jest-dom';
 import { DataFactory } from 'n3';
 import TripleTerm from './TripleTerm.svelte';
 import { hydratedRender as render } from '$test-helpers/render';

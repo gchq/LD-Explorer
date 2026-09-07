@@ -1,6 +1,5 @@
 /* (c) Crown Copyright GCHQ */
 
-import '@testing-library/jest-dom';
 import Table from './Table.svelte';
 import { render } from '$test-helpers/render';
 import { screen } from '@testing-library/svelte';

@@ -1,6 +1,5 @@
 /* (c) Crown Copyright GCHQ */
 
-import '@testing-library/jest-dom';
 import { hydratedRender, render } from '$test-helpers/render';
 import { DataFactory } from 'n3';
 import Term from './Term.svelte';
