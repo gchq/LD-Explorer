@@ -38,7 +38,6 @@
 		"@testing-library/jest-dom": "^6.9.1",
 		"@testing-library/svelte": "^5.4.2",
 		"@testing-library/user-event": "^14.6.6",
-		"@types/cytoscape": "^3.31.0",
 		"@types/eslint": "^9.6.1",
 		"@ukic/fonts": "^3.2.16",
 		"@ukic/web-components": "^3.30.0",
