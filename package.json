@@ -9,7 +9,7 @@
 	"engines": {
 		"node": ">=24.0.0"
 	},
-	"packageManager": "npm@11.13.0",
+	"packageManager": "npm@12.0.2",
 	"scripts": {
 		"dev": "vite dev --host",
 		"build": "vite build",
@@ -36,7 +36,7 @@
 		"@sveltejs/kit": "^2.70.3",
 		"@sveltejs/vite-plugin-svelte": "^6.2.4",
 		"@tailwindcss/vite": "^4.3.3",
-		"@testing-library/jest-dom": "^6.9.1",
+		"@testing-library/jest-dom": "^7.0.1",
 		"@testing-library/svelte": "^5.4.2",
 		"@testing-library/user-event": "^14.6.7",
 		"@types/cytoscape": "^3.31.0",
@@ -57,7 +57,7 @@
 		"n3": "^2.7.12",
 		"postcss": "^8.5.28",
 		"prettier": "^3.9.6",
-		"prettier-plugin-svelte": "^3.5.2",
+		"prettier-plugin-svelte": "^4.1.1",
 		"rdf-data-factory": "^2.0.2",
 		"rdfa-streaming-parser": "^3.0.2",
 		"shadow-dom-testing-library": "^1.14.1",
