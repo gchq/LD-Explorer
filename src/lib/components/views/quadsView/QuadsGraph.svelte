@@ -34,7 +34,8 @@
 		const elements = getCytoscapeElementsForQuads(
 			quads,
 			$settings.term__abbreviateCommonPrefixes,
-			$prefixes
+			$prefixes,
+			$settings.term__squashRdfTypeInGraph
 		);
 		if (cy) {
 			cy.add(elements);
