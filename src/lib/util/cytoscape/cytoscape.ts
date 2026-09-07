@@ -8,6 +8,7 @@ import layout from './layout';
 import createCytoscapeStyles from './style';
 
 const MAX_LABEL_LENGTH = 40;
+const RDF_TYPE_IRI = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type';
 
 type TermType = 'NamedNode' | 'BlankNode' | 'Literal' | 'Variable' | 'Quad';
 
@@ -21,7 +22,8 @@ export type LinkedDataElement = ElementDefinition & {
 export function getCytoscapeElementsForQuads(
 	quads: Quad[],
 	abbreviateTerms: boolean = false,
-	prefixes: Prefix[] = []
+	prefixes: Prefix[] = [],
+	squashRdfType: boolean = false
 ): LinkedDataElement[] {
 	const elements: LinkedDataElement[] = [];
 	const resources = new Set<string>();
@@ -31,13 +33,34 @@ export function getCytoscapeElementsForQuads(
 		return abbreviateTerms ? abbreviateTermPrefix(label, prefixes) : label;
 	}
 
+	const rdfTypesBySubject = new Map<string, Set<string>>();
+	if (squashRdfType) {
+		for (const { subject, predicate, object } of quads) {
+			if (
+				(subject.termType as TermType) !== 'Quad' &&
+				predicate.value === RDF_TYPE_IRI &&
+				(object.termType === 'NamedNode' || object.termType === 'BlankNode')
+			) {
+				const types = rdfTypesBySubject.get(subject.value) ?? new Set<string>();
+				types.add(formatLabel(object.value));
+				rdfTypesBySubject.set(subject.value, types);
+			}
+		}
+	}
+
 	// Add resource node to graph, ensuring duplicates are not added
 	function addResourceNode(id: string, label: string, termType: TermType) {
 		if (resources.has(id)) return;
 
 		resources.add(id);
+		const types = rdfTypesBySubject.get(id);
+		const formattedLabel = formatLabel(label);
 		elements.push({
-			data: { id, label: formatLabel(label), termType }
+			data: {
+				id,
+				label: types?.size ? `${formattedLabel} (a ${[...types].join(', ')})` : formattedLabel,
+				termType
+			}
 		});
 	}
 
@@ -51,6 +74,14 @@ export function getCytoscapeElementsForQuads(
 
 		// Add subject as node - subjects will always be IRIs (either blank nodes or named nodes)
 		addResourceNode(subject.value, subject.value, subject.termType);
+
+		if (
+			squashRdfType &&
+			predicate.value === RDF_TYPE_IRI &&
+			(object.termType === 'NamedNode' || object.termType === 'BlankNode')
+		) {
+			continue;
+		}
 
 		const edgeId = `E${idx}`;
 

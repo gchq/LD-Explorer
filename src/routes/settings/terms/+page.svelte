@@ -21,6 +21,7 @@
 	const dirtySettings = {
 		term__showNodeType: $settings.term__showNodeType,
 		term__abbreviateCommonPrefixes: $settings.term__abbreviateCommonPrefixes,
+		term__squashRdfTypeInGraph: $settings.term__squashRdfTypeInGraph,
 		term__showLanguageTag: $settings.term__showLanguageTag
 	};
 	let dirty = false;
@@ -87,6 +88,13 @@
 			label="Abbreviate Common Prefixes"
 			helperText="Whether to abbreviate commonly used prefixes such as OWL, RDF and FOAF."
 			bind:checked={dirtySettings.term__abbreviateCommonPrefixes}
+			onchange={() => (dirty = true)}
+		/>
+
+		<Switch
+			label="Squash RDF Types in Graph"
+			helperText="Whether rdf:type relationships should be shown on the subject node instead of as graph edges."
+			bind:checked={dirtySettings.term__squashRdfTypeInGraph}
 			onchange={() => (dirty = true)}
 		/>
 

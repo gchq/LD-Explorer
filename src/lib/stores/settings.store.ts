@@ -12,6 +12,7 @@ interface GeneralSettings {
 export interface TermSettings {
 	term__showNodeType: boolean;
 	term__abbreviateCommonPrefixes: boolean;
+	term__squashRdfTypeInGraph: boolean;
 	term__showLanguageTag: boolean;
 }
 
@@ -26,6 +27,7 @@ const defaultSettings: Settings = {
 	general__showRDFSLabels: false,
 	term__showNodeType: true,
 	term__abbreviateCommonPrefixes: false,
+	term__squashRdfTypeInGraph: false,
 	term__showLanguageTag: true
 };
 

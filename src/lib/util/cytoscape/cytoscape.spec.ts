@@ -150,6 +150,31 @@ describe(getCytoscapeElementsForQuads, () => {
 		});
 	});
 
+	describe('when asked to squash rdf:type information', () => {
+		const bob = namedNode('#Bob');
+		const person = namedNode('#Person');
+		const triple = [
+			quad(bob, namedNode('http://www.w3.org/1999/02/22-rdf-syntax-ns#type'), person)
+		];
+
+		it('adds the type to the subject label without adding a type edge or object node', () => {
+			const result = getCytoscapeElementsForQuads(triple, false, [], true);
+
+			expect(result).toHaveLength(1);
+			expect(result[0].data.id).toEqual(bob.value);
+			expect(result[0].data.label).toEqual('#Bob (a #Person)');
+		});
+
+		it('leaves rdf:type as a normal edge by default', () => {
+			const result = getCytoscapeElementsForQuads(triple);
+
+			expect(result).toHaveLength(3);
+			expect(result.find((element) => element.data.id === 'E0')?.data.label).toEqual(
+				'http://www.w3.org/1999/02/22-rdf-syntax-ns#type'
+			);
+		});
+	});
+
 	describe('when asked to abbreviate common prefixes', () => {
 		const triple = [
 			quad(
