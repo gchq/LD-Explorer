@@ -1,6 +1,5 @@
 /* (c) Crown Copyright GCHQ */
 
-import '@testing-library/jest-dom';
 import TableBody from './TableBody.svelte';
 import { render } from '$test-helpers/render';
 

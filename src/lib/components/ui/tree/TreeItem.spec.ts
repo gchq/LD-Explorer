@@ -1,6 +1,5 @@
 /* (c) Crown Copyright GCHQ */
 
-import '@testing-library/jest-dom';
 import TreeItem from './TreeItem.svelte';
 import { render } from '$test-helpers/render';
 

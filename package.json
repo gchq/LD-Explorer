@@ -43,7 +43,7 @@
 		"@types/eslint": "^9.6.1",
 		"@ukic/fonts": "^3.2.16",
 		"@ukic/web-components": "^3.30.0",
-		"@vitest/coverage-v8": "^4.1.11",
+		"@vitest/coverage-v8": "^5.0.0",
 		"asynciterator": "^3.10.0",
 		"clsx": "^2.1.1",
 		"cytoscape": "^3.34.2",
@@ -69,7 +69,7 @@
 		"typescript-eslint": "^8.69.0",
 		"uuid": "^14.0.2",
 		"vite": "^8.2.2",
-		"vitest": "^4.1.5"
+		"vitest": "^5.0.0"
 	},
 	"type": "module"
 }

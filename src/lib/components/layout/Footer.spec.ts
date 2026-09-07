@@ -1,6 +1,5 @@
 /* (c) Crown Copyright GCHQ */
 
-import '@testing-library/jest-dom';
 import { hydratedRender, render } from '$test-helpers/render';
 import Footer from './Footer.svelte';
 import { screen } from 'shadow-dom-testing-library';
