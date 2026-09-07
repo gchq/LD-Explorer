@@ -1,6 +1,6 @@
 /* (c) Crown Copyright GCHQ */
 
-import { Parser as SparqlParser, type SparqlQuery } from 'sparqljs';
+import { Parser as SparqlParser } from '@traqula/parser-sparql-1-2';
 
 /**
  * Takes a string, returns a parsed object. We never use this function outside of this file,
@@ -8,10 +8,9 @@ import { Parser as SparqlParser, type SparqlQuery } from 'sparqljs';
  * valid.
  *
  * @param {string} sparqlQuery
- * @returns SparqlQuery (sparqljs instance)
  */
-function parseSparql(sparqlQuery: string): SparqlQuery {
-	const parser = new SparqlParser({ sparqlStar: true });
+function parseSparql(sparqlQuery: string) {
+	const parser = new SparqlParser();
 	return parser.parse(sparqlQuery);
 }
 

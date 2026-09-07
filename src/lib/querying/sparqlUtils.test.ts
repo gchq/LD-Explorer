@@ -10,6 +10,12 @@ describe('validateSparql', () => {
 			expect(() => validateSparql(sparqlQuery)).not.toThrowError();
 		});
 	});
+	describe('when given a SPARQL-star query', () => {
+		it('does not throw an error', () => {
+			const query = 'SELECT * WHERE { << ?s ?p ?o >> ?q ?r }';
+			expect(() => validateSparql(query)).not.toThrowError();
+		});
+	});
 	describe('when given an invalid sparql query', () => {
 		it('throws an error', () => {
 			const query = 'I am a totally invalid sparql query';
