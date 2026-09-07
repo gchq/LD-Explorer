@@ -44,7 +44,6 @@
 		"@ukic/web-components": "^3.30.0",
 		"@vitest/coverage-v8": "^4.1.11",
 		"asynciterator": "^3.10.0",
-		"autoprefixer": "^10.5.4",
 		"clsx": "^2.1.1",
 		"cytoscape": "^3.34.2",
 		"eslint": "^9.39.5",
