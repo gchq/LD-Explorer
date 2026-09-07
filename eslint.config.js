@@ -23,6 +23,10 @@ export default tseslint.config(
 			parserOptions: {
 				parser: tseslint.parser
 			}
+		},
+		rules: {
+			// Assignments to bindable props are observable by parent components.
+			'no-useless-assignment': 'off'
 		}
 	},
 	{
