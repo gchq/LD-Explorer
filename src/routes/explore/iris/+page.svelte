@@ -11,7 +11,7 @@
 	function handleSubmit(iri: string) {
 		if (iri && iri.length) {
 			// eslint-disable-next-line svelte/no-navigation-without-resolve
-			goto(`${resolve('/explore/iris/detail')}?$iri=${encodeURIComponent(iri)}`);
+			goto(`${resolve('/explore/iris/detail')}?iri=${encodeURIComponent(iri)}`);
 		}
 	}
 
