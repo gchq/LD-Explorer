@@ -48,6 +48,8 @@ function isBindings(r: QueryResult): r is Bindings {
 
 export function createQueryStore(sparqlQuery: string, sources: QuerySources): StreamedQueryStore {
 	let queryStream: QueryStream | undefined = undefined;
+	let stopped = false;
+	const abortController = new AbortController();
 
 	const { subscribe, update } = writable<StreamedQuery>(
 		{
@@ -56,13 +58,20 @@ export function createQueryStore(sparqlQuery: string, sources: QuerySources): St
 			results: [],
 			variables: new Set()
 		},
-		() => {
-			return () => {
-				// Close down the binding stream when nobody subscribe end
-				if (queryStream) queryStream.close();
-			};
-		}
+		() => () => queryStream?.destroy()
 	);
+
+	function stop() {
+		if (stopped) return;
+		stopped = true;
+		update((current) =>
+			current.status === QueryStatus.Initialized || current.status === QueryStatus.Fetching
+				? { ...current, status: QueryStatus.Halted }
+				: current
+		);
+		abortController.abort();
+		queryStream?.destroy();
+	}
 
 	(async function () {
 		// User is attempting to run a query before they've added any data sources - abort
@@ -72,15 +81,20 @@ export function createQueryStore(sparqlQuery: string, sources: QuerySources): St
 		}
 
 		const engine = await createEngine();
+		if (stopped) return;
 		const result = await engine.query(sparqlQuery, {
 			sources,
 			readonly: true,
 			lenient: true,
-			log: comunicaLogger
+			log: comunicaLogger,
+			httpAbortSignal: abortController.signal
 		});
+
+		if (stopped) return;
 
 		// The engine will now have established the type of query, so we can update this
 		update((current) => ({ ...current, type: result.resultType, status: QueryStatus.Fetching }));
+		if (stopped) return;
 
 		// Comunica engines can return one of three types of result based on the SPARQL query that
 		// was run: bindings, quads or booleans.
@@ -96,6 +110,7 @@ export function createQueryStore(sparqlQuery: string, sources: QuerySources): St
 			case 'boolean': {
 				// booleans are the result of ASK queries
 				const booleanResult = await result.execute();
+				if (stopped) return;
 				update((current) => ({ ...current, results: [booleanResult], status: QueryStatus.Done }));
 				// Boolean results are not "streamed" like the other two, so we don't need to proceed once
 				// we have this result, we can just return.
@@ -114,8 +129,13 @@ export function createQueryStore(sparqlQuery: string, sources: QuerySources): St
 		// Note that ASK queries (which return a single boolean) will not be streamed, so this part
 		// will only run for bindings or quad streams.
 		if (queryStream) {
+			if (stopped) {
+				queryStream.destroy();
+				return;
+			}
 			// emitted when stream receives data
 			queryStream.on('data', (r: QueryResult) => {
+				if (stopped) return;
 				update((current) => ({
 					...current,
 					results: [...current.results, r],
@@ -142,6 +162,7 @@ export function createQueryStore(sparqlQuery: string, sources: QuerySources): St
 			});
 			// emitted when stream receives an error
 			queryStream.on('error', (error: Error) => {
+				if (stopped) return;
 				update((current) => ({ ...current, status: QueryStatus.Error }));
 				logger.addError('Query', error, {
 					sparqlQuery,
@@ -150,6 +171,7 @@ export function createQueryStore(sparqlQuery: string, sources: QuerySources): St
 			});
 		}
 	})().catch((error: unknown) => {
+		if (stopped) return;
 		update((current) => ({ ...current, status: QueryStatus.Error }));
 		logger.addError('Query', error instanceof Error ? error : new Error(String(error)), {
 			sparqlQuery,
@@ -159,9 +181,6 @@ export function createQueryStore(sparqlQuery: string, sources: QuerySources): St
 
 	return {
 		subscribe,
-		stop() {
-			if (queryStream) queryStream.close();
-			update((current) => ({ ...current, status: QueryStatus.Halted }));
-		}
+		stop
 	};
 }
