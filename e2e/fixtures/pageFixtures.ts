@@ -11,6 +11,8 @@ import AddRemoteDataSourcePage from '$e2e/pages/data-sources/AddRemoteDataSource
 import ExploreClassesPage from '$e2e/pages/explore/ExploreClassesPage';
 import ExploreIndividualsPage from '$e2e/pages/explore/ExploreIndividualsPage';
 import ExploreTriplesPage from '$e2e/pages/explore/ExploreTriplesPage';
+import ExploreIRISearchPage from '$e2e/pages/explore/ExploreIRISearchPage';
+import ExploreIRIDetailPage from '$e2e/pages/explore/ExploreIRIDetailPage';
 import GeneralSettingsPage from '$e2e/pages/settings/GeneralSettingsPage';
 import LogsPage from '$e2e/pages/LogsPage';
 import ImportToLocalDataSourcePage from '$e2e/pages/data-sources/ImportToLocalDataSourcePage';
@@ -30,6 +32,8 @@ const pages = {
 	exploreClassesPage: ExploreClassesPage,
 	exploreIndividualsPage: ExploreIndividualsPage,
 	exploreTriplesPage: ExploreTriplesPage,
+	exploreIriSearchPage: ExploreIRISearchPage,
+	exploreIriDetailPage: ExploreIRIDetailPage,
 	generalSettingsPage: GeneralSettingsPage
 };
 
