@@ -59,6 +59,20 @@ describe(createQueryStore, () => {
 	});
 
 	describe('when running any query', () => {
+		it('reports malformed SPARQL instead of leaving the query initialised', async () => {
+			const addError = vi.spyOn(logger, 'addError').mockImplementation(() => undefined);
+			try {
+				const queryStore = createQueryStore('SELECT WHERE {', get(sourceList));
+				await vi.waitFor(() => expect(get(queryStore).status).toBe(QueryStatus.Error));
+				expect(addError).toHaveBeenCalledWith('Query', expect.any(Error), {
+					sparqlQuery: 'SELECT WHERE {',
+					sourceCount: '1'
+				});
+			} finally {
+				addError.mockRestore();
+			}
+		});
+
 		it('Starts off with a status of initialized', () => {
 			const queryStore = createQueryStore('SELECT * WHERE { ?s ?p ?o } LIMIT 100', get(sourceList));
 			expect(get(queryStore).status).toEqual(QueryStatus.Initialized);
