@@ -93,14 +93,14 @@ export function createQueryStore(sparqlQuery: string, sources: QuerySources): St
 				// quads are the result of CONSTRUCT or DESCRIBE queries.
 				queryStream = (await result.execute()) as unknown as QuadsStream;
 				break;
-			case 'boolean':
+			case 'boolean': {
 				// booleans are the result of ASK queries
-				result.execute().then((booleanResult) => {
-					update((current) => ({ ...current, results: [booleanResult], status: QueryStatus.Done }));
-				});
+				const booleanResult = await result.execute();
+				update((current) => ({ ...current, results: [booleanResult], status: QueryStatus.Done }));
 				// Boolean results are not "streamed" like the other two, so we don't need to proceed once
 				// we have this result, we can just return.
 				return;
+			}
 			default:
 				update((current) => ({ ...current, status: QueryStatus.Error }));
 
@@ -149,7 +149,13 @@ export function createQueryStore(sparqlQuery: string, sources: QuerySources): St
 				});
 			});
 		}
-	})();
+	})().catch((error: unknown) => {
+		update((current) => ({ ...current, status: QueryStatus.Error }));
+		logger.addError('Query', error instanceof Error ? error : new Error(String(error)), {
+			sparqlQuery,
+			sourceCount: sources.length.toString()
+		});
+	});
 
 	return {
 		subscribe,
