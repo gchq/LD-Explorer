@@ -2,7 +2,8 @@
 
 import { type LinkedDataElement, getCytoscapeElementsForQuads } from './cytoscape';
 import { DataFactory } from 'n3';
-const { quad, namedNode, literal } = DataFactory;
+import cytoscape from 'cytoscape';
+const { quad, namedNode, blankNode, literal } = DataFactory;
 
 describe(getCytoscapeElementsForQuads, () => {
 	describe('when provided with a triple whose object portion is literal', () => {
@@ -24,7 +25,7 @@ describe(getCytoscapeElementsForQuads, () => {
 			let el: LinkedDataElement;
 
 			beforeEach(() => {
-				el = result.find((r) => r.data.id == bob.value) as LinkedDataElement;
+				el = result.find((r) => r.data.id == `NamedNode:${bob.value}`) as LinkedDataElement;
 			});
 
 			it('is a named node', () => {
@@ -69,7 +70,7 @@ describe(getCytoscapeElementsForQuads, () => {
 			});
 
 			it('has bob as the source', () => {
-				expect(el.data.source).toEqual(bob.value);
+				expect(el.data.source).toEqual(`NamedNode:${bob.value}`);
 			});
 
 			it('has the Bob name literal', () => {
@@ -91,7 +92,7 @@ describe(getCytoscapeElementsForQuads, () => {
 			let el: LinkedDataElement;
 
 			beforeEach(() => {
-				el = result.find((r) => r.data.id == alice.value) as LinkedDataElement;
+				el = result.find((r) => r.data.id == `NamedNode:${alice.value}`) as LinkedDataElement;
 			});
 
 			it('is a named Node', () => {
@@ -161,7 +162,7 @@ describe(getCytoscapeElementsForQuads, () => {
 			const result = getCytoscapeElementsForQuads(triple, false, [], true);
 
 			expect(result).toHaveLength(1);
-			expect(result[0].data.id).toEqual(bob.value);
+			expect(result[0].data.id).toEqual(`NamedNode:${bob.value}`);
 			expect(result[0].data.label).toEqual('#Bob (a #Person)');
 		});
 
@@ -205,9 +206,78 @@ describe(getCytoscapeElementsForQuads, () => {
 
 		it('only includes the IRI once', () => {
 			const result = getCytoscapeElementsForQuads(triples);
-			const el = result.filter((r) => r.data.id == bob.value) as LinkedDataElement[];
+			const el = result.filter((r) => r.data.id == `NamedNode:${bob.value}`) as LinkedDataElement[];
 
 			expect(el).toHaveLength(1);
+		});
+	});
+
+	describe('when resource names overlap other element identifiers', () => {
+		it.each(['E0', 'L0'])('keeps blank node %s separate from edges and literals', (name) => {
+			const elements = getCytoscapeElementsForQuads([
+				quad(blankNode(name), namedNode('urn:example:label'), literal('label'))
+			]);
+			const graph = cytoscape({ headless: true, elements });
+			try {
+				expect(graph.nodes()).toHaveLength(2);
+				expect(graph.edges()).toHaveLength(1);
+				expect(graph.edges()[0].source().data('termType')).toBe('BlankNode');
+				expect(graph.edges()[0].target().data('termType')).toBe('Literal');
+			} finally {
+				graph.destroy();
+			}
+		});
+
+		it('keeps named and blank nodes with the same value separate', () => {
+			const value = 'urn:example:resource';
+			const elements = getCytoscapeElementsForQuads([
+				quad(namedNode(value), namedNode('urn:example:knows'), blankNode(value))
+			]);
+			const graph = cytoscape({ headless: true, elements });
+			try {
+				expect(graph.nodes()).toHaveLength(2);
+				expect(graph.edges()[0].source().data('termType')).toBe('NamedNode');
+				expect(graph.edges()[0].target().data('termType')).toBe('BlankNode');
+			} finally {
+				graph.destroy();
+			}
+		});
+
+		it('deduplicates a blank node used as both a subject and an object', () => {
+			const node = blankNode('E0');
+			const elements = getCytoscapeElementsForQuads([
+				quad(namedNode('urn:example:alice'), namedNode('urn:example:knows'), node),
+				quad(node, namedNode('urn:example:name'), literal('Bob'))
+			]);
+			const graph = cytoscape({ headless: true, elements });
+			try {
+				expect(graph.nodes()).toHaveLength(3);
+				expect(graph.edges()).toHaveLength(2);
+				expect(graph.edges()[0].target().id()).toBe(graph.edges()[1].source().id());
+			} finally {
+				graph.destroy();
+			}
+		});
+
+		it('keeps squashed type labels attached to the right RDF term', () => {
+			const value = 'urn:example:resource';
+			const rdfType = namedNode('http://www.w3.org/1999/02/22-rdf-syntax-ns#type');
+			const elements = getCytoscapeElementsForQuads(
+				[
+					quad(namedNode(value), rdfType, namedNode('urn:example:Person')),
+					quad(blankNode(value), rdfType, namedNode('urn:example:Team'))
+				],
+				false,
+				[],
+				true
+			);
+			expect(elements).toHaveLength(2);
+			expect(elements.find((el) => el.data.termType === 'NamedNode')?.data.label).toBe(
+				`${value} (a urn:example:Person)`
+			);
+			expect(elements.find((el) => el.data.termType === 'BlankNode')?.data.label).toBe(
+				`${value} (a urn:example:Team)`
+			);
 		});
 	});
 });

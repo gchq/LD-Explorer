@@ -2,7 +2,7 @@
 
 import type { ElementDefinition } from 'cytoscape';
 import type { Prefix } from '$lib/types';
-import type { Quad } from '@rdfjs/types';
+import type { Quad, Term } from '@rdfjs/types';
 import { abbreviateTermPrefix } from '$lib/util/term.utils';
 import layout from './layout';
 import createCytoscapeStyles from './style';
@@ -41,9 +41,9 @@ export function getCytoscapeElementsForQuads(
 				predicate.value === RDF_TYPE_IRI &&
 				(object.termType === 'NamedNode' || object.termType === 'BlankNode')
 			) {
-				const types = rdfTypesBySubject.get(subject.value) ?? new Set<string>();
+				const types = rdfTypesBySubject.get(resourceId(subject)) ?? new Set<string>();
 				types.add(formatLabel(object.value));
-				rdfTypesBySubject.set(subject.value, types);
+				rdfTypesBySubject.set(resourceId(subject), types);
 			}
 		}
 	}
@@ -73,7 +73,8 @@ export function getCytoscapeElementsForQuads(
 		}
 
 		// Add subject as node - subjects will always be IRIs (either blank nodes or named nodes)
-		addResourceNode(subject.value, subject.value, subject.termType);
+		const subjectId = resourceId(subject);
+		addResourceNode(subjectId, subject.value, subject.termType);
 
 		if (
 			squashRdfType &&
@@ -87,12 +88,13 @@ export function getCytoscapeElementsForQuads(
 
 		if (object.termType == 'NamedNode' || object.termType == 'BlankNode') {
 			// Add named nodes or blank nodes from the OBJECT portion of triple
-			addResourceNode(object.value, object.value, object.termType);
+			const objectId = resourceId(object);
+			addResourceNode(objectId, object.value, object.termType);
 			elements.push({
 				data: {
 					id: edgeId,
-					source: subject.value,
-					target: object.value,
+					source: subjectId,
+					target: objectId,
 					label: formatLabel(predicate.value),
 					termType: predicate.termType
 				}
@@ -112,7 +114,7 @@ export function getCytoscapeElementsForQuads(
 			elements.push({
 				data: {
 					id: edgeId,
-					source: subject.value,
+					source: subjectId,
 					target: literalId,
 					label: formatLabel(predicate.value),
 					termType: predicate.termType
@@ -121,6 +123,10 @@ export function getCytoscapeElementsForQuads(
 		}
 	}
 	return elements;
+}
+
+function resourceId(term: Term): string {
+	return `${term.termType}:${term.value}`;
 }
 
 type CytoscapeSettingsOpts = {
