@@ -1,6 +1,8 @@
 /* (c) Crown Copyright GCHQ */
 
-export default function createCytoscapeStyles(darkMode: boolean = false) {
+import type cytoscape from 'cytoscape';
+
+export default function createCytoscapeStyles(darkMode: boolean = false): cytoscape.StylesheetJson {
 	return [
 		// the stylesheet for the graph
 		{
@@ -21,6 +23,20 @@ export default function createCytoscapeStyles(darkMode: boolean = false) {
 			selector: 'node[termType = "Literal"]',
 			style: {
 				'background-color': darkMode ? '#aaa' : '#000'
+			}
+		},
+		{
+			selector: 'node[isGraph]',
+			style: {
+				'background-color': darkMode ? '#333' : '#f5f5f5',
+				'background-opacity': 0.6,
+				'border-color': darkMode ? '#aaa' : '#555',
+				'border-width': 1,
+				'font-size': '8px',
+				padding: '16px',
+				shape: 'roundrectangle',
+				'text-halign': 'center',
+				'text-valign': 'top'
 			}
 		},
 		{

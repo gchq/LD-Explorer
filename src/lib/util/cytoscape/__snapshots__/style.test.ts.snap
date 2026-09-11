@@ -23,6 +23,20 @@ exports[`style > matches the dark-mode snapshot 1`] = `
     },
   },
   {
+    "selector": "node[isGraph]",
+    "style": {
+      "background-color": "#333",
+      "background-opacity": 0.6,
+      "border-color": "#aaa",
+      "border-width": 1,
+      "font-size": "8px",
+      "padding": "16px",
+      "shape": "roundrectangle",
+      "text-halign": "center",
+      "text-valign": "top",
+    },
+  },
+  {
     "selector": "label",
     "style": {
       "color": "#fff",
@@ -63,6 +77,20 @@ exports[`style > matches the light-mode snapshot 1`] = `
     "selector": "node[termType = "Literal"]",
     "style": {
       "background-color": "#000",
+    },
+  },
+  {
+    "selector": "node[isGraph]",
+    "style": {
+      "background-color": "#f5f5f5",
+      "background-opacity": 0.6,
+      "border-color": "#555",
+      "border-width": 1,
+      "font-size": "8px",
+      "padding": "16px",
+      "shape": "roundrectangle",
+      "text-halign": "center",
+      "text-valign": "top",
     },
   },
   {
