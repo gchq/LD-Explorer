@@ -19,9 +19,15 @@ describe('sparql queries', () => {
 					WHERE {
 					      { <http://www.example.com/foobar> ?p0 ?o0 }
 					UNION
+					      { GRAPH ?ldExplorerGraph { <http://www.example.com/foobar> ?p0 ?o0 } }
+					UNION
 					      { ?s1 <http://www.example.com/foobar> ?o1 }
 					UNION
+					      { GRAPH ?ldExplorerGraph { ?s1 <http://www.example.com/foobar> ?o1 } }
+					UNION
 					      { ?s2 ?p2 <http://www.example.com/foobar> }
+					UNION
+					      { GRAPH ?ldExplorerGraph { ?s2 ?p2 <http://www.example.com/foobar> } }
 					}
 					LIMIT 100"
 				`);
@@ -41,9 +47,15 @@ describe('sparql queries', () => {
 					WHERE {
 					      { <http://www.example.com/foobar> ?p0 ?o0 }
 					UNION
+					      { GRAPH ?ldExplorerGraph { <http://www.example.com/foobar> ?p0 ?o0 } }
+					UNION
 					      { ?s1 <http://www.example.com/foobar> ?o1 }
 					UNION
+					      { GRAPH ?ldExplorerGraph { ?s1 <http://www.example.com/foobar> ?o1 } }
+					UNION
 					      { ?s2 ?p2 <http://www.example.com/foobar> }
+					UNION
+					      { GRAPH ?ldExplorerGraph { ?s2 ?p2 <http://www.example.com/foobar> } }
 					}
 					LIMIT 123"
 				`);

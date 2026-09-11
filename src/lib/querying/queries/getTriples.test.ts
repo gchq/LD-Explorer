@@ -9,7 +9,12 @@ describe('sparql queries', () => {
 				const query = getTriples.createQuery();
 				expect(query).toMatchInlineSnapshot(`
 					"
-					CONSTRUCT WHERE { ?s ?p ?o }
+					CONSTRUCT { ?s ?p ?o }
+					WHERE {
+					      { ?s ?p ?o }
+					      UNION
+					      { GRAPH ?ldExplorerGraph { ?s ?p ?o } }
+					}
 					LIMIT 100"
 				`);
 			});
@@ -20,7 +25,12 @@ describe('sparql queries', () => {
 				const query = getTriples.createQuery(123);
 				expect(query).toMatchInlineSnapshot(`
 					"
-					CONSTRUCT WHERE { ?s ?p ?o }
+					CONSTRUCT { ?s ?p ?o }
+					WHERE {
+					      { ?s ?p ?o }
+					      UNION
+					      { GRAPH ?ldExplorerGraph { ?s ?p ?o } }
+					}
 					LIMIT 123"
 				`);
 			});
