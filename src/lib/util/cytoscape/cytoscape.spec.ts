@@ -280,4 +280,87 @@ describe(getCytoscapeElementsForQuads, () => {
 			);
 		});
 	});
+
+	describe('when quads belong to named graphs', () => {
+		it("groups a named graph's nodes inside a graph container", () => {
+			const graphName = namedNode('urn:graph:people');
+			const bob = namedNode('urn:example:Bob');
+			const alice = namedNode('urn:example:Alice');
+			const elements = getCytoscapeElementsForQuads([
+				quad(bob, namedNode('urn:example:knows'), alice, graphName)
+			]);
+			const graph = cytoscape({ headless: true, elements });
+			try {
+				const container = graph.nodes().filter((node) => node.data('isGraph'));
+				expect(container).toHaveLength(1);
+				expect(container[0].data('label')).toBe(graphName.value);
+				expect(container[0].children()).toHaveLength(2);
+				expect(
+					container[0]
+						.children()
+						.map((node) => node.data('label'))
+						.sort()
+				).toEqual([alice.value, bob.value]);
+				expect(graph.edges()).toHaveLength(1);
+				expect(graph.edges()[0].source().parent()[0].id()).toBe(container[0].id());
+				expect(graph.edges()[0].target().parent()[0].id()).toBe(container[0].id());
+			} finally {
+				graph.destroy();
+			}
+		});
+
+		it('keeps appearances of the same resource separate across named graphs', () => {
+			const bob = namedNode('urn:example:Bob');
+			const elements = getCytoscapeElementsForQuads([
+				quad(bob, namedNode('urn:example:name'), literal('Bob'), namedNode('urn:graph:one')),
+				quad(bob, namedNode('urn:example:name'), literal('Robert'), namedNode('urn:graph:two'))
+			]);
+			const bobNodes = elements.filter(
+				(element) => !element.data.isGraph && element.data.label === bob.value
+			);
+
+			expect(bobNodes).toHaveLength(2);
+			expect(new Set(bobNodes.map((element) => element.data.parent)).size).toBe(2);
+		});
+
+		it('keeps squashed rdf:type labels scoped to their named graph', () => {
+			const bob = namedNode('urn:example:Bob');
+			const rdfType = namedNode('http://www.w3.org/1999/02/22-rdf-syntax-ns#type');
+			const elements = getCytoscapeElementsForQuads(
+				[
+					quad(bob, rdfType, namedNode('urn:example:Person'), namedNode('urn:graph:one')),
+					quad(bob, rdfType, namedNode('urn:example:Agent'), namedNode('urn:graph:two'))
+				],
+				false,
+				[],
+				true
+			);
+			const bobLabels = elements
+				.filter((element) => !element.data.isGraph && element.data.termType === 'NamedNode')
+				.map((element) => element.data.label)
+				.sort();
+
+			expect(bobLabels).toEqual([
+				'urn:example:Bob (a urn:example:Agent)',
+				'urn:example:Bob (a urn:example:Person)'
+			]);
+		});
+
+		it('abbreviates named graph labels using the configured prefixes', () => {
+			const elements = getCytoscapeElementsForQuads(
+				[
+					quad(
+						namedNode('urn:example:Bob'),
+						namedNode('urn:example:name'),
+						literal('Bob'),
+						namedNode('http://example.com/graphs/people')
+					)
+				],
+				true,
+				[{ label: 'graphs', iri: 'http://example.com/graphs/' }]
+			);
+
+			expect(elements.find((element) => element.data.isGraph)?.data.label).toBe('graphs:people');
+		});
+	});
 });

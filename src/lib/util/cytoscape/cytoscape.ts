@@ -10,10 +10,18 @@ import createCytoscapeStyles from './style';
 const MAX_LABEL_LENGTH = 40;
 const RDF_TYPE_IRI = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type';
 
-type TermType = 'NamedNode' | 'BlankNode' | 'Literal' | 'Variable' | 'Quad';
+type TermType = 'NamedNode' | 'BlankNode' | 'Literal' | 'Variable' | 'Quad' | 'DefaultGraph';
 
 export type LinkedDataElement = ElementDefinition & {
-	data: { label: string; termType: TermType };
+	data: {
+		id?: string;
+		label: string;
+		termType: TermType;
+		parent?: string;
+		isGraph?: boolean;
+		source?: string;
+		target?: string;
+	};
 };
 
 // TODO: This code is in need of a refactor, but is also potentially useful outside of this project.
@@ -27,6 +35,7 @@ export function getCytoscapeElementsForQuads(
 ): LinkedDataElement[] {
 	const elements: LinkedDataElement[] = [];
 	const resources = new Set<string>();
+	const graphs = new Set<string>();
 
 	// Get label, abbreviating if necessary
 	function formatLabel(label: string) {
@@ -35,21 +44,42 @@ export function getCytoscapeElementsForQuads(
 
 	const rdfTypesBySubject = new Map<string, Set<string>>();
 	if (squashRdfType) {
-		for (const { subject, predicate, object } of quads) {
+		for (const { subject, predicate, object, graph } of quads) {
 			if (
 				(subject.termType as TermType) !== 'Quad' &&
 				predicate.value === RDF_TYPE_IRI &&
 				(object.termType === 'NamedNode' || object.termType === 'BlankNode')
 			) {
-				const types = rdfTypesBySubject.get(resourceId(subject)) ?? new Set<string>();
+				const subjectId = contextualResourceId(subject, graph);
+				const types = rdfTypesBySubject.get(subjectId) ?? new Set<string>();
 				types.add(formatLabel(object.value));
-				rdfTypesBySubject.set(resourceId(subject), types);
+				rdfTypesBySubject.set(subjectId, types);
 			}
 		}
 	}
 
-	// Add resource node to graph, ensuring duplicates are not added
-	function addResourceNode(id: string, label: string, termType: TermType) {
+	function addGraphNode(graph: Term) {
+		if (graph.termType === 'DefaultGraph') return;
+		const id = graphId(graph);
+		if (graphs.has(id)) return;
+		graphs.add(id);
+		elements.push({
+			data: {
+				id,
+				label: formatLabel(graph.value),
+				termType: graph.termType as TermType,
+				isGraph: true
+			}
+		});
+	}
+
+	// Add resource node to graph, ensuring duplicates are not added within the same RDF graph.
+	function addResourceNode(
+		id: string,
+		label: string,
+		termType: TermType,
+		parent: string | undefined = undefined
+	) {
 		if (resources.has(id)) return;
 
 		resources.add(id);
@@ -59,12 +89,13 @@ export function getCytoscapeElementsForQuads(
 			data: {
 				id,
 				label: types?.size ? `${formattedLabel} (a ${[...types].join(', ')})` : formattedLabel,
-				termType
+				termType,
+				...(parent ? { parent } : {})
 			}
 		});
 	}
 
-	for (const [idx, { subject, predicate, object }] of quads.entries()) {
+	for (const [idx, { subject, predicate, object, graph }] of quads.entries()) {
 		if ((subject.termType as TermType) == 'Quad') {
 			console.warn(
 				'Graph contains a triple term - these are not supported for graph visualization.'
@@ -72,9 +103,12 @@ export function getCytoscapeElementsForQuads(
 			continue;
 		}
 
+		addGraphNode(graph);
+		const parent = graph.termType === 'DefaultGraph' ? undefined : graphId(graph);
+
 		// Add subject as node - subjects will always be IRIs (either blank nodes or named nodes)
-		const subjectId = resourceId(subject);
-		addResourceNode(subjectId, subject.value, subject.termType);
+		const subjectId = contextualResourceId(subject, graph);
+		addResourceNode(subjectId, subject.value, subject.termType, parent);
 
 		if (
 			squashRdfType &&
@@ -84,12 +118,12 @@ export function getCytoscapeElementsForQuads(
 			continue;
 		}
 
-		const edgeId = `E${idx}`;
+		const edgeId = contextualElementId(`E${idx}`, graph);
 
 		if (object.termType == 'NamedNode' || object.termType == 'BlankNode') {
 			// Add named nodes or blank nodes from the OBJECT portion of triple
-			const objectId = resourceId(object);
-			addResourceNode(objectId, object.value, object.termType);
+			const objectId = contextualResourceId(object, graph);
+			addResourceNode(objectId, object.value, object.termType, parent);
 			elements.push({
 				data: {
 					id: edgeId,
@@ -100,7 +134,7 @@ export function getCytoscapeElementsForQuads(
 				}
 			});
 		} else if (object.termType == 'Literal') {
-			const literalId = `L${idx}`;
+			const literalId = contextualElementId(`L${idx}`, graph);
 			elements.push({
 				data: {
 					id: literalId,
@@ -108,7 +142,8 @@ export function getCytoscapeElementsForQuads(
 						object.value.length > MAX_LABEL_LENGTH
 							? object.value.substring(0, MAX_LABEL_LENGTH - 3) + '...'
 							: object.value,
-					termType: object.termType
+					termType: object.termType,
+					...(parent ? { parent } : {})
 				}
 			});
 			elements.push({
@@ -127,6 +162,18 @@ export function getCytoscapeElementsForQuads(
 
 function resourceId(term: Term): string {
 	return `${term.termType}:${term.value}`;
+}
+
+function graphId(graph: Term): string {
+	return `G:${resourceId(graph)}`;
+}
+
+function contextualElementId(id: string, graph: Term): string {
+	return graph.termType === 'DefaultGraph' ? id : `${graphId(graph)}|${id}`;
+}
+
+function contextualResourceId(term: Term, graph: Term): string {
+	return contextualElementId(resourceId(term), graph);
 }
 
 type CytoscapeSettingsOpts = {
