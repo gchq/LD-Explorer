@@ -10,7 +10,8 @@
 		general__darkMode: $settings.general__darkMode,
 		general__defaultLimit: $settings.general__defaultLimit,
 		general__showQuads: $settings.general__showQuads,
-		general__showRDFSLabels: $settings.general__showRDFSLabels
+		general__showRDFSLabels: $settings.general__showRDFSLabels,
+		general__unionDefaultGraph: $settings.general__unionDefaultGraph
 	};
 
 	let dirty = false;
@@ -46,6 +47,13 @@
 			label="Display Labels"
 			helperText="Attempt to fetch and display RDFS labels from active data sources when viewing terms."
 			bind:checked={dirtySettings.general__showRDFSLabels}
+			onchange={() => (dirty = true)}
+		/>
+
+		<Switch
+			label="Union Default Graph"
+			helperText="Treat the union of named graphs as the default graph when running queries."
+			bind:checked={dirtySettings.general__unionDefaultGraph}
 			onchange={() => (dirty = true)}
 		/>
 
