@@ -11,8 +11,12 @@ describe('sparql queries', () => {
 					"
 					PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
-					SELECT ?property ?domain 
-					WHERE { ?property rdfs:domain ?domain . } 
+					SELECT DISTINCT ?property ?domain
+					WHERE {
+					      { ?property rdfs:domain ?domain . }
+					      UNION
+					      { GRAPH ?ldExplorerGraph { ?property rdfs:domain ?domain . } }
+					}
 					LIMIT 100"
 				`);
 			});
@@ -25,8 +29,12 @@ describe('sparql queries', () => {
 					"
 					PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
-					SELECT ?property ?domain 
-					WHERE { ?property rdfs:domain ?domain . } 
+					SELECT DISTINCT ?property ?domain
+					WHERE {
+					      { ?property rdfs:domain ?domain . }
+					      UNION
+					      { GRAPH ?ldExplorerGraph { ?property rdfs:domain ?domain . } }
+					}
 					LIMIT 123"
 				`);
 			});

@@ -7,7 +7,7 @@ import { CommonCodeComments } from '../sparqlUtils';
  * @param {number} limit
  * @returns {string}
  *
- * Return triples from default graph
+ * Return triples from default and named graphs
  *
  */
 
@@ -15,6 +15,11 @@ export default { createQuery: getTriples, codeComment: CommonCodeComments.Change
 
 function getTriples(limit = 100): string {
 	return `
-CONSTRUCT WHERE { ?s ?p ?o }
+CONSTRUCT { ?s ?p ?o }
+WHERE {
+      { ?s ?p ?o }
+      UNION
+      { GRAPH ?ldExplorerGraph { ?s ?p ?o } }
+}
 LIMIT ${limit}`;
 }

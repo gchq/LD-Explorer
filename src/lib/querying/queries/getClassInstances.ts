@@ -21,7 +21,9 @@ function getClassInstances(iri: string, limit = 100) {
 	return `
 SELECT DISTINCT ?instance
 WHERE {
-      ?instance a <${iri}> .
+      { ?instance a <${iri}> . }
+      UNION
+      { GRAPH ?ldExplorerGraph { ?instance a <${iri}> . } }
 }
 LIMIT ${limit}`;
 }

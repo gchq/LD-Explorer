@@ -13,8 +13,17 @@ describe('sparql queries', () => {
 
 					SELECT DISTINCT ?superClass 
 					WHERE {
-					    <http://www.example.com/> rdfs:subClassOf* ?superClass .
-					    ?subClass rdfs:subClassOf ?superClass .
+					    {
+					        <http://www.example.com/> rdfs:subClassOf* ?superClass .
+					        ?subClass rdfs:subClassOf ?superClass .
+					    }
+					    UNION
+					    {
+					        GRAPH ?ldExplorerGraph {
+					            <http://www.example.com/> rdfs:subClassOf* ?superClass .
+					            ?subClass rdfs:subClassOf ?superClass .
+					        }
+					    }
 					    FILTER (?superClass != <http://www.example.com/>)
 					}
 					LIMIT 100"
@@ -31,8 +40,17 @@ describe('sparql queries', () => {
 
 					SELECT DISTINCT ?superClass 
 					WHERE {
-					    <http://www.example.com/> rdfs:subClassOf* ?superClass .
-					    ?subClass rdfs:subClassOf ?superClass .
+					    {
+					        <http://www.example.com/> rdfs:subClassOf* ?superClass .
+					        ?subClass rdfs:subClassOf ?superClass .
+					    }
+					    UNION
+					    {
+					        GRAPH ?ldExplorerGraph {
+					            <http://www.example.com/> rdfs:subClassOf* ?superClass .
+					            ?subClass rdfs:subClassOf ?superClass .
+					        }
+					    }
 					    FILTER (?superClass != <http://www.example.com/>)
 					}
 					LIMIT 123"

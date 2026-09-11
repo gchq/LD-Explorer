@@ -32,9 +32,9 @@
 			Explore the raw data by interrogating <Link href={resolve('/explore/triples')}>Triples</Link> directly.
 		</ListItem>
 		<ListItem>
-			LD Explorer queries within the explore section only query the default graph, however you can
-			still see any <Link href={resolve('/explore/named-graphs')}>Named Graphs</Link> within your selected
-			data sources.
+			Explore queries inspect both the default graph and any <Link
+				href={resolve('/explore/named-graphs')}>Named Graphs</Link
+			> within your selected data sources.
 		</ListItem>
 		<ListItem>
 			Search for a specific <Link href={resolve('/explore/iris')}>IRI</Link>.
