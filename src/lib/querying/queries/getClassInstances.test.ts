@@ -11,7 +11,9 @@ describe('sparql queries', () => {
 					"
 					SELECT DISTINCT ?instance
 					WHERE {
-					      ?instance a <http://www.example.com/> .
+					      { ?instance a <http://www.example.com/> . }
+					      UNION
+					      { GRAPH ?ldExplorerGraph { ?instance a <http://www.example.com/> . } }
 					}
 					LIMIT 100"
 				`);
@@ -25,7 +27,9 @@ describe('sparql queries', () => {
 					"
 					SELECT DISTINCT ?instance
 					WHERE {
-					      ?instance a <http://www.example.com/> .
+					      { ?instance a <http://www.example.com/> . }
+					      UNION
+					      { GRAPH ?ldExplorerGraph { ?instance a <http://www.example.com/> . } }
 					}
 					LIMIT 123"
 				`);
