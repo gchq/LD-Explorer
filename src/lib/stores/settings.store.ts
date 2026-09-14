@@ -26,7 +26,7 @@ const defaultSettings: Settings = {
 	general__defaultLimit: 1000,
 	general__showQuads: false,
 	general__showRDFSLabels: false,
-	general__unionDefaultGraph: true,
+	general__unionDefaultGraph: false,
 	term__showNodeType: true,
 	term__abbreviateCommonPrefixes: false,
 	term__squashRdfTypeInGraph: false,
