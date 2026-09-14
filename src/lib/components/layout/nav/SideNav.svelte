@@ -20,7 +20,8 @@
 		Logo,
 		Logs,
 		Search,
-		Settings
+		Settings,
+		Lock
 	} from '$lib/components/ui/icons';
 	import { resolve } from '$app/paths';
 	import { type SideNavId, primarySideNavItems, secondarySideNavItems } from '$lib/navigation';
@@ -58,6 +59,9 @@
 		},
 		'sparql-ui': {
 			icon: Code
+		},
+		shacl: {
+			icon: Lock
 		},
 		sources: {
 			icon: Database,

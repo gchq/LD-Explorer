@@ -37,7 +37,7 @@
 			> within your selected data sources.
 		</ListItem>
 		<ListItem>
-			Validate enabled local data sources against <Link href={resolve('/explore/shacl')}
+			Validate enabled local data sources against <Link href={resolve('/shacl-ui')}
 				>SHACL shapes</Link
 			>.
 		</ListItem>

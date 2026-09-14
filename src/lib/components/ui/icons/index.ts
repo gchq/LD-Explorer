@@ -23,3 +23,4 @@ export { default as DBFalse } from './svg/db-false.svelte';
 export { default as DBTrue } from './svg/db-true.svelte';
 export { default as Turtle } from './svg/turtle.svelte';
 export { default as Filter } from './svg/filter.svelte';
+export { default as Lock } from './svg/lock.svelte';
