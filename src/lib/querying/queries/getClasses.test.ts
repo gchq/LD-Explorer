@@ -11,11 +11,23 @@ describe('sparql queries', () => {
 					"
 					SELECT DISTINCT ?className
 					WHERE {
-					      { ?individual a ?className . }
+					      {
+					            { ?individual a ?className . }
+					            UNION
+					            { ?className a owl:Class . }
+					            UNION
+					            { ?className a rdfs:Class . }
+					      }
 					      UNION
-					      { ?className a owl:Class . } 
-					      UNION
-					      { ?className a rdfs:Class . }
+					      {
+					            GRAPH ?ldExplorerGraph {
+					                  { ?individual a ?className . }
+					                  UNION
+					                  { ?className a owl:Class . }
+					                  UNION
+					                  { ?className a rdfs:Class . }
+					            }
+					      }
 					}
 					LIMIT 100"
 				`);
@@ -29,11 +41,23 @@ describe('sparql queries', () => {
 					"
 					SELECT DISTINCT ?className
 					WHERE {
-					      { ?individual a ?className . }
+					      {
+					            { ?individual a ?className . }
+					            UNION
+					            { ?className a owl:Class . }
+					            UNION
+					            { ?className a rdfs:Class . }
+					      }
 					      UNION
-					      { ?className a owl:Class . } 
-					      UNION
-					      { ?className a rdfs:Class . }
+					      {
+					            GRAPH ?ldExplorerGraph {
+					                  { ?individual a ?className . }
+					                  UNION
+					                  { ?className a owl:Class . }
+					                  UNION
+					                  { ?className a rdfs:Class . }
+					            }
+					      }
 					}
 					LIMIT 123"
 				`);

@@ -4,6 +4,7 @@ import { get } from 'svelte/store';
 import { createEngine } from '$lib/querying/engine';
 import { sourceList } from '$stores/sources/sources.store';
 import defaultLabels from '$lib/data/labels.json';
+import { settings } from '$stores/settings.store';
 
 interface LabelLookup {
 	[iri: string]: string;
@@ -86,7 +87,8 @@ async function processLabelsQueue() {
 	const results = await engine.queryBindings(sparql, {
 		sources: get(sourceList),
 		readonly: true,
-		lenient: true
+		lenient: true,
+		unionDefaultGraph: get(settings).general__unionDefaultGraph
 	});
 
 	for await (const result of results) {
