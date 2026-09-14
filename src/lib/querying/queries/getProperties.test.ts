@@ -11,13 +11,27 @@ describe('sparql queries', () => {
 					"
 					SELECT DISTINCT ?propertyName
 					WHERE {
-					      { ?s ?propertyName ?o }
+					      {
+					            { ?s ?propertyName ?o }
+					            UNION
+					            { ?propertyName a owl:ObjectProperty . }
+					            UNION
+					            { ?propertyName a owl:DatatypeProperty . }
+					            UNION
+					            { ?propertyName a rdf:Property . }
+					      }
 					      UNION
-					      { ?propertyName a owl:ObjectProperty . } 
-					      UNION
-					      { ?propertyName a owl:DatatypeProperty . }
-					      UNION
-					      { ?propertyName a rdf:Property . }
+					      {
+					            GRAPH ?ldExplorerGraph {
+					                  { ?s ?propertyName ?o }
+					                  UNION
+					                  { ?propertyName a owl:ObjectProperty . }
+					                  UNION
+					                  { ?propertyName a owl:DatatypeProperty . }
+					                  UNION
+					                  { ?propertyName a rdf:Property . }
+					            }
+					      }
 					} 
 					LIMIT 100"
 				`);
@@ -31,13 +45,27 @@ describe('sparql queries', () => {
 					"
 					SELECT DISTINCT ?propertyName
 					WHERE {
-					      { ?s ?propertyName ?o }
+					      {
+					            { ?s ?propertyName ?o }
+					            UNION
+					            { ?propertyName a owl:ObjectProperty . }
+					            UNION
+					            { ?propertyName a owl:DatatypeProperty . }
+					            UNION
+					            { ?propertyName a rdf:Property . }
+					      }
 					      UNION
-					      { ?propertyName a owl:ObjectProperty . } 
-					      UNION
-					      { ?propertyName a owl:DatatypeProperty . }
-					      UNION
-					      { ?propertyName a rdf:Property . }
+					      {
+					            GRAPH ?ldExplorerGraph {
+					                  { ?s ?propertyName ?o }
+					                  UNION
+					                  { ?propertyName a owl:ObjectProperty . }
+					                  UNION
+					                  { ?propertyName a owl:DatatypeProperty . }
+					                  UNION
+					                  { ?propertyName a rdf:Property . }
+					            }
+					      }
 					} 
 					LIMIT 123"
 				`);
