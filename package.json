@@ -59,6 +59,7 @@
 		"prettier": "^3.9.6",
 		"prettier-plugin-svelte": "^4.1.1",
 		"rdf-data-factory": "^2.0.2",
+		"rdf-validate-shacl": "^0.6.5",
 		"rdfa-streaming-parser": "^3.0.2",
 		"shadow-dom-testing-library": "^1.14.1",
 		"svelte": "^5.57.0",

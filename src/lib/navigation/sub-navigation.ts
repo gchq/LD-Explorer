@@ -53,6 +53,12 @@ export const subNavItems: SubNavItem<string>[] = [
 		href: resolve('/explore/named-graphs')
 	},
 	{
+		id: 'subnav-explore-shacl',
+		parentId: 'explore',
+		title: 'SHACL Validation',
+		href: resolve('/explore/shacl')
+	},
+	{
 		id: 'subnav-explore-iris',
 		parentId: 'explore',
 		title: 'IRI Search',
