@@ -8,7 +8,7 @@ An open issue should not be taken as approval to implement a solution. There may
 
 A short discussion up front can save a considerable amount of time for everyone involved and increase the likelihood that your contribution will be accepted. Whilst we appreciate and encourage contributions, we do not want to unnecessarily waste anyone's time by having them work on changes that may not align with the project's goals or direction.
 
-For anything beyond a small bug fix or documentation change, please seek maintainer feedback before investing significant effort. Pull requests implementing substantial changes without prior discussion may be declined, even when the implementation itself is of a high quality.
+For anything beyond a small bug fix, minor quality of life features or documentation changes, please seek maintainer feedback before investing significant effort. Pull requests implementing substantial changes without prior discussion may be declined, even when the implementation itself is of a high quality.
 
 
 ## Raising issues
