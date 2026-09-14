@@ -9,6 +9,7 @@ import { QueryStatus } from '$lib/types';
 import { get } from 'svelte/store';
 import { importRdfDocument } from '$lib/util/source.util';
 import { logger } from '$stores/logger.store';
+import { settings } from '$stores/settings.store';
 
 const document = `
 PREFIX : <http://www.example.com/> 
@@ -299,6 +300,32 @@ describe(createQueryStore, () => {
 					expect.objectContaining({ resultType: 'void', sparqlQuery: query })
 				);
 			});
+		});
+	});
+
+	describe('when querying named graphs', () => {
+		it('respects the union default graph setting', async () => {
+			const source = get(sources)[0];
+			await importRdfDocument(
+				source,
+				`@prefix : <http://www.example.com/> .
+:namedGraph { :Carol :name "Carol" . }`
+			);
+
+			const query =
+				'SELECT ?o WHERE { <http://www.example.com/Carol> <http://www.example.com/name> ?o }';
+			const execute = async () =>
+				new Promise<StreamedQuery>((resolve) => {
+					createQueryStore(query, get(sourceList)).subscribe((result) => {
+						if (result.status === QueryStatus.Done) resolve(result);
+					});
+				});
+
+			settings.update((current) => ({ ...current, general__unionDefaultGraph: false }));
+			expect((await execute()).results).toHaveLength(0);
+
+			settings.update((current) => ({ ...current, general__unionDefaultGraph: true }));
+			expect((await execute()).results).toHaveLength(1);
 		});
 	});
 });
