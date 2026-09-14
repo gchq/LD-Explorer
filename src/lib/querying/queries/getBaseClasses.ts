@@ -26,8 +26,15 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
 SELECT DISTINCT ?class
 WHERE {
-      ?s a ?class .
-      FILTER NOT EXISTS { ?class rdfs:subClassOf ?parent . FILTER( ?parent != owl:Thing ) }
+      { ?s a ?class . }
+      UNION
+      { GRAPH ?ldExplorerGraph { ?s a ?class . } }
+      FILTER NOT EXISTS {
+            { ?class rdfs:subClassOf ?parent . }
+            UNION
+            { GRAPH ?ldExplorerParentGraph { ?class rdfs:subClassOf ?parent . } }
+            FILTER( ?parent != owl:Thing )
+      }
 }
 LIMIT ${limit}`;
 }

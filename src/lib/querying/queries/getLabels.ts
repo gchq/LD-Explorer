@@ -19,7 +19,9 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
 SELECT DISTINCT ?resource ?label
 WHERE {
-      ?resource rdfs:label ?label
+      { ?resource rdfs:label ?label }
+      UNION
+      { GRAPH ?ldExplorerGraph { ?resource rdfs:label ?label } }
       FILTER (LANGMATCHES(LANG(?label), "${languageTag}"))
 } 
 LIMIT ${limit}`;

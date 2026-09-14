@@ -20,7 +20,9 @@ function getIndividuals(limit = 100): string {
 	return `
 SELECT DISTINCT ?individual ?className
 WHERE {
-      ?individual a ?className
+      { ?individual a ?className }
+      UNION
+      { GRAPH ?ldExplorerGraph { ?individual a ?className } }
 } 
 LIMIT ${limit}`;
 }
