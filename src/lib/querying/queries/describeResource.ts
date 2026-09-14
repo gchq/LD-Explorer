@@ -4,12 +4,17 @@
  * describeResource
  * @returns {string}
  *
- * Run a DESCRIBE query for a specific IRI
+ * Return outgoing statements for an IRI from the default graph and named graphs.
  *
  */
 
 export default { createQuery: describeResource };
 
 function describeResource(iri: string) {
-	return `DESCRIBE <${iri}>`;
+	return `CONSTRUCT { <${iri}> ?p ?o }
+WHERE {
+      { <${iri}> ?p ?o }
+      UNION
+      { GRAPH ?ldExplorerGraph { <${iri}> ?p ?o } }
+}`;
 }

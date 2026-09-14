@@ -18,11 +18,23 @@ function getClasses(limit = 100): string {
 	return `
 SELECT DISTINCT ?className
 WHERE {
-      { ?individual a ?className . }
+      {
+            { ?individual a ?className . }
+            UNION
+            { ?className a owl:Class . }
+            UNION
+            { ?className a rdfs:Class . }
+      }
       UNION
-      { ?className a owl:Class . } 
-      UNION
-      { ?className a rdfs:Class . }
+      {
+            GRAPH ?ldExplorerGraph {
+                  { ?individual a ?className . }
+                  UNION
+                  { ?className a owl:Class . }
+                  UNION
+                  { ?className a rdfs:Class . }
+            }
+      }
 }
 LIMIT ${limit}`;
 }
