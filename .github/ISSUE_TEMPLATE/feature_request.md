@@ -17,3 +17,9 @@ A clear and concise description of any alternative solutions or features you've 
 
 **Additional context**
 Add any other context or screenshots about the feature request here.
+
+## Checklist
+
+- [ ] I have read the project's contributing guidelines.
+- [ ] I understand that creating this feature request does not mean the feature has been approved for implementation.
+- [ ] If I intend to implement this feature, I will seek maintainer feedback before investing significant effort.

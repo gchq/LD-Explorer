@@ -1,5 +1,16 @@
 # How To Contribute
 
+## Discuss significant changes first
+
+We strongly encourage contributors to engage with the maintainers before starting work on any significant change.
+
+An open issue should not be taken as approval to implement a solution. There may be additional context, design considerations, project priorities, or future plans that are not immediately apparent from the issue alone.
+
+A short discussion up front can save a considerable amount of time for everyone involved and increase the likelihood that your contribution will be accepted. Whilst we appreciate and encourage contributions, we do not want to unnecessarily waste anyone's time by having them work on changes that may not align with the project's goals or direction.
+
+For anything beyond a small bug fix or documentation change, please seek maintainer feedback before investing significant effort. Pull requests implementing substantial changes without prior discussion may be declined, even when the implementation itself is of a high quality.
+
+
 ## Raising issues
 
 If you found a bug or you'd like a new feature or change, you can [file an issue](https://github.com/gchq/ld-explorer/issues). Please provide full details of your issue, and if its a bug, ideally steps to reproduce.
