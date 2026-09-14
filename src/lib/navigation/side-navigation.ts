@@ -3,7 +3,7 @@
 import type { NavItem } from './types';
 import { resolve } from '$app/paths';
 
-export type PrimarySideNavId = 'home' | 'explore' | 'sparql-ui' | 'sources' | 'logs';
+export type PrimarySideNavId = 'home' | 'explore' | 'sparql-ui' | 'shacl' | 'sources' | 'logs';
 export type SecondarySideNavId = 'settings' | 'about';
 export type SideNavId = PrimarySideNavId | SecondarySideNavId;
 
@@ -33,6 +33,12 @@ export const primarySideNavItems: SideNavItem<PrimarySideNavId>[] = [
 		id: 'sparql-ui',
 		title: 'SPARQL',
 		href: resolve('/sparql-ui'),
+		variant: 'primary'
+	},
+	{
+		id: 'shacl',
+		title: 'SHACL',
+		href: resolve('/shacl-ui'),
 		variant: 'primary'
 	},
 	{

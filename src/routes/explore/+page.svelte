@@ -37,6 +37,11 @@
 			> within your selected data sources.
 		</ListItem>
 		<ListItem>
+			Validate enabled local data sources against <Link href={resolve('/shacl-ui')}
+				>SHACL shapes</Link
+			>.
+		</ListItem>
+		<ListItem>
 			Search for a specific <Link href={resolve('/explore/iris')}>IRI</Link>.
 		</ListItem>
 	</List>
