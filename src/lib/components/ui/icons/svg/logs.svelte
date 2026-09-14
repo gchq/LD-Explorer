@@ -1,5 +1,9 @@
-<!-- (c) Crown Copyright GCHQ -->
+<!--
+Contains icon artwork from Pictogrammers (Material Design Icons),
+licensed under Apache License 2.0.
 
+Repository integration © Crown Copyright GCHQ.
+-->
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
 	><title>view-list</title><path
 		d="M9,5V9H21V5M9,19H21V15H9M9,14H21V10H9M4,9H8V5H4M4,19H8V15H4M4,14H8V10H4V14Z"
