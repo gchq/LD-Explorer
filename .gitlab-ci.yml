@@ -1,0 +1,35 @@
+stages:
+  - build
+  - deploy
+
+variables:
+  BASE_PATH: "/ld-explorer"
+
+build:
+  image: node:24.14.1
+  stage: build
+  cache:
+    key:
+      files:
+        - package-lock.json
+    paths:
+      - node_modules
+  script:
+    - npm ci
+    - npm run build
+  artifacts:
+    paths:
+      -build
+
+pages:
+  image: alpine:latest
+  needs: [build]
+  stage: deploy
+  script:
+    - mv build public
+    - echo Site deployed to $CI_PAGES_URL
+  artifacts:
+    paths:
+      - public
+    only:
+      - main
