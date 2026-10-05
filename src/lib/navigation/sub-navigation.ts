@@ -73,6 +73,12 @@ export const subNavItems: SubNavItem<string>[] = [
 		href: resolve('/settings/terms')
 	},
 	{
+		id: 'subnav-settings-graphs',
+		parentId: 'settings',
+		title: 'Graphs',
+		href: resolve('/settings/graphs')
+	},
+	{
 		id: 'subnav-settings-prefixes',
 		parentId: 'settings',
 		title: 'Prefixes',

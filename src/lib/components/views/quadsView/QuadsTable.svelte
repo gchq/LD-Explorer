@@ -31,7 +31,7 @@
 	let quadsForPage = $derived(getItemsForPage(pageNumber, PER_PAGE, filteredQuads));
 
 	// Other state
-	let showGraph = !!$settings.general__showQuads;
+	let showGraph = !!$settings.graph__showQuads;
 </script>
 
 <Pagination

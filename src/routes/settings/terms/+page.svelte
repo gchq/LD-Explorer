@@ -92,8 +92,8 @@
 		/>
 
 		<Switch
-			label="Squash RDF Types in Graph"
-			helperText="Whether rdf:type relationships should be shown on the subject node instead of as graph edges."
+			label="Squash RDF Types in Graph visualization"
+			helperText="Whether rdf:type relationships should be shown on the subject node instead of as graph edges on the visualisation."
 			bind:checked={dirtySettings.term__squashRdfTypeInGraph}
 			onchange={() => (dirty = true)}
 		/>

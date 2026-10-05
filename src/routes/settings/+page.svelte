@@ -9,9 +9,9 @@
 	const dirtySettings = {
 		general__darkMode: $settings.general__darkMode,
 		general__defaultLimit: $settings.general__defaultLimit,
-		general__showQuads: $settings.general__showQuads,
+		graph__showQuads: $settings.graph__showQuads,
 		general__showRDFSLabels: $settings.general__showRDFSLabels,
-		general__unionDefaultGraph: $settings.general__unionDefaultGraph
+		graph__unionDefaultGraph: $settings.graph__unionDefaultGraph
 	};
 
 	let dirty = false;
@@ -37,23 +37,9 @@
 		/>
 
 		<Switch
-			label="Show Quads"
-			helperText="Display full quads rather than triples when browsing data."
-			bind:checked={dirtySettings.general__showQuads}
-			onchange={() => (dirty = true)}
-		/>
-
-		<Switch
 			label="Display Labels"
 			helperText="Attempt to fetch and display RDFS labels from active data sources when viewing terms."
 			bind:checked={dirtySettings.general__showRDFSLabels}
-			onchange={() => (dirty = true)}
-		/>
-
-		<Switch
-			label="Union Default Graph"
-			helperText="Treat the union of named graphs as the default graph when running queries."
-			bind:checked={dirtySettings.general__unionDefaultGraph}
 			onchange={() => (dirty = true)}
 		/>
 

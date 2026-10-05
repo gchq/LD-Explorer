@@ -7,7 +7,7 @@
 
 	// Query
 	const { createQuery, codeComment } = getIndividuals;
-	const query = createQuery($settings.general__defaultLimit);
+	const query = createQuery($settings.general__defaultLimit, $settings.graph__queryForNamedGraphs);
 </script>
 
 <PageView heading="Individuals" subheading="Individuals/instances across all active sources.">

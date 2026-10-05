@@ -3,7 +3,7 @@ stages:
   - deploy
 
 variables:
-  BASE_PATH: "/ld-explorer"
+  BASE_PATH: '/ld-explorer'
 
 build:
   image: node:24.14.1
@@ -18,8 +18,7 @@ build:
     - npm ci
     - npm run build
   artifacts:
-    paths:
-      -build
+    paths: -build
 
 pages:
   image: alpine:latest

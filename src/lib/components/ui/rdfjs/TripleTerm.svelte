@@ -10,7 +10,7 @@
 		showGraph?: boolean;
 	}
 
-	let { term, showGraph = !!$settings.general__showQuads }: Props = $props();
+	let { term, showGraph = !!$settings.graph__showQuads }: Props = $props();
 </script>
 
 <span>

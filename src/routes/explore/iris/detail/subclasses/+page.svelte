@@ -25,7 +25,10 @@
 	// Query
 	const { createQuery, codeComment } = getSubclasses;
 	let subclasses = $derived(
-		createQueryStore(createQuery(iri, $settings.general__defaultLimit), $sourceList)
+		createQueryStore(
+			createQuery(iri, $settings.general__defaultLimit, $settings.graph__queryForNamedGraphs),
+			$sourceList
+		)
 	);
 	let quads = $derived($subclasses.results as Quad[]);
 </script>

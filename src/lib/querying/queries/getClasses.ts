@@ -14,27 +14,27 @@ import { CommonCodeComments } from '../sparqlUtils';
 
 export default { createQuery: getClasses, codeComment: CommonCodeComments.ChangeLimitInSettings };
 
-function getClasses(limit = 100): string {
+function getClasses(limit = 100, queryForNamedGraphs = false): string {
 	return `
 SELECT DISTINCT ?className
 WHERE {
-      {
-            { ?individual a ?className . }
-            UNION
-            { ?className a owl:Class . }
-            UNION
-            { ?className a rdfs:Class . }
-      }
-      UNION
-      {
-            GRAPH ?ldExplorerGraph {
-                  { ?individual a ?className . }
-                  UNION
-                  { ?className a owl:Class . }
-                  UNION
-                  { ?className a rdfs:Class . }
-            }
-      }
+      {${whereClause}}
+      ${queryForNamedGraphs ? namedGraphExtension : ''}
 }
 LIMIT ${limit}`;
 }
+
+const whereClause = `
+      { ?individual a ?className . }
+      UNION
+      { ?className a owl:Class . }
+      UNION
+      { ?className a rdfs:Class . }`;
+
+const namedGraphExtension = `UNION
+      {
+            GRAPH ?g {
+                  ${whereClause}
+            }
+      }
+`;

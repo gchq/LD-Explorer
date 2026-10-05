@@ -5,9 +5,13 @@ import { createLocalStorageJSONStore } from './localStorageJson.store';
 interface GeneralSettings {
 	general__darkMode: boolean;
 	general__defaultLimit: number;
-	general__showQuads: boolean;
 	general__showRDFSLabels: boolean;
-	general__unionDefaultGraph: boolean;
+}
+
+interface GraphSettings {
+	graph__showQuads: boolean;
+	graph__unionDefaultGraph: boolean;
+	graph__queryForNamedGraphs: boolean;
 }
 
 export interface TermSettings {
@@ -17,16 +21,17 @@ export interface TermSettings {
 	term__showLanguageTag: boolean;
 }
 
-export type Settings = GeneralSettings & TermSettings;
+export type Settings = GeneralSettings & TermSettings & GraphSettings;
 
 const defaultSettings: Settings = {
 	general__darkMode: !!(
 		window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
 	),
 	general__defaultLimit: 1000,
-	general__showQuads: false,
 	general__showRDFSLabels: false,
-	general__unionDefaultGraph: false,
+	graph__showQuads: false,
+	graph__queryForNamedGraphs: false,
+	graph__unionDefaultGraph: false,
 	term__showNodeType: true,
 	term__abbreviateCommonPrefixes: false,
 	term__squashRdfTypeInGraph: false,
