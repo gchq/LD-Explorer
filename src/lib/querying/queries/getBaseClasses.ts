@@ -3,8 +3,9 @@
 import { CommonCodeComments } from '../sparqlUtils';
 
 /**
- * getClasses
- * @param {number?} limit
+ * getBaseClasses
+ * @param {number} limit
+ * @param {boolean} queryForNamedGraphs
  * @returns {string}
  *
  * Return all base classes, which are defined here as classes which are not asserted to be sub-classes.
@@ -19,7 +20,7 @@ export default {
 	codeComment: CommonCodeComments.ChangeLimitInSettings
 };
 
-function getBaseClasses(limit = 100): string {
+function getBaseClasses(limit = 100, queryForNamedGraphs = false): string {
 	return `
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -27,12 +28,10 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 SELECT DISTINCT ?class
 WHERE {
       { ?s a ?class . }
-      UNION
-      { GRAPH ?ldExplorerGraph { ?s a ?class . } }
+      ${queryForNamedGraphs ? `UNION\n      { GRAPH ?g { ?s a ?class . } }` : ''}
       FILTER NOT EXISTS {
             { ?class rdfs:subClassOf ?parent . }
-            UNION
-            { GRAPH ?ldExplorerParentGraph { ?class rdfs:subClassOf ?parent . } }
+            ${queryForNamedGraphs ? `UNION\n            { GRAPH ?ldExplorerParentGraph { ?class rdfs:subClassOf ?parent . } }` : ''}
             FILTER( ?parent != owl:Thing )
       }
 }

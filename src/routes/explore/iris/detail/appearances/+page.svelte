@@ -20,7 +20,10 @@
 	// Query
 	const { createQuery, codeComment } = getAppearances;
 	let instances = $derived(
-		createQueryStore(createQuery(iri, $settings.general__defaultLimit), $sourceList)
+		createQueryStore(
+			createQuery(iri, $settings.general__defaultLimit, $settings.graph__queryForNamedGraphs),
+			$sourceList
+		)
 	);
 </script>
 

@@ -8,6 +8,7 @@
 	// State (the "dirty" settings are the ones which are in-flight and have not yet been applied)
 	const dirtySettings = {
 		graph__showQuads: $settings.graph__showQuads,
+		graph__queryForNamedGraphs: $settings.graph__queryForNamedGraphs,
 		graph__unionDefaultGraph: $settings.graph__unionDefaultGraph
 	};
 
@@ -37,6 +38,13 @@
 			label="Union Default Graph"
 			helperText="Treat the union of named graphs as the default graph when running queries."
 			bind:checked={dirtySettings.graph__unionDefaultGraph}
+			onchange={() => (dirty = true)}
+		/>
+
+		<Switch
+			label="Include Named Graphs in canned queries"
+			helperText="Whether the canned queries in the explore pages should also look in all named graphs (using the GRAPH keyword, which not all endpoints support)."
+			bind:checked={dirtySettings.graph__queryForNamedGraphs}
 			onchange={() => (dirty = true)}
 		/>
 

@@ -5,29 +5,19 @@ import getClasses from './getClasses';
 describe('sparql queries', () => {
 	describe(getClasses.createQuery, () => {
 		describe('default behavior', () => {
-			it('produces the expected sparql with a limit of 100', () => {
+			it('produces the expected sparql with a limit of 100 and no GRAPH clause', () => {
 				const query = getClasses.createQuery();
 				expect(query).toMatchInlineSnapshot(`
 					"
 					SELECT DISTINCT ?className
 					WHERE {
 					      {
-					            { ?individual a ?className . }
-					            UNION
-					            { ?className a owl:Class . }
-					            UNION
-					            { ?className a rdfs:Class . }
-					      }
+					      { ?individual a ?className . }
 					      UNION
-					      {
-					            GRAPH ?ldExplorerGraph {
-					                  { ?individual a ?className . }
-					                  UNION
-					                  { ?className a owl:Class . }
-					                  UNION
-					                  { ?className a rdfs:Class . }
-					            }
-					      }
+					      { ?className a owl:Class . }
+					      UNION
+					      { ?className a rdfs:Class . }}
+
 					}
 					LIMIT 100"
 				`);
@@ -42,24 +32,45 @@ describe('sparql queries', () => {
 					SELECT DISTINCT ?className
 					WHERE {
 					      {
-					            { ?individual a ?className . }
-					            UNION
-					            { ?className a owl:Class . }
-					            UNION
-					            { ?className a rdfs:Class . }
-					      }
+					      { ?individual a ?className . }
 					      UNION
-					      {
-					            GRAPH ?ldExplorerGraph {
-					                  { ?individual a ?className . }
-					                  UNION
-					                  { ?className a owl:Class . }
-					                  UNION
-					                  { ?className a rdfs:Class . }
-					            }
-					      }
+					      { ?className a owl:Class . }
+					      UNION
+					      { ?className a rdfs:Class . }}
+
 					}
 					LIMIT 123"
+				`);
+			});
+		});
+
+		describe('when querying for named graphs', () => {
+			it('includes the GRAPH clause', () => {
+				const query = getClasses.createQuery(100, true);
+				expect(query).toMatchInlineSnapshot(`
+					"
+					SELECT DISTINCT ?className
+					WHERE {
+					      {
+					      { ?individual a ?className . }
+					      UNION
+					      { ?className a owl:Class . }
+					      UNION
+					      { ?className a rdfs:Class . }}
+					      UNION
+					      {
+					            GRAPH ?g {
+
+					      { ?individual a ?className . }
+					      UNION
+					      { ?className a owl:Class . }
+					      UNION
+					      { ?className a rdfs:Class . }
+					            }
+					      }
+
+					}
+					LIMIT 100"
 				`);
 			});
 		});

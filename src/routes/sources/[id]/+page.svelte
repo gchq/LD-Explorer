@@ -37,7 +37,10 @@
 
 	const { createQuery, codeComment } = getTriples;
 	const queryStore = $derived(
-		createQueryStore(createQuery($settings.general__defaultLimit), [dataSource])
+		createQueryStore(
+			createQuery($settings.general__defaultLimit, $settings.graph__queryForNamedGraphs),
+			[dataSource]
+		)
 	);
 	let editUrl = $derived(
 		resolve(`/sources/${source.type == 'LOCAL' ? 'local' : 'remote'}/${source.id}/edit`)

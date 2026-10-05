@@ -7,7 +7,9 @@
 	import { settings } from '$lib/stores/settings.store';
 
 	const { createQuery, codeComment } = getRanges;
-	const query = createQuery($settings.general__defaultLimit);
+	const query = createQuery(
+		$settings.general__defaultLimit,
+		$settings.graph__queryForNamedGraphs);
 </script>
 
 <TabbedPageView {...createTabDetail()} selectedTabIndex={TabIndices.Ranges}>

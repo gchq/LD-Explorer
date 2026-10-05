@@ -32,9 +32,10 @@
 			Explore the raw data by interrogating <Link href={resolve('/explore/triples')}>Triples</Link> directly.
 		</ListItem>
 		<ListItem>
-			Explore queries inspect both the default graph and any <Link
+			By default, explore queries only inspect the default graph. To also search any <Link
 				href={resolve('/explore/named-graphs')}>Named Graphs</Link
-			> within your selected data sources.
+			>, enable the option in <Link href={resolve('/settings/graphs')}>graph settings</Link>. Note
+			that not all SPARQL endpoints support the GRAPH keyword.
 		</ListItem>
 		<ListItem>
 			Validate enabled local data sources against <Link href={resolve('/shacl-ui')}

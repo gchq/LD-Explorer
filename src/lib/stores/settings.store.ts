@@ -12,6 +12,7 @@ interface GeneralSettings {
 interface GraphSettings {
 	graph__showQuads: boolean;
 	graph__unionDefaultGraph: boolean;
+	graph__queryForNamedGraphs: boolean;
 }
 
 export interface TermSettings {
@@ -30,6 +31,7 @@ const defaultSettings: Settings = {
 	general__defaultLimit: 1000,
 	general__showRDFSLabels: false,
 	graph__showQuads: false,
+	graph__queryForNamedGraphs: false,
 	graph__unionDefaultGraph: false,
 	term__showNodeType: true,
 	term__abbreviateCommonPrefixes: false,

@@ -7,7 +7,7 @@ const iri = 'http://www.example.com/foobar';
 describe('sparql queries', () => {
 	describe(getAppearances.createQuery, () => {
 		describe('default behavior', () => {
-			it('produces the expected sparql with a limit of 100', () => {
+			it('produces the expected sparql with a limit of 100 and no GRAPH clauses', () => {
 				const query = getAppearances.createQuery(iri);
 				expect(query).toMatchInlineSnapshot(`
 					"
@@ -18,16 +18,13 @@ describe('sparql queries', () => {
 					}
 					WHERE {
 					      { <http://www.example.com/foobar> ?p0 ?o0 }
-					UNION
-					      { GRAPH ?ldExplorerGraph { <http://www.example.com/foobar> ?p0 ?o0 } }
+
 					UNION
 					      { ?s1 <http://www.example.com/foobar> ?o1 }
-					UNION
-					      { GRAPH ?ldExplorerGraph { ?s1 <http://www.example.com/foobar> ?o1 } }
+
 					UNION
 					      { ?s2 ?p2 <http://www.example.com/foobar> }
-					UNION
-					      { GRAPH ?ldExplorerGraph { ?s2 ?p2 <http://www.example.com/foobar> } }
+
 					}
 					LIMIT 100"
 				`);
@@ -46,18 +43,43 @@ describe('sparql queries', () => {
 					}
 					WHERE {
 					      { <http://www.example.com/foobar> ?p0 ?o0 }
+
 					UNION
-					      { GRAPH ?ldExplorerGraph { <http://www.example.com/foobar> ?p0 ?o0 } }
+					      { ?s1 <http://www.example.com/foobar> ?o1 }
+
+					UNION
+					      { ?s2 ?p2 <http://www.example.com/foobar> }
+
+					}
+					LIMIT 123"
+				`);
+			});
+		});
+
+		describe('when querying for named graphs', () => {
+			it('includes the GRAPH clauses for each appearance pattern', () => {
+				const query = getAppearances.createQuery(iri, 100, true);
+				expect(query).toMatchInlineSnapshot(`
+					"
+					CONSTRUCT {
+					      <http://www.example.com/foobar> ?p0 ?o0 .
+					      ?s1 <http://www.example.com/foobar> ?o1 .
+					      ?s2 ?p2 <http://www.example.com/foobar> .
+					}
+					WHERE {
+					      { <http://www.example.com/foobar> ?p0 ?o0 }
+					UNION
+					      { GRAPH ?g { <http://www.example.com/foobar> ?p0 ?o0 } }
 					UNION
 					      { ?s1 <http://www.example.com/foobar> ?o1 }
 					UNION
-					      { GRAPH ?ldExplorerGraph { ?s1 <http://www.example.com/foobar> ?o1 } }
+					      { GRAPH ?g { ?s1 <http://www.example.com/foobar> ?o1 } }
 					UNION
 					      { ?s2 ?p2 <http://www.example.com/foobar> }
 					UNION
-					      { GRAPH ?ldExplorerGraph { ?s2 ?p2 <http://www.example.com/foobar> } }
+					      { GRAPH ?g { ?s2 ?p2 <http://www.example.com/foobar> } }
 					}
-					LIMIT 123"
+					LIMIT 100"
 				`);
 			});
 		});

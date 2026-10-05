@@ -8,6 +8,7 @@
 	import { TabbedPageView } from '$lib/components/views';
 	import { createQueryStore } from '$stores/streamedQuery.store';
 	import { describeResource } from '$lib/querying/queries';
+	import { settings } from '$lib/stores/settings.store';
 	import { sourceList } from '$stores/sources/sources.store';
 
 	interface Props {
@@ -20,7 +21,9 @@
 
 	// Query
 	const { createQuery } = describeResource;
-	let description = $derived(createQueryStore(createQuery(iri), $sourceList));
+	let description = $derived(
+		createQueryStore(createQuery(iri, $settings.graph__queryForNamedGraphs), $sourceList)
+	);
 </script>
 
 <TabbedPageView {...createTabDetail(iri)} selectedTabIndex={TabIndices.DESCRIBE}>

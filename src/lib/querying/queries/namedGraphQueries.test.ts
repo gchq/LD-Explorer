@@ -11,6 +11,7 @@ import {
 	getDomains,
 	getIndividuals,
 	getLabels,
+	getNamedGraphs,
 	getProperties,
 	getRanges,
 	getSubclasses,
@@ -63,63 +64,97 @@ async function quadsFor(query: string) {
 }
 
 describe('exploration queries with named-graph-only data', () => {
-	it('finds classes', async () => {
-		expect(await values(getClasses.createQuery(), 'className')).toEqual(
-			expect.arrayContaining([person.value, student.value])
-		);
+	describe('when queryForNamedGraphs is true', () => {
+		it('finds classes', async () => {
+			expect(await values(getClasses.createQuery(100, true), 'className')).toEqual(
+				expect.arrayContaining([person.value, student.value])
+			);
+		});
+
+		it('finds class instances', async () => {
+			expect(
+				await values(getClassInstances.createQuery(student.value, 100, true), 'instance')
+			).toContain(alice.value);
+		});
+
+		it('finds individuals', async () => {
+			expect(await values(getIndividuals.createQuery(100, true), 'individual')).toEqual(
+				expect.arrayContaining([alice.value, bob.value])
+			);
+		});
+
+		it('finds properties', async () => {
+			expect(await values(getProperties.createQuery(100, true), 'propertyName')).toContain(
+				knows.value
+			);
+		});
+
+		it('finds labels', async () => {
+			expect(await values(getLabels.createQuery(100, 'en', true), 'resource')).toContain(
+				alice.value
+			);
+		});
+
+		it('finds domains and ranges', async () => {
+			expect(await values(getDomains.createQuery(100, true), 'property')).toContain(knows.value);
+			expect(await values(getRanges.createQuery(100, true), 'property')).toContain(knows.value);
+		});
+
+		it('finds base classes using subclass relationships in named graphs', async () => {
+			const classes = await values(getBaseClasses.createQuery(100, true), 'class');
+			expect(classes).toContain(person.value);
+			expect(classes).not.toContain(student.value);
+		});
+
+		it('finds subclass and superclass relationships', async () => {
+			const subclasses = await quadsFor(getSubclasses.createQuery(person.value, 100, true));
+			expect(subclasses.some((result) => result.subject.equals(student))).toBe(true);
+			expect(
+				await values(getSuperclasses.createQuery(student.value, 100, true), 'superClass')
+			).toContain(person.value);
+		});
+
+		it('describes a resource from a named graph', async () => {
+			const description = await quadsFor(describeResource.createQuery(alice.value, true));
+			expect(description.some((result) => result.predicate.equals(knows))).toBe(true);
+		});
+
+		it('finds resource appearances in named graphs', async () => {
+			const appearances = await quadsFor(getAppearances.createQuery(alice.value, 100, true));
+			expect(appearances.some((result) => result.predicate.equals(knows))).toBe(true);
+		});
+
+		it('returns triples from named graphs', async () => {
+			const triples = await quadsFor(getTriples.createQuery(100, true));
+			expect(triples.some((result) => result.predicate.equals(knows))).toBe(true);
+		});
 	});
 
-	it('finds class instances', async () => {
-		expect(await values(getClassInstances.createQuery(student.value), 'instance')).toContain(
-			alice.value
-		);
-	});
+	describe('when queryForNamedGraphs is false (default)', () => {
+		it('does not include GRAPH in any canned query', () => {
+			const iri = alice.value;
+			const queries = [
+				getClasses.createQuery(),
+				getClassInstances.createQuery(iri),
+				getIndividuals.createQuery(),
+				getProperties.createQuery(),
+				getLabels.createQuery(),
+				getDomains.createQuery(),
+				getRanges.createQuery(),
+				getBaseClasses.createQuery(),
+				getSubclasses.createQuery(iri),
+				getSuperclasses.createQuery(iri),
+				describeResource.createQuery(iri),
+				getAppearances.createQuery(iri),
+				getTriples.createQuery()
+			];
+			for (const query of queries) {
+				expect(query).not.toContain('GRAPH');
+			}
+		});
 
-	it('finds individuals', async () => {
-		expect(await values(getIndividuals.createQuery(), 'individual')).toEqual(
-			expect.arrayContaining([alice.value, bob.value])
-		);
-	});
-
-	it('finds properties', async () => {
-		expect(await values(getProperties.createQuery(), 'propertyName')).toContain(knows.value);
-	});
-
-	it('finds labels', async () => {
-		expect(await values(getLabels.createQuery(), 'resource')).toContain(alice.value);
-	});
-
-	it('finds domains and ranges', async () => {
-		expect(await values(getDomains.createQuery(), 'property')).toContain(knows.value);
-		expect(await values(getRanges.createQuery(), 'property')).toContain(knows.value);
-	});
-
-	it('finds base classes using subclass relationships in named graphs', async () => {
-		const classes = await values(getBaseClasses.createQuery(), 'class');
-		expect(classes).toContain(person.value);
-		expect(classes).not.toContain(student.value);
-	});
-
-	it('finds subclass and superclass relationships', async () => {
-		const subclasses = await quadsFor(getSubclasses.createQuery(person.value));
-		expect(subclasses.some((result) => result.subject.equals(student))).toBe(true);
-		expect(await values(getSuperclasses.createQuery(student.value), 'superClass')).toContain(
-			person.value
-		);
-	});
-
-	it('describes a resource from a named graph', async () => {
-		const description = await quadsFor(describeResource.createQuery(alice.value));
-		expect(description.some((result) => result.predicate.equals(knows))).toBe(true);
-	});
-
-	it('finds resource appearances in named graphs', async () => {
-		const appearances = await quadsFor(getAppearances.createQuery(alice.value));
-		expect(appearances.some((result) => result.predicate.equals(knows))).toBe(true);
-	});
-
-	it('returns triples from named graphs', async () => {
-		const triples = await quadsFor(getTriples.createQuery());
-		expect(triples.some((result) => result.predicate.equals(knows))).toBe(true);
+		it('getNamedGraphs always uses GRAPH (it is its sole purpose)', () => {
+			expect(getNamedGraphs.createQuery()).toContain('GRAPH');
+		});
 	});
 });
