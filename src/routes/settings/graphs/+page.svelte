@@ -1,7 +1,7 @@
 <!-- (c) Crown Copyright GCHQ -->
 
 <script lang="ts">
-	import { Button, Switch, TextField } from '$lib/components';
+	import { Button, Switch } from '$lib/components';
 	import { PageView } from '$lib/components/views';
 	import { settings } from '$lib/stores/settings.store';
 
@@ -26,7 +26,6 @@
 
 <PageView heading="Graph Settings" subheading="Settings relating to graphs / graph querying">
 	<form onsubmit={handleApplySettings}>
-
 		<Switch
 			label="Show Quads"
 			helperText="Display full quads rather than triples when browsing data."

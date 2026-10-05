@@ -7,9 +7,7 @@
 	import { settings } from '$lib/stores/settings.store';
 
 	const { createQuery, codeComment } = getClasses;
-	const query = createQuery(
-		$settings.general__defaultLimit,
-		$settings.graph__queryForNamedGraphs);
+	const query = createQuery($settings.general__defaultLimit, $settings.graph__queryForNamedGraphs);
 </script>
 
 <TabbedPageView {...createTabDetail()} selectedTabIndex={TabIndices.AllClasses}>

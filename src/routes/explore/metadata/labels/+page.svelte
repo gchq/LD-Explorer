@@ -11,7 +11,8 @@
 	const query = createQuery(
 		$settings.general__defaultLimit,
 		undefined,
-		$settings.graph__queryForNamedGraphs);
+		$settings.graph__queryForNamedGraphs
+	);
 </script>
 
 <TabbedPageView {...createTabDetail()} selectedTabIndex={TabIndices.Labels}>

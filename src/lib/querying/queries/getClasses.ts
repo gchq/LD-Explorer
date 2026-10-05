@@ -29,7 +29,7 @@ const whereClause = `
       UNION
       { ?className a owl:Class . }
       UNION
-      { ?className a rdfs:Class . }`
+      { ?className a rdfs:Class . }`;
 
 const namedGraphExtension = `UNION
       {
@@ -37,4 +37,4 @@ const namedGraphExtension = `UNION
                   ${whereClause}
             }
       }
-`
+`;

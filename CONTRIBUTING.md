@@ -10,7 +10,6 @@ A short discussion up front can save a considerable amount of time for everyone 
 
 For anything beyond a small bug fix, minor quality of life features or documentation changes, please seek maintainer feedback before investing significant effort. Pull requests implementing substantial changes without prior discussion may be declined, even when the implementation itself is of a high quality.
 
-
 ## Raising issues
 
 If you found a bug or you'd like a new feature or change, you can [file an issue](https://github.com/gchq/ld-explorer/issues). Please provide full details of your issue, and if its a bug, ideally steps to reproduce.

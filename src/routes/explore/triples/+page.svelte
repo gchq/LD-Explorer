@@ -6,9 +6,7 @@
 	import { settings } from '$lib/stores/settings.store';
 
 	const { createQuery, codeComment } = getTriples;
-	const query = createQuery(
-		$settings.general__defaultLimit,
-		$settings.graph__queryForNamedGraphs);
+	const query = createQuery($settings.general__defaultLimit, $settings.graph__queryForNamedGraphs);
 </script>
 
 <PageView heading="Triples" subheading="Raw triples across all active sources.">

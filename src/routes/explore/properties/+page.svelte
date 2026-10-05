@@ -6,9 +6,7 @@
 	import { settings } from '$lib/stores/settings.store';
 
 	const { createQuery, codeComment } = getProperties;
-	const query = createQuery(
-		$settings.general__defaultLimit,
-		$settings.graph__queryForNamedGraphs);
+	const query = createQuery($settings.general__defaultLimit, $settings.graph__queryForNamedGraphs);
 </script>
 
 <PageView heading="Properties" subheading="Property resources for all active sources.">

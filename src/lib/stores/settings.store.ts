@@ -8,7 +8,6 @@ interface GeneralSettings {
 	general__showRDFSLabels: boolean;
 }
 
-
 interface GraphSettings {
 	graph__showQuads: boolean;
 	graph__unionDefaultGraph: boolean;
