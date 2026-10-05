@@ -88,7 +88,7 @@ async function processLabelsQueue() {
 		sources: get(sourceList),
 		readonly: true,
 		lenient: true,
-		unionDefaultGraph: get(settings).general__unionDefaultGraph
+		unionDefaultGraph: get(settings).graph__unionDefaultGraph
 	});
 
 	for await (const result of results) {

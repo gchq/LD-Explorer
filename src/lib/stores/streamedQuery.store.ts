@@ -87,7 +87,7 @@ export function createQueryStore(sparqlQuery: string, sources: QuerySources): St
 			sources,
 			readonly: true,
 			lenient: true,
-			unionDefaultGraph: get(settings).general__unionDefaultGraph,
+			unionDefaultGraph: get(settings).graph__unionDefaultGraph,
 			log: comunicaLogger,
 			httpAbortSignal: abortController.signal
 		});

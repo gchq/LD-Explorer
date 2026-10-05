@@ -12,7 +12,7 @@ import { logger } from '$stores/logger.store';
 import { settings } from '$stores/settings.store';
 
 const document = `
-PREFIX : <http://www.example.com/> 
+PREFIX : <http://www.example.com/>
 :Bob :name "Bob" .
 :Alice :name "Alice" .
 :Alice :knows :Bob .
@@ -321,10 +321,10 @@ describe(createQueryStore, () => {
 					});
 				});
 
-			settings.update((current) => ({ ...current, general__unionDefaultGraph: false }));
+			settings.update((current) => ({ ...current, graph__unionDefaultGraph: false }));
 			expect((await execute()).results).toHaveLength(0);
 
-			settings.update((current) => ({ ...current, general__unionDefaultGraph: true }));
+			settings.update((current) => ({ ...current, graph__unionDefaultGraph: true }));
 			expect((await execute()).results).toHaveLength(1);
 		});
 	});
