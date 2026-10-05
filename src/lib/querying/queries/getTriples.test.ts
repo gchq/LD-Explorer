@@ -12,7 +12,7 @@ describe('sparql queries', () => {
 					CONSTRUCT { ?s ?p ?o }
 					WHERE {
 					      { ?s ?p ?o }
-
+					      
 					}
 					LIMIT 100"
 				`);
@@ -27,7 +27,7 @@ describe('sparql queries', () => {
 					CONSTRUCT { ?s ?p ?o }
 					WHERE {
 					      { ?s ?p ?o }
-
+					      
 					}
 					LIMIT 123"
 				`);

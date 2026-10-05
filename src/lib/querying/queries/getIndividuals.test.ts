@@ -12,7 +12,7 @@ describe('sparql queries', () => {
 					SELECT DISTINCT ?individual ?className
 					WHERE {
 					      { ?individual a ?className }
-
+					      
 					}
 					LIMIT 100"
 				`);
@@ -27,7 +27,7 @@ describe('sparql queries', () => {
 					SELECT DISTINCT ?individual ?className
 					WHERE {
 					      { ?individual a ?className }
-
+					      
 					}
 					LIMIT 123"
 				`);

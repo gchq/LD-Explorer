@@ -17,7 +17,7 @@ describe('sparql queries', () => {
 					      { ?className a owl:Class . }
 					      UNION
 					      { ?className a rdfs:Class . }}
-
+					      
 					}
 					LIMIT 100"
 				`);
@@ -37,7 +37,7 @@ describe('sparql queries', () => {
 					      { ?className a owl:Class . }
 					      UNION
 					      { ?className a rdfs:Class . }}
-
+					      
 					}
 					LIMIT 123"
 				`);
@@ -60,7 +60,7 @@ describe('sparql queries', () => {
 					      UNION
 					      {
 					            GRAPH ?g {
-
+					                  
 					      { ?individual a ?className . }
 					      UNION
 					      { ?className a owl:Class . }

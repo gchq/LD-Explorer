@@ -19,7 +19,7 @@ describe('sparql queries', () => {
 					            { ?propertyName a owl:DatatypeProperty . }
 					            UNION
 					            { ?propertyName a rdf:Property . }}
-
+					      
 					}
 					LIMIT 100"
 				`);
@@ -41,7 +41,7 @@ describe('sparql queries', () => {
 					            { ?propertyName a owl:DatatypeProperty . }
 					            UNION
 					            { ?propertyName a rdf:Property . }}
-
+					      
 					}
 					LIMIT 123"
 				`);
@@ -66,7 +66,7 @@ describe('sparql queries', () => {
 					      UNION
 					      {
 					            GRAPH ?g {
-
+					                  
 					            { ?s ?propertyName ?o }
 					            UNION
 					            { ?propertyName a owl:ObjectProperty . }

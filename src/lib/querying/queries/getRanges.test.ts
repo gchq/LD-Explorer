@@ -14,7 +14,7 @@ describe('sparql queries', () => {
 					SELECT DISTINCT ?property ?range
 					WHERE {
 					      { ?property rdfs:range ?range . }
-
+					      
 					}
 					LIMIT 100"
 				`);
@@ -31,7 +31,7 @@ describe('sparql queries', () => {
 					SELECT DISTINCT ?property ?range
 					WHERE {
 					      { ?property rdfs:range ?range . }
-
+					      
 					}
 					LIMIT 123"
 				`);

@@ -15,10 +15,10 @@ describe('sparql queries', () => {
 					SELECT DISTINCT ?class
 					WHERE {
 					      { ?s a ?class . }
-
+					      
 					      FILTER NOT EXISTS {
 					            { ?class rdfs:subClassOf ?parent . }
-
+					            
 					            FILTER( ?parent != owl:Thing )
 					      }
 					}
@@ -38,10 +38,10 @@ describe('sparql queries', () => {
 					SELECT DISTINCT ?class
 					WHERE {
 					      { ?s a ?class . }
-
+					      
 					      FILTER NOT EXISTS {
 					            { ?class rdfs:subClassOf ?parent . }
-
+					            
 					            FILTER( ?parent != owl:Thing )
 					      }
 					}

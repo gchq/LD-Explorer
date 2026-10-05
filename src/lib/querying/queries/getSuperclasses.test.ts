@@ -17,7 +17,7 @@ describe('sparql queries', () => {
 					        <http://www.example.com/> rdfs:subClassOf* ?superClass .
 					        ?subClass rdfs:subClassOf ?superClass .
 					    }
-
+					    
 					    FILTER (?superClass != <http://www.example.com/>)
 					}
 					LIMIT 100"
@@ -38,7 +38,7 @@ describe('sparql queries', () => {
 					        <http://www.example.com/> rdfs:subClassOf* ?superClass .
 					        ?subClass rdfs:subClassOf ?superClass .
 					    }
-
+					    
 					    FILTER (?superClass != <http://www.example.com/>)
 					}
 					LIMIT 123"

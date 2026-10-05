@@ -14,7 +14,7 @@ describe('sparql queries', () => {
 					SELECT DISTINCT ?resource ?label
 					WHERE {
 					      { ?resource rdfs:label ?label }
-
+					      
 					      FILTER (LANGMATCHES(LANG(?label), "en"))
 					}
 					LIMIT 100"
@@ -32,7 +32,7 @@ describe('sparql queries', () => {
 					SELECT DISTINCT ?resource ?label
 					WHERE {
 					      { ?resource rdfs:label ?label }
-
+					      
 					      FILTER (LANGMATCHES(LANG(?label), "en"))
 					}
 					LIMIT 123"
@@ -50,7 +50,7 @@ describe('sparql queries', () => {
 					SELECT DISTINCT ?resource ?label
 					WHERE {
 					      { ?resource rdfs:label ?label }
-
+					      
 					      FILTER (LANGMATCHES(LANG(?label), "fr"))
 					}
 					LIMIT 100"

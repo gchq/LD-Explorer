@@ -14,7 +14,7 @@ describe('sparql queries', () => {
 					SELECT DISTINCT ?property ?domain
 					WHERE {
 					      { ?property rdfs:domain ?domain . }
-
+					      
 					}
 					LIMIT 100"
 				`);
@@ -31,7 +31,7 @@ describe('sparql queries', () => {
 					SELECT DISTINCT ?property ?domain
 					WHERE {
 					      { ?property rdfs:domain ?domain . }
-
+					      
 					}
 					LIMIT 123"
 				`);

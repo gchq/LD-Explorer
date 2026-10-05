@@ -11,7 +11,7 @@ describe('sparql queries', () => {
 					"CONSTRUCT { <http://www.example.com/foobar> ?p ?o }
 					WHERE {
 					      { <http://www.example.com/foobar> ?p ?o }
-
+					      
 					}"
 				`);
 			});
