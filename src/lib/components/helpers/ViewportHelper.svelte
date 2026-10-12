@@ -1,7 +1,7 @@
 <!-- (c) Crown Copyright GCHQ -->
 
 <script lang="ts">
-	/* eslint-disable no-useless-assignment -- false positive in svelte */
+	/* eslint-disable no-useless-assignment, @typescript-eslint/no-unused-vars -- false positive in svelte */
 	import { onMount } from 'svelte';
 
 	// Some ICDS components are not automatically responsive and their styles are not

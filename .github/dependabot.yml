@@ -19,6 +19,7 @@ updates:
     labels:
       - 'dependencies'
     ignore:
+      - dependency-name: 'happy-dom' # https://github.com/capricorn86/happy-dom/issues/2368
       - dependency-name: '*'
         update-types: ['version-update:semver-major']
     groups:
