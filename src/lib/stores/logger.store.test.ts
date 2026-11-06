@@ -217,4 +217,38 @@ describe('recentLogs', () => {
 		expect(get(recentLogs)[1].title).toEqual('Entry 3');
 		expect(get(recentLogs)[2].title).toEqual('Entry 2');
 	});
+
+	it('preserves distinct entry objects when timestamps and contents match', () => {
+		vi.setSystemTime(1000);
+		logger.add(exampleTitle, exampleMessage, 'error', exampleMetadata);
+		const first = get(recentLogs)[0];
+		logger.add(exampleTitle, exampleMessage, 'error', exampleMetadata);
+		const entries = get(recentLogs);
+
+		expect(entries).toHaveLength(2);
+		expect(entries[0]).toEqual(entries[1]);
+		expect(entries[0]).not.toBe(entries[1]);
+		expect(entries.some((entry) => entry === first)).toBe(true);
+		expect(entries.every((entry) => entry.timestamp === 1000)).toBe(true);
+
+		logger.clear();
+		expect(get(recentLogs)).toEqual([]);
+		logger.add(exampleTitle, exampleMessage, 'error', exampleMetadata);
+		expect(get(recentLogs)[0]).toEqual(first);
+		expect(get(recentLogs)[0]).not.toBe(first);
+	});
+
+	it('retains only the newest 100 entries and preserves their object identities', () => {
+		for (let i = 0; i < 101; i++) {
+			vi.setSystemTime(i);
+			logger.add(`Entry ${i}`, exampleMessage, 'info');
+		}
+		const entries = [...get(logger)];
+		const recent = get(recentLogs);
+
+		expect(recent).toHaveLength(100);
+		expect(recent[0]).toBe(entries[100]);
+		expect(recent[99]).toBe(entries[1]);
+		expect(recent).not.toContain(entries[0]);
+	});
 });

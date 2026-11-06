@@ -16,7 +16,7 @@
 	/>
 	{#if $recentLogs.length > 0}
 		<ul class="border border-black mt-2 font-mono text-sm dark:border-gray-600">
-			{#each $recentLogs as log (log.timestamp)}
+			{#each $recentLogs as log (log)}
 				<li
 					class={clsx(
 						`py-2 px-4`,
