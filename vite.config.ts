@@ -36,6 +36,7 @@ export default defineConfig({
 			include: ['src/**/*.{js,ts,svelte}'],
 			exclude: [
 				...(configDefaults.coverage.exclude as string[]),
+				'**/*.d.ts', // Declaration files - no executable code to cover
 				'**/types.ts', // No code to test
 				'**/index.{js,ts}', // No code to test
 				'**/icons/**', // these are svgs/visual - not really testable

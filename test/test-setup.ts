@@ -7,6 +7,15 @@ import { configure } from '@testing-library/dom';
 // Register ICDS components with DOM
 beforeAll(() => {
 	defineCustomElements(window);
+
+	// Workaround for a happy-dom bug introduced in v20.13.1 where `visibility: inherit`
+	// is discarded by getComputedStyle instead of being resolved to the parent's value.
+	// see https://github.com/capricorn86/happy-dom/issues/2347
+	//
+	// We can drop this style when that ticket's fixed.
+	const style = document.createElement('style');
+	style.textContent = '.hydrated { visibility: visible; }';
+	document.head.appendChild(style);
 }, 1000);
 
 // Configure testing library
