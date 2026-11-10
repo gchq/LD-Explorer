@@ -52,7 +52,7 @@
 		"eslint-plugin-prettier": "^5.5.7",
 		"eslint-plugin-svelte": "^3.23.1",
 		"globals": "^17.14.0",
-		"happy-dom": "20.13.0",
+		"happy-dom": "21.0.4",
 		"jsonld-streaming-parser": "^5.0.2",
 		"n3": "^2.13.12",
 		"postcss": "^8.5.32",
