@@ -5,10 +5,12 @@
 	import { clsx } from 'clsx';
 	import type { Snippet } from 'svelte';
 
+	type AssetPath = Parameters<typeof asset>[0];
+
 	interface Props {
 		children?: Snippet;
 		title: string;
-		screenshot: string;
+		screenshot: AssetPath;
 		screenshotAlt: string;
 		align?: 'left' | 'right';
 	}

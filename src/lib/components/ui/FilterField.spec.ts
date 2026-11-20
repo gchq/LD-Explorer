@@ -1,7 +1,7 @@
 /* (c) Crown Copyright GCHQ */
 
 import FilterField from './FilterField.svelte';
-import { render } from '$test-helpers/render';
+import { render } from '#test-helpers/render.ts';
 import { screen } from 'shadow-dom-testing-library';
 import { waitFor, fireEvent } from '@testing-library/svelte';
 

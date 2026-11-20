@@ -2,7 +2,7 @@
 
 <script lang="ts">
 	import type { Bindings } from '@comunica/types';
-	import { Term } from '$lib/components';
+	import { Term } from '#lib/components/index.ts';
 	import type { Variable } from '@rdfjs/types';
 
 	interface Props {

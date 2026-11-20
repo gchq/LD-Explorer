@@ -1,9 +1,8 @@
 <!-- (c) Crown Copyright GCHQ -->
-
 <script lang="ts">
 	import { SubNav, SubNavItem } from '.';
-	import { page } from '$app/stores';
-	import { shouldHighlightSubNav } from '$lib/util/nav.utils';
+	import { page } from '$app/state';
+	import { shouldHighlightSubNav } from '#lib/util/nav.utils.ts';
 	import type { Snippet } from 'svelte';
 
 	interface Props {
@@ -25,7 +24,7 @@
 				<SubNavItem
 					{href}
 					{title}
-					selected={shouldHighlightSubNav(href, $page.url.pathname, match)}
+					selected={shouldHighlightSubNav(href, page.url.pathname, match)}
 				/>
 			{/each}
 		</SubNav>

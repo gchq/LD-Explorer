@@ -1,6 +1,6 @@
 /* (c) Crown Copyright GCHQ */
 
-import { hydratedRender, render } from '$test-helpers/render';
+import { hydratedRender, render } from '#test-helpers/render.ts';
 import Footer from './Footer.svelte';
 import { screen } from 'shadow-dom-testing-library';
 

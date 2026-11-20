@@ -1,7 +1,7 @@
 <!-- (c) Crown Copyright GCHQ -->
 
 <script lang="ts">
-	import { footerNavItems } from '$lib/navigation';
+	import { footerNavItems } from '#lib/navigation/index.ts';
 </script>
 
 <ic-footer

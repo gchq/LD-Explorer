@@ -1,9 +1,9 @@
 <!-- (c) Crown Copyright GCHQ -->
 
 <script lang="ts">
-	import { Heading, Paragraph as P } from '$lib/components';
-	import { PageView } from '$lib/components/views';
-	import type { RoutedTab } from '$lib/navigation/tabs/types';
+	import { Heading, Paragraph as P } from '#lib/components/index.ts';
+	import { PageView } from '#lib/components/views/index.ts';
+	import type { RoutedTab } from '#lib/navigation/tabs/types.ts';
 	import type { Snippet } from 'svelte';
 
 	interface Props {

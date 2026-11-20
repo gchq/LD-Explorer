@@ -1,7 +1,7 @@
 /* (c) Crown Copyright GCHQ */
 
 import Paragraph from './Paragraph.svelte';
-import { hydratedRender as render } from '$test-helpers/render';
+import { hydratedRender as render } from '#test-helpers/render.ts';
 
 describe('Paragraph component', () => {
 	it('renders an ic-typography', async () => {

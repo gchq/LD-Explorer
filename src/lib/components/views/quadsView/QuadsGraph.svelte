@@ -1,15 +1,18 @@
 <!-- (c) Crown Copyright GCHQ -->
 
 <script lang="ts">
-	import { MagnifyFit, MagnifyMinus, MagnifyPlus } from '$lib/components/ui/icons';
+	import { MagnifyFit, MagnifyMinus, MagnifyPlus } from '#lib/components/ui/icons/index.ts';
 	import cytoscape, { type Core as CytoscapeCore } from 'cytoscape';
-	import { cytoscapeSettings, getCytoscapeElementsForQuads } from '$lib/util/cytoscape/cytoscape';
-	import { Button } from '$lib/components';
+	import {
+		cytoscapeSettings,
+		getCytoscapeElementsForQuads
+	} from '#lib/util/cytoscape/cytoscape.ts';
+	import { Button } from '#lib/components/index.ts';
 	import type { Quad } from '@rdfjs/types';
-	import layout from '$lib/util/cytoscape/layout';
+	import layout from '#lib/util/cytoscape/layout.ts';
 	import { onMount } from 'svelte';
-	import { prefixes } from '$lib/stores/prefixes.store';
-	import { settings } from '$lib/stores/settings.store';
+	import { prefixes } from '#lib/stores/prefixes.store.ts';
+	import { settings } from '#lib/stores/settings.store.ts';
 
 	interface Props {
 		quads: Quad[];

@@ -2,10 +2,10 @@
 
 <script lang="ts">
 	import '../app.css';
-	import { Footer, SideNav, SkipToContent } from '$lib/components';
-	import { ViewportHelper } from '$lib/components/helpers';
+	import { Footer, SideNav, SkipToContent } from '#lib/components/index.ts';
+	import { ViewportHelper } from '#lib/components/helpers/index.ts';
 	import { defineCustomElements } from '@ukic/web-components/loader';
-	import { settings } from '$lib/stores/settings.store';
+	import { settings } from '#lib/stores/settings.store.ts';
 	import type { LayoutProps } from './$types';
 
 	let { children }: LayoutProps = $props();

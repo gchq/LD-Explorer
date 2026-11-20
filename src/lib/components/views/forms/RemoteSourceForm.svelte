@@ -2,8 +2,8 @@
 
 <script lang="ts">
 	import { resolve } from '$app/paths';
-	import { Alert, Button, Link, Paragraph as P, TextField } from '$lib/components';
-	import { type RemoteSource, sources } from '$stores/sources/remote-sources.store';
+	import { Alert, Button, Link, Paragraph as P, TextField } from '#lib/components/index.ts';
+	import { type RemoteSource, sources } from '#lib/stores/sources/remote-sources.store.ts';
 	import { goto } from '$app/navigation';
 
 	interface Props {
@@ -43,7 +43,7 @@
 	function handleRemove() {
 		// Probably should have some kind of "are you sure" functionality here haha
 		sources.removeSource(source.id);
-		goto(resolve('/sources'));
+		goto(resolve('sources'));
 	}
 </script>
 
@@ -98,6 +98,6 @@
 			<Button label="Remove Source" variant="destructive" type="reset" onclick={handleRemove} />
 		{/if}
 
-		<Link htmlClass="block mt-2" href={resolve('/sources')}>Back to Sources</Link>
+		<Link htmlClass="block mt-2" href={resolve('sources')}>Back to Sources</Link>
 	</div>
 </form>

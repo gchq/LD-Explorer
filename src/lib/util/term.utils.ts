@@ -1,6 +1,6 @@
 /* (c) Crown Copyright GCHQ */
 
-import type { Prefix } from '$lib/types';
+import type { Prefix } from '#lib/types.ts';
 
 /**
  * abbreviateTermPrefix

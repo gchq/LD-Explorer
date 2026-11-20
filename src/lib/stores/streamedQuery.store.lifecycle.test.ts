@@ -2,13 +2,13 @@
 
 import { ArrayIterator } from 'asynciterator';
 import { get } from 'svelte/store';
-import { createEngine } from '$lib/querying/engine';
-import { QueryStatus } from '$lib/types';
-import { logger } from '$stores/logger.store';
+import { createEngine } from '#lib/querying/engine.ts';
+import { QueryStatus } from '#lib/types.ts';
+import { logger } from '#lib/stores/logger.store.ts';
 import { createQueryStore } from './streamedQuery.store';
 import type { QuerySources } from './sources/sources.store';
 
-vi.mock('$lib/querying/engine', () => ({ createEngine: vi.fn() }));
+vi.mock('#lib/querying/engine.ts', () => ({ createEngine: vi.fn() }));
 
 const query = 'SELECT * WHERE { ?s ?p ?o }';
 const sources: QuerySources = ['https://example.com/data.ttl'];

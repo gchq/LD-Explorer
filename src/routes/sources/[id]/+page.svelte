@@ -11,16 +11,16 @@
 		Tab,
 		TabNavigation,
 		TabPanel
-	} from '$lib/components';
+	} from '#lib/components/index.ts';
 	import type { QuerySourceUnidentified } from '@comunica/types';
-	import { Import } from '$lib/components/ui/icons';
+	import { Import } from '#lib/components/ui/icons/index.ts';
 	import type { Store as N3Store } from 'n3';
 	import type { PageData } from './$types';
-	import { PageView } from '$lib/components/views';
-	import { QuadsView } from '$lib/components/views';
-	import { createQueryStore } from '$stores/streamedQuery.store';
-	import { getTriples } from '$lib/querying/queries';
-	import { settings } from '$lib/stores/settings.store';
+	import { PageView } from '#lib/components/views/index.ts';
+	import { QuadsView } from '#lib/components/views/index.ts';
+	import { createQueryStore } from '#lib/stores/streamedQuery.store.ts';
+	import { getTriples } from '#lib/querying/queries/index.ts';
+	import { settings } from '#lib/stores/settings.store.ts';
 
 	// Props
 	interface Props {
@@ -43,7 +43,7 @@
 		)
 	);
 	let editUrl = $derived(
-		resolve(`/sources/${source.type == 'LOCAL' ? 'local' : 'remote'}/${source.id}/edit`)
+		resolve(`sources/${source.type == 'LOCAL' ? 'local' : 'remote'}/${source.id}/edit`)
 	);
 </script>
 
@@ -80,22 +80,26 @@
 				<div class="mt-4">
 					<ButtonLink label="Edit" href={editUrl} />
 					{#if source.type == 'LOCAL'}
-						<ButtonLink label="Import data" href={resolve(`/sources/local/${source.id}/import`)}>
+						<ButtonLink label="Import data" href={resolve(`sources/local/${source.id}/import`)}>
 							{#snippet icon()}
 								<Import />
 							{/snippet}
 						</ButtonLink>
 					{/if}
 				</div>
-				<Link htmlClass="block mt-2" href={resolve('/sources')}>Back to Sources</Link>
+				<Link htmlClass="block mt-2" href={resolve('sources')}>Back to Sources</Link>
 			</TabPanel>
 			<TabPanel>
 				<Heading text="Sample Data" tag="h3" />
-				<P
-					>Querying for first {$settings.general__defaultLimit} triples from the data source
-					<strong>{source.name}</strong>.</P
-				>
+
+				<P>
+					Querying for first {$settings.general__defaultLimit} triples from the data source
+					<strong>{source.name}</strong>
+					.
+				</P>
+
 				<SparqlQueryDetail {queryStore} allowPersist={false} {codeComment} />
+
 				<QuadsView results={queryStore} />
 			</TabPanel>
 		{/snippet}

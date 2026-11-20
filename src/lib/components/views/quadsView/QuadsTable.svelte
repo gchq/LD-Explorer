@@ -10,11 +10,11 @@
 		TableHeading,
 		TableRow,
 		Term
-	} from '$lib/components';
-	import { getItemsForPage, getTotalPages } from '$lib/util/pagination.utils';
+	} from '#lib/components/index.ts';
+	import { getItemsForPage, getTotalPages } from '#lib/util/pagination.utils.ts';
 	import type { Quad } from '@rdfjs/types';
-	import { filterQuads } from '$lib/util/filter.utils';
-	import { settings } from '$lib/stores/settings.store';
+	import { filterQuads } from '#lib/util/filter.utils.ts';
+	import { settings } from '#lib/stores/settings.store.ts';
 
 	interface Props {
 		quads: Quad[];

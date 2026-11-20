@@ -1,9 +1,9 @@
 <!-- (c) Crown Copyright GCHQ -->
 
 <script lang="ts">
-	import { Button, Switch } from '$lib/components';
-	import { PageView } from '$lib/components/views';
-	import { settings } from '$lib/stores/settings.store';
+	import { Button, Switch } from '#lib/components/index.ts';
+	import { PageView } from '#lib/components/views/index.ts';
+	import { settings } from '#lib/stores/settings.store.ts';
 
 	// State (the "dirty" settings are the ones which are in-flight and have not yet been applied)
 	const dirtySettings = {

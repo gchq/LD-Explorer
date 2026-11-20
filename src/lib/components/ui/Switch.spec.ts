@@ -1,7 +1,7 @@
 /* (c) Crown Copyright GCHQ */
 
 import Switch from './Switch.svelte';
-import { hydratedRender as render } from '$test-helpers/render';
+import { hydratedRender as render } from '#test-helpers/render.ts';
 import { screen } from 'shadow-dom-testing-library';
 import userEvent from '@testing-library/user-event';
 

@@ -1,7 +1,7 @@
 <!-- (c) Crown Copyright GCHQ -->
 
 <script lang="ts">
-	import { CodeBlock, Paragraph as P, SummaryDetail } from '$lib/components';
+	import { CodeBlock, Paragraph as P, SummaryDetail } from '#lib/components/index.ts';
 
 	interface Props {
 		query: string;

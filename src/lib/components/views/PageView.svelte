@@ -1,8 +1,8 @@
 <!-- (c) Crown Copyright GCHQ -->
 
 <script lang="ts">
-	import { HtmlHead, PageHeader, Section } from '$lib/components';
-	import type { RoutedTab } from '$lib/navigation/tabs/types';
+	import { HtmlHead, PageHeader, Section } from '#lib/components/index.ts';
+	import type { RoutedTab } from '#lib/navigation/tabs/types.ts';
 	import type { Snippet } from 'svelte';
 
 	interface Props {

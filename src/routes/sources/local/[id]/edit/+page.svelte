@@ -1,10 +1,10 @@
 <!-- (c) Crown Copyright GCHQ -->
 
 <script lang="ts">
-	import { type LocalSource, sources } from '$stores/sources/local-sources.store';
-	import { LocalSourceForm } from '$lib/components/views/forms';
+	import { type LocalSource, sources } from '#lib/stores/sources/local-sources.store.ts';
+	import { LocalSourceForm } from '#lib/components/views/forms/index.ts';
 	import type { PageData } from './$types';
-	import { PageView } from '$lib/components/views';
+	import { PageView } from '#lib/components/views/index.ts';
 	import { resolve } from '$app/paths';
 	import { goto } from '$app/navigation';
 
@@ -17,10 +17,10 @@
 	// Events
 	function handleSubmit(source: LocalSource) {
 		sources.updateSource({ ...source, enabled: true });
-		goto(resolve('/sources'));
+		goto(resolve('sources'));
 	}
 </script>
 
-<PageView heading="Edit local source" subheading="Add a new local data source.">
-	<LocalSourceForm onSubmit={handleSubmit} bind:source />
-</PageView>
+<PageView heading="Edit local source" subheading="Add a new local data source."
+	><LocalSourceForm onSubmit={handleSubmit} bind:source /></PageView
+>

@@ -1,15 +1,15 @@
 /* (c) Crown Copyright GCHQ */
 
 import { type StreamedQuery, createQueryStore } from './streamedQuery.store';
-import { sourceList, sources } from '$lib/stores/sources/local-sources.store';
+import { sourceList, sources } from '#lib/stores/sources/local-sources.store.ts';
 import type { Bindings } from '@comunica/types';
 import type { MockInstance } from 'vitest';
 import type { Quad } from '@rdfjs/types';
-import { QueryStatus } from '$lib/types';
+import { QueryStatus } from '#lib/types.ts';
 import { get } from 'svelte/store';
-import { importRdfDocument } from '$lib/util/source.util';
-import { logger } from '$stores/logger.store';
-import { settings } from '$stores/settings.store';
+import { importRdfDocument } from '#lib/util/source.util.ts';
+import { logger } from '#lib/stores/logger.store.ts';
+import { settings } from '#lib/stores/settings.store.ts';
 
 const document = `
 PREFIX : <http://www.example.com/>
