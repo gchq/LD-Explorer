@@ -9,10 +9,10 @@
 
 	function handleSubmit(source: LocalSource) {
 		sources.addSource({ ...source, enabled: true });
-		goto(resolve('/sources'));
+		goto(resolve('sources'));
 	}
 </script>
 
-<PageView heading="Add local source" subheading="Add a new local data source.">
-	<LocalSourceForm onSubmit={handleSubmit} />
-</PageView>
+<PageView heading="Add local source" subheading="Add a new local data source."
+	><LocalSourceForm onSubmit={handleSubmit} /></PageView
+>

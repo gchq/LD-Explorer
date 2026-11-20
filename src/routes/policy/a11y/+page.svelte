@@ -17,7 +17,7 @@
 	} from '#lib/components/index.ts';
 	import { PageView } from '#lib/components/views/index.ts';
 
-	const a11yReportURL = asset(`/ld-explorer-acr.docx`);
+	const a11yReportURL = asset(`ld-explorer-acr.docx`);
 	const statementPrepared = '31-Jun-24';
 	const statementUpdated = '12-Jul-24';
 	const appLastAudited = '31-Jun-24';
@@ -25,7 +25,6 @@
 
 <PageView heading="Accessibility Statement" subheading="LD-Explorer Accessibility Statement">
 	<P>Last updated {statementUpdated}.</P>
-
 	<Heading variant="h3" text="Table of Contents" />
 
 	<List listType="ol">
@@ -60,9 +59,11 @@
 		<ListItem>Use most of the app with a screen reader.</ListItem>
 	</List>
 
-	<P>
-		We've also made the text in the app (including user guides) as simple as possible to understand.
-	</P>
+	<P
+		>We've also made the text in the app (including user guides) as simple as possible to
+		understand.</P
+	>
+
 	<P>
 		We've built this app with the following components from ICDS, which uses an
 		accessibility-by-design philosophy to empower a diverse and inclusive intelligence community.

@@ -13,7 +13,7 @@
 <ic-hero
 	subheading="The missing tool for easily exploring and experimenting with linked data resources directly from the browser."
 	aligned="center"
-	background-image={asset('/hero-bg.svg')}
+	background-image={asset('hero-bg.svg')}
 >
 	<div slot="heading" class="mb-4">
 		<Heading tag="h2" variant="h1" text="LD-Explorer" applyVerticalMargins={false}>
@@ -180,7 +180,7 @@
 				label="Learn more"
 				ariaLabel="Learn more about LD Explorer"
 				variant="primary"
-				href={resolve('/about')}
+				href={resolve('about')}
 				size="large"
 			/>
 		</div>

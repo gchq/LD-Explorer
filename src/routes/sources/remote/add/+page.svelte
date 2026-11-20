@@ -9,10 +9,10 @@
 
 	function handleSubmit(source: RemoteSource) {
 		sources.addSource({ ...source, enabled: true });
-		goto(resolve('/sources'));
+		goto(resolve('sources'));
 	}
 </script>
 
-<PageView heading="Add remote source" subheading="Add a new remote data source.">
-	<RemoteSourceForm onSubmit={handleSubmit} />
-</PageView>
+<PageView heading="Add remote source" subheading="Add a new remote data source."
+	><RemoteSourceForm onSubmit={handleSubmit} /></PageView
+>

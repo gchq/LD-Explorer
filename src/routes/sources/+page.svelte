@@ -29,8 +29,9 @@
 
 <PageView heading="Data Sources" subheading="Linked data sources.">
 	<div class="mb-4 flex flex-wrap gap-1">
-		<ButtonLink label="Add Remote Source" href={resolve('/sources/remote/add')} />
-		<ButtonLink label="Add Local Source" href={resolve('/sources/local/add')} />
+		<ButtonLink label="Add Remote Source" href={resolve('sources/remote/add')} />
+
+		<ButtonLink label="Add Local Source" href={resolve('sources/local/add')} />
 
 		<Button
 			label="Enable all sources"
@@ -69,12 +70,10 @@
 			message="You currently have no data sources configured."
 		/>
 
-		<ic-typography class="mt-4"
-			>Add sources manually using the controls on this page or use the <Link
-				href={resolve('/sources/catalog')}
-			>
-				data sources catalog
-			</Link> to find existing remote sources.</ic-typography
-		>
+		<ic-typography class="mt-4">
+			Add sources manually using the controls on this page or use the
+			<Link href={resolve('sources/catalog')}>data sources catalog</Link>
+			to find existing remote sources.
+		</ic-typography>
 	{/if}
 </PageView>

@@ -79,7 +79,7 @@
 		if (valid)
 			imports[currentImportType]
 				.importFunction(source, document)
-				.then(() => goto(resolve('/sources')))
+				.then(() => goto(resolve('sources')))
 				.catch((err: Error) => (parseError = err.message));
 	}
 
@@ -130,7 +130,7 @@
 					/>
 
 					<Button label="Import" type="submit" variant="primary" />
-					<Link htmlClass="block mt-2" href={resolve('/sources')}>Back to Sources</Link>
+					<Link htmlClass="block mt-2" href={resolve('sources')}>Back to Sources</Link>
 				</form>
 			</TabPanel>
 			<TabPanel>

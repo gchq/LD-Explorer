@@ -65,7 +65,7 @@
 			{#if term.termType == 'Quad'}
 				<TripleTerm {term} />
 			{:else if term.termType == 'NamedNode'}
-				<Link href={resolve('/explore/iris/detail') + `?iri=${encodeURIComponent(term.value)}`}>
+				<Link href={resolve('explore/iris/detail') + `?iri=${encodeURIComponent(term.value)}`}>
 					{#if settings.general__showRDFSLabels}
 						{#await labelFor(term.value, { defaultValue: termDisplayValue }) then label}
 							<TermValue termValue={label} {highlightText} />
@@ -78,6 +78,7 @@
 				{#if settings.term__showLanguageTag && term.termType == 'Literal' && term.language && term.language.length}
 					<span class="bg-gray-100 dark:bg-gray-700 px-1">@{term.language}</span>
 				{/if}
+
 				<TermValue termValue={termDisplayValue} {highlightText} />
 			{/if}
 		</span>

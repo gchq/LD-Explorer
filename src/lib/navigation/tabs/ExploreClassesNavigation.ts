@@ -18,14 +18,14 @@ const tabDetail = {
 			title: 'All Classes',
 			description: 'All classes across all active datasources.',
 			tabIndex: TabIndices.AllClasses,
-			href: resolve(`/explore/classes`)
+			href: resolve(`explore/classes`)
 		},
 		{
 			title: 'Base Classes',
 			description:
 				'Base classes across all active datasources (those not asserted to be subclasses).',
 			tabIndex: TabIndices.BaseClasses,
-			href: resolve(`/explore/classes/base`)
+			href: resolve(`explore/classes/base`)
 		}
 	]
 } as RoutedTabView<TabIndices>;

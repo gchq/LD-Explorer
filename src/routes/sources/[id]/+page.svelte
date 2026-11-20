@@ -43,7 +43,7 @@
 		)
 	);
 	let editUrl = $derived(
-		resolve(`/sources/${source.type == 'LOCAL' ? 'local' : 'remote'}/${source.id}/edit`)
+		resolve(`sources/${source.type == 'LOCAL' ? 'local' : 'remote'}/${source.id}/edit`)
 	);
 </script>
 
@@ -80,22 +80,26 @@
 				<div class="mt-4">
 					<ButtonLink label="Edit" href={editUrl} />
 					{#if source.type == 'LOCAL'}
-						<ButtonLink label="Import data" href={resolve(`/sources/local/${source.id}/import`)}>
+						<ButtonLink label="Import data" href={resolve(`sources/local/${source.id}/import`)}>
 							{#snippet icon()}
 								<Import />
 							{/snippet}
 						</ButtonLink>
 					{/if}
 				</div>
-				<Link htmlClass="block mt-2" href={resolve('/sources')}>Back to Sources</Link>
+				<Link htmlClass="block mt-2" href={resolve('sources')}>Back to Sources</Link>
 			</TabPanel>
 			<TabPanel>
 				<Heading text="Sample Data" tag="h3" />
-				<P
-					>Querying for first {$settings.general__defaultLimit} triples from the data source
-					<strong>{source.name}</strong>.</P
-				>
+
+				<P>
+					Querying for first {$settings.general__defaultLimit} triples from the data source
+					<strong>{source.name}</strong>
+					.
+				</P>
+
 				<SparqlQueryDetail {queryStore} allowPersist={false} {codeComment} />
+
 				<QuadsView results={queryStore} />
 			</TabPanel>
 		{/snippet}

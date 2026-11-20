@@ -32,11 +32,13 @@
 	}
 </script>
 
-<ic-typography class="block my-6"
-	>{description} If you can't see the prefix you are looking for in the list, you may be able to find
-	it on <Link href="https://prefix.cc/" external>prefix.cc</Link>. You can edit this list from the <Link
-		href={resolve('/settings/prefixes')}>prefix settings</Link
-	> page.
+<ic-typography class="block my-6">
+	{description} If you can't see the prefix you are looking for in the list, you may be able to find it
+	on
+	<Link href="https://prefix.cc/" external>prefix.cc</Link>
+	. You can edit this list from the
+	<Link href={resolve('settings/prefixes')}>prefix settings</Link>
+	page.
 </ic-typography>
 
 <Table>
@@ -47,9 +49,8 @@
 	<TableBody>
 		{#each $prefixes.sort((a, b) => (a.label < b.label ? -1 : 1)) as prefix (prefix.iri)}
 			<TableRow>
-				<TableData>
-					{prefix.label}
-				</TableData>
+				<TableData>{prefix.label}</TableData>
+
 				<TableData>
 					{prefix.iri}
 					<div class="float-right">

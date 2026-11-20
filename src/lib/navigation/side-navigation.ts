@@ -26,31 +26,31 @@ export const primarySideNavItems: SideNavItem<PrimarySideNavId>[] = [
 	{
 		id: 'explore',
 		title: 'Explore',
-		href: resolve('/explore'),
+		href: resolve('explore'),
 		variant: 'primary'
 	},
 	{
 		id: 'sparql-ui',
 		title: 'SPARQL',
-		href: resolve('/sparql-ui'),
+		href: resolve('sparql-ui'),
 		variant: 'primary'
 	},
 	{
 		id: 'shacl',
 		title: 'SHACL',
-		href: resolve('/shacl-ui'),
+		href: resolve('shacl-ui'),
 		variant: 'primary'
 	},
 	{
 		id: 'sources',
 		title: 'Sources',
-		href: resolve('/sources'),
+		href: resolve('sources'),
 		variant: 'primary'
 	},
 	{
 		id: 'logs',
 		title: 'Logs',
-		href: resolve('/logs'),
+		href: resolve('logs'),
 		variant: 'primary'
 	}
 ];
@@ -59,13 +59,13 @@ export const secondarySideNavItems: SideNavItem<SecondarySideNavId>[] = [
 	{
 		id: 'settings',
 		title: 'Settings',
-		href: resolve('/settings'),
+		href: resolve('settings'),
 		variant: 'secondary'
 	},
 	{
 		id: 'about',
 		title: 'About',
-		href: resolve('/about'),
+		href: resolve('about'),
 		variant: 'secondary'
 	}
 ];
