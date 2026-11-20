@@ -1,3 +1,5 @@
+import adapter from '@sveltejs/adapter-static';
+import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import { configDefaults, defineConfig } from 'vitest/config';
 import { fileURLToPath } from 'url';
 import { readFileSync } from 'fs';
@@ -10,16 +12,31 @@ const json = readFileSync(file, 'utf8');
 const pkg = JSON.parse(json);
 
 export default defineConfig({
-	plugins: [sveltekit(), svelteTesting(), tailwindcss()],
-	resolve: {
-		conditions: ['browser', 'import']
-	},
-	define: {
-		PUBLIC_VERSION: JSON.stringify(pkg.version)
-	},
+	plugins: [
+		sveltekit({
+			// Consult https://kit.svelte.dev/docs/integrations#preprocessors
+			// for more information about preprocessors
+			preprocess: vitePreprocess(),
+
+			// adapter-auto only supports some environments, see https://kit.svelte.dev/docs/adapter-auto for a list.
+			// If your environment is not supported or you settled on a specific environment, switch out the adapter.
+			// See https://kit.svelte.dev/docs/adapters for more information about adapters.
+			adapter: adapter({ fallback: '404.html' }),
+
+			paths: {
+				// Base path required if this is a github pages deployment.
+				base: process.env.BASE_PATH || ''
+			},
+			alias: { $stores: 'src/lib/stores', '$test-helpers': 'test/helpers' }
+		}),
+		svelteTesting(),
+		tailwindcss()
+	],
+	resolve: { conditions: ['browser', 'import'] },
+	define: { PUBLIC_VERSION: JSON.stringify(pkg.version) },
 	test: {
-		environment: 'happy-dom', // we're making a web app, so we want a web-like environment
-		globals: true, // avoid having to import things like "describe" and "expect"
+		environment: 'happy-dom' /* we're making a web app, so we want a web-like environment */,
+		globals: true /* avoid having to import things like "describe" and "expect" */,
 		include: ['./src/**/*.{test,spec}.{js,ts}'],
 		setupFiles: ['./test/test-setup.ts'],
 		reporters: ['default', 'junit'],
@@ -36,13 +53,13 @@ export default defineConfig({
 			include: ['src/**/*.{js,ts,svelte}'],
 			exclude: [
 				...(configDefaults.coverage.exclude as string[]),
-				'**/*.d.ts', // Declaration files - no executable code to cover
-				'**/types.ts', // No code to test
-				'**/index.{js,ts}', // No code to test
-				'**/icons/**', // these are svgs/visual - not really testable
-				'**/routes/**', // tested via e2e
-				'**/lib/components/views/**', // tested via e2e
-				'**/lib/components/layout/nav/**' // tested via e2e
+				'**/*.d.ts' /* Declaration files - no executable code to cover */,
+				'**/types.ts' /* No code to test */,
+				'**/index.{js,ts}' /* No code to test */,
+				'**/icons/**' /* these are svgs/visual - not really testable */,
+				'**/routes/**' /* tested via e2e */,
+				'**/lib/components/views/**' /* tested via e2e */,
+				'**/lib/components/layout/nav/**' /* tested via e2e */
 			],
 			reporter: ['text', 'cobertura']
 		}
