@@ -1,8 +1,8 @@
 /* (c) Crown Copyright GCHQ */
 
-import { sources } from '$lib/stores/sources/local-sources.store';
+import { sources } from '#lib/stores/sources/local-sources.store.ts';
 import { labelFor, flushLookup } from './labelLookup.svelte';
-import { importRdfDocument } from '$lib/util/source.util';
+import { importRdfDocument } from '#lib/util/source.util.ts';
 import { get } from 'svelte/store';
 import { waitFor } from '@testing-library/svelte';
 

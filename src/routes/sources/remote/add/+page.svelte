@@ -2,8 +2,8 @@
 
 <script lang="ts">
 	import { type RemoteSource, sources } from '$stores/sources/remote-sources.store';
-	import { PageView } from '$lib/components/views';
-	import { RemoteSourceForm } from '$lib/components/views/forms';
+	import { PageView } from '#lib/components/views/index.ts';
+	import { RemoteSourceForm } from '#lib/components/views/forms/index.ts';
 	import { resolve } from '$app/paths';
 	import { goto } from '$app/navigation';
 

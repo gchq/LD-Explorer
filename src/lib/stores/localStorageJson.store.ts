@@ -1,7 +1,7 @@
 /* (c) Crown Copyright GCHQ */
 
-import { retrieveJSONObject, storeJSONObject } from '$lib/util/localStorage.utils';
-import { namespace } from '$lib/constants';
+import { retrieveJSONObject, storeJSONObject } from '#lib/util/localStorage.utils.ts';
+import { namespace } from '#lib/constants.ts';
 import { writable } from 'svelte/store';
 
 /**

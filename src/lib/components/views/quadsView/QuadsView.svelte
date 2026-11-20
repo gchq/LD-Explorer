@@ -1,13 +1,13 @@
 <!-- (c) Crown Copyright GCHQ -->
 
 <script lang="ts">
-	import { Alert, Button } from '$lib/components';
-	import { Graph, Table, Turtle } from '$lib/components/ui/icons';
+	import { Alert, Button } from '#lib/components/index.ts';
+	import { Graph, Table, Turtle } from '#lib/components/ui/icons/index.ts';
 	import type { Quad } from '@rdfjs/types';
 	import QuadsGraph from './QuadsGraph.svelte';
 	import QuadsTable from './QuadsTable.svelte';
 	import QuadsTurtle from './QuadsTurtle.svelte';
-	import { QueryStatus } from '$lib/types';
+	import { QueryStatus } from '#lib/types.ts';
 	import type { Readable } from 'svelte/store';
 	import type { StreamedQuery } from '$stores/streamedQuery.store';
 

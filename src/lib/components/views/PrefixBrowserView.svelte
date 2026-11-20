@@ -12,9 +12,9 @@
 		TableHead,
 		TableHeading,
 		TableRow
-	} from '$lib/components';
-	import type { Prefix } from '$lib/types';
-	import { prefixes } from '$lib/stores/prefixes.store';
+	} from '#lib/components/index.ts';
+	import type { Prefix } from '#lib/types.ts';
+	import { prefixes } from '#lib/stores/prefixes.store.ts';
 
 	interface Props {
 		document: string;

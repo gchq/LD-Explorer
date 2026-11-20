@@ -2,8 +2,8 @@
 
 <script lang="ts">
 	import { type LocalSource, sources } from '$stores/sources/local-sources.store';
-	import { LocalSourceForm } from '$lib/components/views/forms';
-	import { PageView } from '$lib/components/views';
+	import { LocalSourceForm } from '#lib/components/views/forms/index.ts';
+	import { PageView } from '#lib/components/views/index.ts';
 	import { resolve } from '$app/paths';
 	import { goto } from '$app/navigation';
 

@@ -72,5 +72,9 @@
 		"vite": "^8.3.8",
 		"vitest": "^5.0.0"
 	},
-	"type": "module"
+	"type": "module",
+	"imports": {
+		"#lib": "./src/lib/index.js",
+		"#lib/*": "./src/lib/*"
+	}
 }

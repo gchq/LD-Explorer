@@ -12,10 +12,10 @@
 		TableHeading,
 		TableRow,
 		Term
-	} from '$lib/components';
+	} from '#lib/components/index.ts';
 	import { DataFactory } from 'n3';
-	import { PageView } from '$lib/components/views';
-	import { settings, type Settings } from '$lib/stores/settings.store';
+	import { PageView } from '#lib/components/views/index.ts';
+	import { settings, type Settings } from '#lib/stores/settings.store.ts';
 
 	// State (the "dirty" settings are the ones which are in-flight and have not yet been applied)
 	const dirtySettings = {

@@ -1,14 +1,14 @@
 <!-- (c) Crown Copyright GCHQ -->
 
 <script lang="ts">
-	import { Alert, SparqlQueryDetail } from '$lib/components';
-	import createTabDetail, { TabIndices } from '$lib/navigation/tabs/IRIDetailNavigation';
+	import { Alert, SparqlQueryDetail } from '#lib/components/index.ts';
+	import createTabDetail, { TabIndices } from '#lib/navigation/tabs/IRIDetailNavigation.ts';
 	import type { PageData } from './$types';
-	import { QuadsView } from '$lib/components/views';
-	import { TabbedPageView } from '$lib/components/views';
+	import { QuadsView } from '#lib/components/views/index.ts';
+	import { TabbedPageView } from '#lib/components/views/index.ts';
 	import { createQueryStore } from '$stores/streamedQuery.store';
-	import { getAppearances } from '$lib/querying/queries';
-	import { settings } from '$lib/stores/settings.store';
+	import { getAppearances } from '#lib/querying/queries/index.ts';
+	import { settings } from '#lib/stores/settings.store.ts';
 	import { sourceList } from '$stores/sources/sources.store';
 
 	interface Props {

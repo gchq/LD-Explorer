@@ -2,7 +2,7 @@
 
 import { createLocalStorageJSONStore } from './localStorageJson.store';
 import { get } from 'svelte/store';
-import { namespace } from '$lib/constants';
+import { namespace } from '#lib/constants.ts';
 
 const exampleKey = 'test';
 const exampleDefault = {

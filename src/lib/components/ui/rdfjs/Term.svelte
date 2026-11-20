@@ -9,12 +9,12 @@
 	 * for details; https://rdf.js.org/data-model-spec/#term-interface
 	 */
 	import { resolve } from '$app/paths';
-	import { Link, TripleTerm, TermValue } from '$lib/components';
-	import { type Settings, settings as savedSettings } from '$lib/stores/settings.store';
+	import { Link, TripleTerm, TermValue } from '#lib/components/index.ts';
+	import { type Settings, settings as savedSettings } from '#lib/stores/settings.store.ts';
 	import type { Term } from '@rdfjs/types';
-	import { abbreviateTermPrefix } from '$lib/util/term.utils';
+	import { abbreviateTermPrefix } from '#lib/util/term.utils.ts';
 	import clsx from 'clsx';
-	import { prefixes } from '$lib/stores/prefixes.store';
+	import { prefixes } from '#lib/stores/prefixes.store.ts';
 	import { labelFor } from '$stores/labelLookup.svelte';
 
 	// Props

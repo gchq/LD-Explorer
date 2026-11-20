@@ -14,8 +14,8 @@
 		TableHead,
 		TableHeading,
 		TableRow
-	} from '$lib/components';
-	import { PageView } from '$lib/components/views';
+	} from '#lib/components/index.ts';
+	import { PageView } from '#lib/components/views/index.ts';
 
 	const a11yReportURL = asset(`/ld-explorer-acr.docx`);
 	const statementPrepared = '31-Jun-24';

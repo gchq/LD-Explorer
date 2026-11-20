@@ -3,7 +3,7 @@
 import type { Quad } from '@rdfjs/types';
 import { Parser as N3Parser, type Store as N3Store } from 'n3';
 import { JsonLdParser } from 'jsonld-streaming-parser';
-import type { LocalSource } from '$lib/stores/sources/local-sources.store';
+import type { LocalSource } from '#lib/stores/sources/local-sources.store.ts';
 import { RdfaParser } from 'rdfa-streaming-parser';
 import type { Source } from '$stores/sources/sources.store';
 import type { Writable } from 'svelte/store';

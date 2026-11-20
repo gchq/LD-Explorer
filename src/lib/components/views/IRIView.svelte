@@ -12,7 +12,7 @@
 		TableHeading,
 		TableRow,
 		Term as TermComponent
-	} from '$lib/components';
+	} from '#lib/components/index.ts';
 
 	import type { Term, Quad } from '@rdfjs/types';
 	import { NamedNode } from 'n3';

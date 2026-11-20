@@ -2,7 +2,7 @@
 
 <script lang="ts">
 	import { resolve } from '$app/paths';
-	import { Alert, Button, Link, Paragraph as P, TextField } from '$lib/components';
+	import { Alert, Button, Link, Paragraph as P, TextField } from '#lib/components/index.ts';
 	import { type RemoteSource, sources } from '$stores/sources/remote-sources.store';
 	import { goto } from '$app/navigation';
 

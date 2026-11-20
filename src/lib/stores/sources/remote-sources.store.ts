@@ -1,6 +1,6 @@
 /* (c) Crown Copyright GCHQ */
 
-import { decorateSourceStore, generateId } from '$lib/util/source.util';
+import { decorateSourceStore, generateId } from '#lib/util/source.util.ts';
 import { derived, writable } from 'svelte/store';
 import type { Source, QuerySources } from './sources.store';
 

@@ -1,10 +1,10 @@
 <!-- (c) Crown Copyright GCHQ -->
 
 <script lang="ts">
-	import { Heading, List, ListItem, Paragraph as P, Term } from '$lib/components';
-	import { IRISearchForm } from '$lib/components/views/forms';
+	import { Heading, List, ListItem, Paragraph as P, Term } from '#lib/components/index.ts';
+	import { IRISearchForm } from '#lib/components/views/forms/index.ts';
 	import { NamedNode } from 'n3';
-	import { PageView } from '$lib/components/views';
+	import { PageView } from '#lib/components/views/index.ts';
 	import { resolve } from '$app/paths';
 	import { goto } from '$app/navigation';
 

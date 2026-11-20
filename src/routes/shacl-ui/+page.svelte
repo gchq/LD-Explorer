@@ -13,10 +13,10 @@
 		TableHeading,
 		TableRow,
 		TextField
-	} from '$lib/components';
-	import { PageView } from '$lib/components/views';
+	} from '#lib/components/index.ts';
+	import { PageView } from '#lib/components/views/index.ts';
 	import { sources as localSources } from '$stores/sources/local-sources.store';
-	import { validateLocalSourcesWithShacl, type ShaclValidationSummary } from '$lib/util/shacl';
+	import { validateLocalSourcesWithShacl, type ShaclValidationSummary } from '#lib/util/shacl.ts';
 
 	let shapesDocument = $state('');
 	let report = $state<ShaclValidationSummary | undefined>();

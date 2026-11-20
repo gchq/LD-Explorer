@@ -11,16 +11,16 @@
 		Tab,
 		TabNavigation,
 		TabPanel
-	} from '$lib/components';
+	} from '#lib/components/index.ts';
 	import type { QuerySourceUnidentified } from '@comunica/types';
-	import { Import } from '$lib/components/ui/icons';
+	import { Import } from '#lib/components/ui/icons/index.ts';
 	import type { Store as N3Store } from 'n3';
 	import type { PageData } from './$types';
-	import { PageView } from '$lib/components/views';
-	import { QuadsView } from '$lib/components/views';
+	import { PageView } from '#lib/components/views/index.ts';
+	import { QuadsView } from '#lib/components/views/index.ts';
 	import { createQueryStore } from '$stores/streamedQuery.store';
-	import { getTriples } from '$lib/querying/queries';
-	import { settings } from '$lib/stores/settings.store';
+	import { getTriples } from '#lib/querying/queries/index.ts';
+	import { settings } from '#lib/stores/settings.store.ts';
 
 	// Props
 	interface Props {

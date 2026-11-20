@@ -1,9 +1,9 @@
 <!-- (c) Crown Copyright GCHQ -->
 
 <script lang="ts">
-	import { PageView, QueryResultsView } from '$lib/components/views';
-	import { getNamedGraphs } from '$lib/querying/queries';
-	import { settings } from '$lib/stores/settings.store';
+	import { PageView, QueryResultsView } from '#lib/components/views/index.ts';
+	import { getNamedGraphs } from '#lib/querying/queries/index.ts';
+	import { settings } from '#lib/stores/settings.store.ts';
 
 	const { createQuery, codeComment } = getNamedGraphs;
 	const query = createQuery($settings.general__defaultLimit);

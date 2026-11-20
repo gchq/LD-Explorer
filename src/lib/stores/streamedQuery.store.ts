@@ -23,10 +23,10 @@ import { get, type Readable, writable } from 'svelte/store';
 import { comunicaLogger, logger } from '$stores/logger.store';
 import type { AsyncIterator } from 'asynciterator';
 import type { Quad } from '@rdfjs/types';
-import { QueryStatus } from '$lib/types';
+import { QueryStatus } from '#lib/types.ts';
 import type { QuerySources } from './sources/sources.store';
 import type { ResultStream } from '@rdfjs/types';
-import { createEngine } from '$lib/querying/engine';
+import { createEngine } from '#lib/querying/engine.ts';
 import { settings } from '$stores/settings.store';
 
 type QuadsStream = AsyncIterator<Quad> & ResultStream<Quad>;

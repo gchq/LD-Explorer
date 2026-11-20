@@ -22,18 +22,22 @@
 		Search,
 		Settings,
 		Lock
-	} from '$lib/components/ui/icons';
+	} from '#lib/components/ui/icons/index.ts';
 	import { resolve } from '$app/paths';
-	import { type SideNavId, primarySideNavItems, secondarySideNavItems } from '$lib/navigation';
+	import {
+		type SideNavId,
+		primarySideNavItems,
+		secondarySideNavItems
+	} from '#lib/navigation/index.ts';
 	import { errorLogs, warningLogs } from '$stores/logger.store';
-	import { Badge } from '$lib/components';
+	import { Badge } from '#lib/components/index.ts';
 	import type { Component } from 'svelte';
 	import type { IcBadgeVariants } from '@ukic/web-components';
-	import { ViewportHelper } from '$lib/components/helpers';
+	import { ViewportHelper } from '#lib/components/helpers/index.ts';
 	import { page } from '$app/state';
-	import { shouldHighlightSideNav } from '$lib/util/nav.utils';
+	import { shouldHighlightSideNav } from '#lib/util/nav.utils.ts';
 	import { sources } from '$stores/sources/sources.store';
-	import { version } from '$lib/constants';
+	import { version } from '#lib/constants.ts';
 
 	type SideNavItemDetail = {
 		[key in SideNavId]: {

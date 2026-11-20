@@ -1,16 +1,16 @@
 <!-- (c) Crown Copyright GCHQ -->
 
 <script lang="ts">
-	import { Alert, SparqlQueryDetail } from '$lib/components';
+	import { Alert, SparqlQueryDetail } from '#lib/components/index.ts';
 	import type { Quad } from '@rdfjs/types';
 	import { NamedNode } from 'n3';
-	import createTabDetail, { TabIndices } from '$lib/navigation/tabs/IRIDetailNavigation';
-	import { ClassHeirachyView } from '$lib/components/views';
+	import createTabDetail, { TabIndices } from '#lib/navigation/tabs/IRIDetailNavigation.ts';
+	import { ClassHeirachyView } from '#lib/components/views/index.ts';
 	import type { PageData } from './$types';
-	import { TabbedPageView } from '$lib/components/views';
+	import { TabbedPageView } from '#lib/components/views/index.ts';
 	import { createQueryStore } from '$stores/streamedQuery.store';
-	import { getSubclasses } from '$lib/querying/queries';
-	import { settings } from '$lib/stores/settings.store';
+	import { getSubclasses } from '#lib/querying/queries/index.ts';
+	import { settings } from '#lib/stores/settings.store.ts';
 	import { sourceList } from '$stores/sources/sources.store';
 
 	// Props

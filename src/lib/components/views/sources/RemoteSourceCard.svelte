@@ -2,7 +2,7 @@
 
 <script lang="ts">
 	import { resolve } from '$app/paths';
-	import { Button, ButtonLink, Link } from '$lib/components';
+	import { Button, ButtonLink, Link } from '#lib/components/index.ts';
 	import {
 		type RemoteSource,
 		sources as remoteSources

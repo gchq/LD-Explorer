@@ -1,7 +1,7 @@
 <!-- (c) Crown Copyright GCHQ -->
 
 <script lang="ts">
-	import { FilterField } from '$lib/components';
+	import { FilterField } from '#lib/components/index.ts';
 	import type { IcChangeEventDetail } from '@ukic/web-components/dist/types/components/ic-pagination/ic-pagination.types';
 	import { browser } from '$app/environment';
 	import clsx from 'clsx';

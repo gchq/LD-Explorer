@@ -3,7 +3,7 @@
 <script lang="ts">
 	import { SubNav, SubNavItem } from '.';
 	import { page } from '$app/stores';
-	import { shouldHighlightSubNav } from '$lib/util/nav.utils';
+	import { shouldHighlightSubNav } from '#lib/util/nav.utils.ts';
 	import type { Snippet } from 'svelte';
 
 	interface Props {

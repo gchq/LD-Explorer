@@ -1,12 +1,12 @@
 <!-- (c) Crown Copyright GCHQ -->
 
 <script lang="ts">
-	import { Alert, Button, Section, SummaryDetail } from '$lib/components';
+	import { Alert, Button, Section, SummaryDetail } from '#lib/components/index.ts';
 	import type { IcValueEventDetail } from '@ukic/web-components';
 	import type { Quad } from '@rdfjs/types';
-	import { QueryStatus } from '$lib/types';
+	import { QueryStatus } from '#lib/types.ts';
 	import type { StreamedQuery } from '$stores/streamedQuery.store';
-	import { importQuads } from '$lib/util/source.util';
+	import { importQuads } from '#lib/util/source.util.ts';
 	import { sources } from '$stores/sources/local-sources.store';
 
 	// Props

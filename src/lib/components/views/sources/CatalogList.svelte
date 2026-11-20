@@ -11,7 +11,7 @@
 		TableHead,
 		TableHeading,
 		TableRow
-	} from '$lib/components';
+	} from '#lib/components/index.ts';
 	import { sources } from '$stores/sources/remote-sources.store';
 
 	interface CatalogEntry {

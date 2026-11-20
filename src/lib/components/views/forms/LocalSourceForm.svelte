@@ -1,7 +1,7 @@
 <!-- (c) Crown Copyright GCHQ -->
 
 <script lang="ts">
-	import { Alert, Button, Link, TextField } from '$lib/components';
+	import { Alert, Button, Link, TextField } from '#lib/components/index.ts';
 	import { type LocalSource, sources } from '$stores/sources/local-sources.store';
 	import { resolve } from '$app/paths';
 	import { goto } from '$app/navigation';

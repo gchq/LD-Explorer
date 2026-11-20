@@ -2,8 +2,8 @@
 
 <script lang="ts">
 	import { resolve } from '$app/paths';
-	import { Link, List, ListItem, Paragraph as P } from '$lib/components';
-	import { PageView } from '$lib/components/views';
+	import { Link, List, ListItem, Paragraph as P } from '#lib/components/index.ts';
+	import { PageView } from '#lib/components/views/index.ts';
 </script>
 
 <PageView heading="Explore" subheading="Start exploring the currently active data sources.">

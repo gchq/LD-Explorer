@@ -1,9 +1,9 @@
 /* (c) Crown Copyright GCHQ */
 
 import { get } from 'svelte/store';
-import { createEngine } from '$lib/querying/engine';
+import { createEngine } from '#lib/querying/engine.ts';
 import { sourceList } from '$stores/sources/sources.store';
-import defaultLabels from '$lib/data/labels.json';
+import defaultLabels from '#lib/data/labels.json';
 import { settings } from '$stores/settings.store';
 
 interface LabelLookup {

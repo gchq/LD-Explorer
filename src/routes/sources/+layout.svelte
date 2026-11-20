@@ -1,7 +1,7 @@
 <!-- (c) Crown Copyright GCHQ -->
 
 <script lang="ts">
-	import { SubNavLayout } from '$lib/components/layout/nav';
+	import { SubNavLayout } from '#lib/components/layout/nav/index.ts';
 	import { resolve } from '$app/paths';
 
 	const navItems = [

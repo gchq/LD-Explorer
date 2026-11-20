@@ -2,9 +2,9 @@
 
 <script lang="ts">
 	import { resolve } from '$app/paths';
-	import { Alert, Button, ButtonLink, Link } from '$lib/components';
-	import { LocalSourceCard, RemoteSourceCard } from '$lib/components';
-	import { PageView } from '$lib/components/views';
+	import { Alert, Button, ButtonLink, Link } from '#lib/components/index.ts';
+	import { LocalSourceCard, RemoteSourceCard } from '#lib/components/index.ts';
+	import { PageView } from '#lib/components/views/index.ts';
 	import { sources as localSources, type LocalSource } from '$stores/sources/local-sources.store';
 	import {
 		sources as remoteSources,

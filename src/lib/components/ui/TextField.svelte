@@ -2,7 +2,7 @@
 
 <script lang="ts">
 	import type { IcTextFieldTypes, IcValueEventDetail } from '@ukic/web-components';
-	import { ViewportHelper } from '$lib/components/helpers';
+	import { ViewportHelper } from '#lib/components/helpers/index.ts';
 	import { clsx } from 'clsx';
 
 	// Props

@@ -2,9 +2,9 @@
 
 <script lang="ts">
 	import { resolve } from '$app/paths';
-	import { ButtonLink, Heading, HtmlHead, Link, Paragraph as P } from '$lib/components';
-	import { Logo } from '$lib/components/ui/icons';
-	import ProductFeature from '$lib/components/layout/homepage/ProductFeature.svelte';
+	import { ButtonLink, Heading, HtmlHead, Link, Paragraph as P } from '#lib/components/index.ts';
+	import { Logo } from '#lib/components/ui/icons/index.ts';
+	import ProductFeature from '#lib/components/layout/homepage/ProductFeature.svelte';
 	import { asset } from '$app/paths';
 </script>
 

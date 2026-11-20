@@ -1,13 +1,13 @@
 <!-- (c) Crown Copyright GCHQ -->
 
 <script lang="ts">
-	import { getItemsForPage, getTotalPages } from '$lib/util/pagination.utils';
+	import { getItemsForPage, getTotalPages } from '#lib/util/pagination.utils.ts';
 	import type { Bindings } from '@comunica/types';
 	import BindingsViewTable from './BindingsViewTable.svelte';
-	import { Pagination } from '$lib/components';
+	import { Pagination } from '#lib/components/index.ts';
 	import type { Readable } from 'svelte/store';
 	import type { StreamedQuery } from '$stores/streamedQuery.store';
-	import { filterBindings } from '$lib/util/filter.utils';
+	import { filterBindings } from '#lib/util/filter.utils.ts';
 
 	// Props
 	interface Props {

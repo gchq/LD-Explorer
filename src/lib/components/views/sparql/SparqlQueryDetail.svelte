@@ -1,7 +1,7 @@
 <!-- (c) Crown Copyright GCHQ -->
 
 <script lang="ts">
-	import { Paragraph as P } from '$lib/components';
+	import { Paragraph as P } from '#lib/components/index.ts';
 	import SparqlPersistResults from './SparqlPersistQuadResults.svelte';
 	import SparqlQueryCodeBlock from './SparqlQueryCodeBlock.svelte';
 	import SparqlQueryStatus from './SparqlQueryStatus.svelte';
