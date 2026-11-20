@@ -1,7 +1,7 @@
 <!-- (c) Crown Copyright GCHQ -->
 
 <script lang="ts">
-	import { HighlightedText } from '$lib/components';
+	import { HighlightedText } from '#lib/components/index.ts';
 
 	interface Props {
 		termValue: string;

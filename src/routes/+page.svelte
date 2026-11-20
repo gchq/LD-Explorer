@@ -2,9 +2,9 @@
 
 <script lang="ts">
 	import { resolve } from '$app/paths';
-	import { ButtonLink, Heading, HtmlHead, Link, Paragraph as P } from '$lib/components';
-	import { Logo } from '$lib/components/ui/icons';
-	import ProductFeature from '$lib/components/layout/homepage/ProductFeature.svelte';
+	import { ButtonLink, Heading, HtmlHead, Link, Paragraph as P } from '#lib/components/index.ts';
+	import { Logo } from '#lib/components/ui/icons/index.ts';
+	import ProductFeature from '#lib/components/layout/homepage/ProductFeature.svelte';
 	import { asset } from '$app/paths';
 </script>
 
@@ -13,7 +13,7 @@
 <ic-hero
 	subheading="The missing tool for easily exploring and experimenting with linked data resources directly from the browser."
 	aligned="center"
-	background-image={asset('/hero-bg.svg')}
+	background-image={asset('hero-bg.svg')}
 >
 	<div slot="heading" class="mb-4">
 		<Heading tag="h2" variant="h1" text="LD-Explorer" applyVerticalMargins={false}>
@@ -86,7 +86,7 @@
 		<Heading tag="h2" text="Product Features" applyVerticalMargins />
 		<ProductFeature
 			title="Query and federate multiple data sources"
-			screenshot="/screenshots/data-sources-screenshot.png"
+			screenshot="screenshots/data-sources-screenshot.png"
 			screenshotAlt="Screenshot of data sources functionality"
 		>
 			<P>
@@ -110,7 +110,7 @@
 
 		<ProductFeature
 			title="Explore linked data"
-			screenshot="/screenshots/describe-screenshot.png"
+			screenshot="screenshots/describe-screenshot.png"
 			screenshotAlt="Screenshot of data sources functionality"
 			align="right"
 		>
@@ -126,7 +126,7 @@
 
 		<ProductFeature
 			title="Find knowledge connections"
-			screenshot="/screenshots/graph-screenshot.png"
+			screenshot="screenshots/graph-screenshot.png"
 			screenshotAlt="Screenshot of data sources functionality"
 		>
 			<P>
@@ -142,7 +142,7 @@
 
 		<ProductFeature
 			title="Perform advanced queries"
-			screenshot="/screenshots/sparql-screenshot.png"
+			screenshot="screenshots/sparql-screenshot.png"
 			screenshotAlt="Screenshot of data sources functionality"
 			align="right"
 		>
@@ -180,7 +180,7 @@
 				label="Learn more"
 				ariaLabel="Learn more about LD Explorer"
 				variant="primary"
-				href={resolve('/about')}
+				href={resolve('about')}
 				size="large"
 			/>
 		</div>

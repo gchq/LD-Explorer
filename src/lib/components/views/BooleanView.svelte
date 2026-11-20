@@ -1,10 +1,10 @@
 <!-- (c) Crown Copyright GCHQ -->
 
 <script lang="ts">
-	import { DBFalse, DBTrue, Icon } from '$lib/components/ui/icons';
-	import { Paragraph as P } from '$lib/components';
+	import { DBFalse, DBTrue, Icon } from '#lib/components/ui/icons/index.ts';
+	import { Paragraph as P } from '#lib/components/index.ts';
 	import type { Readable } from 'svelte/store';
-	import type { StreamedQuery } from '$stores/streamedQuery.store';
+	import type { StreamedQuery } from '#lib/stores/streamedQuery.store.ts';
 
 	interface Props {
 		results: Readable<StreamedQuery>;

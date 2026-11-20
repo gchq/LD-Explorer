@@ -9,13 +9,13 @@
 	 * for details; https://rdf.js.org/data-model-spec/#term-interface
 	 */
 	import { resolve } from '$app/paths';
-	import { Link, TripleTerm, TermValue } from '$lib/components';
-	import { type Settings, settings as savedSettings } from '$lib/stores/settings.store';
+	import { Link, TripleTerm, TermValue } from '#lib/components/index.ts';
+	import { type Settings, settings as savedSettings } from '#lib/stores/settings.store.ts';
 	import type { Term } from '@rdfjs/types';
-	import { abbreviateTermPrefix } from '$lib/util/term.utils';
+	import { abbreviateTermPrefix } from '#lib/util/term.utils.ts';
 	import clsx from 'clsx';
-	import { prefixes } from '$lib/stores/prefixes.store';
-	import { labelFor } from '$stores/labelLookup.svelte';
+	import { prefixes } from '#lib/stores/prefixes.store.ts';
+	import { labelFor } from '#lib/stores/labelLookup.svelte.ts';
 
 	// Props
 	interface Props {
@@ -65,7 +65,7 @@
 			{#if term.termType == 'Quad'}
 				<TripleTerm {term} />
 			{:else if term.termType == 'NamedNode'}
-				<Link href={resolve('/explore/iris/detail') + `?iri=${encodeURIComponent(term.value)}`}>
+				<Link href={resolve('explore/iris/detail') + `?iri=${encodeURIComponent(term.value)}`}>
 					{#if settings.general__showRDFSLabels}
 						{#await labelFor(term.value, { defaultValue: termDisplayValue }) then label}
 							<TermValue termValue={label} {highlightText} />
@@ -78,6 +78,7 @@
 				{#if settings.term__showLanguageTag && term.termType == 'Literal' && term.language && term.language.length}
 					<span class="bg-gray-100 dark:bg-gray-700 px-1">@{term.language}</span>
 				{/if}
+
 				<TermValue termValue={termDisplayValue} {highlightText} />
 			{/if}
 		</span>

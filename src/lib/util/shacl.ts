@@ -1,7 +1,7 @@
 /* (c) Crown Copyright GCHQ */
 
 import type { Term } from '@rdfjs/types';
-import type { LocalSource } from '$stores/sources/local-sources.store';
+import type { LocalSource } from '#lib/stores/sources/local-sources.store.ts';
 import { Parser, Store as N3Store } from 'n3';
 import SHACLValidator from 'rdf-validate-shacl';
 

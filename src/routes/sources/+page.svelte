@@ -2,14 +2,17 @@
 
 <script lang="ts">
 	import { resolve } from '$app/paths';
-	import { Alert, Button, ButtonLink, Link } from '$lib/components';
-	import { LocalSourceCard, RemoteSourceCard } from '$lib/components';
-	import { PageView } from '$lib/components/views';
-	import { sources as localSources, type LocalSource } from '$stores/sources/local-sources.store';
+	import { Alert, Button, ButtonLink, Link } from '#lib/components/index.ts';
+	import { LocalSourceCard, RemoteSourceCard } from '#lib/components/index.ts';
+	import { PageView } from '#lib/components/views/index.ts';
+	import {
+		sources as localSources,
+		type LocalSource
+	} from '#lib/stores/sources/local-sources.store.ts';
 	import {
 		sources as remoteSources,
 		type RemoteSource
-	} from '$stores/sources/remote-sources.store';
+	} from '#lib/stores/sources/remote-sources.store.ts';
 
 	let allSources = $derived(
 		[...$remoteSources, ...$localSources].sort((a, b) => (a.name < b.name ? -1 : 1))
@@ -29,8 +32,9 @@
 
 <PageView heading="Data Sources" subheading="Linked data sources.">
 	<div class="mb-4 flex flex-wrap gap-1">
-		<ButtonLink label="Add Remote Source" href={resolve('/sources/remote/add')} />
-		<ButtonLink label="Add Local Source" href={resolve('/sources/local/add')} />
+		<ButtonLink label="Add Remote Source" href={resolve('sources/remote/add')} />
+
+		<ButtonLink label="Add Local Source" href={resolve('sources/local/add')} />
 
 		<Button
 			label="Enable all sources"
@@ -69,12 +73,10 @@
 			message="You currently have no data sources configured."
 		/>
 
-		<ic-typography class="mt-4"
-			>Add sources manually using the controls on this page or use the <Link
-				href={resolve('/sources/catalog')}
-			>
-				data sources catalog
-			</Link> to find existing remote sources.</ic-typography
-		>
+		<ic-typography class="mt-4">
+			Add sources manually using the controls on this page or use the
+			<Link href={resolve('sources/catalog')}>data sources catalog</Link>
+			to find existing remote sources.
+		</ic-typography>
 	{/if}
 </PageView>

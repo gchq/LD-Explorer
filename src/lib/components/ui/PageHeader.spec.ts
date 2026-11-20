@@ -1,7 +1,7 @@
 /* (c) Crown Copyright GCHQ */
 
 import PageHeader from './PageHeader.svelte';
-import { hydratedRender as render } from '$test-helpers/render';
+import { hydratedRender as render } from '#test-helpers/render.ts';
 import { screen } from 'shadow-dom-testing-library';
 
 const exampleHeading = 'Hello';

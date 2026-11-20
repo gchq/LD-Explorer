@@ -12,12 +12,12 @@
 		TableHeading,
 		TableRow,
 		Term as TermComponent
-	} from '$lib/components';
+	} from '#lib/components/index.ts';
 
 	import type { Term, Quad } from '@rdfjs/types';
 	import { NamedNode } from 'n3';
 	import type { Readable } from 'svelte/store';
-	import type { StreamedQuery } from '$stores/streamedQuery.store';
+	import type { StreamedQuery } from '#lib/stores/streamedQuery.store.ts';
 
 	// Workaround to stop client from crashing if this IRI is the subject for a very
 	// large number of triples. Should this become an issue, we can add in pagination or

@@ -1,18 +1,18 @@
 <!-- (c) Crown Copyright GCHQ -->
 
 <script lang="ts">
-	import { type LocalSource, sources } from '$stores/sources/local-sources.store';
-	import { LocalSourceForm } from '$lib/components/views/forms';
-	import { PageView } from '$lib/components/views';
+	import { type LocalSource, sources } from '#lib/stores/sources/local-sources.store.ts';
+	import { LocalSourceForm } from '#lib/components/views/forms/index.ts';
+	import { PageView } from '#lib/components/views/index.ts';
 	import { resolve } from '$app/paths';
 	import { goto } from '$app/navigation';
 
 	function handleSubmit(source: LocalSource) {
 		sources.addSource({ ...source, enabled: true });
-		goto(resolve('/sources'));
+		goto(resolve('sources'));
 	}
 </script>
 
-<PageView heading="Add local source" subheading="Add a new local data source.">
-	<LocalSourceForm onSubmit={handleSubmit} />
-</PageView>
+<PageView heading="Add local source" subheading="Add a new local data source."
+	><LocalSourceForm onSubmit={handleSubmit} /></PageView
+>

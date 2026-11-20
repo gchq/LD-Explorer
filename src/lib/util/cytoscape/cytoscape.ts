@@ -1,9 +1,9 @@
 /* (c) Crown Copyright GCHQ */
 
 import type { ElementDefinition } from 'cytoscape';
-import type { Prefix } from '$lib/types';
+import type { Prefix } from '#lib/types.ts';
 import type { Quad, Term } from '@rdfjs/types';
-import { abbreviateTermPrefix } from '$lib/util/term.utils';
+import { abbreviateTermPrefix } from '#lib/util/term.utils.ts';
 import layout from './layout';
 import createCytoscapeStyles from './style';
 

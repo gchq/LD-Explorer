@@ -1,7 +1,7 @@
 /* (c) Crown Copyright GCHQ */
 
 import Section from './Section.svelte';
-import { hydratedRender as render } from '$test-helpers/render';
+import { hydratedRender as render } from '#test-helpers/render.ts';
 
 describe('Section component', () => {
 	describe('default behavior', () => {

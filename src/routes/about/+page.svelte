@@ -1,8 +1,8 @@
 <!-- (c) Crown Copyright GCHQ -->
 
 <script lang="ts">
-	import { Alert, Link, Paragraph as P } from '$lib/components';
-	import { PageView } from '$lib/components/views';
+	import { Alert, Link, Paragraph as P } from '#lib/components/index.ts';
+	import { PageView } from '#lib/components/views/index.ts';
 </script>
 
 <PageView heading="About" subheading="Overview of this application">

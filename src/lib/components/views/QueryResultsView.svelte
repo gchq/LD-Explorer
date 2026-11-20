@@ -1,12 +1,12 @@
 <!-- (c) Crown Copyright GCHQ -->
 
 <script lang="ts">
-	import { Alert, Paragraph as P } from '$lib/components';
-	import { BindingsView, BooleanView, QuadsView } from '$lib/components/views';
-	import { QueryStatus } from '$lib/types';
-	import { SparqlQueryDetail } from '$lib/components/views/sparql';
-	import { createQueryStore } from '$stores/streamedQuery.store';
-	import { sourceList } from '$stores/sources/sources.store';
+	import { Alert, Paragraph as P } from '#lib/components/index.ts';
+	import { BindingsView, BooleanView, QuadsView } from '#lib/components/views/index.ts';
+	import { QueryStatus } from '#lib/types.ts';
+	import { SparqlQueryDetail } from '#lib/components/views/sparql/index.ts';
+	import { createQueryStore } from '#lib/stores/streamedQuery.store.ts';
+	import { sourceList } from '#lib/stores/sources/sources.store.ts';
 
 	// Props
 	interface Props {

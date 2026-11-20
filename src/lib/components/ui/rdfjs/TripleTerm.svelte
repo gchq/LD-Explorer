@@ -2,8 +2,8 @@
 
 <script lang="ts">
 	import type { Term as ITerm } from '@rdfjs/types';
-	import { Term } from '$lib/components';
-	import { settings } from '$lib/stores/settings.store';
+	import { Term } from '#lib/components/index.ts';
+	import { settings } from '#lib/stores/settings.store.ts';
 
 	interface Props {
 		term: ITerm;

@@ -1,9 +1,9 @@
 <!-- (c) Crown Copyright GCHQ -->
 
 <script lang="ts">
-	import { Button, LoadingSpinner } from '$lib/components';
-	import { QueryStatus } from '$lib/types';
-	import { Stop } from '$lib/components/ui/icons';
+	import { Button, LoadingSpinner } from '#lib/components/index.ts';
+	import { QueryStatus } from '#lib/types.ts';
+	import { Stop } from '#lib/components/ui/icons/index.ts';
 
 	interface Props {
 		status: QueryStatus;

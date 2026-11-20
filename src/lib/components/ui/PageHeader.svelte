@@ -1,8 +1,8 @@
 <!-- (c) Crown Copyright GCHQ -->
 
 <script lang="ts">
-	import type { RoutedTab } from '$lib/navigation/tabs/types';
-	import { ViewportHelper } from '$lib/components/helpers';
+	import type { RoutedTab } from '#lib/navigation/tabs/types.ts';
+	import { ViewportHelper } from '#lib/components/helpers/index.ts';
 	import clsx from 'clsx';
 
 	interface Props {

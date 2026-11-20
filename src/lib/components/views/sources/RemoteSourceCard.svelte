@@ -2,18 +2,18 @@
 
 <script lang="ts">
 	import { resolve } from '$app/paths';
-	import { Button, ButtonLink, Link } from '$lib/components';
+	import { Button, ButtonLink, Link } from '#lib/components/index.ts';
 	import {
 		type RemoteSource,
 		sources as remoteSources
-	} from '$stores/sources/remote-sources.store';
+	} from '#lib/stores/sources/remote-sources.store.ts';
 	import SourceCard from './SourceCard.svelte';
 
 	interface Props {
 		source: RemoteSource;
 	}
-	let { source }: Props = $props();
 
+	let { source }: Props = $props();
 	let { url, enabled, description, id, fromCatalog } = $derived(source);
 </script>
 
@@ -43,12 +43,12 @@
 		<div class="flex flex-wrap gap-1">
 			<ButtonLink
 				label="Show"
-				href={resolve(`/sources/${id}`)}
+				href={resolve(`sources/${id}`)}
 				ariaLabel={`Show source ${source.name}`}
 			/>
 			<ButtonLink
 				label="Edit"
-				href={resolve(`/sources/remote/${id}/edit`)}
+				href={resolve(`sources/remote/${id}/edit`)}
 				ariaLabel={`Edit source ${source.name}`}
 			/>
 

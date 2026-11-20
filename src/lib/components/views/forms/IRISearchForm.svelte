@@ -1,7 +1,7 @@
 <!-- (c) Crown Copyright GCHQ -->
 
 <script lang="ts">
-	import { Button, TextField } from '$lib/components';
+	import { Button, TextField } from '#lib/components/index.ts';
 
 	// Props
 	interface Props {

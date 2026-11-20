@@ -1,9 +1,7 @@
-<!-- (c) Crown Copyright GCHQ -->
-
 <script lang="ts">
-	import { FilterField } from '$lib/components';
+	import { FilterField } from '#lib/components/index.ts';
 	import type { IcChangeEventDetail } from '@ukic/web-components/dist/types/components/ic-pagination/ic-pagination.types';
-	import { browser } from '$app/environment';
+	import { browser } from '$app/env';
 	import clsx from 'clsx';
 
 	interface Props {
@@ -35,6 +33,8 @@
 		}
 	}
 </script>
+
+<!-- (c) Crown Copyright GCHQ -->
 
 <div class={clsx('block md:flex justify-between', !bottom && 'md:mt-10', bottom && 'my-8')}>
 	{#if includeFilter}

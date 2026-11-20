@@ -2,7 +2,7 @@
 
 import { screen } from '@testing-library/svelte';
 import Tab from './Tab.svelte';
-import { hydratedRender as render } from '$test-helpers/render';
+import { hydratedRender as render } from '#test-helpers/render.ts';
 import userEvent from '@testing-library/user-event';
 
 describe('Tab component', () => {

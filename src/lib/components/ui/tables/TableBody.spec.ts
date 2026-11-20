@@ -1,7 +1,7 @@
 /* (c) Crown Copyright GCHQ */
 
 import TableBody from './TableBody.svelte';
-import { render } from '$test-helpers/render';
+import { render } from '#test-helpers/render.ts';
 
 describe('TableBody component', () => {
 	it('renders a tbody element', () => {

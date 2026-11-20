@@ -3,7 +3,7 @@
 import type { LayoutLoad } from './$types';
 import { error } from '@sveltejs/kit';
 import { get } from 'svelte/store';
-import { sources } from '$stores/sources/local-sources.store';
+import { sources } from '#lib/stores/sources/local-sources.store.ts';
 
 export const load = (({ params }) => {
 	const currentSources = get(sources);

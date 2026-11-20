@@ -1,9 +1,9 @@
 <!-- (c) Crown Copyright GCHQ -->
 
 <script lang="ts">
-	import { Link, Tree, TreeItem } from '$lib/components';
-	import { sideNavItems, subNavItems, footerNavItems } from '$lib/navigation';
-	import { PageView } from '$lib/components/views';
+	import { Link, Tree, TreeItem } from '#lib/components/index.ts';
+	import { sideNavItems, subNavItems, footerNavItems } from '#lib/navigation/index.ts';
+	import { PageView } from '#lib/components/views/index.ts';
 </script>
 
 <PageView heading="Sitemap" subheading="Summary of the main pages within the app.">

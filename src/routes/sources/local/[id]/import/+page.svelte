@@ -2,17 +2,25 @@
 
 <script lang="ts">
 	import { resolve } from '$app/paths';
-	import { Alert, Button, Link, Tab, TabNavigation, TabPanel, TextField } from '$lib/components';
+	import {
+		Alert,
+		Button,
+		Link,
+		Tab,
+		TabNavigation,
+		TabPanel,
+		TextField
+	} from '#lib/components/index.ts';
 	import {
 		importJsonLDDocument,
 		importRdfDocument,
 		importRdfaDocument
-	} from '$lib/util/source.util';
+	} from '#lib/util/source.util.ts';
 	import type { IcValueEventDetail } from '@ukic/web-components';
-	import type { LocalSource } from '$stores/sources/local-sources.store';
+	import type { LocalSource } from '#lib/stores/sources/local-sources.store.ts';
 	import type { PageData } from './$types';
-	import { PageView } from '$lib/components/views';
-	import { PrefixBrowserView } from '$lib/components/views';
+	import { PageView } from '#lib/components/views/index.ts';
+	import { PrefixBrowserView } from '#lib/components/views/index.ts';
 	import { goto } from '$app/navigation';
 
 	interface Props {
@@ -71,7 +79,7 @@
 		if (valid)
 			imports[currentImportType]
 				.importFunction(source, document)
-				.then(() => goto(resolve('/sources')))
+				.then(() => goto(resolve('sources')))
 				.catch((err: Error) => (parseError = err.message));
 	}
 
@@ -122,7 +130,7 @@
 					/>
 
 					<Button label="Import" type="submit" variant="primary" />
-					<Link htmlClass="block mt-2" href={resolve('/sources')}>Back to Sources</Link>
+					<Link htmlClass="block mt-2" href={resolve('sources')}>Back to Sources</Link>
 				</form>
 			</TabPanel>
 			<TabPanel>

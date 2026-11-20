@@ -1,7 +1,7 @@
 /* (c) Crown Copyright GCHQ */
 
 import Table from './Table.svelte';
-import { render } from '$test-helpers/render';
+import { render } from '#test-helpers/render.ts';
 import { screen } from '@testing-library/svelte';
 
 describe('Table component', () => {

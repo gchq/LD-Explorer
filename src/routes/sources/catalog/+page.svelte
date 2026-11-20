@@ -1,10 +1,10 @@
 <!-- (c) Crown Copyright GCHQ -->
 
 <script lang="ts">
-	import { Tab, TabNavigation, TabPanel } from '$lib/components';
-	import { CatalogList } from '$lib/components/views/sources';
-	import { PageView } from '$lib/components/views';
-	import sourcesCatalog from '$lib/data/sources-catalog.json';
+	import { Tab, TabNavigation, TabPanel } from '#lib/components/index.ts';
+	import { CatalogList } from '#lib/components/views/sources/index.ts';
+	import { PageView } from '#lib/components/views/index.ts';
+	import sourcesCatalog from '#lib/data/sources-catalog.json';
 </script>
 
 <PageView

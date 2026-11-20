@@ -1,7 +1,7 @@
 /* (c) Crown Copyright GCHQ */
 
 import Tree from './Tree.svelte';
-import { render } from '$test-helpers/render';
+import { render } from '#test-helpers/render.ts';
 
 describe('Tree component', () => {
 	describe('default behavior', () => {

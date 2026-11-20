@@ -2,9 +2,12 @@
 
 <script lang="ts">
 	import { resolve } from '$app/paths';
-	import { Button, ButtonLink } from '$lib/components';
-	import { type LocalSource, sources as localSources } from '$stores/sources/local-sources.store';
-	import { Import } from '$lib/components/ui/icons';
+	import { Button, ButtonLink } from '#lib/components/index.ts';
+	import {
+		type LocalSource,
+		sources as localSources
+	} from '#lib/stores/sources/local-sources.store.ts';
+	import { Import } from '#lib/components/ui/icons/index.ts';
 	import type { Store as N3Store } from 'n3';
 	import SourceCard from './SourceCard.svelte';
 
@@ -35,18 +38,18 @@
 		<div class="flex flex-wrap gap-1">
 			<ButtonLink
 				label="Show"
-				href={resolve(`/sources/${id}`)}
+				href={resolve(`sources/${id}`)}
 				ariaLabel={`Show source ${source.name}`}
 			/>
 			<ButtonLink
 				label="Edit"
-				href={resolve(`/sources/local/${id}/edit`)}
+				href={resolve(`sources/local/${id}/edit`)}
 				ariaLabel={`Edit source ${source.name}`}
 			/>
 
 			<ButtonLink
 				label="Import data"
-				href={resolve(`/sources/local/${id}/import`)}
+				href={resolve(`sources/local/${id}/import`)}
 				ariaLabel={`Import data into source ${source.name}`}
 			>
 				{#snippet icon()}

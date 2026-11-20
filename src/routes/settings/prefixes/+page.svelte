@@ -13,10 +13,10 @@
 		TableHeading,
 		TableRow,
 		TextField
-	} from '$lib/components';
-	import { PageView } from '$lib/components/views';
-	import type { Prefix } from '$lib/types';
-	import { prefixes } from '$lib/stores/prefixes.store';
+	} from '#lib/components/index.ts';
+	import { PageView } from '#lib/components/views/index.ts';
+	import type { Prefix } from '#lib/types.ts';
+	import { prefixes } from '#lib/stores/prefixes.store.ts';
 
 	// Form data
 	let newLabel = $state('');

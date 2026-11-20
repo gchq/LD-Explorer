@@ -1,7 +1,7 @@
 /* (c) Crown Copyright GCHQ */
 
 import { DataFactory, type Store as N3Store } from 'n3';
-import { type LocalSource, sources } from '$lib/stores/sources/local-sources.store';
+import { type LocalSource, sources } from '#lib/stores/sources/local-sources.store.ts';
 import {
 	importJsonLDDocument,
 	importQuads,

@@ -1,8 +1,8 @@
 <!-- (c) Crown Copyright GCHQ -->
 
 <script lang="ts">
-	import { Alert, Button, Link, TextField } from '$lib/components';
-	import { type LocalSource, sources } from '$stores/sources/local-sources.store';
+	import { Alert, Button, Link, TextField } from '#lib/components/index.ts';
+	import { type LocalSource, sources } from '#lib/stores/sources/local-sources.store.ts';
 	import { resolve } from '$app/paths';
 	import { goto } from '$app/navigation';
 
@@ -43,7 +43,7 @@
 	function handleRemove() {
 		// TODO: Probably should have some kind of "are you sure" functionality here
 		sources.removeSource(source.id);
-		goto(resolve('/sources'));
+		goto(resolve('sources'));
 	}
 </script>
 
@@ -79,6 +79,6 @@
 		{#if source.id.length}
 			<Button label="Remove Source" variant="destructive" type="reset" onclick={handleRemove} />
 		{/if}
-		<Link htmlClass="block mt-2" href={resolve('/sources')}>Back to Sources</Link>
+		<Link htmlClass="block mt-2" href={resolve('sources')}>Back to Sources</Link>
 	</div>
 </form>

@@ -13,7 +13,7 @@
 	 * In order to go back to using the ICDS components, we would need the above to be provided.
 	 *
 	 */
-	import { Filter } from '$lib/components/ui/icons';
+	import { Filter } from '#lib/components/ui/icons/index.ts';
 	import clsx from 'clsx';
 	import type { EventHandler } from 'svelte/elements';
 

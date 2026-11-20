@@ -1,13 +1,13 @@
 <!-- (c) Crown Copyright GCHQ -->
 
 <script lang="ts">
-	import { Alert, Button, Tab, TabNavigation, TabPanel, TextField } from '$lib/components';
+	import { Alert, Button, Tab, TabNavigation, TabPanel, TextField } from '#lib/components/index.ts';
 	import type { IcValueEventDetail } from '@ukic/web-components';
-	import { PageView } from '$lib/components/views';
-	import { PrefixBrowserView } from '$lib/components/views';
-	import { QueryResultsView } from '$lib/components/views';
-	import exampleQueries from '$lib/querying/exampleQueries';
-	import { validateSparql } from '$lib/querying/sparqlUtils';
+	import { PageView } from '#lib/components/views/index.ts';
+	import { PrefixBrowserView } from '#lib/components/views/index.ts';
+	import { QueryResultsView } from '#lib/components/views/index.ts';
+	import exampleQueries from '#lib/querying/exampleQueries.ts';
+	import { validateSparql } from '#lib/querying/sparqlUtils.ts';
 
 	// We need to change tabs programatically, therefore they need to be given explicit IDs.
 	const SparqlUiTab = {

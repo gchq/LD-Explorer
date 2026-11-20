@@ -1,7 +1,7 @@
 /* (c) Crown Copyright GCHQ */
 
 import ProductFeature from './ProductFeature.svelte';
-import { hydratedRender as render } from '$test-helpers/render';
+import { hydratedRender as render } from '#test-helpers/render.ts';
 import { screen } from '@testing-library/svelte';
 
 const testProps = { title: 'Foobar', screenshot: 'foo.jpg', screenshotAlt: 'Foo alt' };
@@ -16,7 +16,7 @@ describe('ProductFeature component', () => {
 		// image
 		const image = screen.getByAltText('Foo alt');
 		expect(image).toBeInTheDocument();
-		expect(image).toHaveAttribute('src', 'foo.jpg');
+		expect(image).toHaveAttribute('src', '/foo.jpg');
 	});
 
 	describe('alignment', () => {
