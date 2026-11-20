@@ -25,7 +25,7 @@ export default defineConfig({
 
 			paths: {
 				// Base path required if this is a github pages deployment.
-				base: process.env.BASE_PATH || ''
+				base: (process.env.BASE_PATH || '') as '' | `/${string}`
 			},
 		}),
 		svelteTesting(),

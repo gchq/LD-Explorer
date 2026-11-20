@@ -86,7 +86,7 @@
 		<Heading tag="h2" text="Product Features" applyVerticalMargins />
 		<ProductFeature
 			title="Query and federate multiple data sources"
-			screenshot="/screenshots/data-sources-screenshot.png"
+			screenshot="screenshots/data-sources-screenshot.png"
 			screenshotAlt="Screenshot of data sources functionality"
 		>
 			<P>
@@ -110,7 +110,7 @@
 
 		<ProductFeature
 			title="Explore linked data"
-			screenshot="/screenshots/describe-screenshot.png"
+			screenshot="screenshots/describe-screenshot.png"
 			screenshotAlt="Screenshot of data sources functionality"
 			align="right"
 		>
@@ -126,7 +126,7 @@
 
 		<ProductFeature
 			title="Find knowledge connections"
-			screenshot="/screenshots/graph-screenshot.png"
+			screenshot="screenshots/graph-screenshot.png"
 			screenshotAlt="Screenshot of data sources functionality"
 		>
 			<P>
@@ -142,7 +142,7 @@
 
 		<ProductFeature
 			title="Perform advanced queries"
-			screenshot="/screenshots/sparql-screenshot.png"
+			screenshot="screenshots/sparql-screenshot.png"
 			screenshotAlt="Screenshot of data sources functionality"
 			align="right"
 		>
