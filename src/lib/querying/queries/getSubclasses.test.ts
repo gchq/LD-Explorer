@@ -13,14 +13,17 @@ describe('sparql queries', () => {
 
 					CONSTRUCT { ?subClass rdfs:subClassOf ?superClass . }
 					WHERE {
-					    {
-					        ?subClass rdfs:subClassOf* <http://www.example.com/> .
-					        ?subClass rdfs:subClassOf ?superClass .
+					    SELECT DISTINCT ?subClass ?superClass
+					    WHERE {
+					        {
+					            ?subClass rdfs:subClassOf* <http://www.example.com/> .
+					            ?subClass rdfs:subClassOf ?superClass .
+					        }
+					        
+					        FILTER (?subClass != <http://www.example.com/>)
 					    }
-					    
-					    FILTER (?subClass != <http://www.example.com/>)
+					    LIMIT 100
 					}
-					LIMIT 100
 					      "
 				`);
 			});
@@ -35,14 +38,17 @@ describe('sparql queries', () => {
 
 					CONSTRUCT { ?subClass rdfs:subClassOf ?superClass . }
 					WHERE {
-					    {
-					        ?subClass rdfs:subClassOf* <http://www.example.com/> .
-					        ?subClass rdfs:subClassOf ?superClass .
+					    SELECT DISTINCT ?subClass ?superClass
+					    WHERE {
+					        {
+					            ?subClass rdfs:subClassOf* <http://www.example.com/> .
+					            ?subClass rdfs:subClassOf ?superClass .
+					        }
+					        
+					        FILTER (?subClass != <http://www.example.com/>)
 					    }
-					    
-					    FILTER (?subClass != <http://www.example.com/>)
+					    LIMIT 123
 					}
-					LIMIT 123
 					      "
 				`);
 			});
@@ -57,20 +63,23 @@ describe('sparql queries', () => {
 
 					CONSTRUCT { ?subClass rdfs:subClassOf ?superClass . }
 					WHERE {
-					    {
-					        ?subClass rdfs:subClassOf* <http://www.example.com/> .
-					        ?subClass rdfs:subClassOf ?superClass .
-					    }
-					    UNION
-					    {
-					        GRAPH ?g {
+					    SELECT DISTINCT ?subClass ?superClass
+					    WHERE {
+					        {
 					            ?subClass rdfs:subClassOf* <http://www.example.com/> .
 					            ?subClass rdfs:subClassOf ?superClass .
 					        }
+					        UNION
+					        {
+					            GRAPH ?g {
+					                ?subClass rdfs:subClassOf* <http://www.example.com/> .
+					                ?subClass rdfs:subClassOf ?superClass .
+					            }
+					        }
+					        FILTER (?subClass != <http://www.example.com/>)
 					    }
-					    FILTER (?subClass != <http://www.example.com/>)
+					    LIMIT 100
 					}
-					LIMIT 100
 					      "
 				`);
 			});

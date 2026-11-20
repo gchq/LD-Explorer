@@ -24,23 +24,26 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
 CONSTRUCT { ?subClass rdfs:subClassOf ?superClass . }
 WHERE {
-    {
-        ?subClass rdfs:subClassOf* <${iri}> .
-        ?subClass rdfs:subClassOf ?superClass .
-    }
-    ${
-			queryForNamedGraphs
-				? `UNION
-    {
-        GRAPH ?g {
+    SELECT DISTINCT ?subClass ?superClass
+    WHERE {
+        {
             ?subClass rdfs:subClassOf* <${iri}> .
             ?subClass rdfs:subClassOf ?superClass .
         }
-    }`
-				: ''
-		}
-    FILTER (?subClass != <${iri}>)
+        ${
+					queryForNamedGraphs
+						? `UNION
+        {
+            GRAPH ?g {
+                ?subClass rdfs:subClassOf* <${iri}> .
+                ?subClass rdfs:subClassOf ?superClass .
+            }
+        }`
+						: ''
+				}
+        FILTER (?subClass != <${iri}>)
+    }
+    LIMIT ${limit}
 }
-LIMIT ${limit}
       `;
 }
