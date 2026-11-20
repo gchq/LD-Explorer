@@ -16,7 +16,7 @@ describe('ProductFeature component', () => {
 		// image
 		const image = screen.getByAltText('Foo alt');
 		expect(image).toBeInTheDocument();
-		expect(image).toHaveAttribute('src', 'foo.jpg');
+		expect(image).toHaveAttribute('src', '/foo.jpg');
 	});
 
 	describe('alignment', () => {
