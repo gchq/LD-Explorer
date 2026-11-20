@@ -5,7 +5,10 @@
 	import { Alert, Button, ButtonLink, Link } from '#lib/components/index.ts';
 	import { LocalSourceCard, RemoteSourceCard } from '#lib/components/index.ts';
 	import { PageView } from '#lib/components/views/index.ts';
-	import { sources as localSources, type LocalSource } from '#lib/stores/sources/local-sources.store.ts';
+	import {
+		sources as localSources,
+		type LocalSource
+	} from '#lib/stores/sources/local-sources.store.ts';
 	import {
 		sources as remoteSources,
 		type RemoteSource
