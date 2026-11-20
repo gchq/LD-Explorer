@@ -7,6 +7,7 @@ type LogType = 'error' | 'info' | 'warning';
 type LogEntryMetadata = { [key: string]: string };
 
 export interface LogEntry {
+	id: number;
 	timestamp: number;
 	title: string;
 	message: string;
@@ -16,11 +17,15 @@ export interface LogEntry {
 
 function createLogger() {
 	const { subscribe, set, update } = writable<LogEntry[]>([]);
+	let nextId = 0;
 
 	return {
 		clear: () => set([]),
 		add(title: string, message: string, type: LogType, metadata?: LogEntryMetadata) {
-			update((logs) => [...logs, { title, message, type, metadata, timestamp: Date.now() }]);
+			update((logs) => [
+				...logs,
+				{ id: nextId++, title, message, type, metadata, timestamp: Date.now() }
+			]);
 		},
 		addInfo(title: string, message: string, metadata?: LogEntryMetadata) {
 			this.add(title, message, 'info', metadata);
@@ -78,7 +83,7 @@ export const comunicaLogger: Logger = {
 };
 
 export const recentLogs = derived(logger, ($logger) =>
-	$logger.sort((a, b) => (a.timestamp < b.timestamp ? 1 : -1)).slice(0, 100)
+	[...$logger].sort((a, b) => b.timestamp - a.timestamp || b.id - a.id).slice(0, 100)
 );
 
 export const errorLogs = derived(logger, ($logger) =>

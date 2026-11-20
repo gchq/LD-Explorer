@@ -61,6 +61,14 @@ describe('logger', () => {
 			const entry = get(logger)[0];
 			expect(entry.metadata).toEqual({ foo: 'Bar' });
 		});
+
+		it('assigns a unique id to every entry, even when added in the same millisecond', () => {
+			logger.add('Entry 1', exampleMessage, 'info');
+			logger.add('Entry 2', exampleMessage, 'info');
+			logger.add('Entry 3', exampleMessage, 'info');
+			const ids = get(logger).map((e) => e.id);
+			expect(new Set(ids).size).toEqual(ids.length);
+		});
 	});
 
 	describe(logger.addInfo, () => {
@@ -216,5 +224,16 @@ describe('recentLogs', () => {
 		expect(get(recentLogs)[0].title).toEqual('Entry 1');
 		expect(get(recentLogs)[1].title).toEqual('Entry 3');
 		expect(get(recentLogs)[2].title).toEqual('Entry 2');
+	});
+
+	it('orders entries added at the same millisecond newest-first by insertion order', () => {
+		vi.setSystemTime(1000);
+		logger.add('Entry 1', exampleMessage, 'info');
+		logger.add('Entry 2', exampleMessage, 'info');
+		logger.add('Entry 3', exampleMessage, 'info');
+
+		expect(get(recentLogs)[0].title).toEqual('Entry 3');
+		expect(get(recentLogs)[1].title).toEqual('Entry 2');
+		expect(get(recentLogs)[2].title).toEqual('Entry 1');
 	});
 });
