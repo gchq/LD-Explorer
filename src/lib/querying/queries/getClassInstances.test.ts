@@ -52,12 +52,7 @@ describe('sparql queries', () => {
 
 		describe('when includeSubclasses is true', () => {
 			it('uses the rdfs:subClassOf* path form with no GRAPH clause', () => {
-				const query = getClassInstances.createQuery(
-					'http://www.example.com/',
-					100,
-					false,
-					true
-				);
+				const query = getClassInstances.createQuery('http://www.example.com/', 100, false, true);
 				expect(query).toMatchInlineSnapshot(`
 					"
 					PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -75,12 +70,7 @@ describe('sparql queries', () => {
 			});
 
 			it('applies a custom limit', () => {
-				const query = getClassInstances.createQuery(
-					'http://www.example.com/',
-					50,
-					false,
-					true
-				);
+				const query = getClassInstances.createQuery('http://www.example.com/', 50, false, true);
 				expect(query).toMatchInlineSnapshot(`
 					"
 					PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -98,12 +88,7 @@ describe('sparql queries', () => {
 			});
 
 			it('includes a single GRAPH clause wrapping the full pattern when querying named graphs', () => {
-				const query = getClassInstances.createQuery(
-					'http://www.example.com/',
-					100,
-					true,
-					true
-				);
+				const query = getClassInstances.createQuery('http://www.example.com/', 100, true, true);
 				expect(query).toMatchInlineSnapshot(`
 					"
 					PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>

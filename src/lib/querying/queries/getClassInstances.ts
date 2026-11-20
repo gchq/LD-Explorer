@@ -42,16 +42,16 @@ WHERE {
           ?type rdfs:subClassOf* <${iri}> .
       }
       ${
-			queryForNamedGraphs
-				? `UNION
+				queryForNamedGraphs
+					? `UNION
       {
           GRAPH ?g {
               ?instance a ?type .
               ?type rdfs:subClassOf* <${iri}> .
           }
       }`
-				: ''
-		}
+					: ''
+			}
 }
 LIMIT ${limit}`;
 	}
