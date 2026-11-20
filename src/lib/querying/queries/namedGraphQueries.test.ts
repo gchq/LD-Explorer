@@ -77,6 +77,26 @@ describe('exploration queries with named-graph-only data', () => {
 			).toContain(alice.value);
 		});
 
+		it('finds subclass instances (named graph): returns direct instances via zero-step subClassOf*', async () => {
+			// bob a person is in dataGraph; person subClassOf* person (zero steps) is satisfiable
+			// within a single GRAPH block, so bob is found
+			const instances = await values(
+				getClassInstances.createQuery(person.value, 100, true, true),
+				'instance'
+			);
+			expect(instances).toContain(bob.value);
+		});
+
+		it('finds subclass instances (named graph): does not over-match when includeSubclasses is false', async () => {
+			// without includeSubclasses, querying Person should NOT return alice (who is a Student, not directly a Person)
+			const instances = await values(
+				getClassInstances.createQuery(person.value, 100, true, false),
+				'instance'
+			);
+			expect(instances).toContain(bob.value);
+			expect(instances).not.toContain(alice.value);
+		});
+
 		it('finds individuals', async () => {
 			expect(await values(getIndividuals.createQuery(100, true), 'individual')).toEqual(
 				expect.arrayContaining([alice.value, bob.value])
@@ -136,6 +156,7 @@ describe('exploration queries with named-graph-only data', () => {
 			const queries = [
 				getClasses.createQuery(),
 				getClassInstances.createQuery(iri),
+				getClassInstances.createQuery(iri, 100, false, true),
 				getIndividuals.createQuery(),
 				getProperties.createQuery(),
 				getLabels.createQuery(),
@@ -155,6 +176,43 @@ describe('exploration queries with named-graph-only data', () => {
 
 		it('getNamedGraphs always uses GRAPH (it is its sole purpose)', () => {
 			expect(getNamedGraphs.createQuery()).toContain('GRAPH');
+		});
+	});
+
+	describe('includeSubclasses with co-located ontology and data', () => {
+		// A store where ontology (subClassOf) and data (rdf:type) are in the same named graph,
+		// so the GRAPH ?g { ?instance a ?type . ?type subClassOf* <iri> } pattern can match.
+		const singleGraph = namedNode('http://example.org/combined');
+		const colocatedStore = new Store([
+			quad(student, RDFS_SUBCLASS, person, singleGraph),
+			quad(alice, RDF_TYPE, student, singleGraph),
+			quad(bob, RDF_TYPE, person, singleGraph)
+		]);
+		const colocatedContext = { sources: [colocatedStore], unionDefaultGraph: false };
+
+		async function colocatedValues(query: string, variable: string): Promise<string[]> {
+			const stream = await engine.queryBindings(query, colocatedContext);
+			return (await stream.toArray())
+				.map((bindings) => bindings.get(variable)?.value)
+				.filter((value): value is string => value !== undefined);
+		}
+
+		it('returns direct instances and instances of subclasses when all data is in one named graph', async () => {
+			const instances = await colocatedValues(
+				getClassInstances.createQuery(person.value, 100, true, true),
+				'instance'
+			);
+			expect(instances).toContain(bob.value);
+			expect(instances).toContain(alice.value);
+		});
+
+		it('does not return subclass instances when includeSubclasses is false', async () => {
+			const instances = await colocatedValues(
+				getClassInstances.createQuery(person.value, 100, true, false),
+				'instance'
+			);
+			expect(instances).toContain(bob.value);
+			expect(instances).not.toContain(alice.value);
 		});
 	});
 });
