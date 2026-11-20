@@ -6,10 +6,10 @@
 	import type { PageData } from './$types';
 	import { QuadsView } from '#lib/components/views/index.ts';
 	import { TabbedPageView } from '#lib/components/views/index.ts';
-	import { createQueryStore } from '$stores/streamedQuery.store';
+	import { createQueryStore } from '#lib/stores/streamedQuery.store.ts';
 	import { getAppearances } from '#lib/querying/queries/index.ts';
 	import { settings } from '#lib/stores/settings.store.ts';
-	import { sourceList } from '$stores/sources/sources.store';
+	import { sourceList } from '#lib/stores/sources/sources.store.ts';
 
 	interface Props {
 		data: PageData;

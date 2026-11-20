@@ -1,7 +1,7 @@
 <!-- (c) Crown Copyright GCHQ -->
 
 <script lang="ts">
-	import { type LocalSource, sources } from '$stores/sources/local-sources.store';
+	import { type LocalSource, sources } from '#lib/stores/sources/local-sources.store.ts';
 	import { LocalSourceForm } from '#lib/components/views/forms/index.ts';
 	import type { PageData } from './$types';
 	import { PageView } from '#lib/components/views/index.ts';

@@ -5,11 +5,11 @@
 	import { Alert, Button, ButtonLink, Link } from '#lib/components/index.ts';
 	import { LocalSourceCard, RemoteSourceCard } from '#lib/components/index.ts';
 	import { PageView } from '#lib/components/views/index.ts';
-	import { sources as localSources, type LocalSource } from '$stores/sources/local-sources.store';
+	import { sources as localSources, type LocalSource } from '#lib/stores/sources/local-sources.store.ts';
 	import {
 		sources as remoteSources,
 		type RemoteSource
-	} from '$stores/sources/remote-sources.store';
+	} from '#lib/stores/sources/remote-sources.store.ts';
 
 	let allSources = $derived(
 		[...$remoteSources, ...$localSources].sort((a, b) => (a.name < b.name ? -1 : 1))

@@ -5,7 +5,7 @@
 	import SparqlPersistResults from './SparqlPersistQuadResults.svelte';
 	import SparqlQueryCodeBlock from './SparqlQueryCodeBlock.svelte';
 	import SparqlQueryStatus from './SparqlQueryStatus.svelte';
-	import type { StreamedQueryStore } from '$stores/streamedQuery.store';
+	import type { StreamedQueryStore } from '#lib/stores/streamedQuery.store.ts';
 
 	interface Props {
 		queryStore: StreamedQueryStore;

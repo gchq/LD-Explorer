@@ -5,9 +5,9 @@ import { Parser as N3Parser, type Store as N3Store } from 'n3';
 import { JsonLdParser } from 'jsonld-streaming-parser';
 import type { LocalSource } from '#lib/stores/sources/local-sources.store.ts';
 import { RdfaParser } from 'rdfa-streaming-parser';
-import type { Source } from '$stores/sources/sources.store';
+import type { Source } from '#lib/stores/sources/sources.store.ts';
 import type { Writable } from 'svelte/store';
-import { logger } from '$stores/logger.store';
+import { logger } from '#lib/stores/logger.store.ts';
 import { v4 as uuid } from 'uuid';
 
 function applyStreamingParser(

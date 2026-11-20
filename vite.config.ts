@@ -27,7 +27,6 @@ export default defineConfig({
 				// Base path required if this is a github pages deployment.
 				base: process.env.BASE_PATH || ''
 			},
-			alias: { $stores: 'src/lib/stores', '$test-helpers': 'test/helpers' }
 		}),
 		svelteTesting(),
 		tailwindcss()

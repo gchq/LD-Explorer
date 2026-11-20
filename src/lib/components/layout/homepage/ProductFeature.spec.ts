@@ -1,7 +1,7 @@
 /* (c) Crown Copyright GCHQ */
 
 import ProductFeature from './ProductFeature.svelte';
-import { hydratedRender as render } from '$test-helpers/render';
+import { hydratedRender as render } from '#test-helpers/render.ts';
 import { screen } from '@testing-library/svelte';
 
 const testProps = { title: 'Foobar', screenshot: 'foo.jpg', screenshotAlt: 'Foo alt' };

@@ -15,7 +15,7 @@
 		TextField
 	} from '#lib/components/index.ts';
 	import { PageView } from '#lib/components/views/index.ts';
-	import { sources as localSources } from '$stores/sources/local-sources.store';
+	import { sources as localSources } from '#lib/stores/sources/local-sources.store.ts';
 	import { validateLocalSourcesWithShacl, type ShaclValidationSummary } from '#lib/util/shacl.ts';
 
 	let shapesDocument = $state('');

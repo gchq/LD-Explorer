@@ -6,7 +6,7 @@
 	import {
 		type RemoteSource,
 		sources as remoteSources
-	} from '$stores/sources/remote-sources.store';
+	} from '#lib/stores/sources/remote-sources.store.ts';
 	import SourceCard from './SourceCard.svelte';
 
 	interface Props {

@@ -1,8 +1,8 @@
 <!-- (c) Crown Copyright GCHQ -->
 
 <script lang="ts">
-	import type { LocalSource } from '$stores/sources/local-sources.store';
-	import type { RemoteSource } from '$stores/sources/remote-sources.store';
+	import type { LocalSource } from '#lib/stores/sources/local-sources.store.ts';
+	import type { RemoteSource } from '#lib/stores/sources/remote-sources.store.ts';
 	import type { Snippet } from 'svelte';
 
 	interface Props {

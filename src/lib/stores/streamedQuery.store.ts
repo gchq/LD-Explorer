@@ -20,14 +20,14 @@
 
 import type { Bindings, BindingsStream } from '@comunica/types';
 import { get, type Readable, writable } from 'svelte/store';
-import { comunicaLogger, logger } from '$stores/logger.store';
+import { comunicaLogger, logger } from '#lib/stores/logger.store.ts';
 import type { AsyncIterator } from 'asynciterator';
 import type { Quad } from '@rdfjs/types';
 import { QueryStatus } from '#lib/types.ts';
 import type { QuerySources } from './sources/sources.store';
 import type { ResultStream } from '@rdfjs/types';
 import { createEngine } from '#lib/querying/engine.ts';
-import { settings } from '$stores/settings.store';
+import { settings } from '#lib/stores/settings.store.ts';
 
 type QuadsStream = AsyncIterator<Quad> & ResultStream<Quad>;
 type QueryStream = BindingsStream | QuadsStream;

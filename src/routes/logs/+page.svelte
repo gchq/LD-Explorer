@@ -2,7 +2,7 @@
 
 <script lang="ts">
 	import { Alert, Button, SummaryDetail } from '#lib/components/index.ts';
-	import { logger, recentLogs } from '$stores/logger.store';
+	import { logger, recentLogs } from '#lib/stores/logger.store.ts';
 	import { PageView } from '#lib/components/views/index.ts';
 	import { clsx } from 'clsx';
 </script>

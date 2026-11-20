@@ -1,7 +1,7 @@
 /* (c) Crown Copyright GCHQ */
 
 import { Parser, Store as N3Store } from 'n3';
-import type { LocalSource } from '$stores/sources/local-sources.store';
+import type { LocalSource } from '#lib/stores/sources/local-sources.store.ts';
 import {
 	combineEnabledLocalSources,
 	parseShaclShapes,

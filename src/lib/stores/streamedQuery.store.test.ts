@@ -8,8 +8,8 @@ import type { Quad } from '@rdfjs/types';
 import { QueryStatus } from '#lib/types.ts';
 import { get } from 'svelte/store';
 import { importRdfDocument } from '#lib/util/source.util.ts';
-import { logger } from '$stores/logger.store';
-import { settings } from '$stores/settings.store';
+import { logger } from '#lib/stores/logger.store.ts';
+import { settings } from '#lib/stores/settings.store.ts';
 
 const document = `
 PREFIX : <http://www.example.com/>

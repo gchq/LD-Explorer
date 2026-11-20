@@ -3,7 +3,7 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
 	import { Button, ButtonLink } from '#lib/components/index.ts';
-	import { type LocalSource, sources as localSources } from '$stores/sources/local-sources.store';
+	import { type LocalSource, sources as localSources } from '#lib/stores/sources/local-sources.store.ts';
 	import { Import } from '#lib/components/ui/icons/index.ts';
 	import type { Store as N3Store } from 'n3';
 	import SourceCard from './SourceCard.svelte';

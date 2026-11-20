@@ -2,7 +2,7 @@
 
 <script lang="ts">
 	import { Alert, Button, Link, TextField } from '#lib/components/index.ts';
-	import { type LocalSource, sources } from '$stores/sources/local-sources.store';
+	import { type LocalSource, sources } from '#lib/stores/sources/local-sources.store.ts';
 	import { resolve } from '$app/paths';
 	import { goto } from '$app/navigation';
 

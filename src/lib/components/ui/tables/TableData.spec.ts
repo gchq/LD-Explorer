@@ -1,7 +1,7 @@
 /* (c) Crown Copyright GCHQ */
 
 import TableData from './TableData.svelte';
-import { render } from '$test-helpers/render';
+import { render } from '#test-helpers/render.ts';
 
 describe('TableData component', () => {
 	it('renders a td element', () => {

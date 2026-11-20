@@ -4,7 +4,7 @@ import { ArrayIterator } from 'asynciterator';
 import { get } from 'svelte/store';
 import { createEngine } from '#lib/querying/engine.ts';
 import { QueryStatus } from '#lib/types.ts';
-import { logger } from '$stores/logger.store';
+import { logger } from '#lib/stores/logger.store.ts';
 import { createQueryStore } from './streamedQuery.store';
 import type { QuerySources } from './sources/sources.store';
 

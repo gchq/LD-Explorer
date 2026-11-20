@@ -5,9 +5,9 @@
 	import type { IcValueEventDetail } from '@ukic/web-components';
 	import type { Quad } from '@rdfjs/types';
 	import { QueryStatus } from '#lib/types.ts';
-	import type { StreamedQuery } from '$stores/streamedQuery.store';
+	import type { StreamedQuery } from '#lib/stores/streamedQuery.store.ts';
 	import { importQuads } from '#lib/util/source.util.ts';
-	import { sources } from '$stores/sources/local-sources.store';
+	import { sources } from '#lib/stores/sources/local-sources.store.ts';
 
 	// Props
 

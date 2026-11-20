@@ -18,7 +18,7 @@
 	import type { PageData } from './$types';
 	import { PageView } from '#lib/components/views/index.ts';
 	import { QuadsView } from '#lib/components/views/index.ts';
-	import { createQueryStore } from '$stores/streamedQuery.store';
+	import { createQueryStore } from '#lib/stores/streamedQuery.store.ts';
 	import { getTriples } from '#lib/querying/queries/index.ts';
 	import { settings } from '#lib/stores/settings.store.ts';
 

@@ -2,9 +2,9 @@
 
 import { get } from 'svelte/store';
 import { createEngine } from '#lib/querying/engine.ts';
-import { sourceList } from '$stores/sources/sources.store';
+import { sourceList } from '#lib/stores/sources/sources.store.ts';
 import defaultLabels from '#lib/data/labels.json';
-import { settings } from '$stores/settings.store';
+import { settings } from '#lib/stores/settings.store.ts';
 
 interface LabelLookup {
 	[iri: string]: string;

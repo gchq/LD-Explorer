@@ -9,7 +9,7 @@
 	import QuadsTurtle from './QuadsTurtle.svelte';
 	import { QueryStatus } from '#lib/types.ts';
 	import type { Readable } from 'svelte/store';
-	import type { StreamedQuery } from '$stores/streamedQuery.store';
+	import type { StreamedQuery } from '#lib/stores/streamedQuery.store.ts';
 
 	// Workaround to stop client from crashing if user runs these views with a lot of data.
 	// LD explorer graph/TTL functionality is value-add and not inherently vital to the

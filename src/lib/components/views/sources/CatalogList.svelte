@@ -12,7 +12,7 @@
 		TableHeading,
 		TableRow
 	} from '#lib/components/index.ts';
-	import { sources } from '$stores/sources/remote-sources.store';
+	import { sources } from '#lib/stores/sources/remote-sources.store.ts';
 
 	interface CatalogEntry {
 		name: string;

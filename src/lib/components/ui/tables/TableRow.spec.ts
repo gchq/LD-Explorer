@@ -1,7 +1,7 @@
 /* (c) Crown Copyright GCHQ */
 
 import TableRow from './TableRow.svelte';
-import { render } from '$test-helpers/render';
+import { render } from '#test-helpers/render.ts';
 
 describe('TableRow component', () => {
 	it('renders a tr element', () => {

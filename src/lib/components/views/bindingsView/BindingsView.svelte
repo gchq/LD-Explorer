@@ -6,7 +6,7 @@
 	import BindingsViewTable from './BindingsViewTable.svelte';
 	import { Pagination } from '#lib/components/index.ts';
 	import type { Readable } from 'svelte/store';
-	import type { StreamedQuery } from '$stores/streamedQuery.store';
+	import type { StreamedQuery } from '#lib/stores/streamedQuery.store.ts';
 	import { filterBindings } from '#lib/util/filter.utils.ts';
 
 	// Props

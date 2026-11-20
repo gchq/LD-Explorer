@@ -8,10 +8,10 @@
 	import { ClassHeirachyView } from '#lib/components/views/index.ts';
 	import type { PageData } from './$types';
 	import { TabbedPageView } from '#lib/components/views/index.ts';
-	import { createQueryStore } from '$stores/streamedQuery.store';
+	import { createQueryStore } from '#lib/stores/streamedQuery.store.ts';
 	import { getSubclasses } from '#lib/querying/queries/index.ts';
 	import { settings } from '#lib/stores/settings.store.ts';
-	import { sourceList } from '$stores/sources/sources.store';
+	import { sourceList } from '#lib/stores/sources/sources.store.ts';
 
 	// Props
 	interface Props {

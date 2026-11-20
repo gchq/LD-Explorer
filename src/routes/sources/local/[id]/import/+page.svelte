@@ -17,7 +17,7 @@
 		importRdfaDocument
 	} from '#lib/util/source.util.ts';
 	import type { IcValueEventDetail } from '@ukic/web-components';
-	import type { LocalSource } from '$stores/sources/local-sources.store';
+	import type { LocalSource } from '#lib/stores/sources/local-sources.store.ts';
 	import type { PageData } from './$types';
 	import { PageView } from '#lib/components/views/index.ts';
 	import { PrefixBrowserView } from '#lib/components/views/index.ts';

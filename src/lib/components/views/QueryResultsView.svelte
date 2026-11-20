@@ -5,8 +5,8 @@
 	import { BindingsView, BooleanView, QuadsView } from '#lib/components/views/index.ts';
 	import { QueryStatus } from '#lib/types.ts';
 	import { SparqlQueryDetail } from '#lib/components/views/sparql/index.ts';
-	import { createQueryStore } from '$stores/streamedQuery.store';
-	import { sourceList } from '$stores/sources/sources.store';
+	import { createQueryStore } from '#lib/stores/streamedQuery.store.ts';
+	import { sourceList } from '#lib/stores/sources/sources.store.ts';
 
 	// Props
 	interface Props {

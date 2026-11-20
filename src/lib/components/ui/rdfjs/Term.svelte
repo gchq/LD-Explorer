@@ -15,7 +15,7 @@
 	import { abbreviateTermPrefix } from '#lib/util/term.utils.ts';
 	import clsx from 'clsx';
 	import { prefixes } from '#lib/stores/prefixes.store.ts';
-	import { labelFor } from '$stores/labelLookup.svelte';
+	import { labelFor } from '#lib/stores/labelLookup.svelte.ts';
 
 	// Props
 	interface Props {

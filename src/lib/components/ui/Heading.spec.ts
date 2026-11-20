@@ -1,7 +1,7 @@
 /* (c) Crown Copyright GCHQ */
 
 import Heading from './Heading.svelte';
-import { hydratedRender as render } from '$test-helpers/render';
+import { hydratedRender as render } from '#test-helpers/render.ts';
 import { screen } from '@testing-library/svelte';
 
 const exampleText = 'Hello World';
