@@ -9,6 +9,9 @@ describe('sparql queries', () => {
 				const query = getClasses.createQuery();
 				expect(query).toMatchInlineSnapshot(`
 					"
+					PREFIX owl: <http://www.w3.org/2002/07/owl#>
+					PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
 					SELECT DISTINCT ?className
 					WHERE {
 					      {
@@ -29,6 +32,9 @@ describe('sparql queries', () => {
 				const query = getClasses.createQuery(123);
 				expect(query).toMatchInlineSnapshot(`
 					"
+					PREFIX owl: <http://www.w3.org/2002/07/owl#>
+					PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
 					SELECT DISTINCT ?className
 					WHERE {
 					      {
@@ -49,6 +55,9 @@ describe('sparql queries', () => {
 				const query = getClasses.createQuery(100, true);
 				expect(query).toMatchInlineSnapshot(`
 					"
+					PREFIX owl: <http://www.w3.org/2002/07/owl#>
+					PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
 					SELECT DISTINCT ?className
 					WHERE {
 					      {

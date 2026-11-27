@@ -9,6 +9,9 @@ describe('sparql queries', () => {
 				const query = getProperties.createQuery();
 				expect(query).toMatchInlineSnapshot(`
 					"
+					PREFIX owl: <http://www.w3.org/2002/07/owl#>
+					PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
 					SELECT DISTINCT ?propertyName
 					WHERE {
 					      {
@@ -31,6 +34,9 @@ describe('sparql queries', () => {
 				const query = getProperties.createQuery(123);
 				expect(query).toMatchInlineSnapshot(`
 					"
+					PREFIX owl: <http://www.w3.org/2002/07/owl#>
+					PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
 					SELECT DISTINCT ?propertyName
 					WHERE {
 					      {
@@ -53,6 +59,9 @@ describe('sparql queries', () => {
 				const query = getProperties.createQuery(100, true);
 				expect(query).toMatchInlineSnapshot(`
 					"
+					PREFIX owl: <http://www.w3.org/2002/07/owl#>
+					PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
 					SELECT DISTINCT ?propertyName
 					WHERE {
 					      {

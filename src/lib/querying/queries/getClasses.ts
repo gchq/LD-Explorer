@@ -16,6 +16,9 @@ export default { createQuery: getClasses, codeComment: CommonCodeComments.Change
 
 function getClasses(limit = 100, queryForNamedGraphs = false): string {
 	return `
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
 SELECT DISTINCT ?className
 WHERE {
       {${whereClause}}
